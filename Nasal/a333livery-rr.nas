@@ -1,0 +1,1 @@
+aircraft.livery.init("Aircraft/A330Family/Models/Liveries/A333RR");

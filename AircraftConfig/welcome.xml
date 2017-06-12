@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- A3XX Aircraft Config Dialog -->
+
+
+<PropertyList>
+
+	<name>aircraft-config-welcome</name>
+	<layout>vbox</layout>
+
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label>Confidential!</label>
+        </text>
+        <button>
+            <halign>right</halign>
+            <pref-width>20</pref-width>
+            <pref-height>20</pref-height>
+            <legend>X</legend>
+            <key>Esc</key>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+	
+    <hrule/>
+	
+		<group>
+			<layout>vbox</layout>
+			
+			<text>
+				<halign>center</halign>
+				<label>This aircraft is it0uchpods Confidential.</label>
+			</text>
+			
+			<text>
+				<halign>center</halign>
+				<label>Please do not leak our hard work.</label>
+			</text>
+			
+		</group>
+		
+	    <hrule/>
+	
+		<group>
+			<layout>hbox</layout>
+			
+			<button>
+				<halign>center</halign>
+				<legend>Open A/C Config</legend>
+				<pref-width>210</pref-width>
+				<binding>
+					<command>nasal</command>
+					<script>
+					acconfig.main_dlg.open();
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-close</command>
+				</binding>
+			</button>
+			<button>
+				<halign>center</halign>
+				<legend>Go Away</legend>
+				<pref-width>210</pref-width>
+				<binding>
+					<command>dialog-close</command>
+				</binding>
+			</button>
+		</group>
+	
+</PropertyList>

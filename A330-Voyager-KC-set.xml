@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList include="A330-main.xml">
+
+	<sim>
+	
+		<author>Joshua Davidson (it0uchpods), Jonathan Redpath (legoboyvdlp), and J Maverick 16</author>
+	
+		<sound>
+			<path>Aircraft/A330Family/Sounds/rrtrent-sound.xml</path>
+		</sound>
+	
+		<description>Airbus Voyager KC2/KC3</description>
+		<flight-model>jsb</flight-model>
+		<aero>A330-200-RR</aero>
+		<model>
+			<path>Aircraft/A330Family/Models/Octal-KC.xml</path> <!-- Voyager-KC -->
+			<livery>
+				<file>White</file>
+			</livery>
+		</model>
+		
+		<chase-distance-m type="double" archive="y">-130.0</chase-distance-m>
+		<view>
+			<name>Pilot View</name>
+			<internal archive="y">true</internal>
+			<config>
+				<x-offset-m archive="y">-0.45</x-offset-m>
+				<y-offset-m archive="y">1.43</y-offset-m>
+				<z-offset-m archive="y">-19.9573</z-offset-m>
+				<pitch-offset-deg archive="y">-12.0</pitch-offset-deg>
+			</config>
+		</view>
+		<view n="100">
+			<name>Copilot View</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">0.45</x-offset-m>
+				<y-offset-m archive="y">1.43</y-offset-m>
+				<z-offset-m archive="y">-19.9573</z-offset-m>
+				<pitch-offset-deg archive="y">-12.0</pitch-offset-deg>
+			</config>
+		</view>
+		<view n="101">
+			<name>Overhead Panel View</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">0</x-offset-m>
+				<y-offset-m archive="y">1.47</y-offset-m>
+				<z-offset-m archive="y">-19.96</z-offset-m>
+				<pitch-offset-deg archive="y">38</pitch-offset-deg>
+				<default-field-of-view-deg type="double">90</default-field-of-view-deg>
+			</config>
+		</view>
+		<view n="102">
+			<name>Aft View</name>
+			<type>lookfrom</type>
+			<internal archive="y">false</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">-3.68</x-offset-m>
+				<y-offset-m archive="y">1.47</y-offset-m>
+				<z-offset-m archive="y">11.6</z-offset-m>
+				<heading-offset-deg>75</heading-offset-deg>
+				<default-field-of-view-deg type="double">85</default-field-of-view-deg>
+			</config>
+		</view>
+		
+		<systems n="0">
+            <autopilot n="0">
+                <path>Aircraft/A330Family/Systems/fadec-pwrr.xml</path>
+            </autopilot>
+		</systems>
+		
+	</sim>
+	
+	<options>
+		<!--EIS2 type="bool">0</EIS2-->
+		<eng>RR</eng>
+		<hasboom>0</hasboom>
+		<drogue-cmd>0</drogue-cmd>
+		<drogue-pos-norm>0</drogue-pos-norm>
+	</options>
+	
+	<MCDUC n="0">
+		<type>A330-243</type>
+		<eng>Trent772B-60</eng>
+	</MCDUC>
+	
+	<nasal>
+		<specific>
+			<file>Aircraft/A330Family/Nasal/a332livery-kcrr.nas</file>
+		</specific>
+	</nasal>
+
+</PropertyList>

@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<sim>
+		
+		<author>Joshua Davidson (it0uchpods) and Jonathan Redpath (legoboyvdlp)</author>
+		
+		<status>Pre V1.0</status>
+		
+		<rating>
+			<FDM type="int">4</FDM>
+			<systems type="int">4</systems>
+			<cockpit type="int">4</cockpit>
+			<model type="int">4</model>
+		</rating>
+
+		<model>
+			<pushback>
+				<kp type="double">1000</kp>
+				<ki type="double">0</ki>
+				<kd type="double">0</kd>
+				<position-norm type="double">0</position-norm>
+			</pushback>
+		</model>
+		
+		<previews>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>Splash/splash1.png</path>
+			</preview>
+		</previews>
+
+		<startup>
+			<splash-texture>Aircraft/A330Family/Splash/SplashOld.png</splash-texture>
+		</startup>
+		
+		<tags>
+			<tag>transport</tag>
+			<tag>airbus</tag>
+			<tag>1980s</tag>
+			<tag>1990s</tag>
+			<tag>2000s</tag>
+			<tag>2010s</tag>
+			<tag>ifr</tag>
+			<tag>retractable-gear</tag>
+			<tag>glass-cockpit</tag>
+			<tag>pressurised</tag>
+			<tag>rembrandt</tag>
+			<!--tag>dual-controls</tag--> <!-- Coming Soon ;) -->
+			<tag>jet</tag>
+			<tag>2-engine</tag>
+		</tags>
+		
+		<flaps>
+			<setting>0.000</setting>
+			<setting>0.290</setting>
+			<setting>0.596</setting>
+			<setting>0.645</setting>
+			<setting>1.000</setting>
+		</flaps>
+
+		<systems n="0">
+			<electrical>
+				<path></path>
+			</electrical>
+			<autopilot n="1">
+				<path>Aircraft/A330Family/Systems/hydraulics.xml</path>
+			</autopilot>
+			<autopilot n="2">
+				<path>Aircraft/A330Family/Systems/it-fbw-b.xml</path>
+			</autopilot>
+			<autopilot n="3">
+				<path>Aircraft/A330Family/Systems/fmgc-b.xml</path>
+			</autopilot>
+			<autopilot n="4">
+				<path>Aircraft/A330Family/Systems/fmgc-roll-yaw.xml</path>
+			</autopilot>
+			<autopilot n="5">
+				<path>Aircraft/A330Family/Systems/fmgc-pitch.xml</path>
+			</autopilot>
+            <autopilot n="6">
+                <path>Aircraft/A330Family/Systems/custom-autothrust.xml</path>
+            </autopilot>
+            <autopilot n="7">
+                <path>Aircraft/A330Family/Systems/libraries.xml</path>
+            </autopilot>
+			<autopilot n="8">
+				<path>Systems/fl2070_sound.xml</path>
+			</autopilot>
+			<property-rule n="100">
+				<path>Systems/pfd.xml</path>
+			</property-rule>
+		</systems>
+
+		<chase-distance-m>-85</chase-distance-m>
+
+		<sounde>
+			<seatbelt-sign type="bool">0</seatbelt-sign>
+			<no-smoking-sign type="bool">0</no-smoking-sign>
+			<oh-btn type="bool">0</oh-btn>
+			<oh-knb type="bool">0</oh-knb>
+		</sounde>
+
+		<instrumentation>
+			<path>Aircraft/A330Family/Systems/instrumentation.xml</path>
+			<adirs n="0">
+				<ir n="0">
+					<aligned type="bool">false</aligned>
+					<display>
+						<status type="string"></status>
+						<ttn type="int">0</ttn>
+					</display>
+				</ir>
+				<ir n="1">
+					<aligned type="bool">false</aligned>
+					<display>
+						<status type="string"></status>
+						<ttn type="int">0</ttn>
+					</display>
+				</ir>
+				<ir n="2">
+					<aligned type="bool">false</aligned>
+					<display>
+						<status type="string"></status>
+						<ttn type="int">0</ttn>
+					</display>
+				</ir>
+			</adirs>
+		</instrumentation>
+
+		<alarms>
+			<master-caution type="bool">0</master-caution>
+		</alarms>
+
+		<menubar>
+			<default>
+				<menu n="3">
+					<item>
+						<name>autopilot</name>
+						<label>Autopilot</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							 var autopilot = gui.Dialog.new("sim/gui/dialogs/autopilot/dialog", "Aircraft/A330Family/Systems/autopilot-dlg.xml");
+							 autopilot.open();
+							</script>
+						</binding>
+					</item>
+				</menu>
+				<menu n="100">
+					<label>Airbus A3XX</label>
+					<enabled type="bool">true</enabled>
+					<item>
+						<label>Aircraft Config</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							acconfig.main_dlg.open();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Pushback</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>pushback</dialog-name>
+						</binding>
+					</item>
+				</menu>
+			</default>
+		</menubar>
+
+		<!-- Multiplayer properties -->
+		<multiplay>
+			<generic>
+				<float n="0" alias="/controls/lighting/dome-norm" />
+				<!--float n="1" alias="/replaceme" /-->
+				<float n="2" alias="/engines/engine[0]/reverser-pos-norm" />
+				<float n="3" alias="/engines/engine[1]/reverser-pos-norm" />
+				<float n="4" alias="/controls/flight/elevator-left" />
+				<float n="5" alias="/controls/flight/elevator-right" />
+				<float n="6" alias="/controls/flight/aileron-left" />
+				<float n="7" alias="/controls/flight/aileron-right" />
+				<float n="8" alias="/controls/flight/rudder-fdm" />
+				<float n="9" alias="/gear/gear[1]/gear-tilt-deg" />
+				<float n="10" alias="/gear/gear[2]/gear-tilt-deg" />
+				<float n="11" alias="/fdm/jsbsim/fcs/slat-pos-norm" />
+				<float n="12" alias="/options/drogue-pos-norm" />
+				<int n="2" alias="/controls/lighting/landing-lights[0]" />
+				<int n="3" alias="/controls/lighting/landing-lights[1]" />
+				<int n="4" alias="/controls/lighting/landing-lights[2]" />
+				<int n="5" alias="/sim/model/lights/nav-lights" />
+				<int n="6" alias="/sim/model/lights/logo-lights" />
+				<int n="7" alias="/sim/model/lights/strobe/state" />
+				<int n="8" alias="/controls/lighting/wing-lights" />
+				<int n="9" alias="/sim/model/lights/beacon/state" />
+				<int n="10" alias="/engines/engine[0]/contrail" />
+				<int n="11" alias="/engines/engine[1]/contrail" />
+				<int n="12" alias="/sharklet" />
+				<int n="13" alias="/options/hasboom" />
+			</generic>
+		</multiplay>
+		
+		<flight-recorder include="Systems/flight-recorder.xml"/>
+	</sim>
+
+	<consumables>
+		<fuel>
+			<tank n="0">
+				<name>Left Wing Surge</name>
+			</tank>
+			<tank n="1">
+				<name>Left Wing Outer</name>
+			</tank>
+			<tank n="2">
+				<name>Left Wing Inner</name>
+			</tank>
+			<tank n="3">
+				<name>Center</name>
+			</tank>
+			<tank n="4">
+				<name>Right Wing Inner</name>
+			</tank>
+			<tank n="5">
+				<name>Right Wing Outer</name>
+			</tank>
+			<tank n="6">
+				<name>Right Wing Surge</name>
+			</tank>
+			<tank n="7">
+				<name>Left Pipes</name>
+			</tank>
+			<tank n="8">
+				<name>Right Pipes</name>
+			</tank>
+		</fuel>
+	</consumables>
+	
+
+	<payload>
+		<weight n="0">
+			<name>Cockpit Crew</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]" />
+			<min-lb type="double">200</min-lb>
+			<max-lb type="double">440</max-lb>
+		</weight>
+		<weight n="1">
+			<name>Cabin Crew</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]" />
+			<min-lb type="double">300</min-lb>
+			<max-lb type="double">1320</max-lb>
+		</weight>
+		<weight n="2">
+			<name>PAX 0A (60 seats)</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]" />
+			<min-lb type="double">300</min-lb>
+			<max-lb type="double">13200</max-lb>
+		</weight>
+		<weight n="3">
+			<name>PAX 0B (60 seats)</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]" />
+			<min-lb type="double">300</min-lb>
+			<max-lb type="double">13200</max-lb>
+		</weight>
+		<weight n="4">
+			<name>PAX 0C (54 seats)</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]" />
+			<min-lb type="double">300</min-lb>
+			<max-lb type="double">11880</max-lb>
+		</weight>
+		<weight n="5">
+			<name>Cargo Hold 1</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[5]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">7500.126</max-lb>
+		</weight>
+		<weight n="6">
+			<name>Cargo Hold 3</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[6]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">5384.414</max-lb>
+		</weight>
+		<weight n="7">
+			<name>Cargo Hold 4</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[7]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">4651.754</max-lb>
+		</weight>
+		<weight n="8">
+			<name>Cargo Hold 5</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[8]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">3300.320</max-lb>
+		</weight>
+	</payload>
+	
+<it-autoflight>
+	<config>
+		<altitude-dial-mode>0</altitude-dial-mode>
+		<roll>
+			<umin>-0.45</umin>
+			<umax>0.45</umax>
+			<kp>0.045</kp>
+			<kp-vloc>0.07</kp-vloc>
+			<ti>10.0</ti>
+			<td>0.00001</td>
+		</roll>
+		<pitch>
+			<umin>-0.20</umin>
+			<umax>0.20</umax>
+			<kp>-0.06</kp>
+			<ti>10.0</ti>
+			<td>0.00001</td>
+		</pitch>
+		<cmd>
+			<roll-kp>-0.9</roll-kp>
+			<roll-scale>1.6</roll-scale>
+			<vorloc>-4.0</vorloc>
+			<vs>0.01</vs>
+			<fpa>0.30</fpa>
+		</cmd>
+		<autoland>
+			<kp-pitch>0.035</kp-pitch>
+			<kp-rudder>-0.25</kp-rudder>
+		</autoland>
+	</config>
+	<output>
+		<ap1>0</ap1>
+		<ap2>0</ap2>
+	</output>
+	<custom>
+		<hdg-input>0</hdg-input>
+		<trk-fpa>0</trk-fpa>
+	</custom>
+</it-autoflight>
+
+	<it-fbw n="0">
+		<alpha-hld type="bool">0</alpha-hld>
+	</it-fbw>
+
+	<apu>
+		<rpm type="float">0</rpm>
+		<egt type="float">0</egt>
+	</apu>
+	
+	<FMGC n="0">
+		<internal>
+			<cost-index type="int">0</cost-index>
+		</internal>
+		<status>
+			<to-state type="bool">1</to-state>
+		</status>
+	</FMGC>
+	
+	<controls>
+		<adirs n="0">
+			<adr n="0">
+				<fault type="bool">false</fault>
+				<off type="bool">false</off>
+			</adr>
+			<adr n="1">
+				<fault type="bool">false</fault>
+				<off type="bool">false</off>
+			</adr>
+			<adr n="2">
+				<fault type="bool">false</fault>
+				<off type="bool">false</off>
+			</adr>
+			<display>
+				<selected type="int">1</selected>
+				<dataknob type="int">5</dataknob>
+				<text type="string"></text>
+			</display>
+			<ir n="0">
+				<align type="bool">false</align>
+				<knob type="int">1</knob>
+				<fault type="bool">false</fault>
+			</ir>
+			<ir n="1">
+				<align type="bool">false</align>
+				<knob type="int">1</knob>
+				<fault type="bool">false</fault>
+			</ir>
+			<ir n="2">
+				<align type="bool">false</align>
+				<knob type="int">1</knob>
+				<fault type="bool">false</fault>
+			</ir>
+			<onbat type="bool">false</onbat>
+			<skip userarchive="y" type="bool">0</skip>
+		</adirs>
+		<APU>
+			<fire-switch type="bool">0</fire-switch>
+			<master type="bool">0</master>
+			<start type="bool">0</start>
+			<bleed type="bool">0</bleed>
+		</APU>
+		<electric>
+			<avionics-switch type="bool">true</avionics-switch>
+		</electric>
+		<engines>
+			<engine-start-switch type="int">1</engine-start-switch>
+			<engine n="0">
+				<cutoff type="bool">true</cutoff>
+				<cutoff-switch type="bool">true</cutoff-switch>
+				<man-start type="bool">0</man-start>
+				<starter type="bool">0</starter>
+				<starter-switch type="bool">0</starter-switch>
+				<max-athr-thrust type="float">0.94</max-athr-thrust>
+				<throttle-fdm type="float">0</throttle-fdm>
+			</engine>
+			<engine n="1">
+				<cutoff type="bool">true</cutoff>
+				<cutoff-switch type="bool">true</cutoff-switch>
+				<man-start type="bool">0</man-start>
+				<starter type="bool">0</starter>
+				<starter-switch type="bool">0</starter-switch>
+				<max-athr-thrust type="float">0.94</max-athr-thrust>
+				<throttle-fdm type="float">0</throttle-fdm>
+			</engine>
+		</engines>
+		<flight>
+			<aileron-input>0</aileron-input>
+			<aileron-fbw>0</aileron-fbw>
+			<aileron-left>0.5</aileron-left>
+			<aileron-right>-0.5</aileron-right>
+			<aileron-sum>0.0</aileron-sum>
+			<elevator-input>0</elevator-input>
+			<elevator-fbw>0</elevator-fbw>
+			<elevator-left>0.1</elevator-left>
+			<elevator-right>0.1</elevator-right>
+			<elevator-sum>0.2</elevator-sum>
+			<spoiler-l1>0.0</spoiler-l1>
+			<spoiler-l2>0.0</spoiler-l2>
+			<spoiler-l3>0.0</spoiler-l3>
+			<spoiler-l4>0.0</spoiler-l4>
+			<spoiler-l5>0.0</spoiler-l5>
+			<spoiler-l-sum>0.0</spoiler-l-sum>
+			<spoiler-r1>0.0</spoiler-r1>
+			<spoiler-r2>0.0</spoiler-r2>
+			<spoiler-r3>0.0</spoiler-r3>
+			<spoiler-r4>0.0</spoiler-r4>
+			<spoiler-r5>0.0</spoiler-r5>
+			<spoiler-r-sum>0.0</spoiler-r-sum>
+			<speedbrake-output>0.0</speedbrake-output>
+			<speedbrake-arm>0</speedbrake-arm>
+			<ground-spoilers-armed type="bool">0</ground-spoilers-armed>
+			<speedbrake-lever type="double">0</speedbrake-lever>
+			<slats>0</slats>
+		</flight>
+		<gear>
+			<brake-parking type="bool">0</brake-parking>
+            <tiller-cmd-norm type="double">0</tiller-cmd-norm>
+			<tiller-enabled type="bool">0</tiller-enabled>
+		</gear>
+		<lighting>
+			<beacon type="bool">0</beacon>
+			<interior type="double">0</interior>
+			<cockpit type="bool">0</cockpit>
+			<cones type="bool">true</cones>
+			<dome-norm type="double">0</dome-norm>
+			<landing-lights n="0" type="bool">0</landing-lights>
+			<landing-lights n="1" type="bool">0</landing-lights>
+			<landing-lights n="2" type="bool">0</landing-lights>
+			<nav-lights-switch type="int">0</nav-lights-switch>
+			<overhead-panel-norm type="double">0.0</overhead-panel-norm>
+			<main-panel-pedestal-norm type="double">0.8</main-panel-pedestal-norm>
+			<strobe type="bool">0</strobe>
+			<taxi-light-switch type="float">0</taxi-light-switch>
+		</lighting>
+		<switches>
+			<!-- Smoking is bad :P -->
+			<no-smoking-sign type="bool">1</no-smoking-sign>
+			<seatbelt-sign type="bool">0</seatbelt-sign>
+			<annun-test>0</annun-test>
+		</switches>
+	</controls>
+	
+	<engines>
+		<apu>
+			<rpm type="double">0</rpm>
+			<on-fire type="bool">0</on-fire>
+			<running type="bool">0</running>
+			<serviceable type="bool">true</serviceable>
+		</apu>
+		<engine n="0">
+			<egt-actual type="float">0</egt-actual>
+			<state type="int">0</state>
+			<on-fire type="bool">0</on-fire>
+			<reverser-pos-norm type="double">0</reverser-pos-norm>
+			<running type="bool">0</running>
+		</engine>
+		<engine n="1">
+			<egt-actual type="float">0</egt-actual>
+			<state type="int">0</state>
+			<on-fire type="bool">0</on-fire>
+			<reverser-pos-norm type="double">0</reverser-pos-norm>
+			<running type="bool">0</running>
+		</engine>
+	</engines>
+
+	<gear>
+		<gear n="0">
+			<tyre-smoke type="int">0</tyre-smoke>
+			<sprayspeed-ms type="double">0</sprayspeed-ms>
+			<spray-density type="double">0</spray-density>
+			<caster-angle-deg-damped type="double">0</caster-angle-deg-damped>
+		</gear>
+		<gear n="1">
+			<gear-tilt-deg type="double">0</gear-tilt-deg>
+			<tyre-smoke type="int">0</tyre-smoke>
+			<sprayspeed-ms type="double">0</sprayspeed-ms>
+			<spray-density type="double">0</spray-density>
+			<caster-angle-deg-damped type="double">0</caster-angle-deg-damped>
+		</gear>
+		<gear n="2">
+			<gear-tilt-deg type="double">0</gear-tilt-deg>
+			<tyre-smoke type="int">0</tyre-smoke>
+			<sprayspeed-ms type="double">0</sprayspeed-ms>
+			<spray-density type="double">0</spray-density>
+			<caster-angle-deg-damped type="double">0</caster-angle-deg-damped>
+		</gear>
+		<gear n="3">
+			<wowa type="bool">1</wowa>
+		</gear>
+		<gear n="4">
+			<wowa type="bool">1</wowa>
+		</gear>
+	</gear>
+	
+	<systems>
+		<fuel n="0">
+			<only-use-ctr-tank type="bool">0</only-use-ctr-tank>
+			<tank n="2">
+				<feed0 type="bool">0</feed0>
+				<feed1 type="bool">0</feed1>
+			</tank>
+			<tank n="3">
+				<feed0 type="bool">0</feed0>
+				<feed1 type="bool">0</feed1>
+			</tank>
+			<tank n="4">
+				<feed0 type="bool">0</feed0>
+				<feed1 type="bool">0</feed1>
+			</tank>
+		</fuel>
+		<hydraulic n="0">
+			<blue-psi>0</blue-psi>
+			<green-psi>0</green-psi>
+			<yellow-psi>0</yellow-psi>
+		</hydraulic>
+	</systems>
+	
+	<options n="0">
+		<pfd n="0">
+			<sidestick-pos userarchive="y" type="bool">0</sidestick-pos>
+		</pfd>
+	</options>
+	
+	<instrumentation n="0">
+	
+		<efis n="0">
+			<ecam>
+				<display-mode type="string">FCTL</display-mode>
+			</ecam>
+		</efis>
+	
+		<efis n="1">
+			<ecam>
+				<display-mode type="string">FCTL</display-mode>
+			</ecam>
+		</efis>
+		
+		<tcas><!-- http://wiki.flightgear.org/index.php/TCAS -->
+			<serviceable type="bool">true</serviceable><!-- TCAS ENABLE -->
+			<inputs>
+				<mode type="int">3</mode><!-- 0=off, 1=standby, 2=TA-only, 3=auto(TA/RA) -->
+			</inputs>
+			<voice>
+				<file-prefix type="string">Sounds/tcas/female/</file-prefix>
+				<!-- sound file path and prefix -->
+			</voice>
+			<speaker><!-- Speaker Configuration -->
+				<max-dist> 2 </max-dist><!-- Max. distance where speaker is heard -->
+				<reference-dist> 1 </reference-dist> <!-- Distance to pilot -->
+				<volume> 0.8 </volume> <!-- Volume at reference distance -->
+			</speaker>
+		</tcas>
+		<nav-compass>
+			<nav-display n="0" type="int">0</nav-display>
+			<nav-display n="1" type="int">0</nav-display>
+		</nav-compass>
+
+		<!-- See http://wiki.flightgear.org/index.php/GPWS -->
+		<mk-viii>
+			<serviceable type="bool">true</serviceable>
+			<configuration-module>
+				<category-1 type="int">255</category-1>
+				<category-3 type="int">2</category-3>
+				<category-4 type="int">13</category-4>
+				<category-5 type="int">0</category-5>
+				<category-6 type="int">1</category-6>
+				<category-7 type="int">124</category-7>
+				<category-8 type="int">3</category-8>
+				<category-9 type="int">3</category-9> 
+				<category-10 type="int">6</category-10>
+				<category-13 type="int">7</category-13>
+				<category-14 type="int">0</category-14>
+			</configuration-module>
+			<inputs>
+				<arinc429>
+					<decision-height-ncd type="bool">0</decision-height-ncd>
+					<decision-height type="double">250</decision-height>
+				</arinc429>
+			</inputs>
+			<speaker>
+				<max-dist type="double">2</max-dist>
+				<reference-dist type="double">1</reference-dist>
+				<volume type="double">2</volume>
+			</speaker>
+			<voice>
+				<file-prefix>Aircraft/A330Family/Sounds/GPWS/</file-prefix>
+			</voice>
+		</mk-viii>
+		
+		<groundradar>
+			<range type="double">1.0</range>
+		</groundradar>
+		
+		<chrono n="0">
+			<started type="bool">0</started>
+			<paused type="bool">0</paused>
+			<text type="string">0' 00'</text>
+			<started-at type="int">0</started-at>
+			<elapsed-time type="int">0</elapsed-time>
+		</chrono>
+
+		<chrono n="1">
+			<started type="bool">0</started>
+			<paused type="bool">0</paused>
+			<text type="string">0' 00'</text>
+			<started-at type="int">0</started-at>
+			<elapsed-time type="int">0</elapsed-time>
+		</chrono>
+		
+	</instrumentation>
+	
+	<modes>
+		<altimeter>
+			<inhg>0</inhg>
+		</altimeter>
+		<pfd>
+			<minimums-mode>DH</minimums-mode>
+			<ILS1>0</ILS1>
+			<ILS2>0</ILS2>
+			<stallvls>-10</stallvls>
+			<fma>
+				<athr-box>I  .</athr-box>
+			</fma>
+		</pfd>
+	</modes>
+
+	<input>
+		<keyboard>
+			<key n="127">
+				<name>DEL</name>
+				<desc>Simple Engage/Disengage reversers</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+					systems.toggleFastRevThrust();
+					</script>
+				</binding>
+			</key>
+			<key n="113">
+				<name>q</name>
+				<desc>Disengage/Decrease reversers</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+					systems.unRevThrust();
+					</script>
+				</binding>
+			</key>
+			<key n="119">
+				<name>w</name>
+				<desc>Engage/Increase reversers</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+					systems.doRevThrust();
+					</script>
+				</binding>
+			</key>
+			<key n="101">
+				<name>e</name>
+				<desc>Thrust Levers Idle</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+					systems.doIdleThrust();
+					</script>
+				</binding>
+			</key>
+			<key n="2">
+				<name>Ctrl-b</name>
+				<desc>Cycle speedbrake setting</desc>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/flight/speedbrake-arm</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<condition>
+						<or>
+							<equals>
+								<property>/gear/gear[1]/wow</property>
+								<value>1</value>
+							</equals>
+							<equals>
+								<property>/gear/gear[2]/wow</property>
+								<value>1</value>
+							</equals>
+						</or>
+					</condition>
+					<command>property-cycle</command>
+					<property>controls/flight/speedbrake-lever</property>
+					<value>0</value>
+					<value>1</value>
+				</binding>
+				<binding>
+					<condition>
+						<and>
+							<equals>
+								<property>/gear/gear[1]/wow</property>
+								<value>0</value>
+							</equals>
+							<equals>
+								<property>/gear/gear[2]/wow</property>
+								<value>0</value>
+							</equals>
+						</and>
+					</condition>
+					<command>property-cycle</command>
+					<property>controls/flight/speedbrake-lever</property>
+					<value>0</value>
+					<value>0.5</value>
+					<value>1</value>
+				</binding>
+			</key>
+		</keyboard>
+	</input>
+
+	<aircraft>
+		<door n="0">
+			<x-m>16.582</x-m>
+			<y-m>9.702</y-m>
+			<z-m>3.642</z-m>
+		</door>
+		<jetway-hood-deg type="double">3</jetway-hood-deg>
+	</aircraft>
+	
+	<nasal>
+		<libraries>
+			<file>Aircraft/A330Family/Nasal/libraries.nas</file>
+			<file>Aircraft/A330Family/Nasal/PFD_FMA.nas</file>
+			<file>Aircraft/A330Family/Models/Instruments/ND/ND.nas</file>
+			<file>Aircraft/A330Family/Nasal/gpws.nas</file>
+			<file>Aircraft/A330Family/Nasal/efis.nas</file>
+			<file>Aircraft/A330Family/Nasal/ECAM.nas</file>
+			<file>Aircraft/A330Family/Nasal/shake.nas</file>
+		</libraries>
+		<acconfig>
+			<file>Aircraft/A330Family/AircraftConfig/acconfig.nas</file>
+		</acconfig>
+		<systems>
+			<file>Aircraft/A330Family/Nasal/electrical.nas</file>
+			<file>Aircraft/A330Family/Nasal/pneumatics.nas</file>
+			<file>Aircraft/A330Family/Nasal/hydraulics.nas</file>
+			<file>Aircraft/A330Family/Nasal/fuel.nas</file>
+			<file>Aircraft/A330Family/Nasal/engines.nas</file>
+			<file>Aircraft/A330Family/Nasal/ADIRS.nas</file>
+		</systems>
+		<thrust>
+			<file>Aircraft/A330Family/Nasal/fadec.nas</file>
+		</thrust>
+		<fbw>
+			<file>Aircraft/A330Family/Nasal/it-fbw.nas</file>
+		</fbw>
+		<fmgc>
+			<file>Aircraft/A330Family/Nasal/FMGC.nas</file>
+		</fmgc>
+		<mcdu1>
+			<file>Aircraft/A330Family/Nasal/MCDU/MCDU1.nas</file>
+		</mcdu1>
+		<mcdu2>
+			<file>Aircraft/A330Family/Nasal/MCDU/MCDU2.nas</file>
+		</mcdu2>
+	</nasal>
+
+</PropertyList>
