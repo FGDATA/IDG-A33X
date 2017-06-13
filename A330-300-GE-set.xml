@@ -12,7 +12,7 @@
 		<flight-model>jsb</flight-model>
 		<aero>A330-300-GE</aero>
 		<model>
-			<path>Aircraft/A330Family/Models/it0uchpods-Confidential-GE3.xml</path>
+			<path>Aircraft/A330Family/Models/Article-4.xml</path>
 			<livery>
 				<file>White</file>
 			</livery>

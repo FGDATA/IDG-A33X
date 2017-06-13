@@ -14,7 +14,7 @@
 		<flight-model>jsb</flight-model>
 		<aero>A330-200-RR</aero>
 		<model>
-			<path>Aircraft/A330Family/Models/it0uchpods-Confidential-KCRR.xml</path> <!-- Voyager-KC -->
+			<path>Aircraft/A330Family/Models/Article-7.xml</path> <!-- Voyager-KC -->
 			<livery>
 				<file>White</file>
 			</livery>

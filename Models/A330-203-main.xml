@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList include="a332-animations.xml">
+	<name>A330-203</name>
+	<path>a330-200-main.ac</path>
+
+	<model>
+		<name>General Electric Engines</name>
+		<path>Aircraft/A330Family/Models/cf6-80e1.xml</path>
+	</model>
+	
+	<model>
+		<name>Flightdeck</name>
+		<path>Aircraft/A330Family/Models/FlightDeck/a330.flightdeck.xml</path>
+		<offsets>
+			<x-m>-20.3752</x-m>
+			<z-m>1.0528</z-m>
+		</offsets>
+	</model>
+		
+	<!--model>
+		<name>Left nav light</name>
+		<path>Aircraft/A330Family/Models/Lights/rednav.xml</path> 
+		<offsets>
+			<x-m>13.09</x-m>
+			<y-m>-28.86</y-m>
+			<z-m>0.99</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<name>Right nav light</name>
+		<path>Aircraft/A330Family/Models/Lights/greennav.xml</path>
+		<offsets>
+			<x-m>13.09</x-m>
+			<y-m>28.86</y-m>
+			<z-m>0.99</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<name>Left strobe light</name>
+		<path>Aircraft/A330Family/Models/Lights/strobe.xml</path>
+		<offsets>
+			<x-m>13.08</x-m>
+			<y-m>-28.86</y-m>
+			<z-m>0.99</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<name>Right strobe light</name>
+		<path>Aircraft/A330Family/Models/Lights/strobe.xml</path>
+		<offsets>
+			<x-m>13.08</x-m>
+			<y-m>28.86</y-m>
+			<z-m>0.99</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<name>Top beacon light</name>
+		<path>Aircraft/A330Family/Models/Lights/beacon.xml</path>
+		<offsets>
+			<x-m>7.34</x-m>
+			<y-m>0</y-m>
+			<z-m>3.16</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<name>Bottom beacon light</name>
+		<path>Aircraft/A330Family/Models/Lights/beacon.xml</path>
+		<offsets>
+			<x-m>-7.08</x-m>
+			<y-m>0</y-m>
+			<z-m>-2.98</z-m>
+		</offsets>
+	</model-->
+
+	<model>
+		<name>Pushback</name>
+		<path>Models/Airport/Pushback/Goldhofert.xml</path>
+		<offsets>
+			<x-m>-21.5</x-m>
+			<y-m>0</y-m>
+			<z-m>-5.45</z-m>
+		</offsets>
+	</model>
+	
+	<model>
+ <path>Aircraft/A330Family/Models/Effects/contrail-eng1.xml</path>
+ <condition>
+  <equals>
+   <property>controls/switches/contrails</property>
+   <value type="bool">true</value>
+  </equals>
+ </condition>
+ <name>LContrail</name>
+ <offsets>
+  <x-m>3.7</x-m>
+  <y-m>-9.3</y-m>
+  <z-m>-3.5</z-m>
+  <heading-deg>0</heading-deg>
+ </offsets>
+</model>
+
+<model>
+ <path>Aircraft/A330Family/Models/Effects/contrail-eng2.xml</path>
+ <condition>
+  <equals>
+   <property>controls/switches/contrails</property>
+   <value type="bool">true</value>
+  </equals>
+ </condition>
+ <name>RContrail</name>
+ <offsets>
+  <x-m>3.7</x-m>
+  <y-m>9.3</y-m>
+  <z-m>-3.5</z-m>
+  <heading-deg>0</heading-deg>
+ </offsets>
+</model>
+
+</PropertyList>

@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <PropertyList>
-
-	<!-- Boom -->
-	
-	<animation>
-		<type>select</type>
-		<object-name>boom</object-name>
-		<condition>
-			<equals>
-				<property>/sim/multiplay/generic/int[13]</property>
-				<value>1</value>
-			</equals>
-		</condition>
-	</animation>
 	
 	<!-- Surface Animations -->
 	
