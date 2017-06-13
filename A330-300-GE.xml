@@ -165,37 +165,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<brake_group> RIGHT </brake_group>
 		<retractable>1</retractable>
 	</contact>
-    <!-- experimental second set of wheels to simulate the tilt of the truck.-->
-    <contact type="BOGEY" name="RIGHT_MLG2">
-        <location unit="IN">
-            <x> 170 </x>           <!-- check these figures -->
-            <y> 216.932 </y>
-            <z> -237.79 </z>
-        </location>
-        <static_friction> 0.5 </static_friction>
-        <dynamic_friction> 0.5 </dynamic_friction>
-        <rolling_friction> 0.02 </rolling_friction>
-        <spring_coeff unit="LBS/FT"> 68785 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC"> 26957 </damping_coeff>
-        <max_steer unit="DEG"> 0.0 </max_steer>
-        <brake_group> RIGHT </brake_group>
-        <retractable>1</retractable>
-    </contact>
-    <contact type="BOGEY" name="LEFT_MLG2">
-        <location unit="IN">
-            <x> 170 </x>            <!-- check these figures -->
-            <y> -216.932 </y>
-            <z> -237.79 </z>
-        </location>
-        <static_friction> 0.5 </static_friction>
-        <dynamic_friction> 0.5 </dynamic_friction>
-        <rolling_friction> 0.02 </rolling_friction>
-        <spring_coeff unit="LBS/FT"> 68785 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC"> 26957 </damping_coeff>
-        <max_steer unit="DEG"> 0.0 </max_steer>
-        <brake_group> LEFT </brake_group>
-        <retractable>1</retractable>
-    </contact>
+
 	<contact type="STRUCTURE" name="NOSE">
 		<location unit="IN">
 			<x> -848 </x>

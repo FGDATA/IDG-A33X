@@ -18,57 +18,74 @@
 		</input>
 		<output>/engines/flex-derate</output>
 	</filter>
-
-    <!-- RJH revised to make the tilt a factor of the gear compression. There is also an extra set of gear to represent the truck when it is at 0 degrees
-             and provide an appropriate force in the Z axis
-    -->
-    <filter>
+	
+	<filter>
 		<name>Gear Tilt 1</name>
 		<type>gain</type>
 		<gain>1</gain>
-        <input>
-            <expression>
-                <table>
-                    <property>fdm/jsbsim/gear/unit[1]/compression-ft</property>
-                    <entry>
-                        <ind>0</ind>
-                        <dep>50</dep>
-                    </entry>
-                    <entry>
-                        <ind>0.9</ind>
-                        <dep>0</dep>
-                    </entry>
-                </table>
-            </expression>
-        </input>
-        <output>
+		<input>
+			<condition>
+				<equals>
+					<property>/gear/gear[1]/wow</property>
+					<value>0</value>
+				</equals>
+			</condition>
+			<expression>
+				<table>
+					<property>/position/gear-agl-ft</property>
+					<entry><ind>4</ind><dep> 0</dep></entry>
+					<entry><ind>7</ind><dep>50</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<input>
+			<condition>
+				<equals>
+					<property>/gear/gear[1]/wow</property>
+					<value>1</value>
+				</equals>
+			</condition>
+			<property>/orientation/pitch-deg</property>
+			<scale>-1.0</scale>
+		</input>
+		<output>
 			<property>/gear/gear[1]/gear-tilt-deg</property>
 		</output>
 	</filter>
 	
-    <filter>
-        <name>Gear Tilt 2</name>
-        <type>gain</type>
-        <gain>1</gain>
-        <input>
-            <expression>
-                <table>
-                    <property>fdm/jsbsim/gear/unit[2]/compression-ft</property>
-                    <entry>
-                        <ind>0</ind>
-                        <dep>50</dep>
-                    </entry>
-                    <entry>
-                        <ind>0.9</ind>
-                        <dep>0</dep>
-                    </entry>
-                </table>
-            </expression>
-        </input>
-        <output>
-            <property>/gear/gear[2]/gear-tilt-deg</property>
-        </output>
-    </filter>
+	<filter>
+		<name>Gear Tilt 2</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<input>
+			<condition>
+				<equals>
+					<property>/gear/gear[2]/wow</property>
+					<value>0</value>
+				</equals>
+			</condition>
+			<expression>
+				<table>
+					<property>/position/gear-agl-ft</property>
+					<entry><ind>4</ind><dep> 0</dep></entry>
+					<entry><ind>7</ind><dep>50</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<input>
+			<condition>
+				<equals>
+					<property>/gear/gear[2]/wow</property>
+					<value>1</value>
+				</equals>
+			</condition>
+			<property>/orientation/pitch-deg</property>
+			<scale>-1.0</scale>
+		</input>
+		<output>
+			<property>/gear/gear[2]/gear-tilt-deg</property>
+		</output>
+	</filter>
 
 	<filter>
 		<name>FF 1</name>
