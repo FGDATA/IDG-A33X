@@ -457,6 +457,7 @@
 		<object-name>previous</object-name>
 		<object-name>phase2</object-name>
 		<object-name>timedest</object-name>
+		<object-name>presel</object-name>
         <diffuse>
             <red>1</red>
             <green>1</green>
