@@ -95,6 +95,9 @@
 		<specific>
 			<file>Aircraft/A330Family/Nasal/a332livery-kcrr.nas</file>
 		</specific>
+		<damage>
+			<file>Aircraft/A330Family/Nasal/damage.nas</file>
+		</damage>
 	</nasal>
 
 </PropertyList>
