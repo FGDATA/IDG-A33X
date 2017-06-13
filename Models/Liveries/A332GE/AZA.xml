@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>Alitalia</name>
-				<a332-texture>Liveries/A332GE/AZA.png</a332-texture>
+				<texture>Liveries/A332GE/AZA.png</texture>
 			</livery>
 		</model>
 	</sim>
