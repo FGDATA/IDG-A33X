@@ -12,7 +12,7 @@
 		<flight-model>jsb</flight-model>
 		<aero>A330-300-PW</aero>
 		<model>
-			<path>Aircraft/A330Family/Models/Octal-300-PW.xml</path>
+			<path>Aircraft/A330Family/Models/it0uchpods-Confidential-PW3.xml</path>
 			<livery>
 				<file>White</file>
 			</livery>
