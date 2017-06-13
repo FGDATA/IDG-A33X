@@ -791,6 +791,7 @@
 		</fbw>
 		<fmgc>
 			<file>Aircraft/A330Family/Nasal/FMGC.nas</file>
+			<file>Aircraft/A330Family/Nasal/FMGC-b.nas</file>
 		</fmgc>
 		<mcdu1>
 			<file>Aircraft/A330Family/Nasal/MCDU/MCDU1.nas</file>
