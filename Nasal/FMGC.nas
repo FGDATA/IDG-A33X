@@ -179,10 +179,10 @@ var phasecheck = maketimer(0.2, func {
 		setprop("/FMGC/internal/minspeed", 159);
 	} else if (flap == 4) {
 		setprop("/FMGC/internal/overspeed", 174);
-		setprop("/FMGC/internal/minspeed", 146);
+		setprop("/FMGC/internal/minspeed", 149);
 	} else if (flap == 5) {
 		setprop("/FMGC/internal/overspeed", 163);
-		setprop("/FMGC/internal/minspeed", 136);
+		setprop("/FMGC/internal/minspeed", 139);
 	}
 });
 
