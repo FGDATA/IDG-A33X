@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<PropertyList>
+<PropertyList include="Aircraft/Generic/Human/Include/walker-include.xml">
 
 	<sim>
 		
-		<author>Joshua Davidson (it0uchpods) and Jonathan Redpath (legoboyvdlp)</author>
+		<author>Joshua Davidson (it0uchpods), Jonathan Redpath (legoboyvdlp) and J Maverick 16</author>
 		
 		<status>Pre V1.0</status>
 		
