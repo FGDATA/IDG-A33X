@@ -5,7 +5,6 @@
 
 <PropertyList>
 
-
  <!-- =============================================================== -->
  <!-- Surface Position Feeding                                        -->
  <!-- =============================================================== -->
@@ -857,7 +856,7 @@
  <!-- =============================================================== -->
 	
 	<pid-controller>
-		<name>IT-FBW: YAW</name>
+		<name>IT-FBW: YAW DAMPER/TURN COORDINATOR</name>
 		<debug>false</debug>
 		<enable>
 			<condition>
@@ -868,14 +867,6 @@
 					</equals>
 					<equals>
 						<property>/gear/gear[2]/wow</property>
-						<value>0</value>
-					</equals>
-					<equals>
-						<property>/gear/gear[3]/wowa</property>
-						<value>0</value>
-					</equals>
-					<equals>
-						<property>/gear/gear[4]/wowa</property>
 						<value>0</value>
 					</equals>
 					<equals>
@@ -903,14 +894,14 @@
 			<property>/controls/flight/rudder-fbw-cmd</property>
 		</output>
 		<config>
-			<Kp>0.035</Kp>
+			<Kp>0.03</Kp>
 			<beta>1</beta>
 			<alpha>0.1</alpha>
 			<gamma>0</gamma>
-			<Ti>5.0</Ti>
-			<Td>0.000001</Td>
-			<u_min>-0.3</u_min>
-			<u_max>0.3</u_max>
+			<Ti>1.5</Ti>
+			<Td>0.0001</Td>
+			<u_min>-0.2</u_min>
+			<u_max>0.2</u_max>
 		</config>
 	</pid-controller>
 	
