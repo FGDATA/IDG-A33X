@@ -8,7 +8,7 @@
 			<path>Aircraft/A330Family/Sounds/rrtrent-sound.xml</path>
 		</sound>
 	
-		<description>Airbus A330-343 (Trent 700)</description>
+		<description>Airbus A330-343 (RR Trent 772B-60)</description>
 		<flight-model>jsb</flight-model>
 		<aero>A330-300-RR</aero>
 		<model>
