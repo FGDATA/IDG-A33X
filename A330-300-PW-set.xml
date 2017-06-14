@@ -8,7 +8,7 @@
 			<path>Aircraft/A330Family/Sounds/pw4000-sound.xml</path>
 		</sound>
 	
-		<description>Airbus A330-323 (PW4000)</description>
+		<description>Airbus A330-323 (PW4168)</description>
 		<flight-model>jsb</flight-model>
 		<aero>A330-300-PW</aero>
 		<model>

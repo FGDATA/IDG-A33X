@@ -10,7 +10,7 @@
 			<path>Aircraft/A330Family/Sounds/rrtrent-sound.xml</path>
 		</sound>
 	
-		<description>Airbus Voyager KC2/KC3</description>
+		<description>Airbus Voyager KC2/KC3 (RR Trent 772C-60)</description>
 		<flight-model>jsb</flight-model>
 		<aero>A330-200-RR</aero>
 		<model>
