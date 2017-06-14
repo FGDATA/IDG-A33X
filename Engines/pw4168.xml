@@ -2,7 +2,7 @@
 
 
 <turbine_engine name="pw4168">
-  <milthrust>     68600 </milthrust>
+  <milthrust>     70000 </milthrust>
   <bypassratio>     7.1 </bypassratio>
   <tsfc>          0.412 </tsfc>
   <bleed>          0.03 </bleed>

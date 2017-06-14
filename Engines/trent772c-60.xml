@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 
-<turbine_engine name="trent772b-60">
+<turbine_engine name="trent772c-60">
   <milthrust>     72100 </milthrust>
   <bypassratio>     7.1 </bypassratio>
   <tsfc>          0.412 </tsfc>
