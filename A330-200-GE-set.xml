@@ -102,9 +102,10 @@
 		
 	</sim>
 	
-	<options>
+	<options n="0">
 		<!--EIS2 type="bool">0</EIS2-->
 		<eng>GE</eng>
+		<maxblock>306.6</maxblock>
 	</options>
 	
 	<MCDUC n="0">
