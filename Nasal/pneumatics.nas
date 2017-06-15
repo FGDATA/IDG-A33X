@@ -45,6 +45,12 @@ var pneu_init = func {
 	setprop("/systems/pressurization/diff-to-target", "0");
 	setprop("/systems/pressurization/ditchingpb", 0);
 	setprop("/systems/pressurization/targetvs", "0");
+	setprop("/systems/ventilation/cabin/fans", 0); # aircon fans
+	setprop("/systems/ventilation/avionics/fan", 0);
+	setprop("/systems/ventilation/avionics/extractvalve", "0");
+	setprop("/systems/ventilation/avionics/inletvalve", "0");
+	setprop("/systems/ventilation/lavatory/extractfan", 0);
+	setprop("/systems/ventilation/lavatory/extractvalve", "0");
 	pneu_timer.start();
 }
 
@@ -183,11 +189,25 @@ var master_pneu = func {
 	}
 	
 	if (cabinalt != targetalt and !wowl and !wowr and !pause) {
-		setprop("/systems/pressurization/cabinalt", cabinalt + vs);
+		setprop("/systems/pressurization/cabinalt", cabinalt + ((vs / 60) / 10));
 	}
 	
 	if (ditch and auto) {
 		setprop("/systems/pressurization/outflowpos", "1");
+		setprop("/systems/ventilation/avionics/extractvalve", "1");
+		setprop("/systems/ventilation/avionics/inletvalve", "1");
+	}
+	
+	var dcess = getprop("/systems/electrical/bus/dc-ess");
+	var acess = getprop("/systems/electrical/bus/ac-ess");
+	var fanon = getprop("/systems/ventilation/avionics/fan");
+	
+	if ((dcess > 25) or (acess > 110)) {
+		setprop("/systems/ventilation/avionics/fan", 1);
+		setprop("/systems/ventilation/lavatory/extractfan", 1);
+	} else if ((dcess == 0) and (acess == 0)) {
+		setprop("/systems/ventilation/avionics/fan", 0);
+		setprop("/systems/ventilation/lavatory/extractfan", 0);
 	}
 }
 
