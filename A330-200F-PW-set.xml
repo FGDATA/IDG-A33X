@@ -5,14 +5,14 @@
 	<sim>
 	
 		<sound>
-			<path>Aircraft/A330Family/Sounds/rrtrent-sound.xml</path>
+			<path>Aircraft/A330Family/Sounds/pw4000-sound.xml</path>
 		</sound>
 	
-		<description>Airbus A330-243F (RR Trent 772C-60)</description>
+		<description>Airbus A330-223F (PW4168)</description>
 		<flight-model>jsb</flight-model>
-		<aero>A330-200-RR</aero>
+		<aero>A330-200-PW</aero>
 		<model>
-			<path>Aircraft/A330Family/Models/Article-9.xml</path>
+			<path>Aircraft/A330Family/Models/Article-8.xml</path>
 			<livery>
 				<file>White</file>
 			</livery>
@@ -104,18 +104,18 @@
 	
 	<options n="0">
 		<!--EIS2 type="bool">0</EIS2-->
-		<eng>RR</eng>
+		<eng>PW</eng>
 		<maxblock>306.6</maxblock>
 	</options>
 	
 	<MCDUC n="0">
-		<type>A330-243F</type>
-		<eng>RR772B-60</eng>
+		<type>A330-223F</type>
+		<eng>PW4168</eng>
 	</MCDUC>
 	
 	<nasal>
 		<specific>
-			<file>Aircraft/A330Family/Nasal/a332livery-frr.nas</file>
+			<file>Aircraft/A330Family/Nasal/a332livery-fpw.nas</file>
 		</specific>
 	</nasal>
 
