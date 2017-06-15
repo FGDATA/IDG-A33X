@@ -104,9 +104,10 @@
 		
 	</sim>
 	
-	<options>
+	<options n="0">
 		<!--EIS2 type="bool">0</EIS2-->
 		<eng>RR</eng>
+		<maxblock>306.6</maxblock>
 		<hasboom>0</hasboom>
 		<drogue-cmd>0</drogue-cmd>
 		<drogue-pos-norm>0</drogue-pos-norm>

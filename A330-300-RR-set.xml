@@ -102,9 +102,10 @@
 		
 	</sim>
 	
-	<options>
+	<options n="0">
 		<!--EIS2 type="bool">0</EIS2-->
 		<eng>RR</eng>
+		<maxblock>215.0</maxblock>
 	</options>
 	
 	<MCDUC n="0">
