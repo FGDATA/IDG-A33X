@@ -183,7 +183,7 @@
 	<!-- New Effects -->
 	
 	<model>
- <path>Aircraft/A330Family/Models/Effects/Contrail/contrail.xml</path>
+ <path>Aircraft/A330Family/Models/Effects/Contrail/contrail.xml.</path>
  <condition>
   <equals>
    <property>controls/switches/contrails</property>
@@ -200,7 +200,7 @@
 </model>
 
 <model>
-  <path>Aircraft/A330Family/Models/Effects/Contrail/contrail.xml</path>
+  <path>Aircraft/A330Family/Models/Effects/Contrail/contrail.xml.</path>
  <condition>
   <equals>
    <property>controls/switches/contrails</property>
