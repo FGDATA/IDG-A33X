@@ -18,26 +18,13 @@
 		</offsets>
 	</model>
 		
-		
-	    <!-- New Lights -->
-	
-	<model>
+	<!--model>
 		<name>Left nav light</name>
 		<path>Aircraft/A330Family/Models/Lights/rednav.xml</path> 
 		<offsets>
 			<x-m>13.09</x-m>
-			<y-m>-28.90</y-m>
-			<z-m>0.58</z-m>
-		</offsets>
-	</model>
-
-        <model>
-		<name>Left nav light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/rednav.xml</path>
-		<offsets>
-			<x-m>13.09</x-m>
-			<y-m>-28.90</y-m>
-			<z-m>0.58</z-m>
+			<y-m>-28.86</y-m>
+			<z-m>0.99</z-m>
 		</offsets>
 	</model>
 
@@ -46,17 +33,8 @@
 		<path>Aircraft/A330Family/Models/Lights/greennav.xml</path>
 		<offsets>
 			<x-m>13.09</x-m>
-			<y-m>28.95</y-m>
-			<z-m>0.58</z-m>
-		</offsets>
-	</model>
-       <model>
-		<name>Right nav light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/greennav.xml</path>
-		<offsets>
-			<x-m>13.09</x-m>
-			<y-m>28.95</y-m>
-			<z-m>0.58</z-m>
+			<y-m>28.86</y-m>
+			<z-m>0.99</z-m>
 		</offsets>
 	</model>
 
@@ -66,17 +44,7 @@
 		<offsets>
 			<x-m>13.08</x-m>
 			<y-m>-28.86</y-m>
-			<z-m>0.58</z-m>
-		</offsets>
-	</model>
-
-       <model>
-		<name>Left strobe light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/left-strobe.xml</path>
-		<offsets>
-			<x-m>13.08</x-m>
-			<y-m>-28.86</y-m>
-			<z-m>0.58</z-m>
+			<z-m>0.99</z-m>
 		</offsets>
 	</model>
 
@@ -86,17 +54,7 @@
 		<offsets>
 			<x-m>13.08</x-m>
 			<y-m>28.86</y-m>
-			<z-m>0.58</z-m>
-		</offsets>
-	</model>
-
-        <model>
-		<name>Right strobe light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/right-strobe.xml</path>
-		<offsets>
-			<x-m>13.08</x-m>
-			<y-m>28.86</y-m>
-			<z-m>0.58</z-m>
+			<z-m>0.99</z-m>
 		</offsets>
 	</model>
 
@@ -114,61 +72,11 @@
 		<name>Bottom beacon light</name>
 		<path>Aircraft/A330Family/Models/Lights/beacon.xml</path>
 		<offsets>
-			<x-m>-5.08</x-m>
+			<x-m>-7.08</x-m>
 			<y-m>0</y-m>
 			<z-m>-2.98</z-m>
 		</offsets>
-	</model>
-
-         <model>
-		<name>Top beacon light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/beacon.xml</path>
-		<offsets>
-			<x-m>7.34</x-m>
-			<y-m>0</y-m>
-			<z-m>3.16</z-m>
-		</offsets>
-	</model>
-
-	<model>
-		<name>Bottom beacon light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/beacon.xml</path>
-		<offsets>
-			<x-m>-5.08</x-m>
-			<y-m>0</y-m>
-			<z-m>-2.98</z-m>
-		</offsets>
-	</model>
-
-         <model>
-		<name>Port landing light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/landinglightL.xml</path>
-		 <offsets>
-            <x-m>-1.89</x-m>
-            <y-m>-3.53</y-m>
-            <z-m>-1.2</z-m>
-        </offsets>
-	</model>
-
-	<model>
-		<name>Nosegear landing light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/taxilight.xml</path>
-		 <offsets>
-                  <x-m>-16.08</x-m>
-                  <y-m>0</y-m>
-                  <z-m>-2.98</z-m>
-                 </offsets>
-	</model>
-
-	<model>
-		<name>Starboard landing light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/landinglightR.xml</path>
-		 <offsets>
-            <x-m>-1.89</x-m>
-            <y-m>3.53</y-m>
-            <z-m>-1.2</z-m>
-        </offsets>
-	</model>
+	</model-->
 
 	<model>
 		<name>Pushback</name>
@@ -180,10 +88,8 @@
 		</offsets>
 	</model>
 	
-	<!-- New Effects -->
-	
 	<model>
- <path>Aircraft/A330Family/Models/Effects/Contrail/contrail.xml.</path>
+ <path>Aircraft/A330Family/Models/Effects/contrail-eng1.xml</path>
  <condition>
   <equals>
    <property>controls/switches/contrails</property>
@@ -200,7 +106,7 @@
 </model>
 
 <model>
-  <path>Aircraft/A330Family/Models/Effects/Contrail/contrail.xml.</path>
+ <path>Aircraft/A330Family/Models/Effects/contrail-eng2.xml</path>
  <condition>
   <equals>
    <property>controls/switches/contrails</property>
@@ -215,112 +121,5 @@
   <heading-deg>0</heading-deg>
  </offsets>
 </model>
-
-<model>
- <path>Aircraft/A330Family/Models/Effects/tyre-smoke-nose.xml</path>
- <name>tyre-smoke-n</name>
- <offsets>  
-  <x-m>-15.96</x-m>
-  <y-m>0</y-m>
-  <z-m>-5.3</z-m>
- </offsets>
-</model>
-
-<model>
- <path>Aircraft/A330Family/Models/Effects/tyre-smoke-left.xml</path>
- <name>tyre-smoke-l</name>
- <offsets>
-  <x-m>4.9</x-m>
-  <y-m>-5</y-m>
-  <z-m>-5.3</z-m>
- </offsets>
-</model>
-
-<model>
- <path>Aircraft/A330Family/Models/Effects/tyre-smoke-right.xml</path>
- <name>tyre-smoke-r</name>
- <offsets>
- <x-m>4.9</x-m>
-  <y-m>5</y-m>
-  <z-m>-5.3</z-m>
- </offsets>
-</model>
-
-<model>
- <path>Aircraft/A330Family/Models/Effects/wet-runway.xml</path>
- <name>tyre-smoke-n</name>
- <offsets>  
-  <x-m>-15.96</x-m>
-  <y-m>0</y-m>
-  <z-m>-5.3</z-m>
- </offsets>
-</model>
-
-<model>
- <path>Aircraft/A330Family/Models/Effects/wet-runway.xml</path>
- <name>tyre-smoke-l</name>
- <offsets>
-  <x-m>4.9</x-m>
-  <y-m>-5</y-m>
-  <z-m>-5.3</z-m>
- </offsets>
-</model>
-
-<model>
- <path>Aircraft/A330Family/Models/Effects/wet-runway.xml</path>
- <name>tyre-smoke-r</name>
- <offsets>
-  <x-m>4.9</x-m>
-  <y-m>5</y-m>
-  <z-m>-5.3</z-m>
- </offsets>
-</model>
-
-<animation>
-    <type>select</type>
-    <object-name>Top beacon light</object-name>
-    <object-name>Bottom beacon light</object-name>
-    <object-name>Left nav light</object-name>
-    <object-name>Right nav light</object-name>
-    <object-name>Left strobe light</object-name>
-    <object-name>Right strobe light</object-name>
-    <condition>
-        <not>
-            <property>/sim/rendering/shaders/skydome</property>
-        </not>
-    </condition>
-</animation>
-<animation>
-    <type>select</type>
-    <object-name>Top beacon light ALS</object-name>
-    <object-name>Bottom beacon light ALS</object-name>
-    <object-name>Left nav light ALS</object-name>
-    <object-name>Right nav light ALS</object-name>
-    <object-name>Left strobe light ALS</object-name>
-    <object-name>Right strobe light ALS</object-name>
-    <object-name>Port landing light ALS</object-name>
-    <object-name>Nosegear landing light ALS</object-name>
-    <object-name>Starboard landing light ALS</object-name>
-    <condition>
-            <property>/sim/rendering/shaders/skydome</property>
-    </condition>
-</animation>
- <animation>
-  <type>select</type>
-   <object-name>Nosegear landing light ALS</object-name>
-   <condition>
-    <and>
-	 <not>
-		<property>/sim/model/lights/nose-ldglight</property>
-		<value>0</value>
-	</not>
-     <greater-than>
-      <property>gear/gear/position-norm</property>
-      <value>0.1</value>
-     </greater-than>
-    </and>
-   </condition>
- </animation>
-
 
 </PropertyList>
