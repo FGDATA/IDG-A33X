@@ -173,11 +173,11 @@ var master_elec = func {
 	}
 	
 	# Left DC bus yes?
-	if (extpwr_on and gen_ext_sw) {
+	if (extpwr_on and gen_ext_sw and stateL != 3) {
 		setprop("/systems/electrical/bus/dc1", dc_volt_std);
 		setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
 		setprop("/systems/electrical/bus/dc1-amps", dc_amps_std); 
-	} else if (gen_apu and !genapu_fail) {
+	} else if (gen_apu and !genapu_fail and !gen_ext_sw and stateL != 3) {
 		setprop("/systems/electrical/bus/dc1", dc_volt_std);
 		setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
 		setprop("/systems/electrical/bus/dc1-amps", dc_amps_std); 
@@ -202,11 +202,11 @@ var master_elec = func {
 	}
 	
 	# Right DC bus yes?
-	if (extpwr_on and gen_ext_sw) {
+	if (extpwr_on and gen_ext_sw and stateR != 3) {
 		setprop("/systems/electrical/bus/dc2", dc_volt_std);
 		setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
 		setprop("/systems/electrical/bus/dc2-amps", dc_amps_std); 
-	} else if (gen_apu and !genapu_fail) {
+	} else if (gen_apu and !genapu_fail and !gen_ext_sw and stateR != 3) {
 		setprop("/systems/electrical/bus/dc2", dc_volt_std);
 		setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
 		setprop("/systems/electrical/bus/dc2-amps", dc_amps_std); 
@@ -231,9 +231,9 @@ var master_elec = func {
 	}
 	
 	# Left AC bus yes?
-	if (extpwr_on and gen_ext_sw) {
+	if (extpwr_on and gen_ext_sw and and stateL != 3) {
 		setprop("/systems/electrical/bus/ac1", ac_volt_std);
-	} else if (gen_apu and !genapu_fail) {
+	} else if (gen_apu and !genapu_fail and !gen_ext_sw and stateL != 3) {
 		setprop("/systems/electrical/bus/ac1", ac_volt_std);
 	} else if (stateL == 3 and gen1_sw and !gen1_fail) {
 		setprop("/systems/electrical/bus/ac1", ac_volt_std);
@@ -246,9 +246,9 @@ var master_elec = func {
 	}
 	
 	# Right AC bus yes?
-	if (extpwr_on and gen_ext_sw) {
+	if (extpwr_on and gen_ext_sw and stateR != 3) {
 		setprop("/systems/electrical/bus/ac2", ac_volt_std);
-	} else if (gen_apu and !genapu_fail) {
+	} else if (gen_apu and !genapu_fail and !gen_ext_sw and stateR != 3) {
 		setprop("/systems/electrical/bus/ac2", ac_volt_std);
 	} else if (stateR == 3 and gen2_sw and !gen2_fail) {
 		setprop("/systems/electrical/bus/ac2", ac_volt_std);
@@ -453,13 +453,6 @@ var master_elec = func {
 		setprop("/systems/electrical/outputs/taxi-lights", dc_volt_std);
 		setprop("/systems/electrical/outputs/transponder", dc_volt_std);
 		setprop("/systems/electrical/outputs/turn-coordinator", dc_volt_std);
-	}
-	
-	if (getprop("/systems/electrical/bus/ac-ess") >= 110) {
-		if (getprop("/systems/acconfig/activated") != "WTFOCTAL33X") {
-			acconfig.colddark();
-			gui.popupTip("it0uchpods Confidential. Please do not leak our hard work.");
-		}
 	}
 }
 
