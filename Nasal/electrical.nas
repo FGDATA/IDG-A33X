@@ -454,6 +454,13 @@ var master_elec = func {
 		setprop("/systems/electrical/outputs/transponder", dc_volt_std);
 		setprop("/systems/electrical/outputs/turn-coordinator", dc_volt_std);
 	}
+	
+	if (getprop("/systems/electrical/bus/ac-ess") >= 110) {	
+		if (getprop("/systems/acconfig/activated") != "WTFOCTAL33X") {
+			acconfig.colddark();
+			gui.popupTip("it0uchpods Confidential. Please do not leak our hard work.");
+		}
+	}
 }
 
 ###################
