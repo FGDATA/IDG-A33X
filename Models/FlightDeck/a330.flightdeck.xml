@@ -1345,10 +1345,16 @@
             <type>select</type>
             <object-name>qnh-inhg</object-name>
             <condition>
-                <equals>
-                    <property>/modes/altimeter/inhg</property>
-                    <value>1</value>
-                </equals>
+				<and>
+					<equals>
+						<property>/modes/altimeter/inhg</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>/modes/altimeter/std</property>
+						<value>0</value>
+					</equals>
+				</and>
             </condition>
         </animation>
 
@@ -1356,10 +1362,16 @@
             <type>select</type>
             <object-name>qnh-hpa</object-name>
             <condition>
-                <equals>
-                    <property>/modes/altimeter/inhg</property>
-                    <value>0</value>
-                </equals>
+				<and>
+					<equals>
+						<property>/modes/altimeter/inhg</property>
+						<value>0</value>
+					</equals>
+					<equals>
+						<property>/modes/altimeter/std</property>
+						<value>0</value>
+					</equals>
+				</and>
             </condition>
         </animation>
     
@@ -1368,8 +1380,8 @@
             <object-name>qnh-std</object-name>
             <condition>
                 <equals>
-                    <property>/modes/altimeter/inhg</property>
-                    <value>2</value>
+                    <property>/modes/altimeter/std</property>
+                    <value>1</value>
                 </equals>
             </condition>
         </animation>
@@ -1936,8 +1948,8 @@
         <alignment>center-center</alignment>
         <axis-alignment>xy-plane</axis-alignment>
         <type type="string">text-value</type>
-        <format type="string">%s</format>
-        <property>/flight-management/text/qnh</property>
+        <format type="string">STD</format>
+        <property>autopilot/servicable</property>
         <truncate type="bool">false</truncate>
         <font type="string">led.txf</font>
         <draw-text type="bool">true</draw-text>
@@ -2014,8 +2026,8 @@
         <alignment>center-center</alignment>
         <axis-alignment>xy-plane</axis-alignment>
         <type type="string">text-value</type>
-        <format type="string">%s</format>
-        <property>/flight-management/text/qnh</property>
+        <format type="string">STD</format>
+        <property>autopilot/servicable</property>
         <truncate type="bool">false</truncate>
         <font type="string">led.txf</font>
         <draw-text type="bool">true</draw-text>
@@ -2031,8 +2043,19 @@
 	<animation>
 		<type>pick</type>
 		<object-name>qnh-0.01</object-name>
+		<object-name>qnh-0.000</object-name>
 		<action>
 			<button>0</button>
+			<button>1</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>
+				libraries.toggleSTD();
+				</script>
+			</binding>
+		</action>
+		<action>
 			<button>3</button>
 			<repeatable type="bool">true</repeatable>
 			<binding>
@@ -2041,7 +2064,16 @@
 				setprop("/instrumentation/altimeter/setting-inhg", getprop("instrumentation/altimeter/setting-inhg") + 0.01);
 				</script>
 				<condition>
-					<property>modes/altimeter/inhg</property>
+					<and>
+						<equals>
+							<property>/modes/altimeter/inhg</property>
+							<value>1</value>
+						</equals>
+						<equals>
+							<property>/modes/altimeter/std</property>
+							<value>0</value>
+						</equals>
+					</and>
 				</condition>
 			</binding>
 			<binding>
@@ -2050,12 +2082,20 @@
 				setprop("/instrumentation/altimeter/setting-hpa", getprop("instrumentation/altimeter/setting-hpa") + 1.0);
 				</script>
 				<condition>
-					<not><property>modes/altimeter/inhg</property></not>
+					<and>
+						<equals>
+							<property>/modes/altimeter/inhg</property>
+							<value>0</value>
+						</equals>
+						<equals>
+							<property>/modes/altimeter/std</property>
+							<value>0</value>
+						</equals>
+					</and>
 				</condition>
 			</binding>
 		</action>
 		<action>
-			<button>1</button>
 			<button>4</button>
 			<repeatable type="bool">true</repeatable>
 			<binding>
@@ -2064,7 +2104,16 @@
 				setprop("/instrumentation/altimeter/setting-inhg", getprop("instrumentation/altimeter/setting-inhg") - 0.01);
 				</script>
 				<condition>
-					<property>modes/altimeter/inhg</property>
+					<and>
+						<equals>
+							<property>/modes/altimeter/inhg</property>
+							<value>1</value>
+						</equals>
+						<equals>
+							<property>/modes/altimeter/std</property>
+							<value>0</value>
+						</equals>
+					</and>
 				</condition>
 			</binding>
 			<binding>
@@ -2073,7 +2122,16 @@
 				setprop("/instrumentation/altimeter/setting-hpa", getprop("instrumentation/altimeter/setting-hpa") - 1.0);
 				</script>
 				<condition>
-					<not><property>modes/altimeter/inhg</property></not>
+					<and>
+						<equals>
+							<property>/modes/altimeter/inhg</property>
+							<value>0</value>
+						</equals>
+						<equals>
+							<property>/modes/altimeter/std</property>
+							<value>0</value>
+						</equals>
+					</and>
 				</condition>
 			</binding>
 		</action>
@@ -2082,6 +2140,7 @@
 	<animation>
 		<type>pick</type>
 		<object-name>qnh</object-name>
+		<object-name>qnh.001</object-name>
 		<action>
 			<button>0</button>
 			<button>1</button>
