@@ -8704,7 +8704,7 @@ kids 0
 OBJECT poly
 name "ge.nacelle0"
 loc -1.0219 -0.179038 1.49012
-texture "303_blank.png"
+texture "203KCGrey.png"
 crease 45.000000
 numvert 192
 -1.08377 1.23966 -0.130294
@@ -10308,7 +10308,7 @@ kids 0
 OBJECT poly
 name "ge.reverser0"
 loc -1.0219 -0.179038 1.49012
-texture "303_blank.png"
+texture "203KCGrey.png"
 crease 45.000000
 numvert 156
 1.80924 -1.51116 -0.196015
@@ -13160,7 +13160,7 @@ kids 11
 OBJECT poly
 name "ge.reverser1"
 loc -1.0219 -0.179038 1.49012
-texture "303_blank.png"
+texture "203KCGrey.png"
 crease 45.000000
 numvert 156
 1.80924 -1.51116 -18.6361
@@ -16404,7 +16404,7 @@ kids 0
 OBJECT poly
 name "ge.nacelle1"
 loc -1.0219 -0.179038 1.49012
-texture "303_blank.png"
+texture "203KCGrey.png"
 crease 45.000000
 numvert 192
 -1.99562 1.56809 -19.0873

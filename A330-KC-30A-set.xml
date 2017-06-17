@@ -7,16 +7,16 @@
 		<author>Joshua Davidson (it0uchpods), Jonathan Redpath (legoboyvdlp), and J Maverick 16</author>
 	
 		<sound>
-			<path>Aircraft/A330Family/Sounds/rrtrent-sound.xml</path>
+			<path>Aircraft/A330Family/Sounds/cf680-sound.xml</path>
 		</sound>
 	
-		<description>Airbus Voyager KC2/KC3 (RR Trent 772C-60)</description>
+		<description>Airbus KC-30A (GE CF6-80E1A3)</description>
 		<flight-model>jsb</flight-model>
-		<aero>A330-200-RR</aero>
+		<aero>A330-200-GE</aero>
 		<model>
-			<path>Aircraft/A330Family/Models/Article-9.xml</path> <!-- Voyager-KC -->
+			<path>Aircraft/A330Family/Models/Article-10.xml</path> <!-- KC-30A -->
 			<livery>
-				<file>White</file>
+				<file>Grey</file>
 			</livery>
 		</model>
 		
@@ -98,7 +98,7 @@
 		
 		<systems n="0">
             <autopilot n="0">
-                <path>Aircraft/A330Family/Systems/fadec-pwrr.xml</path>
+                <path>Aircraft/A330Family/Systems/fadec-ge.xml</path>
             </autopilot>
 		</systems>
 		
@@ -106,7 +106,7 @@
 	
 	<options n="0">
 		<!--EIS2 type="bool">0</EIS2-->
-		<eng>RR</eng>
+		<eng>GE</eng>
 		<maxblock>306.6</maxblock>
 		<hasboom>0</hasboom>
 		<drogue-cmd>0</drogue-cmd>
@@ -114,13 +114,13 @@
 	</options>
 	
 	<MCDUC n="0">
-		<type>Voyager KC</type>
-		<eng>RR772C-60</eng>
+		<type>KC-30A</type>
+		<eng>CF6-80E1A3</eng>
 	</MCDUC>
 	
 	<nasal>
 		<specific>
-			<file>Aircraft/A330Family/Nasal/a332livery-kcrr.nas</file>
+			<file>Aircraft/A330Family/Nasal/a332livery-kcge.nas</file>
 		</specific>
 	</nasal>
 
