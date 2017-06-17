@@ -1,92 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <PropertyList>
-	
-<!-- New Lightmap -->
-	
-	<effect>
-		<inherits-from>Effects/model-combined-deferred</inherits-from>
-		<parameters>
-			<lightmap-enabled type="int">1</lightmap-enabled>
-			<texture n="3">
-				<image>Aircraft/A330Family/Models/Effects/res/logo-lightmap.png</image>
-			</texture>
-			<lightmap-factor type="float" n="0">
-				<use>controls/lighting/nav-lights-switch</use>
-			</lightmap-factor>
-		</parameters>
-		<object-name>rudder</object-name>
-		<object-name>vstab</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/A330Family/Models/Effects/fuselage-lights</inherits-from>
-		<!--parameters>
-			<lightmap-enabled type="int">1</lightmap-enabled>
-			<lightmap-multi type="int">1</lightmap-multi>
-			<texture n="3">
-				<image>Aircraft/A330Family/Models/Effects/res/land-lightmap-multi.png</image>
-			</texture>
-			<lightmap-factor type="float" n="0">
-				<use>controls/lighting/landing-lights[2]</use>
-			</lightmap-factor>
-			<lightmap-color type="vec3d" n="0">0.03 0.03 0.03</lightmap-color>
-			<lightmap-factor type="float" n="1">
-				<use>controls/lighting/landing-lights[0]</use>
-			</lightmap-factor>
-			<lightmap-factor type="float" n="2">0.0</lightmap-factor>
-			<lightmap-factor type="float" n="3">0.0</lightmap-factor>
-			<lightmap-color type="vec3d" n="1">0.03 0.03 0.03</lightmap-color>
-		</parameters-->
-		<object-name>fuselage</object-name>
-	</effect>
-
-	<effect>
-		<inherits-from>Effects/model-combined-deferred</inherits-from>
-		<parameters>
-			<lightmap-enabled type="int">1</lightmap-enabled>
-			<texture n="3">
-				<image>Aircraft/A330Family/Models/Effects/res/windshield-lightmap.png</image>
-			</texture>
-			<lightmap-factor type="float" n="0">
-				<use>controls/lighting/nav-lights-switch</use>
-			</lightmap-factor>
-		</parameters>
-		<object-name>windshield</object-name>
-	</effect>
-	
-	<!--effect>
-		<inherits-from>Effects/model-combined-deferred</inherits-from>
-		<parameters>
-			<lightmap-enabled type="int">1</lightmap-enabled>
-			<texture n="3">
-				<image>Aircraft/A330Family/Models/Effects/res/windows-lightmap.png</image>
-			</texture>
-			<lightmap-factor type="float" n="0">
-				<use>controls/lighting/cabin-lights</use>
-			</lightmap-factor>
-		</parameters>
-		<object-name>fuselage</object-name>
-	</effect-->
-
-	<effect>
-		<inherits-from>Effects/model-combined-deferred</inherits-from>
-		<parameters>
-			<lightmap-enabled type="int">1</lightmap-enabled>
-			<texture n="3">
-				<image>Aircraft/A330Family/Models/Effects/res/wings-lightmap.png</image>
-			</texture>
-			<lightmap-factor type="float" n="0">
-				<use>controls/lighting/wing-lights</use>
-			</lightmap-factor>
-		</parameters>
-		<object-name>wing.in0</object-name>
-		<object-name>wing.mid0</object-name>
-		<object-name>wing.out0</object-name>
-		<object-name>wing.in1</object-name>
-		<object-name>wing.mid1</object-name>
-		<object-name>wing.out1</object-name>
-	</effect>
 
 	<!-- Surface Animations -->
 	
@@ -1635,5 +1549,137 @@
    <z>0</z>
   </axis>
 </animation>
+
+<animation>
+    <type>select</type>
+    <object-name>Top beacon light</object-name>
+    <object-name>Bottom beacon light</object-name>
+    <object-name>Left nav light</object-name>
+    <object-name>Right nav light</object-name>
+    <object-name>Left strobe light</object-name>
+    <object-name>Right strobe light</object-name>
+    <condition>
+        <not>
+            <property>/sim/rendering/shaders/skydome</property>
+        </not>
+    </condition>
+</animation>
+<animation>
+    <type>select</type>
+    <object-name>Top beacon light ALS</object-name>
+    <object-name>Bottom beacon light ALS</object-name>
+    <object-name>Left nav light ALS</object-name>
+    <object-name>Right nav light ALS</object-name>
+    <object-name>Left strobe light ALS</object-name>
+    <object-name>Right strobe light ALS</object-name>
+    <object-name>Port landing light ALS</object-name>
+    <object-name>Nosegear landing light ALS</object-name>
+    <object-name>Starboard landing light ALS</object-name>
+    <condition>
+            <property>/sim/rendering/shaders/skydome</property>
+    </condition>
+</animation>
+ <animation>
+  <type>select</type>
+   <object-name>Nosegear landing light ALS</object-name>
+   <condition>
+    <and>
+	 <not>
+		<property>/sim/model/lights/nose-ldglight</property>
+		<value>0</value>
+	</not>
+     <greater-than>
+      <property>gear/gear/position-norm</property>
+      <value>0.1</value>
+     </greater-than>
+    </and>
+   </condition>
+ </animation>
+
+<!-- New Lightmap -->
+	
+	<effect>
+		<inherits-from>Effects/model-combined-deferred</inherits-from>
+		<parameters>
+			<lightmap-enabled type="int">1</lightmap-enabled>
+			<texture n="3">
+				<image>Aircraft/A330Family/Models/Effects/res/logo-lightmap.png</image>
+			</texture>
+			<lightmap-factor type="float" n="0">
+				<use>controls/lighting/nav-lights-switch</use>
+			</lightmap-factor>
+		</parameters>
+		<object-name>rudder</object-name>
+		<object-name>vstab</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/A330Family/Models/Effects/fuselage-lights</inherits-from>
+		<!--parameters>
+			<lightmap-enabled type="int">1</lightmap-enabled>
+			<lightmap-multi type="int">1</lightmap-multi>
+			<texture n="3">
+				<image>Aircraft/A330Family/Models/Effects/res/land-lightmap-multi.png</image>
+			</texture>
+			<lightmap-factor type="float" n="0">
+				<use>controls/lighting/landing-lights[2]</use>
+			</lightmap-factor>
+			<lightmap-color type="vec3d" n="0">0.03 0.03 0.03</lightmap-color>
+			<lightmap-factor type="float" n="1">
+				<use>controls/lighting/landing-lights[0]</use>
+			</lightmap-factor>
+			<lightmap-factor type="float" n="2">0.0</lightmap-factor>
+			<lightmap-factor type="float" n="3">0.0</lightmap-factor>
+			<lightmap-color type="vec3d" n="1">0.03 0.03 0.03</lightmap-color>
+		</parameters-->
+		<object-name>fuselage</object-name>
+	</effect>
+
+	<effect>
+		<inherits-from>Effects/model-combined-deferred</inherits-from>
+		<parameters>
+			<lightmap-enabled type="int">1</lightmap-enabled>
+			<texture n="3">
+				<image>Aircraft/A330Family/Models/Effects/res/windshield-lightmap.png</image>
+			</texture>
+			<lightmap-factor type="float" n="0">
+				<use>controls/lighting/nav-lights-switch</use>
+			</lightmap-factor>
+		</parameters>
+		<object-name>windshield</object-name>
+	</effect>
+	
+	<!--effect>
+		<inherits-from>Effects/model-combined-deferred</inherits-from>
+		<parameters>
+			<lightmap-enabled type="int">1</lightmap-enabled>
+			<texture n="3">
+				<image>Aircraft/A330Family/Models/Effects/res/windows-lightmap.png</image>
+			</texture>
+			<lightmap-factor type="float" n="0">
+				<use>controls/lighting/cabin-lights</use>
+			</lightmap-factor>
+		</parameters>
+		<object-name>fuselage</object-name>
+	</effect-->
+
+	<effect>
+		<inherits-from>Effects/model-combined-deferred</inherits-from>
+		<parameters>
+			<lightmap-enabled type="int">1</lightmap-enabled>
+			<texture n="3">
+				<image>Aircraft/A330Family/Models/Effects/res/wings-lightmap.png</image>
+			</texture>
+			<lightmap-factor type="float" n="0">
+				<use>controls/lighting/wing-lights</use>
+			</lightmap-factor>
+		</parameters>
+		<object-name>wing.in0</object-name>
+		<object-name>wing.mid0</object-name>
+		<object-name>wing.out0</object-name>
+		<object-name>wing.in1</object-name>
+		<object-name>wing.mid1</object-name>
+		<object-name>wing.out1</object-name>
+	</effect>
 		
 </PropertyList>

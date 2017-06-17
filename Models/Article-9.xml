@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <PropertyList>
-	<name>A330-243F</name>
+	<name>A330-243</name>
 	<path>empty.ac</path>
 
 	<model>
-		<name>A330-243F Main</name>
-		<path>Aircraft/A330Family/Models/A330-243F-main.xml</path>
+		<name>A330-243 Main</name>
+		<path>Aircraft/A330Family/Models/A330-VoyagerKC-main.xml</path>
 	</model>
 
 <!-- LIVERY SELECT -->
@@ -40,7 +40,7 @@
 	<!-- Nasal code -->
 	<nasal>
 		<load>
-		 var livery_update = aircraft.livery_update.new("Aircraft/A330Family/Models/Liveries/A332FRR/");
+		 var livery_update = aircraft.livery_update.new("Aircraft/A330Family/Models/Liveries/A332KCRR/");
 		</load>
 		<unload>
 		 livery_update.stop();
