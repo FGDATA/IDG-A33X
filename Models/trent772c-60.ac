@@ -915,7 +915,7 @@ kids 0
 OBJECT poly
 name "fan0"
 loc -1.52174 -0.0870159 0.951193
-texture "rr_fan.png"
+texture "rr_fanc.png"
 crease 45.000000
 numvert 780
 0.0586041 1.11285 0.0842991
@@ -4153,7 +4153,7 @@ kids 0
 OBJECT poly
 name "fan.cone0"
 loc -1.44677 -0.097816 0.960322
-texture "rr_fan.png"
+texture "rr_fanc.png"
 crease 45.000000
 numvert 73
 0 0.13286 -0.23012
@@ -14516,7 +14516,7 @@ kids 0
 OBJECT poly
 name "fan1"
 loc -1.52174 -0.0870159 0.951193
-texture "rr_fan.png"
+texture "rr_fanc.png"
 crease 45.000000
 numvert 780
 0.0645864 0.546087 -19.512
@@ -17754,7 +17754,7 @@ kids 0
 OBJECT poly
 name "fan.cone1"
 loc -1.44677 -0.097816 0.960322
-texture "rr_fan.png"
+texture "rr_fanc.png"
 crease 45.000000
 numvert 73
 -0.681016 0 -18.6202
