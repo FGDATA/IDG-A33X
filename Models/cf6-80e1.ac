@@ -9,7 +9,7 @@ kids 11
 OBJECT poly
 name "pw.nacelle0_"
 loc -1.49216 -0.150208 1.48747
-texture "pw_fan.png"
+texture "ge_fan.png"
 crease 45.000000
 numvert 106
 0.0296353 0.581429 -0.223189
@@ -25679,7 +25679,7 @@ kids 0
 OBJECT poly
 name "pw.nacelle0_"
 loc -1.49216 -0.150208 1.48747
-texture "pw_fan.png"
+texture "ge_fan.png"
 crease 45.000000
 numvert 106
 1.30117 -1.18977 -18.6558
