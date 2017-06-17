@@ -4,8 +4,8 @@
 	<sim>
 		<model>
 			<livery>
-				<name>Airbus A330 (Old)</name>
-				<texture>Liveries/A332GE/AirbusOld.png</texture>
+				<name>Airbus A330 Special</name>
+				<texture>Liveries/A332GE/Airbus_1K.png</texture>
 			</livery>
 		</model>
 	</sim>
