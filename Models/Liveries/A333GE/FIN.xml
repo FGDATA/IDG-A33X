@@ -4,8 +4,8 @@
 	<sim>
 		<model>
 			<livery>
-				<name>Fiji Airways</name>
-				<texture>Liveries/A332RR/FJI.png</texture>
+				<name>Finnair</name>
+				<texture>Liveries/A333GE/FIN.png</texture>
 			</livery>
 		</model>
 	</sim>
