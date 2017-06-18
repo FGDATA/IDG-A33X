@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>TAP Portugal</name>
-				<a332-texture>Liveries/A330-223/TAP.png</a332-texture>
+				<texture>Liveries/A332PW/TAP.png</texture>
 			</livery>
 		</model>
 	</sim>

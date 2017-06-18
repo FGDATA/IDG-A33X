@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>Air Berlin (BER Airport)</name>
-				<texture>Liveries/A330-223/BER_airport.png</texture>
+				<texture>Liveries/A332PW/BER_apt.png</texture>
 			</livery>
 		</model>
 	</sim>

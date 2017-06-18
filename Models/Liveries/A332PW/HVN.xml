@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>Vietnam Airlines</name>
-				<a332-texture>Liveries/A330-223/HVN.png</a332-texture>
+				<texture>Liveries/A332PW/HVN.png</texture>
 			</livery>
 		</model>
 	</sim>

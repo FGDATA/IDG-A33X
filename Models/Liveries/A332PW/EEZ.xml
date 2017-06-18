@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>EuroFly</name>
-				<a332-texture>Liveries/A330-223/EEZ.png</a332-texture>
+				<texture>Liveries/A332PW/EEZ.png</texture>
 			</livery>
 		</model>
 	</sim>

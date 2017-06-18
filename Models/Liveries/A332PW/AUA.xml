@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>Austrian Airlines</name>
-				<a332-texture>Liveries/A330-223/AUA.png</a332-texture>
+				<texture>Liveries/A332PW/AUA.png</texture>
 			</livery>
 		</model>
 	</sim>

@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>China Southern Airlines</name>
-				<a332-texture>Liveries/A330-223/CSN.png</a332-texture>
+				<texture>Liveries/A332PW/CSN.png</texture>
 			</livery>
 		</model>
 	</sim>

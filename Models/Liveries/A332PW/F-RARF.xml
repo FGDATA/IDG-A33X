@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>Armee de l'Air</name>
-				<a332-texture>Liveries/A330-223/F-RARF.png</a332-texture>
+				<texture>Liveries/A332PW/F-RARF.png</texture>
 			</livery>
 		</model>
 	</sim>
