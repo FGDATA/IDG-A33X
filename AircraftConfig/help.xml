@@ -38,7 +38,7 @@
 			
 			<text>
 				<halign>left</halign>
-				<label>The goal of the A320Family by it0uchpods is to provide FlightGear with authentic, realistic, Airbus A320 series Aircraft.</label>
+				<label>The goal of the A330Family by it0uchpods is to provide FlightGear with authentic, realistic, Airbus A330 series Aircraft.</label>
 			</text>
 			
 			<hrule/>
@@ -49,11 +49,11 @@
 			</text>
 			<text>
 				<halign>left</halign>
-				<label>Q - Disengage/Decrease Reverse Thrust</label>
+				<label>F1 - Disengage/Decrease Reverse Thrust</label>
 			</text>
 			<text>
 				<halign>left</halign>
-				<label>W - Engage/Increase Reverse Thrust</label>
+				<label>F2 - Engage/Increase Reverse Thrust</label>
 			</text>
 			<text>
 				<halign>left</halign>
