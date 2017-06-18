@@ -1094,6 +1094,17 @@
 		</font-resolution>
 	</text>
     
+	<animation>
+		<type>select</type>
+		<object-name>flap</object-name>
+		<condition>
+			<greater-than>
+				<property>/controls/flight/flap-pos</property>
+				<value>0</value>
+			</greater-than>
+		</condition>
+	</animation>
+	
     <!--animation>
     	<type>rotate</type>
     	<object-name>flap</object-name>
