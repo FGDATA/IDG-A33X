@@ -4,8 +4,8 @@
 	<sim>
 		<model>
 			<livery>
-				<name>Airbus A330</name>
-				<texture>Liveries/A332PW/Airbus.png</texture>
+				<name>Air Berlin (BER Airport)</name>
+				<texture>Liveries/A330-223/BER_airport.png</texture>
 			</livery>
 		</model>
 	</sim>

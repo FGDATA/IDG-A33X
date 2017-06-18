@@ -4,8 +4,8 @@
 	<sim>
 		<model>
 			<livery>
-				<name>Grey</name>
-				<texture>Liveries/A332KCGE/Airbus.png</texture>
+				<name>Vietnam Airlines (SkyTeam)</name>
+				<texture>Liveries/A330-223/HVN_ST.png</texture>
 			</livery>
 		</model>
 	</sim>
