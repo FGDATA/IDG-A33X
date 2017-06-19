@@ -4,8 +4,8 @@
 	<sim>
 		<model>
 			<livery>
-				<name>RAF Voyager KC</name>
-				<texture>Liveries/A332KCRR/RAF.png</texture>
+				<name>Airbus A330 Special</name>
+				<texture>Liveries/A332RR/Airbus_1K.png</texture>
 			</livery>
 		</model>
 	</sim>
