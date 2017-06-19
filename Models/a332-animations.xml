@@ -1431,7 +1431,7 @@
   <object-name>Left nav light</object-name>
   <object-name>Left strobe light</object-name>
   <property>aircraft/wingflex</property>
-  <factor>0.00001</factor>
+  <factor>0.000005</factor>
   <offset-deg>0</offset-deg>
   <center>
    <x-m>0</x-m>
@@ -1452,7 +1452,7 @@
   <object-name>Left nav light</object-name>
   <object-name>Left strobe light</object-name>
   <property>aircraft/wingflex</property>
-  <factor>0.00001</factor>
+  <factor>0.000005</factor>
   <offset-deg>-1</offset-deg>
   <center>
    <x-m>0</x-m>
@@ -1472,7 +1472,7 @@
   <object-name>Left nav light</object-name>
   <object-name>Left strobe light</object-name>
   <property>aircraft/wingflex</property>
-  <factor>0.00001</factor>
+  <factor>0.000005</factor>
   <offset-deg>-1</offset-deg>
   <center>
    <x-m>0</x-m>
@@ -1495,7 +1495,7 @@
   <object-name>Right nav light</object-name>
   <object-name>Right strobe light</object-name>
   <property>aircraft/wingflex</property>
-  <factor>0.00001</factor>
+  <factor>0.000005</factor>
   <offset-deg>0</offset-deg>
   <center>
    <x-m>0</x-m>
@@ -1516,7 +1516,7 @@
   <object-name>Right nav light</object-name>
   <object-name>Right strobe light</object-name>
   <property>aircraft/wingflex</property>
-  <factor>0.00001</factor>
+  <factor>0.000005</factor>
   <offset-deg>-1</offset-deg>
   <center>
    <x-m>0</x-m>
@@ -1536,7 +1536,7 @@
   <object-name>Right nav light</object-name>
   <object-name>Right strobe light</object-name>
   <property>aircraft/wingflex</property>
-  <factor>0.00001</factor>
+  <factor>0.000005</factor>
   <offset-deg>-1</offset-deg>
   <center>
    <x-m>0</x-m>

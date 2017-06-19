@@ -122,6 +122,10 @@
                 <type>int</type>
                 <property>/gear/gear[4]/wowa</property>
             </signal>
+            <signal>
+                <type>double</type>
+                <property>/aircraft/wingflex</property>
+            </signal>
         </signals>
     </config>
 

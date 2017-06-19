@@ -626,4 +626,21 @@
 		</input>
 		<output>/FMGC/internal/difftoISA</output>
 	</filter>
+	
+	<filter>
+		<name>Wingflex</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<enable>
+			<condition>
+				<equals>
+					<property>/aircraft/wingflex-enable</property>
+					<value>1</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>/fdm/jsbsim/aero/force/Lift_alpha</input>
+		<output>/aircraft/wingflex</output>
+	</filter>
+	
 </PropertyList>

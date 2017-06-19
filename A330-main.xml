@@ -765,6 +765,8 @@
 			<z-m>3.642</z-m>
 		</door>
 		<jetway-hood-deg type="double">3</jetway-hood-deg>
+		<wingflex-enable type="bool">1</wingflex-enable>
+		<wingflex type="double">0</wingflex>
 	</aircraft>
 	
 	<nasal>

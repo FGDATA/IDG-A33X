@@ -222,6 +222,12 @@ var librariesLoop = maketimer(0.05, func {
 	} else {
 		setprop("/gear/gear[4]/wowa", 0);
 	}
+	
+	if ((getprop("/sim/replay/time") == 0) or (getprop("/sim/replay/time") == nil)) {
+		setprop("/aircraft/wingflex-enable", 1);
+	} else {
+		setprop("/aircraft/wingflex-enable", 0);
+	}
 });
 
 var variousReset = func {
