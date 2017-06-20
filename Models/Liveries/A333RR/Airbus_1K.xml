@@ -4,8 +4,8 @@
 	<sim>
 		<model>
 			<livery>
-				<name>Royal Australian AF</name>
-				<texture>Liveries/A332KCGE/raaf.png</texture>
+				<name>Airbus A330 Special</name>
+				<texture>Liveries/A333RR/Airbus_1K.png</texture>
 			</livery>
 		</model>
 	</sim>
