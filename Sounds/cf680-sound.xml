@@ -46,7 +46,7 @@
 	<engine>
 		<name>a320_a11</name>
 		<mode>looped</mode>
-		<path>FL2070/pw11a.wav</path>
+		<path>FL2070/ge11a.wav</path>
 		<condition>
 			<property>sim/current-view/internal</property>
 			<less-than>
@@ -72,7 +72,7 @@
 	<engine>
 		<name>a320_a12</name>
 		<mode>looped</mode>
-		<path>FL2070/pw12a.wav</path>
+		<path>FL2070/ge12a.wav</path>
 		<condition>
 			<property>sim/current-view/internal</property>
 			<less-than>
@@ -98,7 +98,7 @@
 	<engine>
 		<name>a320_a13</name>
 		<mode>looped</mode>
-		<path>FL2070/pw13a.wav</path>
+		<path>FL2070/ge13a.wav</path>
 		<condition>
 			<property>sim/current-view/internal</property>
 			<less-than>
@@ -125,7 +125,7 @@
 	<engine>
 		<name>a320_b11</name>
 		<mode>looped</mode>
-		<path>FL2070/pw11b.wav</path>
+		<path>FL2070/ge11b.wav</path>
 		<condition>
 			<property>sim/current-view/internal</property>
 			<less-than>
@@ -151,7 +151,7 @@
 	<engine>
 		<name>a320_b12</name>
 		<mode>looped</mode>
-		<path>FL2070/pw12b.wav</path>
+		<path>FL2070/ge12b.wav</path>
 		<condition>
 			<property>sim/current-view/internal</property>
 			<less-than>
@@ -177,7 +177,7 @@
 	<engine>
 		<name>a320_b13</name>
 		<mode>looped</mode>
-		<path>FL2070/pw13b.wav</path>
+		<path>FL2070/ge13b.wav</path>
 		<condition>
 			<property>sim/current-view/internal</property>
 			<less-than>
