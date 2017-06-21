@@ -68,25 +68,23 @@
 	
 	<animation>
 		<type>select</type>
-		<object-name>osgtext-green3</object-name>
-		<object-name>n11</object-name>
+		<object-name>XX.5</object-name>
 		<condition>
-			<greater-than-equals>
-				<property>/engines/engine[0]/n1</property>
-				<value>15</value>
-			</greater-than-equals>
+			<less-than>
+				<property>/engines/engine[0]/n2</property>
+				<value>2</value>
+			</less-than>
 		</condition>
 	</animation>
 	
 	<animation>
 		<type>select</type>
-		<object-name>osgtext-green4</object-name>
-		<object-name>n12</object-name>
+		<object-name>XX.6</object-name>
 		<condition>
-			<greater-than-equals>
-				<property>/engines/engine[1]/n1</property>
-				<value>15</value>
-			</greater-than-equals>
+			<less-than>
+				<property>/engines/engine[1]/n2</property>
+				<value>2</value>
+			</less-than>
 		</condition>
 	</animation>
 	
@@ -133,6 +131,52 @@
 					<value>5</value>
 				</greater-than-equals>
 			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>osgtext-green3</object-name>
+		<object-name>n11</object-name>
+		<condition>
+			<greater-than-equals>
+				<property>/engines/engine[0]/n1</property>
+				<value>15</value>
+			</greater-than-equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>osgtext-green4</object-name>
+		<object-name>n12</object-name>
+		<condition>
+			<greater-than-equals>
+				<property>/engines/engine[1]/n1</property>
+				<value>15</value>
+			</greater-than-equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>osgtext-green5</object-name>
+		<condition>
+			<greater-than-equals>
+				<property>/engines/engine[0]/n2</property>
+				<value>2</value>
+			</greater-than-equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>osgtext-green6</object-name>
+		<condition>
+			<greater-than-equals>
+				<property>/engines/engine[1]/n2</property>
+				<value>2</value>
+			</greater-than-equals>
 		</condition>
 	</animation>
 	
@@ -221,6 +265,8 @@
 		<object-name>osgtext-green2</object-name>
 		<object-name>osgtext-green3</object-name>
 		<object-name>osgtext-green4</object-name>
+		<object-name>osgtext-green5</object-name>
+		<object-name>osgtext-green6</object-name>
 		<object-name>rev1.g</object-name>
 		<object-name>rev2.g</object-name>
 		<diffuse>
@@ -251,6 +297,8 @@
 		<object-name>XX.2</object-name>
 		<object-name>XX.3</object-name>
 		<object-name>XX.4</object-name>
+		<object-name>XX.5</object-name>
+		<object-name>XX.6</object-name>
         <diffuse>
             <red>1</red>
             <green>0.4</green>
@@ -767,7 +815,7 @@
 	<!-- N2 -->
 	
 	<text>
-		<name>osgtext-green1</name>
+		<name>osgtext-green5</name>
 		<offsets>
 			<x-m>0.0004</x-m>
 			<y-m>-0.069</y-m>
@@ -791,7 +839,7 @@
 	</text>
 	
 	<text>
-		<name>osgtext-green2</name>
+		<name>osgtext-green6</name>
 		<offsets>
 			<x-m>0.0004</x-m>
 			<y-m>0.069</y-m>
@@ -815,7 +863,7 @@
 	</text>
 	
 	<text>
-		<name>XX.1</name>
+		<name>XX.5</name>
 		<offsets>
 			<x-m>0.0004</x-m>
 			<y-m>-0.069</y-m>
@@ -839,7 +887,7 @@
 	</text>
 	
 	<text>
-		<name>XX.2</name>
+		<name>XX.6</name>
 		<offsets>
 			<x-m>0.0004</x-m>
 			<y-m>0.069</y-m>
@@ -915,7 +963,7 @@
 	<!-- FF -->
 	
 	<text>
-		<name>osgtext-green1</name>
+		<name>osgtext-green5</name>
 		<offsets>
 			<x-m>0.0004</x-m>
 			<y-m>-0.069</y-m>
@@ -939,7 +987,7 @@
 	</text>
 	
 	<text>
-		<name>osgtext-green2</name>
+		<name>osgtext-green6</name>
 		<offsets>
 			<x-m>0.0004</x-m>
 			<y-m>0.069</y-m>
@@ -963,7 +1011,7 @@
 	</text>
 	
 	<text>
-		<name>XX.1</name>
+		<name>XX.5</name>
 		<offsets>
 			<x-m>0.0004</x-m>
 			<y-m>-0.069</y-m>
@@ -987,7 +1035,7 @@
 	</text>
 	
 	<text>
-		<name>XX.2</name>
+		<name>XX.6</name>
 		<offsets>
 			<x-m>0.0004</x-m>
 			<y-m>0.069</y-m>
