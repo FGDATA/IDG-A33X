@@ -33,7 +33,7 @@
 	<animation>
 		<type>select</type>
 		<object-name>sidestick-max</object-name>
-        <object-name>sidestick-pos</object-name>
+		<object-name>sidestick-pos</object-name>
 		<condition>
 			<and>
 				<or>
