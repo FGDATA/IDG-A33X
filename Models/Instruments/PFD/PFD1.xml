@@ -38,6 +38,8 @@
 			<or>
 				<property>/gear/gear[1]/wow</property>
 				<property>/gear/gear[2]/wow</property>
+				<property>/gear/gear[3]/wowa</property>
+				<property>/gear/gear[4]/wowa</property>
 				<and>
 					<property>/options/pfd/sidestick-pos</property>
 					<equals>
@@ -50,6 +52,10 @@
 					</equals>
 				</and>
 				<and>
+					<property>/gear/gear[1]/wow</property>
+					<property>/gear/gear[2]/wow</property>
+					<property>/gear/gear[3]/wowa</property>
+					<property>/gear/gear[4]/wowa</property>
 					<or>
 						<equals>
 							<property>/FMGC/status/phase</property>
@@ -66,6 +72,10 @@
 					</equals>
 				</and>
 				<and>
+					<property>/gear/gear[1]/wow</property>
+					<property>/gear/gear[2]/wow</property>
+					<property>/gear/gear[3]/wowa</property>
+					<property>/gear/gear[4]/wowa</property>
 					<or>
 						<equals>
 							<property>/FMGC/status/phase</property>
