@@ -5,6 +5,7 @@ Brought to you by:
 - Joshua Davidson (it0uchpods)
 - Jonathan Redpath (legoboyvdlp)
 - J Maverick 16
+- Charlie Schwehm (Wecsje)
 
 Present pack includes the following Airbus variants:
 - A330-203
