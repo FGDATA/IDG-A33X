@@ -546,17 +546,23 @@
 			<expression>
 				<table>
 					<property>fdm/jsbsim/inertia/weight-kg</property>  <!-- from FCOM vol 3 page 613 -->
-					<entry><ind>57000</ind><dep>38700</dep></entry>
-					<entry><ind>58000</ind><dep>38400</dep></entry>
-					<entry><ind>60000</ind><dep>37400</dep></entry>
-					<entry><ind>62000</ind><dep>37100</dep></entry>
-					<entry><ind>64000</ind><dep>36200</dep></entry>
-					<entry><ind>66000</ind><dep>36000</dep></entry>
-					<entry><ind>68000</ind><dep>35600</dep></entry>
-					<entry><ind>70000</ind><dep>35000</dep></entry>
-					<entry><ind>72000</ind><dep>34200</dep></entry>
-					<entry><ind>74000</ind><dep>33500</dep></entry>
-					<entry><ind>76000</ind><dep>33000</dep></entry>
+					<entry><ind>160000</ind><dep>40500</dep></entry>
+					<entry><ind>165000</ind><dep>40000</dep></entry>
+					<entry><ind>170000</ind><dep>39500</dep></entry>
+					<entry><ind>175000</ind><dep>39000</dep></entry>
+					<entry><ind>180000</ind><dep>38000</dep></entry>
+					<entry><ind>185000</ind><dep>37800</dep></entry>
+					<entry><ind>190000</ind><dep>37500</dep></entry>
+					<entry><ind>195000</ind><dep>36800</dep></entry>
+					<entry><ind>200000</ind><dep>36400</dep></entry>
+					<entry><ind>205000</ind><dep>35800</dep></entry>
+					<entry><ind>210000</ind><dep>35200</dep></entry>
+					<entry><ind>215000</ind><dep>34800</dep></entry>
+					<entry><ind>220000</ind><dep>34100</dep></entry>
+					<entry><ind>225000</ind><dep>33500</dep></entry>
+					<entry><ind>230000</ind><dep>33100</dep></entry>
+					<entry><ind>235000</ind><dep>32700</dep></entry>
+					<entry><ind>240000</ind><dep>32400</dep></entry>
 				</table>
 			</expression>
 		</input>
