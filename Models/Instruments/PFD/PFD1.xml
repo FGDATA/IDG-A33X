@@ -35,29 +35,62 @@
 		<object-name>sidestick-max</object-name>
 		<object-name>sidestick-pos</object-name>
 		<condition>
+			<or>
 				<and>
-					<property>/options/pfd/sidestick-pos</property>
-					<equals>
-						<property>/it-autoflight/output/ap1</property>
+					<property>/gear/gear[1]/wow</property>
+					<property>/gear/gear[2]/wow</property>
+					<property>/gear/gear[3]/wowa</property>
+					<property>/gear/gear[4]/wowa</property>
+					<not-equals>
+						<property>/FMGC/status/phase</property>
 						<value>0</value>
-					</equals>
-					<equals>
-						<property>/it-autoflight/output/ap1</property>
-						<value>0</value>
-					</equals>
+					</not-equals>
+					<not-equals>
+						<property>/FMGC/status/phase</property>
+						<value>1</value>
+					</not-equals>
+				</and>
+				<and>
+					<property>/gear/gear[1]/wow</property>
+					<property>/gear/gear[2]/wow</property>
+					<property>/gear/gear[3]/wowa</property>
+					<property>/gear/gear[4]/wowa</property>
 					<or>
 						<equals>
-							<property>/engines/engine[0]/state</property>
-							<value>3</value>
+							<property>/FMGC/status/phase</property>
+							<value>0</value>
 						</equals>
 						<equals>
-							<property>/engines/engine[1]/state</property>
-							<value>3</value>
+							<property>/FMGC/status/phase</property>
+							<value>1</value>
 						</equals>
-						<not><property>/gear/gear[1]/wow</property></not>
-						<not><property>/gear/gear[2]/wow</property></not>
 					</or>
+					<equals>
+						<property>/engines/engine[0]/state</property>
+						<value>3</value>
+					</equals>
 				</and>
+				<and>
+					<property>/gear/gear[1]/wow</property>
+					<property>/gear/gear[2]/wow</property>
+					<property>/gear/gear[3]/wowa</property>
+					<property>/gear/gear[4]/wowa</property>
+					<or>
+						<equals>
+							<property>/FMGC/status/phase</property>
+							<value>0</value>
+						</equals>
+						<equals>
+							<property>/FMGC/status/phase</property>
+							<value>1</value>
+						</equals>
+					</or>
+					<equals>
+						<property>/engines/engine[1]/state</property>
+						<value>3</value>
+					</equals>
+				</and>
+			</or>
 		</condition>
 	</animation>
 	
@@ -671,7 +704,6 @@
     <animation>
     	<type>textranslate</type>
     	<object-name>alt-tape-2</object-name>
-		<property>octal</property>
     	<property>instrumentation/altimeter/indicated-altitude-ft</property>
     	<factor>0.009999725</factor>
     	<axis>

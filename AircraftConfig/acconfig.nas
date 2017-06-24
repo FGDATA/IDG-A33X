@@ -102,6 +102,7 @@ var systemsReset = func {
 	fmgc.FMGCinit();
 	mcdu1.MCDU_reset();
 	mcdu2.MCDU_reset();
+	icing.PitotIcingReset();
 	fmgc.APinit();
 	setprop("/it-autoflight/input/fd1", 1);
 	setprop("/it-autoflight/input/fd2", 1);
@@ -149,7 +150,6 @@ var colddark_b = func {
 	setprop("/controls/APU/master", 0);
 	setprop("/controls/APU/start", 0);
 	setprop("/controls/bleed/OHP/bleedapu", 0);
-	setprop("/controls/electrical/switches/gen-apu", 0);
 	setprop("/controls/electrical/switches/battery1", 0);
 	setprop("/controls/electrical/switches/battery2", 0);
 	setprop("/systems/acconfig/autoconfig-running", 0);
@@ -181,7 +181,6 @@ var beforestart = func {
 	setprop("/controls/APU/master", 0);
 	setprop("/controls/APU/start", 0);
 	setprop("/controls/bleed/OHP/bleedapu", 0);
-	setprop("/controls/electrical/switches/gen-apu", 0);
 	setprop("/controls/electrical/switches/battery1", 0);
 	setprop("/controls/electrical/switches/battery2", 0);
 	
@@ -256,8 +255,6 @@ var taxi = func {
 	failReset();
 	setprop("/controls/APU/master", 0);
 	setprop("/controls/APU/start", 0);
-	setprop("/controls/bleed/OHP/bleedapu", 0);
-	setprop("/controls/electrical/switches/gen-apu", 0);
 	setprop("/controls/electrical/switches/battery1", 0);
 	setprop("/controls/electrical/switches/battery2", 0);
 	
