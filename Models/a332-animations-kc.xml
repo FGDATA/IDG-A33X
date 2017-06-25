@@ -1455,8 +1455,8 @@
   <object-name>engine0</object-name>
   <object-name>wing.mid0</object-name>
   <object-name>wing.out0</object-name>
-  <object-name>Left nav light</object-name>
-  <object-name>Left strobe light</object-name>
+  <object-name>Left nav light ALS</object-name>
+  <object-name>Left strobe light ALS</object-name>
   <property>aircraft/wingflex</property>
   <factor>0.000005</factor>
   <offset-deg>0</offset-deg>
@@ -1476,8 +1476,8 @@
   <type>rotate</type>
   <object-name>wing.mid0</object-name>
   <object-name>wing.out0</object-name>
-  <object-name>Left nav light</object-name>
-  <object-name>Left strobe light</object-name>
+  <object-name>Left nav light ALS</object-name>
+  <object-name>Left strobe light ALS</object-name>
   <property>aircraft/wingflex</property>
   <factor>0.000005</factor>
   <offset-deg>-1</offset-deg>
@@ -1496,8 +1496,8 @@
 <animation>
   <type>rotate</type>
   <object-name>wing.out0</object-name>
-  <object-name>Left nav light</object-name>
-  <object-name>Left strobe light</object-name>
+  <object-name>Left nav light ALS</object-name>
+  <object-name>Left strobe light ALS</object-name>
   <property>aircraft/wingflex</property>
   <factor>0.000005</factor>
   <offset-deg>-1</offset-deg>
@@ -1519,8 +1519,8 @@
   <object-name>engine1</object-name>
   <object-name>wing.mid1</object-name>
   <object-name>wing.out1</object-name>
-  <object-name>Right nav light</object-name>
-  <object-name>Right strobe light</object-name>
+  <object-name>Right nav light ALS</object-name>
+  <object-name>Right strobe light ALS</object-name>
   <property>aircraft/wingflex</property>
   <factor>0.000005</factor>
   <offset-deg>0</offset-deg>
@@ -1540,8 +1540,8 @@
   <type>rotate</type>
   <object-name>wing.mid1</object-name>
   <object-name>wing.out1</object-name>
-  <object-name>Right nav light</object-name>
-  <object-name>Right strobe light</object-name>
+  <object-name>Right nav light ALS</object-name>
+  <object-name>Right strobe light ALS</object-name>
   <property>aircraft/wingflex</property>
   <factor>0.000005</factor>
   <offset-deg>-1</offset-deg>
@@ -1560,8 +1560,8 @@
 <animation>
   <type>rotate</type>
   <object-name>wing.out1</object-name>
-  <object-name>Right nav light</object-name>
-  <object-name>Right strobe light</object-name>
+  <object-name>Right nav light ALS</object-name>
+  <object-name>Right strobe light ALS</object-name>
   <property>aircraft/wingflex</property>
   <factor>0.000005</factor>
   <offset-deg>-1</offset-deg>
