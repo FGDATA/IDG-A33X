@@ -59,7 +59,7 @@
                 <table>
                     <property>/position/altitude-ft</property> 
                     <entry><ind>    0</ind><dep>0.516</dep></entry>
-                    <entry><ind>42000</ind><dep>0.967</dep></entry>
+                    <entry><ind>42000</ind><dep>0.993</dep></entry>
                 </table>
             </expression>
         </input>
@@ -76,8 +76,8 @@
                 <table>
                     <property>/position/altitude-ft</property> 
                     <entry><ind>    0</ind><dep>0.988</dep></entry>
-                    <entry><ind>13000</ind><dep>0.977</dep></entry>
-                    <entry><ind>42000</ind><dep>0.960</dep></entry>
+                    <entry><ind>13000</ind><dep>0.972</dep></entry>
+                    <entry><ind>42000</ind><dep>0.955</dep></entry>
                 </table>
             </expression>
         </input>
@@ -93,7 +93,7 @@
             <expression>
                 <table>
                     <property>/engines/engine[0]/n1</property>
-                    <entry><ind> 15.0</ind><dep>-0.15</dep></entry>
+                    <entry><ind> 15.0</ind><dep>-0.20</dep></entry>
                     <entry><ind> 21.2</ind><dep> 0.03</dep></entry>
                     <entry><ind>105.8</ind><dep> 1.00</dep></entry>
                 </table>
@@ -184,7 +184,7 @@
             <expression>
                 <table>
                     <property>/engines/engine[1]/n1</property>
-                    <entry><ind> 15.0</ind><dep>-0.15</dep></entry>
+                    <entry><ind> 15.0</ind><dep>-0.20</dep></entry>
                     <entry><ind> 21.2</ind><dep> 0.03</dep></entry>
                     <entry><ind>105.8</ind><dep> 1.00</dep></entry>
                 </table>
