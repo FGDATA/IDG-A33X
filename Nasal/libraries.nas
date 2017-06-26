@@ -424,3 +424,19 @@ setlistener("/options/drogue-cmd", func {
 		interpolate("/options/drogue-pos-norm", 0, 1.5);
 	}
 });
+
+var increaseManVS = func {
+	var manvs = getprop("/systems/pressurization/outflowpos-man");
+	var auto = getprop("/systems/pressurization/auto");
+	if (manvs <= 1 and manvs >= 0 and !auto) {
+		setprop("/systems/pressurization/outflowpos-man", manvs + 0.001);
+	}
+}
+
+var decreaseManVS = func {
+	var manvs = getprop("/systems/pressurization/outflowpos-man");
+	var auto = getprop("/systems/pressurization/auto");
+	if (manvs <= 1 and manvs >= 0 and !auto) {
+		setprop("/systems/pressurization/outflowpos-man", manvs - 0.001);
+	}
+}
