@@ -221,12 +221,12 @@ var librariesLoop = maketimer(0.05, func {
 		setprop("/it-autoflight/internal/bank-limit", 25);
 	}
 	
-	if (getprop("/gear/gear[1]/gear-tilt-deg") < 50) {
+	if (getprop("/gear/gear[1]/gear-tilt-deg") < 40) {
 		setprop("/gear/gear[3]/wowa", 1);
 	} else {
 		setprop("/gear/gear[3]/wowa", 0);
 	}
-	if (getprop("/gear/gear[2]/gear-tilt-deg") < 50) {
+	if (getprop("/gear/gear[2]/gear-tilt-deg") < 40) {
 		setprop("/gear/gear[4]/wowa", 1);
 	} else {
 		setprop("/gear/gear[4]/wowa", 0);
