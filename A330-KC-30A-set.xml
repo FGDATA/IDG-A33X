@@ -120,6 +120,9 @@
 		<specific>
 			<file>Aircraft/A330Family/Nasal/a332livery-kcge.nas</file>
 		</specific>
+		<fadec>
+			<file>Aircraft/A330Family/Nasal/fadec-ge.nas</file>
+		</fadec>
 	</nasal>
 
 </PropertyList>

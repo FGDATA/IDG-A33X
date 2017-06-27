@@ -117,6 +117,9 @@
 		<specific>
 			<file>Aircraft/A330Family/Nasal/a333livery-ge.nas</file>
 		</specific>
+		<fadec>
+			<file>Aircraft/A330Family/Nasal/fadec-ge.nas</file>
+		</fadec>
 	</nasal>
 
 </PropertyList>

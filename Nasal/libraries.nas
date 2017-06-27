@@ -242,6 +242,8 @@ var librariesLoop = maketimer(0.05, func {
 var variousReset = func {
 	setprop("/modes/cpt-du-xfr", 0);
 	setprop("/modes/fo-du-xfr", 0);
+	setprop("/controls/fadec/n1mode1", 0);
+	setprop("/controls/fadec/n1mode2", 0);
 }
 
 var aglgears = func {
