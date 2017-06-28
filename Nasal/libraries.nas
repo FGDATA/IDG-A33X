@@ -221,6 +221,10 @@ var librariesLoop = maketimer(0.05, func {
 		setprop("/it-autoflight/internal/bank-limit", 25);
 	}
 	
+	if (getprop("/it-autoflight/custom/show-hdg") == 0 and getprop("/it-autoflight/output/lat") != 4) {
+		setprop("/it-autoflight/input/hdg", math.round(getprop("/orientation/heading-magnetic-deg")));
+	}
+	
 	if (getprop("/gear/gear[1]/gear-tilt-deg") < 40) {
 		setprop("/gear/gear[3]/wowa", 1);
 	} else {
@@ -288,6 +292,39 @@ var mcpSPDKnbPush = func {
 		fmgc.ManagedSPD.start();
 	} else {
 		gui.popupTip("Please make sure you have set a cruise altitude and cost index in the MCDU.");
+	}
+}
+
+var mcpHDGKnbPull = func {
+	var latmode = getprop("/it-autoflight/output/lat");
+	var showhdg = getprop("/it-autoflight/custom/show-hdg");
+	if (latmode == 0 or showhdg == 0) {
+		setprop("/it-autoflight/input/lat", 3);
+		setprop("/it-autoflight/custom/show-hdg", 1);
+	} else {
+		setprop("/it-autoflight/input/lat", 0);
+		setprop("/it-autoflight/custom/show-hdg", 1);
+	}
+}
+
+var mcpHDGKnbPush = func {
+	setprop("/it-autoflight/input/lat", 1);
+}
+
+var hdgInput = func {
+	var latmode = getprop("/it-autoflight/output/lat");
+	if (latmode != 0) {
+		setprop("/it-autoflight/custom/show-hdg", 1);
+		var hdgnow = getprop("/it-autoflight/input/hdg");
+		settimer(func {
+			var hdgnew = getprop("/it-autoflight/input/hdg");
+			var showhdg = getprop("/it-autoflight/custom/show-hdg");
+			if (hdgnow == hdgnew and latmode != 5 and showhdg == 1) {
+				settimer(func {
+					setprop("/it-autoflight/custom/show-hdg", 0);
+				}, 10);
+			}
+		}, 2);
 	}
 }
 

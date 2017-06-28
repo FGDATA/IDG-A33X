@@ -1251,7 +1251,7 @@
 	<animation>
     	<type>rotate</type>
     	<object-name>eprlimy1</object-name>
-    	<property>/controls/engines/epr-limit</property>
+    	<property>/systems/thrust/epr/toga-lim</property>
 		<interpolation>
 			<entry><ind>0.850</ind><dep>-113</dep></entry>
 			<entry><ind>1.000</ind><dep> -89</dep></entry>
@@ -1274,7 +1274,7 @@
     <animation>
     	<type>rotate</type>
     	<object-name>eprlimy2</object-name>
-    	<property>/controls/engines/epr-limit</property>
+    	<property>/systems/thrust/epr/toga-lim</property>
 		<interpolation>
 			<entry><ind>0.850</ind><dep>-113</dep></entry>
 			<entry><ind>1.000</ind><dep> -89</dep></entry>

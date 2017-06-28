@@ -36,6 +36,7 @@ var FMGCinit = func {
 	setprop("/FMGC/internal/optalt", 0);
 	phasecheck.start();
 	various.start();
+	various2.start();
 }
 
 #############
@@ -217,8 +218,15 @@ var various = maketimer(1, func {
 	} else {
 		setprop("/it-autoflight/settings/reduc-agl-ft", getprop("/FMGC/internal/reduc-agl-ft"));
 	}
+});
+
+var various2 = maketimer(0.5, func {
 	nav0();
 	nav1();
+	var latmode = getprop("/it-autoflight/output/lat");
+	if (latmode == 0) {
+		setprop("/it-autoflight/custom/show-hdg", 1);
+	}
 });
 
 var nav0 = func {

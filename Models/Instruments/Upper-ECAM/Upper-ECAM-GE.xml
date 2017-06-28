@@ -1063,7 +1063,7 @@
 	<animation>
     	<type>rotate</type>
     	<object-name>n1limy1</object-name>
-    	<property>/controls/engines/n1-limit</property>
+    	<property>/systems/thrust/n1/toga-lim</property>
 		<interpolation>
 			<entry><ind> 21.2</ind><dep>-127</dep></entry>
 			<entry><ind> 60.0</ind><dep> -39</dep></entry>
@@ -1085,7 +1085,7 @@
     <animation>
     	<type>rotate</type>
     	<object-name>n1limy2</object-name>
-    	<property>/controls/engines/n1-limit</property>
+    	<property>/systems/thrust/n1/toga-lim</property>
 		<interpolation>
 			<entry><ind> 21.2</ind><dep>-127</dep></entry>
 			<entry><ind> 60.0</ind><dep> -39</dep></entry>
