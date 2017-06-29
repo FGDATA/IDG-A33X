@@ -22,7 +22,6 @@ setprop("/controls/lighting/ndl-norm", 0);
 setprop("/controls/lighting/ndr-norm", 0);
 setprop("/controls/lighting/upper-norm", 0);
 
-
 ##########
 # Lights #
 ##########
