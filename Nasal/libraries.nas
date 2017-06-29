@@ -17,6 +17,12 @@ print("Please do not leak our hard work!");
 print("-----------------------------------------------------------------------");
 print(" ");
 
+# Dimmers
+setprop("/controls/lighting/ndl-norm", 0);
+setprop("/controls/lighting/ndr-norm", 0);
+setprop("/controls/lighting/upper-norm", 0);
+
+
 ##########
 # Lights #
 ##########
