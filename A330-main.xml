@@ -820,6 +820,7 @@
 	<nasal>
 		<libraries>
 			<file>Aircraft/A330Family/Nasal/libraries.nas</file>
+			<file>Aircraft/A330Family/Nasal/buttons.nas</file>
 			<file>Aircraft/A330Family/Nasal/PFD_FMA.nas</file>
 			<file>Aircraft/A330Family/Nasal/gpws.nas</file>
 			<file>Aircraft/A330Family/Nasal/efis.nas</file>
