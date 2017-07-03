@@ -545,7 +545,7 @@ setlistener("/it-autoflight/mode/lat", func {
 });
 
 var toga_reduc = func {
-	if (getprop("/instrumentation/altimeter/indicated-altitude-ft") >= getprop("/it-autoflight/settings/reduc-agl-ft") and getprop("/gear/gear[2]/wow") == 0) {
+	if (getprop("/position/gear-agl-ft") >= getprop("/it-autoflight/settings/reduc-agl-ft")) {
 		setprop("/it-autoflight/input/vert", 8);
 	}
 }
@@ -717,7 +717,7 @@ var make_loc_active = func {
 
 var apparmcheck = func {
 	var signal = getprop("/instrumentation/nav[0]/gs-needle-deflection-norm");
-	if ((signal <= -0.000000001) and (getprop("/FMGC/internal/loc-source") == "NAV0") and (getprop("/it-autoflight/output/lat") == 2)) {
+	if (((signal < 0 and signal >= 0.45) or (signal > 0 and signal <= 0.30)) and (getprop("/FMGC/internal/loc-source") == "NAV0") and (getprop("/it-autoflight/output/lat") == 2)) {
 		make_appr_active();
 	} else {
 		return 0;
