@@ -363,8 +363,8 @@
 	<!-- Lower ECAM -->
 	
 	<model>
-		<name>ECAM</name>
-		<path>Aircraft/A330Family/Models/Instruments/ECAM/ECAM.xml</path>
+		<name>LECAM</name>
+		<path>Aircraft/A330Family/Models/Instruments/Lower-ECAM/Lower-ECAM.xml</path>
 		<offsets>
 			<x-m>-0.53631</x-m>
 			<y-m>0</y-m>
