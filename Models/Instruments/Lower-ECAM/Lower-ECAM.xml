@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+	<path>res/empty.ac</path>
+	
+	<model>
+		<condition>
+			<equals>
+				<property>/instrumentation/efis/ecam/display-mode</property>
+				<value>ENG</value>
+			</equals>
+		</condition>
+		<path>eng.xml</path>
+	</model>
+	
+	<model>
+		<condition>
+			<equals>
+				<property>/instrumentation/efis/ecam/display-mode</property>
+				<value>APU</value>
+			</equals>
+		</condition>
+		<path>apu.xml</path>
+	</model>
+	
+	<model>
+		<path>osgtxt-common.xml</path>
+	</model>
+
+</PropertyList>
