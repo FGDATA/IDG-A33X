@@ -203,6 +203,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 	setprop("/it-autoflight/input/fd1", 1);
 	setprop("/it-autoflight/input/fd2", 1);
 	libraries.ECAMinit();
+	libraries.CVR.start();
 	libraries.variousReset();
 });
 
