@@ -960,6 +960,7 @@
 			<file>Aircraft/A330Family/Nasal/fuel.nas</file>
 			<file>Aircraft/A330Family/Nasal/engines.nas</file>
 			<file>Aircraft/A330Family/Nasal/ADIRS.nas</file>
+			<file>Aircraft/A330Family/Nasal/fire.nas</file>
 		</systems>
 		<thrust>
 			<file>Aircraft/A330Family/Nasal/fadec-common.nas</file>
@@ -998,7 +999,6 @@
 		</canvas_nd>
 		<icing> <!-- leave icing in this -->
 			<file>Aircraft/A330Family/Nasal/icing.nas</file>
-			<file>Aircraft/A330Family/Nasal/PitotIcing.nas</file>
 		</icing>
 	</nasal>
 

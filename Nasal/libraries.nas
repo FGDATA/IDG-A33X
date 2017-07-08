@@ -190,6 +190,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 	systems.elec_init();
 	systems.adirs_init();
 	systems.pneu_init();
+	systems.fire_init();
 	systems.hyd_init();
 	systems.fuel_init();
 	systems.eng_init();
@@ -202,6 +203,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 	setprop("/it-autoflight/input/fd1", 1);
 	setprop("/it-autoflight/input/fd2", 1);
 	libraries.ECAMinit();
+	libraries.CVR.start();
 	libraries.variousReset();
 });
 
