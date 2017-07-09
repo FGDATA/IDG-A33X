@@ -11,13 +11,13 @@
     	<object-name>qt1</object-name>
     	<property>/engines/engine[0]/oil-qt-actual</property>
 		<interpolation>
-			<entry><ind> 0</ind><dep>-101</dep></entry>
-			<entry><ind>25</ind><dep>  40</dep></entry>
+			<entry><ind> 0</ind><dep>-90</dep></entry>
+			<entry><ind>25</ind><dep> 90</dep></entry>
 		</interpolation>
     	<center>
     		<x-m>0</x-m>
-    		<y-m>-0.05558</y-m>
-    		<z-m>0.02672</z-m>
+    		<y-m>-0.03862</y-m>
+    		<z-m>0.03153</z-m>
     	</center>
     	<axis>
     		<x>-1</x>
@@ -31,13 +31,13 @@
     	<object-name>qt2</object-name>
     	<property>/engines/engine[1]/oil-qt-actual</property>
 		<interpolation>
-			<entry><ind> 0</ind><dep>-101</dep></entry>
-			<entry><ind>25</ind><dep>  40</dep></entry>
+			<entry><ind> 0</ind><dep>-90</dep></entry>
+			<entry><ind>25</ind><dep> 90</dep></entry>
 		</interpolation>
     	<center>
     		<x-m>0</x-m>
-    		<y-m>0.00083</y-m>
-    		<z-m>0.02672</z-m>
+    		<y-m>0.03863</y-m>
+    		<z-m>0.03153</z-m>
     	</center>
     	<axis>
     		<x>-1</x>
@@ -53,13 +53,14 @@
     	<object-name>psi1r</object-name>
     	<property>/engines/engine[0]/oil-psi-actual</property>
 		<interpolation>
-			<entry><ind>  0</ind><dep>-105</dep></entry>
-			<entry><ind>300</ind><dep>  38</dep></entry>
+			<entry><ind>  0</ind><dep>-90</dep></entry>
+			<entry><ind>150</ind><dep>  0</dep></entry>
+			<entry><ind>300</ind><dep> 90</dep></entry>
 		</interpolation>
     	<center>
     		<x-m>0</x-m>
-    		<y-m>-0.05558</y-m>
-    		<z-m>-0.00178</z-m>
+    		<y-m>-0.03862</y-m>
+    		<z-m>0.01068</z-m>
     	</center>
     	<axis>
     		<x>-1</x>
@@ -98,13 +99,14 @@
     	<object-name>psi2r</object-name>
     	<property>/engines/engine[1]/oil-psi-actual</property>
 		<interpolation>
-			<entry><ind>  0</ind><dep>-105</dep></entry>
-			<entry><ind>300</ind><dep>  38</dep></entry>
+			<entry><ind>  0</ind><dep>-90</dep></entry>
+			<entry><ind>150</ind><dep>  0</dep></entry>
+			<entry><ind>300</ind><dep> 90</dep></entry>
 		</interpolation>
     	<center>
     		<x-m>0</x-m>
-    		<y-m>0.00083</y-m>
-    		<z-m>-0.00178</z-m>
+    		<y-m>0.03863</y-m>
+    		<z-m>0.01068</z-m>
     	</center>
     	<axis>
     		<x>-1</x>
@@ -144,8 +146,8 @@
 		<name>txt.qty1</name>
 		<offsets>
 			<x-m>0.0004</x-m>
-    		<y-m>-0.05158</y-m>
-			<z-m>0.023</z-m>
+    		<y-m>-0.03862</y-m>
+    		<z-m>0.033</z-m>
 		</offsets>
 		<alignment>center-center</alignment>
 		<axis-alignment>yz-plane</axis-alignment>
@@ -168,8 +170,8 @@
 		<name>txt.qty2</name>
 		<offsets>
 			<x-m>0.0004</x-m>
-    		<y-m>0.00483</y-m>
-			<z-m>0.023</z-m>
+    		<y-m>0.03863</y-m>
+    		<z-m>0.033</z-m>
 		</offsets>
 		<alignment>center-center</alignment>
 		<axis-alignment>yz-plane</axis-alignment>
@@ -193,8 +195,8 @@
 		<name>txt.psi1</name>
 		<offsets>
 			<x-m>0.0004</x-m>
-    		<y-m>-0.05158</y-m>
-			<z-m>-0.005</z-m>
+    		<y-m>-0.03862</y-m>
+    		<z-m>0.01208</z-m>
 		</offsets>
 		<alignment>center-center</alignment>
 		<axis-alignment>yz-plane</axis-alignment>
@@ -217,8 +219,8 @@
 		<name>txt.psi2</name>
 		<offsets>
 			<x-m>0.0004</x-m>
-    		<y-m>0.00483</y-m>
-			<z-m>-0.005</z-m>
+    		<y-m>0.03863</y-m>
+    		<z-m>0.01208</z-m>
 		</offsets>
 		<alignment>center-center</alignment>
 		<axis-alignment>yz-plane</axis-alignment>
@@ -241,8 +243,8 @@
 		<name>txt.psi1r</name>
 		<offsets>
 			<x-m>0.0004</x-m>
-    		<y-m>-0.05158</y-m>
-			<z-m>-0.005</z-m>
+    		<y-m>-0.03862</y-m>
+    		<z-m>0.01208</z-m>
 		</offsets>
 		<alignment>center-center</alignment>
 		<axis-alignment>yz-plane</axis-alignment>
@@ -265,8 +267,8 @@
 		<name>txt.psi2r</name>
 		<offsets>
 			<x-m>0.0004</x-m>
-    		<y-m>0.00483</y-m>
-			<z-m>-0.005</z-m>
+    		<y-m>0.03863</y-m>
+    		<z-m>0.01208</z-m>
 		</offsets>
 		<alignment>center-center</alignment>
 		<axis-alignment>yz-plane</axis-alignment>
