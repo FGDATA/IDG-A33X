@@ -5234,19 +5234,5 @@
 			</binding>
 		</action>
 	</animation>
-	
-	<animation>
-		<type>pick</type>
-		<object-name>cylinder36.001</object-name>
-		<action>
-			<button>0</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<command>property-assign</command>
-				<property>/systems/acconfig/activated</property>
-				<value>WTFOCTAL33X</value>
-			</binding>
-		</action>
-	</animation>
 
 </PropertyList>
