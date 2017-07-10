@@ -58,8 +58,8 @@
             <expression>
                 <table>
                     <property>/position/altitude-ft</property> 
-                    <entry><ind>    0</ind><dep>0.516</dep></entry>
-                    <entry><ind>42000</ind><dep>0.993</dep></entry>
+                    <entry><ind>    0</ind><dep>0.449</dep></entry>
+                    <entry><ind>42000</ind><dep>0.943</dep></entry>
                 </table>
             </expression>
         </input>
@@ -75,9 +75,9 @@
             <expression>
                 <table>
                     <property>/position/altitude-ft</property> 
-                    <entry><ind>    0</ind><dep>0.988</dep></entry>
-                    <entry><ind>13000</ind><dep>0.972</dep></entry>
-                    <entry><ind>42000</ind><dep>0.955</dep></entry>
+                    <entry><ind>    0</ind><dep>0.991</dep></entry>
+                    <entry><ind>13000</ind><dep>0.973</dep></entry>
+                    <entry><ind>42000</ind><dep>0.956</dep></entry>
                 </table>
             </expression>
         </input>

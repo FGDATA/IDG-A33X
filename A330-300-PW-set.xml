@@ -96,7 +96,7 @@
 		
 		<systems n="0">
             <autopilot n="0">
-                <path>Aircraft/A330Family/Systems/fadec-pwrr.xml</path>
+                <path>Aircraft/A330Family/Systems/fadec-pw.xml</path>
             </autopilot>
 		</systems>
 		
