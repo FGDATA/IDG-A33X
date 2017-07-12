@@ -115,8 +115,8 @@
                     <entry><ind> 40</ind><dep>-400</dep></entry>
                     <entry><ind> 30</ind><dep>-300</dep></entry>
                     <entry><ind> 20</ind><dep>-170</dep></entry>
-                    <entry><ind> 10</ind><dep> -80</dep></entry>
-                    <entry><ind>  5</ind><dep> -50</dep></entry>
+                    <entry><ind> 10</ind><dep>-110</dep></entry>
+                    <entry><ind>  5</ind><dep> -60</dep></entry>
                 </table>
             </expression>
         </input>
