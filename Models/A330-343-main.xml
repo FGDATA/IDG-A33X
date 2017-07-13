@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
+<!--
+##############################################################
+# Copyright (c) A3XX Development Team - All Rights Reserved. #
+##############################################################
+-->
+
 <PropertyList include="a333-animations.xml">
 	<name>A330-343</name>
 	<path>a330-300-main.ac</path>

@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 
+<!--
+##############################################################
+# Copyright (c) A3XX Development Team - All Rights Reserved. #
+##############################################################
+-->
 
 <turbine_engine name="pw4168">
   <milthrust>     68600 </milthrust>

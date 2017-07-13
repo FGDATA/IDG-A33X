@@ -1,6 +1,10 @@
 # A330 Main Libraries
 # Joshua Davidson (it0uchpods)
 
+##############################################################
+# Copyright (c) A3XX Development Team - All Rights Reserved. #
+##############################################################
+
 # :)
 print("          ____ ____   ___  ______              _ _       ");
 print("    /\   |___ \___ \ / _ \|  ____|            (_) |      ");
@@ -10,11 +14,10 @@ print(" / ____ \ ___) |__) | |_| | | | (_| | | | | | | | | |_| |");
 print("/_/    \_\____/____/ \___/|_|  \__,_|_| |_| |_|_|_|\__, |");
 print("                                                    __/ |");
 print("                                                   |___/ ");
-print("-----------------------------------------------------------------------");
-print("(c) 2017 Joshua Davidson, and Jonathan Redpath");
-print("This Aircraft is it0uchpods Confidential!");
-print("Please do not leak our hard work!");
-print("-----------------------------------------------------------------------");
+print("-----------------------------------------------------------------------------");
+print("(c) 2017 A3XX Development Team - All Rights Reserved.");
+print("Any questions, please contact Joshua Davidson at joshuadavidson2000@gmail.com");
+print("-----------------------------------------------------------------------------");
 print(" ");
 
 # Dimmers
