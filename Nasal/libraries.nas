@@ -1,9 +1,9 @@
 # A330 Main Libraries
 # Joshua Davidson (it0uchpods)
 
-##############################################################
-# Copyright (c) A3XX Development Team - All Rights Reserved. #
-##############################################################
+#######################################
+# Copyright (c) A3XX Development Team #
+#######################################
 
 # :)
 print("          ____ ____   ___  ______              _ _       ");
@@ -15,8 +15,7 @@ print("/_/    \_\____/____/ \___/|_|  \__,_|_| |_| |_|_|_|\__, |");
 print("                                                    __/ |");
 print("                                                   |___/ ");
 print("-----------------------------------------------------------------------------");
-print("(c) 2017 A3XX Development Team - All Rights Reserved.");
-print("Any questions, please contact Joshua Davidson at joshuadavidson2000@gmail.com");
+print("Copyright (c) 2017 A3XX Development Team");
 print("-----------------------------------------------------------------------------");
 print(" ");
 

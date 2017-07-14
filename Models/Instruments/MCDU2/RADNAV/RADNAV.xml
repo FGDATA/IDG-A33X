@@ -1,15 +1,9 @@
 <?xml version="1.0"?>
 
 <!--
-##############################################################
-# Copyright (c) A3XX Development Team - All Rights Reserved. #
-##############################################################
--->
-
-<!--
-##################################################################
-# A3XX mCDU by Joshua Davidson (it0uchpods) and Jonathan Redpath #
-##################################################################
+#######################################
+# Copyright (c) A3XX Development Team #
+#######################################
 -->
 
 <PropertyList>
@@ -724,7 +718,7 @@
 		<name>adf1freq3</name>
 		<offsets>
 			<x-m>-0.001</x-m>
-			<y-m>-0.045</y-m>
+			<y-m>-0.042</y-m>
 			<z-m>0.0285</z-m>
 		</offsets>
 		<alignment>left-center</alignment>
@@ -810,7 +804,7 @@
 		<name>adf2freq3</name>
 		<offsets>
 			<x-m>-0.001</x-m>
-			<y-m>0.044</y-m>
+			<y-m>0.041</y-m>
 			<z-m>0.0285</z-m>
 		</offsets>
 		<alignment>right-center</alignment>
