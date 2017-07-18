@@ -13,7 +13,7 @@
 	<model>
 		<condition>
 			<equals>
-				<property>/instrumentation/efis/ecam/display-mode</property>
+				<property>instrumentation/efis/ecam/display-mode</property>
 				<value>ENG</value>
 			</equals>
 		</condition>
@@ -23,7 +23,7 @@
 	<model>
 		<condition>
 			<equals>
-				<property>/instrumentation/efis/ecam/display-mode</property>
+				<property>instrumentation/efis/ecam/display-mode</property>
 				<value>APU</value>
 			</equals>
 		</condition>
