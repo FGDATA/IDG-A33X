@@ -40,11 +40,13 @@ var failReset = func {
 	setprop("/systems/failures/spoiler-l3", 0);
 	setprop("/systems/failures/spoiler-l4", 0);
 	setprop("/systems/failures/spoiler-l5", 0);
+	setprop("/systems/failures/spoiler-l6", 0);
 	setprop("/systems/failures/spoiler-r1", 0);
 	setprop("/systems/failures/spoiler-r2", 0);
 	setprop("/systems/failures/spoiler-r3", 0);
 	setprop("/systems/failures/spoiler-r4", 0);
 	setprop("/systems/failures/spoiler-r5", 0);
+	setprop("/systems/failures/spoiler-r6", 0);
 	setprop("/systems/failures/elec-ac-ess", 0);
 	setprop("/systems/failures/elec-batt1", 0);
 	setprop("/systems/failures/elec-batt2", 0);

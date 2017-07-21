@@ -94,6 +94,10 @@
             </signal>
             <signal>
                 <type>float</type>
+                <property>controls/flight/spoiler-l6</property>
+            </signal>
+            <signal>
+                <type>float</type>
                 <property>controls/flight/spoiler-r1</property>
             </signal>
             <signal>
@@ -111,6 +115,10 @@
             <signal>
                 <type>float</type>
                 <property>controls/flight/spoiler-r5</property>
+            </signal>
+            <signal>
+                <type>float</type>
+                <property>controls/flight/spoiler-r6</property>
             </signal>
             <signal>
                 <type>float</type>

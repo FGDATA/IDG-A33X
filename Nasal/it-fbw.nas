@@ -73,6 +73,7 @@ var update_loop = func {
 		setprop("/systems/fctl/elac2", 0);
 	}
 	
+	# FIXME: The spoiler config may or may not be correct for the A330. -JD
 	if (sec1_sw and !sec1_fail and ac_ess >= 110) {
 		setprop("/systems/fctl/sec1", 1);
 		setprop("/systems/failures/spoiler-l3", 0);
@@ -91,10 +92,14 @@ var update_loop = func {
 		setprop("/systems/fctl/sec2", 1);
 		setprop("/systems/failures/spoiler-l5", 0);
 		setprop("/systems/failures/spoiler-r5", 0);
+		setprop("/systems/failures/spoiler-l6", 0);
+		setprop("/systems/failures/spoiler-r6", 0);
 	} else {
 		setprop("/systems/fctl/sec2", 0);
 		setprop("/systems/failures/spoiler-l5", 1);
 		setprop("/systems/failures/spoiler-r5", 1);
+		setprop("/systems/failures/spoiler-l6", 0);
+		setprop("/systems/failures/spoiler-r6", 0);
 	}
 	
 	if (sec3_sw and !sec3_fail and ac_ess >= 110) {

@@ -101,7 +101,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>spoiler0.1</object-name>
-		<property>controls/flight/spoiler-l5</property>
+		<property>controls/flight/spoiler-l6</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
 			<entry><ind>0.5</ind><dep>-15</dep></entry>
@@ -120,7 +120,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>spoiler0.2</object-name>
-		<property>controls/flight/spoiler-l4</property>
+		<property>controls/flight/spoiler-l5</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
 			<entry><ind>0.5</ind><dep>-15</dep></entry>
@@ -139,7 +139,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>spoiler0.3</object-name>
-		<property>controls/flight/spoiler-l3</property>
+		<property>controls/flight/spoiler-l4</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
 			<entry><ind>0.5</ind><dep>-15</dep></entry>
@@ -158,7 +158,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>spoiler0.4</object-name>
-		<property>controls/flight/spoiler-l2</property>
+		<property>controls/flight/spoiler-l3</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
 			<entry><ind>0.5</ind><dep>-15</dep></entry>
@@ -177,7 +177,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>spoiler0.5</object-name>
-		<property>controls/flight/spoiler-l1</property>
+		<property>controls/flight/spoiler-l2</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
 			<entry><ind>0.5</ind><dep>-15</dep></entry>
@@ -215,7 +215,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>spoiler1.1</object-name>
-		<property>controls/flight/spoiler-r5</property>
+		<property>controls/flight/spoiler-r6</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
 			<entry><ind>0.5</ind><dep>15</dep></entry>
@@ -234,7 +234,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>spoiler1.2</object-name>
-		<property>controls/flight/spoiler-r4</property>
+		<property>controls/flight/spoiler-r5</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
 			<entry><ind>0.5</ind><dep>15</dep></entry>
@@ -253,7 +253,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>spoiler1.3</object-name>
-		<property>controls/flight/spoiler-r3</property>
+		<property>controls/flight/spoiler-r4</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
 			<entry><ind>0.5</ind><dep>15</dep></entry>
@@ -272,7 +272,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>spoiler1.4</object-name>
-		<property>controls/flight/spoiler-r2</property>
+		<property>controls/flight/spoiler-r3</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
 			<entry><ind>0.5</ind><dep>15</dep></entry>
@@ -291,7 +291,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>spoiler1.5</object-name>
-		<property>controls/flight/spoiler-r1</property>
+		<property>controls/flight/spoiler-r2</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
 			<entry><ind>0.5</ind><dep>15</dep></entry>

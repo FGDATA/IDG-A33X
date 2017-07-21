@@ -455,7 +455,7 @@
 					<table>
 						<property>/instrumentation/airspeed-indicator/indicated-mach</property>
 						<entry><ind>0.05</ind><dep>0.85</dep></entry>
-						<entry><ind>0.90</ind><dep>0.25</dep></entry>
+						<entry><ind>0.90</ind><dep>0.14</dep></entry>
 					</table>
 				</product>
 			</expression>
