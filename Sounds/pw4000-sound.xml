@@ -4,7 +4,7 @@
 #######################################
 -->
 
-<PropertyList include="A320-common-sound.xml">
+<PropertyList include="A330-common-sound.xml">
   <fx>
 	<engine>
 		<name>a320_a1s</name>
