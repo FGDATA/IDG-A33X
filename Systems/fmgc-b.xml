@@ -144,8 +144,8 @@
 					</table>
 					<table>
 						<property>/FMGC/internal/cost-index</property>
-						<entry><ind>  0</ind><dep>1.0</dep></entry>
-						<entry><ind>120</ind><dep>1.1</dep></entry>
+						<entry><ind>  0</ind><dep>1.00</dep></entry>
+						<entry><ind>120</ind><dep>1.14</dep></entry>
 					</table>
 				</product>
 			</expression>
@@ -169,13 +169,14 @@
 					<table>
 						<property>/FMGC/internal/cost-index</property>
 						<entry><ind>  0</ind><dep>0.975</dep></entry>
-						<entry><ind>120</ind><dep>1.035</dep></entry>
+						<entry><ind>120</ind><dep>1.055</dep></entry>
 					</table>
 				</product>
 			</expression>
 		</input>
 		<output>/FMGC/internal/mng-alt-mach</output>
 	</filter>
+
 	
 	<filter>
 		<name>FMGC Target IAS PFD</name>
