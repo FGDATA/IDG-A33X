@@ -89,6 +89,7 @@ var init_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/init/dialog", "Aircraft/
 var help_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/help/dialog", "Aircraft/A330Family/AircraftConfig/help.xml");
 var fbw_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/fbw/dialog", "Aircraft/A330Family/AircraftConfig/fbw.xml");
 var fail_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/fail/dialog", "Aircraft/A330Family/AircraftConfig/fail.xml");
+var about_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/about/dialog", "Aircraft/A330Family/AircraftConfig/about.xml");
 spinning.start();
 init_dlg.open();
 
