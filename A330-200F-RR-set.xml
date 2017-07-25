@@ -14,7 +14,7 @@
 			<path>Aircraft/A330Family/Sounds/rrtrent-sound.xml</path>
 		</sound>
 	
-		<description>Airbus A330-243F (RR Trent 772C-60)</description>
+		<description>Airbus A330-243F (RR Trent 772B-60)</description>
 		<flight-model>jsb</flight-model>
 		<aero>A330-200-RR</aero>
 		<model>
