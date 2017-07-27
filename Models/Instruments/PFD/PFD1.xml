@@ -1220,7 +1220,7 @@
         	<and>
                 <less-than>
                     <property>position/gear-agl-ft</property>
-                    <value>3000</value>
+                    <value>2500</value>
                 </less-than>
                 <greater-than>
                     <property>position/gear-agl-ft</property>
@@ -1248,7 +1248,7 @@
         <condition>
             <less-than>
                 <property>position/gear-agl-ft</property>
-                <value>3000</value>
+                <value>2500</value>
             </less-than>
         </condition>
     </animation>
