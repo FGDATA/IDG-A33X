@@ -139,6 +139,9 @@
 			<autopilot n="8">
 				<path>Aircraft/A330Family/Systems/fl2070_sound.xml</path>
 			</autopilot>
+            <autopilot n="9">
+				<path>Aircraft/A330Family/Systems/lower-ecam.xml</path>
+            </autopilot>
 			<property-rule n="100">
 				<path>Aircraft/A330Family/Systems/pfd.xml</path>
 			</property-rule>
@@ -271,7 +274,7 @@
 						</binding>
 					</item>
 					<item>
-						<label>Captain's ND</label>
+						<label>Show Captain's ND</label>
 						<binding>
 							<command>nasal</command>
 							<script>
@@ -280,11 +283,29 @@
 						</binding>
 					</item>
 					<item>
-						<label>First Officer's ND</label>
+						<label>Show First Officer's ND</label>
 						<binding>
 							<command>nasal</command>
 							<script>
 							canvas_nd.showNd('right');
+							</script>
+						</binding>
+					</item>
+					<!--item>
+						<label>First Upper ECAM</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_ecam.showUpperECAM();
+							</script>
+						</binding>
+					</item-->
+					<item>
+						<label>Show Lower ECAM</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_ecam.showLowerECAM();
 							</script>
 						</binding>
 					</item>
@@ -703,6 +724,7 @@
 	</systems>
 	
 	<options n="0">
+		<EIS2 type="bool">1</EIS2> <!-- For Canvas ECAMs, force EIS2 Style, as EIS1 style is almost exactly the same in A330. Will be removed eventually. -->
 		<pfd n="0">
 			<sidestick-pos userarchive="y" type="bool">0</sidestick-pos>
 		</pfd>
@@ -1088,7 +1110,10 @@
 		<canvas_nd>
 			<file>Aircraft/A330Family/Models/Instruments/ND/canvas/ND.nas</file>
 		</canvas_nd>
-		<icing> <!-- leave icing in this -->
+		<canvas_ecam>
+			<file>Aircraft/A330Family/Models/Instruments/Lower-ECAM/Lower-ECAM.nas</file>
+		</canvas_ecam>
+		<icing>
 			<file>Aircraft/A330Family/Nasal/icing.nas</file>
 		</icing>
 	</nasal>
