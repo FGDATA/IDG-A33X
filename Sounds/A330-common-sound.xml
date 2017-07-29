@@ -442,7 +442,7 @@
 	<gear>
 		<name>gearding</name>
 		<mode>once</mode>
-		<path>gear-ding.wav</path>
+		<path>nosmoko.wav</path>
 		<condition>
 			<and>
 				<equals>
