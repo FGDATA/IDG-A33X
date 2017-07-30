@@ -377,23 +377,6 @@
 			<z-m>-0.21132</z-m>
 			<pitch-deg>-15</pitch-deg>
 		</offsets>
-		<condition>
-			<and>
-				<property>sim/current-view/internal</property>
-				<greater-than-equals>
-					<property>systems/electrical/bus/ac1</property>
-					<value>110</value>
-				</greater-than-equals>
-				<greater-than-equals>
-					<property>systems/electrical/bus/ac2</property>
-					<value>110</value>
-				</greater-than-equals>
-				<not-equals>
-					<property>controls/electrical/switches/emer-gen</property>
-					<value>1</value>
-				</not-equals>
-			</and>
-		</condition>
 	</model>
 	
 	<!-- Flight Control Unit Animations -->
@@ -3237,10 +3220,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				canvas_ecam.setLowerECAMPage("sts");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>sts</value>
 			</binding>
 		</action>
 	</animation>
@@ -3269,10 +3251,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				canvas_ecam.setLowerECAMPage("apu");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>apu</value>
 			</binding>
 		</action>
 	</animation>
@@ -3284,10 +3265,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				canvas_ecam.setLowerECAMPage("bleed");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>bleed</value>
 			</binding>
 		</action>
 	</animation>
@@ -3299,10 +3279,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				canvas_ecam.setLowerECAMPage("press");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>press</value>
 			</binding>
 		</action>
 	</animation>
@@ -3314,10 +3293,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				canvas_ecam.setLowerECAMPage("elec");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>elec</value>
 			</binding>
 		</action>
 	</animation>
@@ -3329,10 +3307,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				canvas_ecam.setLowerECAMPage("hyd");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>hyd</value>
 			</binding>
 		</action>
 	</animation>
@@ -3344,10 +3321,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				canvas_ecam.setLowerECAMPage("fuel");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>fuel</value>
 			</binding>
 		</action>
 	</animation>
@@ -3359,10 +3335,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				canvas_ecam.setLowerECAMPage("eng");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>eng</value>
 			</binding>
 		</action>
 	</animation>
@@ -3374,10 +3349,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				canvas_ecam.setLowerECAMPage("cond");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>cond</value>
 			</binding>
 		</action>
 	</animation>
@@ -3389,10 +3363,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				canvas_ecam.setLowerECAMPage("door");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>door</value>
 			</binding>
 		</action>
 	</animation>
@@ -3404,10 +3377,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				canvas_ecam.setLowerECAMPage("wheel");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>wheel</value>
 			</binding>
 		</action>
 	</animation>
@@ -3419,10 +3391,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				canvas_ecam.setLowerECAMPage("fctl");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>fctl</value>
 			</binding>
 		</action>
 	</animation>

@@ -292,7 +292,7 @@
 						</binding>
 					</item>
 					<!--item>
-						<label>First Upper ECAM</label>
+						<label>Show Upper ECAM</label>
 						<binding>
 							<command>nasal</command>
 							<script>
@@ -767,12 +767,6 @@
 			<serviceable type="bool">true</serviceable>
 			<volume type="double">0</volume>
 		</dme>
-	
-		<efis n="0">
-			<ecam>
-				<display-mode type="string">ENG</display-mode>
-			</ecam>
-		</efis>
 		
 		<nav n="0">
 			<frequencies>
