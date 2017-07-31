@@ -10,10 +10,6 @@
 
 	<path>resPW/eicasPW.ac</path>
 	
-	<model>
-		<path>Aircraft/A330Family/Models/Instruments/Upper-ECAM-MSG/ECAM-MSG.xml</path>
-	</model>
-	
 	<animation>
 		<type>select</type>
 		<object-name>XX.epr1</object-name>
