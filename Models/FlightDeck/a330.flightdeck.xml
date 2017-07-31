@@ -377,23 +377,6 @@
 			<z-m>-0.21132</z-m>
 			<pitch-deg>-15</pitch-deg>
 		</offsets>
-		<condition>
-			<and>
-				<property>sim/current-view/internal</property>
-				<greater-than-equals>
-					<property>systems/electrical/bus/ac1</property>
-					<value>110</value>
-				</greater-than-equals>
-				<greater-than-equals>
-					<property>systems/electrical/bus/ac2</property>
-					<value>110</value>
-				</greater-than-equals>
-				<not-equals>
-					<property>controls/electrical/switches/emer-gen</property>
-					<value>1</value>
-				</not-equals>
-			</and>
-		</condition>
 	</model>
 	
 	<!-- Flight Control Unit Animations -->
@@ -3237,15 +3220,14 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				setprop("instrumentation/efis/ecam/display-mode", "STATUS");
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>sts</value>
 			</binding>
 		</action>
 	</animation>
     
-    <animation>
+    <!--animation>
 		<type>pick</type>
 		<object-name>to_config</object-name>
 		<action>
@@ -3260,7 +3242,7 @@
                 <property>warnings/to-config</property>
 			</binding>
 		</action>
-	</animation>
+	</animation-->
 	
 	<animation>
 		<type>pick</type>
@@ -3269,12 +3251,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				
-					setprop("instrumentation/efis/ecam/display-mode", "APU");
-					
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>apu</value>
 			</binding>
 		</action>
 	</animation>
@@ -3286,12 +3265,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				
-					setprop("instrumentation/efis/ecam/display-mode", "BLEED");
-					
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>bleed</value>
 			</binding>
 		</action>
 	</animation>
@@ -3303,12 +3279,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				
-					setprop("instrumentation/efis/ecam/display-mode", "PRESS");
-					
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>press</value>
 			</binding>
 		</action>
 	</animation>
@@ -3320,12 +3293,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				
-					setprop("instrumentation/efis/ecam/display-mode", "ELEC");
-					
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>elec</value>
 			</binding>
 		</action>
 	</animation>
@@ -3337,12 +3307,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				
-					setprop("instrumentation/efis/ecam/display-mode", "HYD");
-					
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>hyd</value>
 			</binding>
 		</action>
 	</animation>
@@ -3354,12 +3321,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				
-					setprop("instrumentation/efis/ecam/display-mode", "FUEL");
-					
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>fuel</value>
 			</binding>
 		</action>
 	</animation>
@@ -3371,12 +3335,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				
-					setprop("instrumentation/efis/ecam/display-mode", "ENG");
-					
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>eng</value>
 			</binding>
 		</action>
 	</animation>
@@ -3388,12 +3349,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				
-					setprop("instrumentation/efis/ecam/display-mode", "COND");
-					
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>cond</value>
 			</binding>
 		</action>
 	</animation>
@@ -3405,12 +3363,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				
-					setprop("instrumentation/efis/ecam/display-mode", "DOOR");
-					
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>door</value>
 			</binding>
 		</action>
 	</animation>
@@ -3422,12 +3377,9 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				
-					setprop("instrumentation/efis/ecam/display-mode", "WHEEL");
-					
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>wheel</value>
 			</binding>
 		</action>
 	</animation>
@@ -3439,203 +3391,11 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script>
-				
-					setprop("instrumentation/efis/ecam/display-mode", "FCTL");
-					
-				</script>
+				<command>property-assign</command>
+				<property>ECAM/Lower/page</property>
+				<value>fctl</value>
 			</binding>
 		</action>
-	</animation>
-	
-	<!-- ECAM Buttons Textranslate -->
-	
-	<animation>
-		<type>textranslate</type>
-		<object-name>apu</object-name>
-		<condition>
-			<equals>
-				<property>instrumentation/efis/ecam/display-mode</property>
-				<value>APU</value>
-			</equals>
-		</condition>
-		<factor>0.086</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	
-	<animation>
-		<type>textranslate</type>
-		<object-name>bleed</object-name>
-		<condition>
-			<equals>
-				<property>instrumentation/efis/ecam/display-mode</property>
-				<value>BLEED</value>
-			</equals>
-		</condition>
-		<factor>0.086</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	
-	<animation>
-		<type>textranslate</type>
-		<object-name>press</object-name>
-		<condition>
-			<equals>
-				<property>instrumentation/efis/ecam/display-mode</property>
-				<value>PRESS</value>
-			</equals>
-		</condition>
-		<factor>0.086</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	
-	<animation>
-		<type>textranslate</type>
-		<object-name>elec</object-name>
-		<condition>
-			<equals>
-				<property>instrumentation/efis/ecam/display-mode</property>
-				<value>ELEC</value>
-			</equals>
-		</condition>
-		<factor>0.086</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	
-	<animation>
-		<type>textranslate</type>
-		<object-name>hyd</object-name>
-		<condition>
-			<equals>
-				<property>instrumentation/efis/ecam/display-mode</property>
-				<value>HYD</value>
-			</equals>
-		</condition>
-		<factor>0.086</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	
-	<animation>
-		<type>textranslate</type>
-		<object-name>fuel</object-name>
-		<condition>
-			<equals>
-				<property>instrumentation/efis/ecam/display-mode</property>
-				<value>FUEL</value>
-			</equals>
-		</condition>
-		<factor>0.086</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	
-	<animation>
-		<type>textranslate</type>
-		<object-name>eng</object-name>
-		<condition>
-			<equals>
-				<property>instrumentation/efis/ecam/display-mode</property>
-				<value>ENG</value>
-			</equals>
-		</condition>
-		<factor>0.086</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	
-	<animation>
-		<type>textranslate</type>
-		<object-name>cond</object-name>
-		<condition>
-			<equals>
-				<property>instrumentation/efis/ecam/display-mode</property>
-				<value>COND</value>
-			</equals>
-		</condition>
-		<factor>0.086</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	
-	<animation>
-		<type>textranslate</type>
-		<object-name>door</object-name>
-		<condition>
-			<equals>
-				<property>instrumentation/efis/ecam/display-mode</property>
-				<value>DOOR</value>
-			</equals>
-		</condition>
-		<factor>0.086</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	
-	<animation>
-		<type>textranslate</type>
-		<object-name>wheel</object-name>
-		<condition>
-			<equals>
-				<property>instrumentation/efis/ecam/display-mode</property>
-				<value>WHEEL</value>
-			</equals>
-		</condition>
-		<factor>0.086</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	
-	<animation>
-		<type>textranslate</type>
-		<object-name>fctl</object-name>
-		<condition>
-			<equals>
-				<property>instrumentation/efis/ecam/display-mode</property>
-				<value>FCTL</value>
-			</equals>
-		</condition>
-		<factor>0.086</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
 	</animation>
 	
 	<!-- Chrono buttons -->
