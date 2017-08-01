@@ -140,6 +140,9 @@
 				<path>Aircraft/A330Family/Systems/fl2070_sound.xml</path>
 			</autopilot>
             <autopilot n="9">
+				<path>Aircraft/A330Family/Systems/upper-ecam.xml</path>
+            </autopilot>
+            <autopilot n="10">
 				<path>Aircraft/A330Family/Systems/lower-ecam.xml</path>
             </autopilot>
 			<property-rule n="100">
@@ -291,7 +294,7 @@
 							</script>
 						</binding>
 					</item>
-					<!--item>
+					<item>
 						<label>Show Upper ECAM</label>
 						<binding>
 							<command>nasal</command>
@@ -299,7 +302,7 @@
 							canvas_ecam.showUpperECAM();
 							</script>
 						</binding>
-					</item-->
+					</item>
 					<item>
 						<label>Show Lower ECAM</label>
 						<binding>
@@ -1105,6 +1108,7 @@
 			<file>Aircraft/A330Family/Models/Instruments/ND/canvas/ND.nas</file>
 		</canvas_nd>
 		<canvas_ecam>
+			<file>Aircraft/A330Family/Models/Instruments/Upper-ECAM/Upper-ECAM.nas</file>
 			<file>Aircraft/A330Family/Models/Instruments/Lower-ECAM/Lower-ECAM.nas</file>
 		</canvas_ecam>
 		<icing>

@@ -3,7 +3,7 @@ MATERIAL "buttonlights" rgb 1 1 1  amb 1 1 1  emis 1 1 1  spec 0.33 0.33 0.33  s
 OBJECT world
 kids 1
 OBJECT poly
-name "ND.screen"
+name "uecam.screen"
 loc 0.00180348 -0.00140045 0.000124912
 texture "screen.png"
 crease 30.000000
