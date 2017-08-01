@@ -424,7 +424,7 @@ var canvas_upperECAM_ge = {
 			me["N1Lim-mode"].hide();
 			me["N1Lim"].hide();
 			me["N1Lim-decpnt"].hide();
-			me["N1Lim-decimal"].hide();'
+			me["N1Lim-decimal"].hide();
 			me["N1Lim-percent"].hide();
 			me["N1Lim-XX"].show();
 			me["N1Lim-XX2"].show();
