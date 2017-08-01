@@ -891,10 +891,8 @@
             <expression>
                 <table>
                     <property>/engines/engine[0]/n1</property> 
-                    <entry><ind>0</ind><dep>0</dep></entry>
-                    <entry><ind>6</ind><dep>0</dep></entry>
-                    <entry><ind>21.2</ind><dep>434</dep></entry>
-                    <entry><ind>110</ind><dep>620</dep></entry>
+                    <entry><ind> 21.2</ind><dep>434</dep></entry>
+                    <entry><ind>110.0</ind><dep>620</dep></entry>
                 </table>
             </expression>
         </input>
@@ -924,52 +922,12 @@
             <expression>
                 <table>
                     <property>/engines/engine[1]/n1</property> 
-                    <entry><ind>0</ind><dep>0</dep></entry>
-                    <entry><ind>6</ind><dep>0</dep></entry>
-                    <entry><ind>21.2</ind><dep>434</dep></entry>
-                    <entry><ind>110</ind><dep>620</dep></entry>
+                    <entry><ind> 21.2</ind><dep>434</dep></entry>
+                    <entry><ind>110.0</ind><dep>620</dep></entry>
                 </table>
             </expression>
         </input>
 		<output>/engines/engine[1]/egt-actual</output>
-    </filter>
-	
-    <filter>
-        <name>N3 L</name>
-        <type>gain</type>
-        <gain>1</gain>
-        <update-interval-secs type="double">0.05</update-interval-secs>
-        <input> 
-            <expression>
-                <table>
-                    <property>/engines/engine[0]/n2</property>
-                    <entry><ind>0</ind><dep>0</dep></entry>
-                    <entry><ind>10</ind><dep>15</dep></entry>
-                    <entry><ind>60.7</ind><dep>72.8</dep></entry>
-                    <entry><ind>102.1</ind><dep>105.2</dep></entry>
-                </table>
-            </expression>
-        </input>
-		<output>/engines/engine[0]/n3</output>
-    </filter>
-	
-    <filter>
-        <name>N3 R</name>
-        <type>gain</type>
-        <gain>1</gain>
-        <update-interval-secs type="double">0.05</update-interval-secs>
-        <input> 
-            <expression>
-                <table>
-                    <property>/engines/engine[1]/n2</property>
-                    <entry><ind>0</ind><dep>0</dep></entry>
-                    <entry><ind>10</ind><dep>15</dep></entry>
-                    <entry><ind>60.7</ind><dep>72.8</dep></entry>
-                    <entry><ind>102.1</ind><dep>105.2</dep></entry>
-                </table>
-            </expression>
-        </input>
-		<output>/engines/engine[1]/n3</output>
     </filter>
 
 </PropertyList>
