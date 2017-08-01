@@ -6,43 +6,43 @@
 
 <PropertyList>
   <fx>
-	<!--apu>
-		<name>apu_in</name>
-		<mode>looped</mode>
-		<path>Sounds/misc/a320_apu.wav</path>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-		<volume>
-			<property>engines/apu/rpm</property>
-			<factor>0.01</factor>
-			<min>0</min>
-		</volume>
-		<pitch>
-			<property>engines/apu/rpm</property>
-			<factor>0.01</factor>
-			<offset>0</offset>
-		</pitch>
-	</apu>
-	
 	<apu>
-		<name>apu_out</name>
-		<mode>looped</mode>
-		<path>Sounds/misc/a320_apu_x.wav</path>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<volume>
-			<property>engines/apu/rpm</property>
-			<factor>0.01</factor>
-			<min>0</min>
-		</volume>
-		<pitch>
-			<property>engines/apu/rpm</property>
-			<factor>0.01</factor>
-			<offset>0</offset>
-		</pitch>
-	</apu-->
+			<name>apu_in</name>
+			<mode>looped</mode>
+			<path>apu/apu_inside.wav</path>
+			<condition>
+				<property>sim/current-view/internal</property>
+			</condition>
+			<volume>
+				<property>/systems/apu/rpm</property>
+				<factor>0.01</factor>
+				<min>0</min>
+			</volume>
+			<pitch>
+				<property>/systems/apu/rpm</property>
+				<factor>0.01</factor>
+				<offset>0</offset>
+			</pitch>
+		</apu>
+	
+		<apu>
+			<name>apu_out</name>
+			<mode>looped</mode>
+			<path>apu/turbine.wav</path>
+			<condition>
+				<not><property>sim/current-view/internal</property></not>
+			</condition>
+			<volume>
+				<property>/systems/apu/rpm</property>
+				<factor>0.01</factor>
+				<min>0</min>
+			</volume>
+			<pitch>
+				<property>/systems/apu/rpm</property>
+				<factor>0.01</factor>
+				<offset>0</offset>
+			</pitch>
+		</apu>
 	
 		<announcement>
 			<name>PurserSnacks</name>
@@ -115,6 +115,76 @@
 					</greater-than>
 					<equals>
 						<property>/FMGC/internal/v1-set</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>/FMGC/status/to-state</property>
+						<value>1</value>
+					</equals>
+				</and>
+			</condition>
+			<volume>
+				<factor>8</factor>
+			</volume>
+			<reference-dist>20.0</reference-dist>
+			<max-dist>100.0</max-dist>
+		</callout>
+		
+		<callout>
+			<name>VR</name>
+			<mode>once</mode>
+			<path>vr.wav</path>
+			<condition>
+				<and>
+					<equals>
+						<property>/gear/gear[1]/wow</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>/gear/gear[2]/wow</property>
+						<value>1</value>
+					</equals>
+					<greater-than>
+						<property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+						<property>/FMGC/internal/vr</property>
+					</greater-than>
+					<equals>
+						<property>/FMGC/internal/vr-set</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>/FMGC/status/to-state</property>
+						<value>1</value>
+					</equals>
+				</and>
+			</condition>
+			<volume>
+				<factor>8</factor>
+			</volume>
+			<reference-dist>20.0</reference-dist>
+			<max-dist>100.0</max-dist>
+		</callout>
+		
+		<callout>
+			<name>V2</name>
+			<mode>once</mode>
+			<path>v2.wav</path>
+			<condition>
+				<and>
+					<equals>
+						<property>/gear/gear[1]/wow</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>/gear/gear[2]/wow</property>
+						<value>1</value>
+					</equals>
+					<greater-than>
+						<property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+						<property>/FMGC/internal/v2</property>
+					</greater-than>
+					<equals>
+						<property>/FMGC/internal/v2-set</property>
 						<value>1</value>
 					</equals>
 					<equals>
