@@ -14,6 +14,8 @@ setprop("/engines/engine[0]/egt-actual", 1);
 setprop("/engines/engine[1]/egt-actual", 1);
 setprop("/engines/engine[0]/fuel-flow_actual", 0);
 setprop("/engines/engine[1]/fuel-flow_actual", 0);
+setprop("/engines/engine[0]/n3", 0);
+setprop("/engines/engine[1]/n3", 0);
 setprop("/ECAM/Upper/EPR[0]", 0);
 setprop("/ECAM/Upper/EPR[1]", 0);
 setprop("/ECAM/Upper/EPRthr[0]", 0);
@@ -441,9 +443,9 @@ var canvas_upperECAM_pwrr = {
 	},
 	getKeys: func() {
 		return ["EPR1-needle","EPR1-thr","EPR1-ylim","EPR1","EPR1-box","EPR1-scale","EPR1-scalenum","EPR1-XX","EPR1-XX2","EPR1-XX-box","EGT1-needle","EGT1","EGT1-scale","EGT1-box","EGT1-scale2","EGT1-scaletick","EGT1-XX","N11-needle","N11-thr","N11-ylim","N11",
-		"N11-decpnt","N11-decimal","N11-scale","N11-scale2","N11-scalenum","N11-XX","N21","N21-decpnt","N21-decimal","N21-XX","FF1","FF1-XX","EPR2-needle","EPR2-thr","EPR2-ylim","EPR2","EPR2-box","EPR2-scale","EPR2-scalenum","EPR2-XX","EPR2-XX2","EPR2-XX-box",
-		"EGT2-needle","EGT2","EGT2-scale","EGT2-box","EGT2-scale2","EGT2-scaletick","EGT2-XX","N12-needle","N12-thr","N12-ylim","N12","N12-decpnt","N12-decimal","N12-scale","N12-scale2","N12-scalenum","N12-XX","N22","N22-decpnt","N22-decimal","N22-XX","FF2",
-		"FF2-XX",
+		"N11-decpnt","N11-decimal","N11-scale","N11-scale2","N11-scalenum","N11-XX","N21Label","N21","N21-decpnt","N21-decimal","N21-XX","FF1","FF1-XX","EPR2-needle","EPR2-thr","EPR2-ylim","EPR2","EPR2-box","EPR2-scale","EPR2-scalenum","EPR2-XX","EPR2-XX2",
+		"EPR2-XX-box","EGT2-needle","EGT2","EGT2-scale","EGT2-box","EGT2-scale2","EGT2-scaletick","EGT2-XX","N12-needle","N12-thr","N12-ylim","N12","N12-decpnt","N12-decimal","N12-scale","N12-scale2","N12-scalenum","N12-XX","N22Label","N22","N22-decpnt",
+		"N22-decimal","N22-XX","FF2","FF2-XX",
 		"FOB-LBS","ECAML1","ECAML2","ECAML3","ECAML4","ECAML5","ECAML6","ECAML7","ECAML8","FlapTxt","FlapDots","EPRLim-mode","EPRLim","EPRLim-XX","EPRLim-XX2","REV1","REV1-box","REV2","REV2-box"];
 	},
 	update: func() {
@@ -604,11 +606,23 @@ var canvas_upperECAM_pwrr = {
 			me["N12-ylim"].hide();
 		}
 		
-		# N2
-		me["N21"].setText(sprintf("%s", math.floor(getprop("/engines/engine[0]/n2") + 0.05)));
-		me["N21-decimal"].setText(sprintf("%s", int(10*math.mod(getprop("/engines/engine[0]/n2") + 0.05,1))));
-		me["N22"].setText(sprintf("%s", math.floor(getprop("/engines/engine[1]/n2") + 0.05)));
-		me["N22-decimal"].setText(sprintf("%s", int(10*math.mod(getprop("/engines/engine[1]/n2") + 0.05,1))));
+		# N2/N3
+		if (getprop("/options/eng") == "RR") {
+			me["N21Label"].setText("N3");
+			me["N22Label"].setText("N3");
+			me["N21"].setText(sprintf("%s", math.floor(getprop("/engines/engine[0]/n3") + 0.05)));
+			me["N21-decimal"].setText(sprintf("%s", int(10*math.mod(getprop("/engines/engine[0]/n3") + 0.05,1))));
+			me["N22"].setText(sprintf("%s", math.floor(getprop("/engines/engine[1]/n3") + 0.05)));
+			me["N22-decimal"].setText(sprintf("%s", int(10*math.mod(getprop("/engines/engine[1]/n3") + 0.05,1))));
+
+		} else {
+			me["N21Label"].setText("N2");
+			me["N22Label"].setText("N2");
+			me["N21"].setText(sprintf("%s", math.floor(getprop("/engines/engine[0]/n2") + 0.05)));
+			me["N21-decimal"].setText(sprintf("%s", int(10*math.mod(getprop("/engines/engine[0]/n2") + 0.05,1))));
+			me["N22"].setText(sprintf("%s", math.floor(getprop("/engines/engine[1]/n2") + 0.05)));
+			me["N22-decimal"].setText(sprintf("%s", int(10*math.mod(getprop("/engines/engine[1]/n2") + 0.05,1))));
+		}
 		
 		if (getprop("/systems/fadec/eng1/n2") == 1) {
 			me["N21"].show();
