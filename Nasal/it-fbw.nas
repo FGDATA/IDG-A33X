@@ -215,6 +215,15 @@ var fbw_loop = func {
 			}
 		}
 	}
+	
+	if (getprop("/it-fbw/law") != 0) {
+		if (getprop("/it-autoflight/output/ap1") == 1) {
+			setprop("/it-autoflight/input/ap1", 0);
+		}
+		if (getprop("/it-autoflight/output/ap2") == 1) {
+			setprop("/it-autoflight/input/ap2", 0);
+		}
+	}
 }
 
 ###########################
@@ -232,4 +241,4 @@ setlistener("/sim/signals/fdm-initialized", func {
 # Timers #
 ##########
 var updatet = maketimer(0.1, update_loop);
-var fbwt = maketimer(0.05, fbw_loop);
+var fbwt = maketimer(0.03, fbw_loop);
