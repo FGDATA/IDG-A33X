@@ -382,23 +382,23 @@ var flaptimer = maketimer(0.5, func {
 });
 
 var logoTimer = maketimer(0.1, func {
-	var logo_lights = props.globals.getNode("/sim/model/lights/logo-lights");
-	var setting = getprop("/controls/lighting/nav-lights-switch");
-	var wow = getprop("/gear/gear[2]/wow");
-	var slats = getprop("/controls/flight/slats");
-	if (setting != 2) {
-		logo_lights.setBoolValue(0);
-	} else if (setting == 2) {
+	logo_lights = getprop("/sim/model/lights/logo-lights");
+	setting = getprop("/controls/lighting/nav-lights-switch");
+	wow = getprop("/gear/gear[2]/wow");
+	slats = getprop("/controls/flight/slats");
+	if (setting == 0 and logo_lights == 1) {
+		 setprop("/sim/model/lights/logo-lights", 0);
+	} else if (setting == 1 or setting == 2) {
 		if (wow or slats == 1) {
-			logo_lights.setBoolValue(1);
+			setprop("/sim/model/lights/logo-lights", 1);
 		} else if (!wow and slats < 1) {
-			logo_lights.setBoolValue(0);
+			setprop("/sim/model/lights/logo-lights", 1);
 		} else {
-			logo_lights.setBoolValue(0);
+			setprop("/sim/model/lights/logo-lights", 0);
 			print("Logo Lights: Unknown Condition on line 390"); # this is important for debugging
 		}
 	} else {
-		print("Logo Lights: Unknown Condition on line 393"); # this is important for debugging
+	 # do nothing
 	}
 });
 
