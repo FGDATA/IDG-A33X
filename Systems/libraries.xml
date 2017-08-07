@@ -56,11 +56,18 @@
 				</equals>
 			</condition>
 			<expression>
-				<table>
-					<property>/position/gear-agl-ft</property>
-					<entry><ind>4</ind><dep> 0</dep></entry>
-					<entry><ind>6</ind><dep>40</dep></entry>
-				</table>
+				<sum>
+					<table>
+						<property>/position/gear-agl-ft</property>
+						<entry><ind>4</ind><dep> 0</dep></entry>
+						<entry><ind>6</ind><dep>40</dep></entry>
+					</table>
+					<table>
+						<property>/orientation/roll-deg</property>
+						<entry><ind>0</ind><dep> 0</dep></entry>
+						<entry><ind>6</ind><dep>40</dep></entry>
+					</table>
+				</sum>
 			</expression>
 		</input>
 		<input>
@@ -76,6 +83,8 @@
 		<output>
 			<property>/gear/gear[1]/gear-tilt-deg</property>
 		</output>
+		<min>-40</min>
+		<max>40</max>
 	</filter>
 	
 	<filter>
@@ -90,11 +99,18 @@
 				</equals>
 			</condition>
 			<expression>
-				<table>
-					<property>/position/gear-agl-ft</property>
-					<entry><ind>4</ind><dep> 0</dep></entry>
-					<entry><ind>6</ind><dep>40</dep></entry>
-				</table>
+				<sum>
+					<table>
+						<property>/position/gear-agl-ft</property>
+						<entry><ind>4</ind><dep> 0</dep></entry>
+						<entry><ind>6</ind><dep>40</dep></entry>
+					</table>
+					<table>
+						<property>/orientation/roll-deg</property>
+						<entry><ind> 0</ind><dep> 0</dep></entry>
+						<entry><ind>-6</ind><dep>40</dep></entry>
+					</table>
+				</sum>
 			</expression>
 		</input>
 		<input>
@@ -110,6 +126,8 @@
 		<output>
 			<property>/gear/gear[2]/gear-tilt-deg</property>
 		</output>
+		<min>-40</min>
+		<max>40</max>
 	</filter>
 
 
