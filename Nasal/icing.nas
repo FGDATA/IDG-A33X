@@ -59,8 +59,8 @@ setlistener("/sim/signals/fdm-initialized", func {
 	var e = 0;
 	var spread = 0;
 	var windowprb = getprop("/controls/switches/windowprobeheat");
-	stateL = getprop("/engines/engine[0]/state");
-	stateR = getprop("/engines/engine[1]/state");
+	var stateL = getprop("/engines/engine[0]/state");
+	var stateR = getprop("/engines/engine[1]/state");
 });
 
 var icingInit = func {
@@ -208,6 +208,9 @@ var icingModel = func {
 	} else {
 		setprop("/systems/icing/icingcond", 0);
 	}
+	
+	stateL = getprop("/engines/engine[0]/state");
+	stateR = getprop("/engines/engine[1]/state");
 	
 	#################
 	# Wing Anti-Ice #
