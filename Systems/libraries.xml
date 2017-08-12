@@ -7,42 +7,22 @@
 -->
 
 <PropertyList>
-
-    <filter>
-        <name>OAT Thrust Scale</name>
-        <type>gain</type>
-        <gain>1</gain>
-        <update-interval-secs type="double">0.05</update-interval-secs>
-        <input> 
-            <expression>
-                <table>
-                    <property>/environment/temperature-degc</property>
-                    <entry><ind> 70</ind><dep>0.790</dep></entry>
-                    <entry><ind> 40</ind><dep>0.815</dep></entry>
-                    <entry><ind>-60</ind><dep>1.000</dep></entry>
-                </table>
-            </expression>
-        </input>
-		<output>/controls/engines/throttle-scale</output>
-    </filter>
 	
-    <filter>
-        <name>FLX Thrust Scale</name>
-        <type>gain</type>
-        <gain>1</gain>
-        <update-interval-secs type="double">0.05</update-interval-secs>
-        <input> 
-            <expression>
-                <table>
-                    <property>/FMGC/internal/flex</property>
-                    <entry><ind> 70</ind><dep>0.790</dep></entry>
-                    <entry><ind> 40</ind><dep>0.815</dep></entry>
-                    <entry><ind>-60</ind><dep>1.000</dep></entry>
-                </table>
-            </expression>
-        </input>
-		<output>/engines/flx-throttle</output>
-    </filter>
+	<filter>
+		<name>Wingflex</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<enable>
+			<condition>
+				<equals>
+					<property>/aircraft/wingflex-enable</property>
+					<value>1</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>/fdm/jsbsim/aero/force/Lift_alpha</input>
+		<output>/aircraft/wingflex</output>
+	</filter>
 	
 	<filter>
 		<name>Gear Tilt 1</name>
@@ -130,6 +110,41 @@
 		<max>40</max>
 	</filter>
 
+	<filter>
+		<name>OAT Thrust Scale</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<update-interval-secs type="double">0.05</update-interval-secs>
+		<input> 
+			<expression>
+				<table>
+					<property>/environment/temperature-degc</property>
+					<entry><ind> 70</ind><dep>0.790</dep></entry>
+					<entry><ind> 40</ind><dep>0.815</dep></entry>
+					<entry><ind>-60</ind><dep>1.000</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/controls/engines/throttle-scale</output>
+	</filter>
+	
+	<filter>
+		<name>FLX Thrust Scale</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<update-interval-secs type="double">0.05</update-interval-secs>
+		<input> 
+			<expression>
+				<table>
+					<property>/FMGC/internal/flex</property>
+					<entry><ind> 70</ind><dep>0.790</dep></entry>
+					<entry><ind> 40</ind><dep>0.815</dep></entry>
+					<entry><ind>-60</ind><dep>1.000</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/engines/flx-throttle</output>
+	</filter>
 
 	<filter>
 		<name>FF 1</name>
@@ -349,48 +364,48 @@
 	</filter>
 
 	<filter>
-        <name>Target Pressurize Altitude CMD</name>
-        <type>gain</type>
-        <gain>1</gain>
-        <update-interval-secs type="double">0.1</update-interval-secs>
-        <input> 
-            <expression>
-                <table>
-                    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
-                    <entry><ind>    0</ind><dep>   0</dep></entry>
-                    <entry><ind> 1000</ind><dep> 500</dep></entry>
-                    <entry><ind> 5000</ind><dep>1100</dep></entry>
-                    <entry><ind>20000</ind><dep>5200</dep></entry>
-                    <entry><ind>30000</ind><dep>6700</dep></entry>
-                    <entry><ind>30000</ind><dep>7900</dep></entry>
-                    <entry><ind>40500</ind><dep>8000</dep></entry>
-                </table>
-            </expression>
-        </input>
-        <output>/systems/pressurization/targetalt-cmd</output>      
-    </filter>
+		<name>Target Pressurize Altitude CMD</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<update-interval-secs type="double">0.1</update-interval-secs>
+		<input> 
+			<expression>
+				<table>
+					<property>/instrumentation/altimeter/indicated-altitude-ft</property>
+					<entry><ind>    0</ind><dep>   0</dep></entry>
+					<entry><ind> 1000</ind><dep> 500</dep></entry>
+					<entry><ind> 5000</ind><dep>1100</dep></entry>
+					<entry><ind>20000</ind><dep>5200</dep></entry>
+					<entry><ind>30000</ind><dep>6700</dep></entry>
+					<entry><ind>30000</ind><dep>7900</dep></entry>
+					<entry><ind>40500</ind><dep>8000</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/systems/pressurization/targetalt-cmd</output>
+	</filter>
 	
 	<filter>
-        <name>Target Pressurize Altitude</name>
-        <type>gain</type>
-        <gain>1</gain>
-        <update-interval-secs type="double">0.1</update-interval-secs>
-        <input> 
+		<name>Target Pressurize Altitude</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<update-interval-secs type="double">0.1</update-interval-secs>
+		<input> 
 			<condition>
 				<or>
-				<equals>
-					<property>/gear/gear[1]/wow</property>
-					<value>1</value>
-				</equals>
-				<less-than>
-					<property>/systems/pressurization/targetalt-cmd</property>
-					<property>/systems/pressurization/cabinalt-norm</property>
-				</less-than>
+					<equals>
+						<property>/gear/gear[1]/wow</property>
+						<value>1</value>
+					</equals>
+					<less-than>
+						<property>/systems/pressurization/targetalt-cmd</property>
+						<property>/systems/pressurization/cabinalt-norm</property>
+					</less-than>
 				</or>
 			</condition>
 			<property>/systems/pressurization/cabinalt-norm</property>
-        </input>
-        <input> 
+		</input>
+		<input> 
 			<condition>
 				<not>
 					<property>/gear/gear[1]/wow</property>
@@ -398,9 +413,9 @@
 				</not>
 			</condition>
 			<property>/systems/pressurization/targetalt-cmd</property>
-        </input>
-        <output>/systems/pressurization/targetalt</output>      
-    </filter>
+		</input>
+		<output>/systems/pressurization/targetalt</output>
+	</filter>
 	
 	<filter>
 		<name>Cabin PSI target</name>
@@ -429,11 +444,11 @@
 	</filter>
 	
 	<filter>
-        <name>VS-target</name>
-        <type>gain</type>
-        <gain>1</gain>
-        <update-interval-secs type="double">0.1</update-interval-secs>
-        <input> 
+		<name>VS-target</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<update-interval-secs type="double">0.1</update-interval-secs>
+		<input> 
 			<condition>
 				<equals>
 					<property>/gear/gear[1]/wow</property>
@@ -441,8 +456,8 @@
 				</equals>
 			</condition>
 			<property>/systems/pressurization/ambientpsi</property>
-        </input>
-        <input> 
+		</input>
+		<input> 
 			<condition>
 				<not>
 					<property>/gear/gear[1]/wow</property>
@@ -450,9 +465,9 @@
 				</not>
 			</condition>
 			<property>/systems/pressurization/cabinpsi-target</property>
-        </input>
-        <output>/systems/pressurization/cabinpsi</output>   
-    </filter>
+		</input>
+		<output>/systems/pressurization/cabinpsi</output>
+	</filter>
 
 	<filter>
 		<name>Ambient PSI (ICAO std)</name>
@@ -510,16 +525,16 @@
 		<input> 
 			<property>/systems/pressurization/outflowpos</property> 
 		</input>
-		<output>/systems/pressurization/outflowpos-norm-cmd</output>
+		<output>/systems/pressurization/outflowpos-norm</output>
 		<max-rate-of-change>1</max-rate-of-change>
 	</filter>
 	
 	<filter>
-        <name>Outflow logic</name>
-        <type>gain</type>
-        <gain>1</gain>
-        <update-interval-secs type="double">0.1</update-interval-secs>
-        <input> 
+		<name>Outflow logic</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<update-interval-secs type="double">0.1</update-interval-secs>
+		<input> 
 			<condition>
 				<equals>
 					<property>/systems/pressurization/auto</property>
@@ -527,8 +542,8 @@
 				</equals>
 			</condition>
 			<property>/systems/pressurization/outflowpos-man</property>
-        </input>
-        <input> 
+		</input>
+		<input> 
 			<condition>
 				<equals>
 					<property>/systems/pressurization/auto</property>
@@ -536,9 +551,9 @@
 				</equals>
 			</condition>
 			<property>/systems/pressurization/outflowpos-norm-cmd</property>
-        </input>
-        <output>/systems/pressurization/outflowpos-norm</output>   
-    </filter>
+		</input>
+		<output>/systems/pressurization/outflowpos-norm</output>   
+	</filter>
 	
 	<filter>
 		<name>Cabin VS</name>
@@ -615,11 +630,11 @@
 	</filter>
 	
 	<filter>
-        <name>VS-target</name>
-        <type>gain</type>
-        <gain>1</gain>
-        <update-interval-secs type="double">0.1</update-interval-secs>
-        <input> 
+		<name>VS-target</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<update-interval-secs type="double">0.1</update-interval-secs>
+		<input> 
 			<condition>
 				<equals>
 					<property>/gear/gear[1]/wow</property>
@@ -627,8 +642,8 @@
 				</equals>
 			</condition>
 			<value>0</value>
-        </input>
-        <input> 
+		</input>
+		<input> 
 			<condition>
 				<not>
 					<property>/gear/gear[1]/wow</property>
@@ -636,9 +651,45 @@
 				</not>
 			</condition>
 			<property>/systems/pressurization/targetvs-cmd</property>
-        </input>
-        <output>/systems/pressurization/targetvs</output>   
-    </filter>
+		</input>
+		<output>/systems/pressurization/targetvs</output>   
+	</filter>
+	
+	<filter>
+		<name>Icing Severity</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<update-interval-secs type="double">0.1</update-interval-secs>
+		<input> 
+			<expression>
+				<table>
+					<property>/systems/icing/severity</property>
+					<entry><ind>0</ind><dep>-0.00000166</dep></entry>
+					<entry><ind>1</ind><dep> 0.00000277</dep></entry>
+					<entry><ind>2</ind><dep> 0.00000277</dep></entry>
+					<entry><ind>3</ind><dep> 0.00000554</dep></entry>
+					<entry><ind>4</ind><dep> 0.00001108</dep></entry>
+					<entry><ind>5</ind><dep> 0.00002216</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/systems/icing/factor</output>
+	</filter>
+	
+	<filter>
+		<name>TAS</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<input> 
+			<expression>
+				<product>
+					<property>velocities/uBody-fps</property> 
+					<value>0.592484</value>
+				</product>
+			</expression>
+		</input>
+		<output>/velocities/TAS</output>
+	</filter>
 	
 	<filter>
 		<name>LBtoKG</name>
@@ -751,54 +802,23 @@
 	</filter>
 	
 	<filter>
-		<name>Wingflex</name>
+		<name>Rudder Limit</name>
 		<type>gain</type>
 		<gain>1</gain>
-		<enable>
-			<condition>
-				<equals>
-					<property>/aircraft/wingflex-enable</property>
-					<value>1</value>
-				</equals>
-			</condition>
-		</enable>
-		<input>/fdm/jsbsim/aero/force/Lift_alpha</input>
-		<output>/aircraft/wingflex</output>
-	</filter>
-	
-	<filter>
-		<name>Icing Severity</name>
-		<type>gain</type>
-		<gain>1</gain>
-		<update-interval-secs type="double">0.1</update-interval-secs>
+		<update-interval-secs type="double">0.05</update-interval-secs>
 		<input> 
 			<expression>
 				<table>
-					<property>/systems/icing/severity</property>
-					<entry><ind>0</ind><dep>-0.00000166</dep></entry>
-					<entry><ind>1</ind><dep> 0.00000277</dep></entry>
-					<entry><ind>2</ind><dep> 0.00000277</dep></entry>
-					<entry><ind>3</ind><dep> 0.00000554</dep></entry>
-					<entry><ind>4</ind><dep> 0.00001108</dep></entry>
-					<entry><ind>5</ind><dep> 0.00002216</dep></entry>
+					<property>/velocities/airspeed-kt</property>
+					<entry><ind>   0</ind><dep> 30</dep></entry>
+					<entry><ind> 140</ind><dep> 30</dep></entry>
+					<entry><ind> 240</ind><dep> 10</dep></entry>
+					<entry><ind> 380</ind><dep>3.4</dep></entry>
+					<entry><ind>1000</ind><dep>3.4</dep></entry>
 				</table>
 			</expression>
 		</input>
-		<output>/systems/icing/factor</output>
+		<output>/controls/flight/rudder-limit</output>
 	</filter>
 	
-	<filter>
-        <name>TAS</name>
-        <type>gain</type>
-        <gain>1</gain>
-        <input> 
-			 <expression>
-                <product>
-                    <property>velocities/uBody-fps</property> 
-                    <value>0.592484</value>
-                </product>
-            </expression>
-		</input>
-		<output>/velocities/TAS</output>
-    </filter>
 </PropertyList>
