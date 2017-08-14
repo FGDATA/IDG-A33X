@@ -733,6 +733,7 @@
 		<pfd n="0">
 			<sidestick-pos userarchive="y" type="bool">0</sidestick-pos>
 		</pfd>
+		<enable-ecam-actions>0</enable-ecam-actions>
 	</options>
 	
 	<instrumentation n="0">
