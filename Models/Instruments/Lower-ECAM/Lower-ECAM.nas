@@ -153,7 +153,7 @@ var canvas_lowerECAM_apu = {
 			me["APUGenHz"].setColor(1,0.6,0);
 		}
 		
-		if (getprop("/controls/APU/master") == 1) {
+		if (getprop("/controls/APU/master") == 1 or getprop("/systems/apu/rpm") >= 94.9) {
 			me["APUGenbox"].show();
 			me["APUGenHz"].show();
 			me["APUGenVolt"].show();
@@ -188,7 +188,7 @@ var canvas_lowerECAM_apu = {
 		me["APUGenHz"].setText(sprintf("%s", math.round(getprop("/systems/electrical/extra/apu-hz"))));
 
 		# APU Bleed
-		if (getprop("/controls/adirs/ir[1]/knob") != 1 and (getprop("/controls/APU/master") == 1 or getprop("/systems/pneumatic/bleedapu-ind") > 0)) {
+		if (getprop("/controls/adirs/ir[1]/knob") != 1 and (getprop("/controls/APU/master") == 1 or getprop("/systems/pneumatic/bleedapu") > 0)) {
 			me["APUBleedPSI"].setColor(0,1,0);
 			me["APUBleedPSI"].setText(sprintf("%s", math.round(getprop("/systems/pneumatic/bleedapu-ind"))));
 		} else {
