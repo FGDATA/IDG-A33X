@@ -4,8 +4,8 @@
 	<sim>
 		<model>
 			<livery>
-				<name>EuroFly</name>
-				<texture>Liveries/A332PW/EEZ.png</texture>
+				<name>MNG Airlines</name>
+				<texture>Liveries/A332FRR/MNB.png</texture>
 			</livery>
 		</model>
 	</sim>
