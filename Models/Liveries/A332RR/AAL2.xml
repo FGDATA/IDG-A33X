@@ -4,8 +4,8 @@
 	<sim>
 		<model>
 			<livery>
-				<name>Jetstar Airways</name>
-				<texture>Liveries/A332GE/JST.png</texture>
+				<name>American Airlines (2)</name>
+				<texture>Liveries/A332RR/AAL.png</texture>
 			</livery>
 		</model>
 	</sim>

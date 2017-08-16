@@ -128,7 +128,7 @@ var canvas_lowerECAM_apu = {
 			me["APUFlapOpen"].hide();
 		}
 
-		if (getprop("/systems/apu/rpm") > 94.9) {
+		if (getprop("/systems/apu/rpm") > 99.5) {
 			me["APUAvail"].show();
 		} else {
 			me["APUAvail"].hide();
@@ -190,7 +190,7 @@ var canvas_lowerECAM_apu = {
 		# APU Bleed
 		if (getprop("/controls/adirs/ir[1]/knob") != 1 and (getprop("/controls/APU/master") == 1 or getprop("/systems/pneumatic/bleedapu") > 0)) {
 			me["APUBleedPSI"].setColor(0,1,0);
-			me["APUBleedPSI"].setText(sprintf("%s", math.round(getprop("/systems/pneumatic/bleedapu"))));
+			me["APUBleedPSI"].setText(sprintf("%s", math.round(getprop("/systems/pneumatic/bleedapu-ind"))));
 		} else {
 			me["APUBleedPSI"].setColor(1,0.6,0);
 			me["APUBleedPSI"].setText(sprintf("%s", "XX"));
@@ -734,10 +734,10 @@ setlistener("sim/signals/fdm-initialized", func {
 	var groupEng = lowerECAM_display.createGroup();
 	var groupFctl = lowerECAM_display.createGroup();
 
-	lowerECAM_apu = canvas_lowerECAM_apu.new(groupApu, "Aircraft/A330Family/Models/Instruments/Lower-ECAM/res/apu.svg");
-	lowerECAM_eng1 = canvas_lowerECAM_eng1.new(groupEng1, "Aircraft/A330Family/Models/Instruments/Lower-ECAM/res/eng-eis1.svg");
-	lowerECAM_eng = canvas_lowerECAM_eng.new(groupEng, "Aircraft/A330Family/Models/Instruments/Lower-ECAM/res/eng-eis2.svg");
-	lowerECAM_fctl = canvas_lowerECAM_fctl.new(groupFctl, "Aircraft/A330Family/Models/Instruments/Lower-ECAM/res/fctl.svg");
+	lowerECAM_apu = canvas_lowerECAM_apu.new(groupApu, "Aircraft/A320Family/Models/Instruments/Lower-ECAM/res/apu.svg");
+	lowerECAM_eng1 = canvas_lowerECAM_eng1.new(groupEng1, "Aircraft/A320Family/Models/Instruments/Lower-ECAM/res/eng-eis1.svg");
+	lowerECAM_eng = canvas_lowerECAM_eng.new(groupEng, "Aircraft/A320Family/Models/Instruments/Lower-ECAM/res/eng-eis2.svg");
+	lowerECAM_fctl = canvas_lowerECAM_fctl.new(groupFctl, "Aircraft/A320Family/Models/Instruments/Lower-ECAM/res/fctl.svg");
 
 	lowerECAM_apu.update();
 	lowerECAM_eng1.update();
