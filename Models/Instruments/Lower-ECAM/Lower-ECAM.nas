@@ -190,7 +190,7 @@ var canvas_lowerECAM_apu = {
 		# APU Bleed
 		if (getprop("/controls/adirs/ir[1]/knob") != 1 and (getprop("/controls/APU/master") == 1 or getprop("/systems/pneumatic/bleedapu") > 0)) {
 			me["APUBleedPSI"].setColor(0,1,0);
-			me["APUBleedPSI"].setText(sprintf("%s", math.round(getprop("/systems/pneumatic/bleedapu-ind"))));
+			me["APUBleedPSI"].setText(sprintf("%s", math.round(getprop("/systems/pneumatic/bleedapu"))));
 		} else {
 			me["APUBleedPSI"].setColor(1,0.6,0);
 			me["APUBleedPSI"].setText(sprintf("%s", "XX"));
