@@ -60,49 +60,6 @@
 		<gain>1.0</gain>
 		<input>
 			<condition>
-				<and>
-					<or>
-						<greater-than-equals>
-							<property>/systems/hydraulic/green-psi</property>
-							<value>1500</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>/systems/hydraulic/blue-psi</property>
-							<value>1500</value>
-						</greater-than-equals>
-					</or>
-					<equals>
-						<property>/controls/flight/speedbrake-norm</property>
-						<value>1.0</value>
-					</equals>
-					<equals>
-						<property>/gear/gear[1]/wow</property>
-						<value>1</value>
-					</equals>
-					<equals>
-						<property>/gear/gear[2]/wow</property>
-						<value>1</value>
-					</equals>
-					<equals>
-						<property>/systems/failures/aileron-left</property>
-						<value>0</value>
-					</equals>
-				</and>
-			</condition>
-			<expression>
-				<sum>
-					<property>/controls/flight/speedbrake-norm</property>
-					<table>
-						<property>/controls/flight/roll-fbw</property> 
-						<entry><ind>0.0</ind><dep>   0</dep></entry>
-						<entry><ind>1.0</ind><dep>-1.0</dep></entry>
-					</table>
-				</sum>
-			</expression>
-			<scale>-0.5</scale>
-		</input>
-		<input>
-			<condition>
 				<or>
 					<and>
 						<less-than>
@@ -176,49 +133,6 @@
 		<debug>false</debug>
 		<type>gain</type>
 		<gain>1.0</gain>
-		<input>
-			<condition>
-				<and>
-					<or>
-						<greater-than-equals>
-							<property>/systems/hydraulic/green-psi</property>
-							<value>1500</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>/systems/hydraulic/blue-psi</property>
-							<value>1500</value>
-						</greater-than-equals>
-					</or>
-					<equals>
-						<property>/controls/flight/speedbrake-norm</property>
-						<value>1.0</value>
-					</equals>
-					<equals>
-						<property>/gear/gear[1]/wow</property>
-						<value>1</value>
-					</equals>
-					<equals>
-						<property>/gear/gear[2]/wow</property>
-						<value>1</value>
-					</equals>
-					<equals>
-						<property>/systems/failures/aileron-right</property>
-						<value>0</value>
-					</equals>
-				</and>
-			</condition>
-			<expression>
-				<sum>
-					<property>/controls/flight/speedbrake-norm</property>
-					<table>
-						<property>/controls/flight/roll-fbw</property> 
-						<entry><ind>-0.0</ind><dep>   0</dep></entry>
-						<entry><ind>-1.0</ind><dep>-1.0</dep></entry>
-					</table>
-				</sum>
-			</expression>
-			<scale>0.5</scale>
-		</input>
 		<input>
 			<condition>
 				<or>
