@@ -120256,7 +120256,7 @@ name "wing.mid0"
 loc 5.5114 -0.599962 10.139
 kids 17
 OBJECT poly
-name "cylinder"
+name "fueldumpL"
 loc 4.9849 -0.0526371 4.36994
 texture "landing-gears.png"
 crease 45.000000
@@ -125862,7 +125862,7 @@ name "wing.mid1"
 loc 5.5114 -0.599962 10.139
 kids 17
 OBJECT poly
-name "cylinder"
+name "fueldumpR"
 loc 4.9849 -0.0526371 4.36994
 texture "landing-gears.png"
 crease 45.000000

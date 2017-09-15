@@ -18,7 +18,7 @@
         <layout>hbox</layout>
         <text>
             <halign>left</halign>
-            <label>Confidential!</label>
+            <label>Welcome!</label>
         </text>
         <button>
             <halign>right</halign>
@@ -39,12 +39,23 @@
 			
 			<text>
 				<halign>center</halign>
-				<label>This aircraft is it0uchpods Confidential.</label>
+				<label>Welcome to the it0uchpods A3XX Series!</label>
 			</text>
-			
 			<text>
 				<halign>center</halign>
-				<label>Please do not leak our hard work.</label>
+				<label>This is a complex simulation of these amazing Airbus Aircraft.</label>
+			</text>
+			<text>
+				<halign>center</halign>
+				<label>They are currently still under development, and therefore are not complete yet.</label>
+			</text>
+			<text>
+				<halign>center</halign>
+				<label>Use the Aircraft Config to select livery, manage panel states, and more!</label>
+			</text>
+			<text>
+				<halign>center</halign>
+				<label>Please report bugs on the FlightGear forums! Enjoy!</label>
 			</text>
 			
 		</group>

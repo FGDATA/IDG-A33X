@@ -19,7 +19,7 @@
         <layout>hbox</layout>
         <text>
             <halign>left</halign>
-            <label>Confidential...</label>
+            <label>Please wait...</label>
         </text>
     </group>
 	
@@ -30,7 +30,7 @@
 			
 			<text>
 				<halign>left</halign>
-				<label>Please do not leak our hard work...</label>
+				<label>Initializing...</label>
 			</text>
 			<text>
 				<border>1</border>

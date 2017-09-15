@@ -478,6 +478,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>flap.outer.support0</object-name>
+		<object-name>fueldumpL</object-name>
 		<property>surface-positions/flap-pos-norm</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
@@ -537,6 +538,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>flap.outer.support1</object-name>
+		<object-name>fueldumpR</object-name>
 		<property>surface-positions/flap-pos-norm</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>

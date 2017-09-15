@@ -219,7 +219,7 @@
 				</setting>
 				<setting>
 					<position>35</position>
-					<time>40</time>
+					<time>30</time>
 				</setting>
 			</traverse>
 			<output>fcs/flap-pos-deg</output>
@@ -251,7 +251,7 @@
 				</setting>
 				<setting>
 					<position>27</position>
-					<time>30</time>
+					<time>20</time>
 				</setting>
 			</traverse>
 			<output>fcs/slat-pos-deg</output>
