@@ -125,7 +125,7 @@
 				</table>
 			</expression>
 		</input>
-		<output>/ECAM/Lower/aileron-ind-left</output>
+		<output>/ECAM/Lower/aileron-ind-in-left</output>
 	</filter>
 	
 	<filter>
@@ -142,7 +142,7 @@
 				</table>
 			</expression>
 		</input>
-		<output>/ECAM/Lower/aileron-ind-right</output>
+		<output>/ECAM/Lower/aileron-ind-in-right</output>
 	</filter>
 	
 	<filter>

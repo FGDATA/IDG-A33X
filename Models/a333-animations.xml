@@ -15,13 +15,13 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>aileron.outer0</object-name>
-		<property>sim/multiplay/generic/float[6]</property>
+		<property>sim/multiplay/generic/float[13]</property>
 		<interpolation>
-			<entry><ind>-1</ind><dep>-30</dep></entry>
+			<entry><ind>-1</ind><dep>-23</dep></entry>
 			<entry><ind>-0.4</ind><dep>-18</dep></entry>
 			<entry><ind>0</ind><dep>0</dep></entry>
 			<entry><ind>0.4</ind><dep>15</dep></entry>
-			<entry><ind>1</ind><dep>25</dep></entry>
+			<entry><ind>1</ind><dep>22</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>14.1389</x1-m>
@@ -41,8 +41,8 @@
 			<entry><ind>-1</ind><dep>-25</dep></entry>
 			<entry><ind>-0.4</ind><dep>-22</dep></entry>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.4</ind><dep>15</dep></entry>
-			<entry><ind>1</ind><dep>22</dep></entry>
+			<entry><ind>0.4</ind><dep>18</dep></entry>
+			<entry><ind>1</ind><dep>24</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>12.4497</x1-m>
@@ -62,8 +62,8 @@
 			<entry><ind>-1</ind><dep>-25</dep></entry>
 			<entry><ind>-0.4</ind><dep>-22</dep></entry>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.4</ind><dep>15</dep></entry>
-			<entry><ind>1</ind><dep>22</dep></entry>
+			<entry><ind>0.4</ind><dep>18</dep></entry>
+			<entry><ind>1</ind><dep>24</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>12.4497</x1-m>
@@ -78,13 +78,13 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>aileron.outer1</object-name>
-		<property>sim/multiplay/generic/float[7]</property>
+		<property>sim/multiplay/generic/float[14]</property>
 		<interpolation>
-			<entry><ind>-1</ind><dep>-30</dep></entry>
+			<entry><ind>-1</ind><dep>-23</dep></entry>
 			<entry><ind>-0.4</ind><dep>-18</dep></entry>
 			<entry><ind>0</ind><dep>0</dep></entry>
 			<entry><ind>0.4</ind><dep>15</dep></entry>
-			<entry><ind>1</ind><dep>25</dep></entry>
+			<entry><ind>1</ind><dep>22</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>14.1389</x1-m>
@@ -1117,7 +1117,7 @@
   <type>rotate</type>
   <object-name>NoseWheel</object-name>
   <object-name>NGearStrut</object-name>
-  <property>gear/gear[0]/steering-norm</property>
+  <property>sim/multiplay/generic/float[1]</property>
    <factor>-70</factor>
   <center>
    <x-m>-18.7594</x-m>
@@ -1434,6 +1434,7 @@
   <type>rotate</type>
   <object-name>wing.in0</object-name>
   <object-name>engine0</object-name>
+  <object-name>fueldumpL</object-name>
   <object-name>wing.mid0</object-name>
   <object-name>wing.out0</object-name>
   <object-name>Left nav light ALS</object-name>
@@ -1455,6 +1456,7 @@
 
 <animation>
   <type>rotate</type>
+  <object-name>fueldumpL</object-name>
   <object-name>wing.mid0</object-name>
   <object-name>wing.out0</object-name>
   <object-name>Left nav light ALS</object-name>
@@ -1498,6 +1500,7 @@
   <type>rotate</type>
   <object-name>wing.in1</object-name>
   <object-name>engine1</object-name>
+  <object-name>fueldumpR</object-name>
   <object-name>wing.mid1</object-name>
   <object-name>wing.out1</object-name>
   <object-name>Right nav light ALS</object-name>
@@ -1519,6 +1522,7 @@
 
 <animation>
   <type>rotate</type>
+  <object-name>fueldumpR</object-name>
   <object-name>wing.mid1</object-name>
   <object-name>wing.out1</object-name>
   <object-name>Right nav light ALS</object-name>

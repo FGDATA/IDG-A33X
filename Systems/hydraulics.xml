@@ -52,7 +52,7 @@
  <!-- Aileron Control                                                 -->
  <!-- =============================================================== -->
  
-	<!-- Aileron L -->
+	<!-- Aileron L Outer -->
 
 	<filter>
 		<debug>false</debug>
@@ -101,7 +101,7 @@
             <expression>
 				<sum>
 					<table>
-						<property>/controls/flight/aileron-fbw</property> 
+						<property>/controls/flight/roll-fbw-outer</property> 
 						<entry><ind>-1</ind><dep>-0.5</dep></entry>
 						<entry><ind> 0</ind><dep> 0.0</dep></entry>
 						<entry><ind> 1</ind><dep> 0.5</dep></entry>
@@ -114,7 +114,7 @@
 				</sum>
             </expression>
 		</input>
-		<output>/controls/flight/aileron-left-cmd</output>
+		<output>/controls/flight/aileron-out-left-cmd</output>
 		<min>-0.5</min>
 		<max>0.5</max>
 	</filter>
@@ -122,12 +122,102 @@
 	<filter>
 		<debug>false</debug>
 		<type>noise-spike</type>
-		<input>/controls/flight/aileron-left-cmd</input>
-		<output>/controls/flight/aileron-left</output>
+		<input>/controls/flight/aileron-out-left-cmd</input>
+		<output>/controls/flight/aileron-out-left</output>
 		<max-rate-of-change>2.5</max-rate-of-change>
 	</filter>
 	
-	<!-- Aileron R -->
+	<!-- Aileron L Inner -->
+
+	<filter>
+		<debug>false</debug>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>
+			<condition>
+				<or>
+					<and>
+						<less-than>
+							<property>/systems/hydraulic/green-psi</property>
+							<value>1500</value>
+						</less-than>
+						<less-than>
+							<property>/systems/hydraulic/blue-psi</property>
+							<value>1500</value>
+						</less-than>
+					</and>
+					<equals>
+						<property>/systems/failures/aileron-left</property>
+						<value>1</value>
+					</equals>
+				</or>
+			</condition>
+			<property>/systems/hydraulic/aileron-droop</property>
+		</input>
+		<input>
+			<condition>
+				<and>
+					<or>
+						<greater-than-equals>
+							<property>/systems/hydraulic/green-psi</property>
+							<value>1500</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>/systems/hydraulic/blue-psi</property>
+							<value>1500</value>
+						</greater-than-equals>
+					</or>
+					<equals>
+						<property>/systems/failures/aileron-left</property>
+						<value>0</value>
+					</equals>
+				</and>
+			</condition>
+            <expression>
+				<sum>
+					<table>
+						<property>/controls/flight/roll-fbw</property> 
+						<entry><ind>-1</ind><dep>-0.5</dep></entry>
+						<entry><ind> 0</ind><dep> 0.0</dep></entry>
+						<entry><ind> 1</ind><dep> 0.5</dep></entry>
+					</table>
+					<table>
+						<property>/fdm/jsbsim/fcs/flap-pos-deg</property> 
+						<entry><ind>1</ind><dep>0.00</dep></entry>
+						<entry><ind>5</ind><dep>0.13</dep></entry>
+					</table>
+				</sum>
+            </expression>
+		</input>
+		<output>/controls/flight/aileron-in-left-cmd</output>
+		<min>-0.5</min>
+		<max>0.5</max>
+	</filter>
+	
+	<filter>
+		<debug>false</debug>
+		<type>noise-spike</type>
+		<input>/controls/flight/aileron-in-left-cmd</input>
+		<output>/controls/flight/aileron-in-left</output>
+		<max-rate-of-change>2.5</max-rate-of-change>
+	</filter>
+	
+	<filter>
+		<debug>false</debug>
+		<type>gain</type>
+		<gain>0.5</gain>
+		<input>
+			<expression>
+				<sum>
+					<property>/controls/flight/aileron-out-left</property>
+					<property>/controls/flight/aileron-in-left</property>
+				</sum>
+			</expression>
+		</input>
+		<output>/controls/flight/aileron-left</output>
+	</filter>
+	
+	<!-- Aileron R Inner -->
 	
 	<filter>
 		<debug>false</debug>
@@ -177,7 +267,7 @@
             <expression>
 				<sum>
 					<table>
-						<property>/controls/flight/aileron-fbw</property> 
+						<property>/controls/flight/roll-fbw</property> 
 						<entry><ind>-1</ind><dep>-0.5</dep></entry>
 						<entry><ind> 0</ind><dep> 0.0</dep></entry>
 						<entry><ind> 1</ind><dep> 0.5</dep></entry>
@@ -190,7 +280,7 @@
 				</sum>
             </expression>
 		</input>
-		<output>/controls/flight/aileron-right-cmd</output>
+		<output>/controls/flight/aileron-in-right-cmd</output>
 		<min>-0.5</min>
 		<max>0.5</max>
 	</filter>
@@ -198,9 +288,100 @@
 	<filter>
 		<debug>false</debug>
 		<type>noise-spike</type>
-		<input>/controls/flight/aileron-right-cmd</input>
-		<output>/controls/flight/aileron-right</output>
+		<input>/controls/flight/aileron-in-right-cmd</input>
+		<output>/controls/flight/aileron-in-right</output>
 		<max-rate-of-change>2.5</max-rate-of-change>
+	</filter>
+	
+	<!-- Aileron R Outer -->
+	
+	<filter>
+		<debug>false</debug>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>
+			<condition>
+				<or>
+					<and>
+						<less-than>
+							<property>/systems/hydraulic/green-psi</property>
+							<value>1500</value>
+						</less-than>
+						<less-than>
+							<property>/systems/hydraulic/blue-psi</property>
+							<value>1500</value>
+						</less-than>
+					</and>
+					<equals>
+						<property>/systems/failures/aileron-right</property>
+						<value>1</value>
+					</equals>
+				</or>
+			</condition>
+			<property>/systems/hydraulic/aileron-droop</property>
+			<scale>-1.0</scale>
+		</input>
+		<input>
+			<condition>
+				<and>
+					<or>
+						<greater-than-equals>
+							<property>/systems/hydraulic/green-psi</property>
+							<value>1500</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>/systems/hydraulic/blue-psi</property>
+							<value>1500</value>
+						</greater-than-equals>
+					</or>
+					<equals>
+						<property>/systems/failures/aileron-right</property>
+						<value>0</value>
+					</equals>
+				</and>
+			</condition>
+            <expression>
+				<sum>
+					<table>
+						<property>/controls/flight/roll-fbw-outer</property> 
+						<entry><ind>-1</ind><dep>-0.5</dep></entry>
+						<entry><ind> 0</ind><dep> 0.0</dep></entry>
+						<entry><ind> 1</ind><dep> 0.5</dep></entry>
+					</table>
+					<table>
+						<property>/fdm/jsbsim/fcs/flap-pos-deg</property> 
+						<entry><ind>1</ind><dep> 0.00</dep></entry>
+						<entry><ind>5</ind><dep>-0.13</dep></entry>
+					</table>
+				</sum>
+            </expression>
+		</input>
+		<output>/controls/flight/aileron-out-right-cmd</output>
+		<min>-0.5</min>
+		<max>0.5</max>
+	</filter>
+	
+	<filter>
+		<debug>false</debug>
+		<type>noise-spike</type>
+		<input>/controls/flight/aileron-out-right-cmd</input>
+		<output>/controls/flight/aileron-out-right</output>
+		<max-rate-of-change>2.5</max-rate-of-change>
+	</filter>
+	
+	<filter>
+		<debug>false</debug>
+		<type>gain</type>
+		<gain>0.5</gain>
+		<input>
+			<expression>
+				<sum>
+					<property>/controls/flight/aileron-out-right</property>
+					<property>/controls/flight/aileron-in-right</property>
+				</sum>
+			</expression>
+		</input>
+		<output>/controls/flight/aileron-right</output>
 	</filter>
 	
  <!-- =============================================================== -->
@@ -2166,7 +2347,6 @@
 		</R>
 		<output>/controls/flight/speedbrake-lever</output>	
 	</flipflop>
-
  
 	<!-- Speedbrake Selector -->
 	

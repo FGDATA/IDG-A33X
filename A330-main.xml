@@ -325,18 +325,20 @@
 		<multiplay>
 			<generic>
 				<float n="0" alias="/controls/lighting/dome-norm" />
-				<!--float n="1" alias="/replaceme" /-->
+				<float n="1" alias="/gear/gear[0]/steering-norm" />
 				<float n="2" alias="/engines/engine[0]/reverser-pos-norm" />
 				<float n="3" alias="/engines/engine[1]/reverser-pos-norm" />
 				<float n="4" alias="/controls/flight/elevator-left" />
 				<float n="5" alias="/controls/flight/elevator-right" />
-				<float n="6" alias="/controls/flight/aileron-left" />
-				<float n="7" alias="/controls/flight/aileron-right" />
+				<float n="6" alias="/controls/flight/aileron-in-left" />
+				<float n="7" alias="/controls/flight/aileron-in-right" />
 				<float n="8" alias="/controls/flight/rudder-fdm" />
 				<float n="9" alias="/gear/gear[1]/gear-tilt-deg" />
 				<float n="10" alias="/gear/gear[2]/gear-tilt-deg" />
 				<float n="11" alias="/fdm/jsbsim/fcs/slat-pos-norm" />
 				<float n="12" alias="/options/drogue-pos-norm" />
+				<float n="13" alias="/controls/flight/aileron-out-left" />
+				<float n="14" alias="/controls/flight/aileron-out-right" />
 				<int n="2" alias="/controls/lighting/landing-lights[0]" />
 				<int n="3" alias="/controls/lighting/landing-lights[1]" />
 				<int n="4" alias="/controls/lighting/landing-lights[2]" />
@@ -580,15 +582,18 @@
 		</engines>
 		<flight>
 			<aileron-input>0</aileron-input>
-			<aileron-fbw>0</aileron-fbw>
-			<aileron-left>0.5</aileron-left>
-			<aileron-right>-0.5</aileron-right>
+			<aileron-in-left>0.5</aileron-in-left>
+			<aileron-in-right>-0.5</aileron-in-right>
+			<aileron-out-left>0.5</aileron-out-left>
+			<aileron-out-right>-0.5</aileron-out-right>
 			<aileron-sum>0.0</aileron-sum>
 			<elevator-input>0</elevator-input>
 			<elevator-fbw>0</elevator-fbw>
 			<elevator-left>0.1</elevator-left>
 			<elevator-right>0.1</elevator-right>
 			<elevator-sum>0.2</elevator-sum>
+			<ground-spoilers-armed type="bool">0</ground-spoilers-armed>
+			<roll-fbw>0</roll-fbw>
 			<spoiler-l1>0.0</spoiler-l1>
 			<spoiler-l2>0.0</spoiler-l2>
 			<spoiler-l3>0.0</spoiler-l3>
@@ -605,7 +610,6 @@
 			<spoiler-r-sum>0.0</spoiler-r-sum>
 			<speedbrake-output>0.0</speedbrake-output>
 			<speedbrake-arm>0</speedbrake-arm>
-			<ground-spoilers-armed type="bool">0</ground-spoilers-armed>
 			<speedbrake-lever type="double">0</speedbrake-lever>
 			<slats>0</slats>
 		</flight>
