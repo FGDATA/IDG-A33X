@@ -88,7 +88,7 @@
 		</previews>
 
 		<startup>
-			<splash-texture>Aircraft/A330Family/Splash/SplashOld.png</splash-texture>
+			<splash-texture>Aircraft/IDG-A33X/Splash/SplashOld.png</splash-texture>
 		</startup>
 		
 		<tags>
@@ -121,37 +121,37 @@
 				<path></path>
 			</electrical>
 			<autopilot n="1">
-				<path>Aircraft/A330Family/Systems/hydraulics.xml</path>
+				<path>Aircraft/IDG-A33X/Systems/hydraulics.xml</path>
 			</autopilot>
 			<autopilot n="2">
-				<path>Aircraft/A330Family/Systems/it-fbw.xml</path>
+				<path>Aircraft/IDG-A33X/Systems/it-fbw.xml</path>
 			</autopilot>
 			<autopilot n="3">
-				<path>Aircraft/A330Family/Systems/fmgc-b.xml</path>
+				<path>Aircraft/IDG-A33X/Systems/fmgc-b.xml</path>
 			</autopilot>
 			<autopilot n="4">
-				<path>Aircraft/A330Family/Systems/fmgc-roll-yaw.xml</path>
+				<path>Aircraft/IDG-A33X/Systems/fmgc-roll-yaw.xml</path>
 			</autopilot>
 			<autopilot n="5">
-				<path>Aircraft/A330Family/Systems/fmgc-pitch.xml</path>
+				<path>Aircraft/IDG-A33X/Systems/fmgc-pitch.xml</path>
 			</autopilot>
             <autopilot n="6">
-                <path>Aircraft/A330Family/Systems/custom-autothrust.xml</path>
+                <path>Aircraft/IDG-A33X/Systems/custom-autothrust.xml</path>
             </autopilot>
             <autopilot n="7">
-                <path>Aircraft/A330Family/Systems/libraries.xml</path>
+                <path>Aircraft/IDG-A33X/Systems/libraries.xml</path>
             </autopilot>
 			<autopilot n="8">
-				<path>Aircraft/A330Family/Systems/fl2070_sound.xml</path>
+				<path>Aircraft/IDG-A33X/Systems/fl2070_sound.xml</path>
 			</autopilot>
             <autopilot n="9">
-				<path>Aircraft/A330Family/Systems/upper-ecam.xml</path>
+				<path>Aircraft/IDG-A33X/Systems/upper-ecam.xml</path>
             </autopilot>
             <autopilot n="10">
-				<path>Aircraft/A330Family/Systems/lower-ecam.xml</path>
+				<path>Aircraft/IDG-A33X/Systems/lower-ecam.xml</path>
             </autopilot>
 			<property-rule n="100">
-				<path>Aircraft/A330Family/Systems/pfd.xml</path>
+				<path>Aircraft/IDG-A33X/Systems/pfd.xml</path>
 			</property-rule>
 		</systems>
 
@@ -169,7 +169,7 @@
 		</sounde>
 
 		<instrumentation>
-			<path>Aircraft/A330Family/Systems/instrumentation.xml</path>
+			<path>Aircraft/IDG-A33X/Systems/instrumentation.xml</path>
 			<adirs n="0">
 				<ir n="0">
 					<aligned type="bool">false</aligned>
@@ -886,7 +886,7 @@
 				<volume type="double">2</volume>
 			</speaker>
 			<voice>
-				<file-prefix>Aircraft/A330Family/Sounds/GPWS/</file-prefix>
+				<file-prefix>Aircraft/IDG-A33X/Sounds/GPWS/</file-prefix>
 			</voice>
 		</mk-viii>
 		
@@ -1071,71 +1071,71 @@
 	
 	<nasal>
 		<libraries>
-			<file>Aircraft/A330Family/Nasal/libraries.nas</file>
-			<file>Aircraft/A330Family/Nasal/buttons.nas</file>
-			<file>Aircraft/A330Family/Nasal/PFD_FMA.nas</file>
-			<file>Aircraft/A330Family/Nasal/gpws.nas</file>
-			<file>Aircraft/A330Family/Nasal/efis.nas</file>
-			<file>Aircraft/A330Family/Nasal/ECAM.nas</file>
-			<file>Aircraft/A330Family/Nasal/shake.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/libraries.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/buttons.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/PFD_FMA.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/gpws.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/efis.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/ECAM.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/shake.nas</file>
 		</libraries>
 		<acconfig>
-			<file>Aircraft/A330Family/AircraftConfig/acconfig.nas</file>
+			<file>Aircraft/IDG-A33X/AircraftConfig/acconfig.nas</file>
 		</acconfig>
 		<systems>
-			<file>Aircraft/A330Family/Nasal/electrical.nas</file>
-			<file>Aircraft/A330Family/Nasal/pneumatics.nas</file>
-			<file>Aircraft/A330Family/Nasal/hydraulics.nas</file>
-			<file>Aircraft/A330Family/Nasal/fuel.nas</file>
-			<file>Aircraft/A330Family/Nasal/engines.nas</file>
-			<file>Aircraft/A330Family/Nasal/ADIRS.nas</file>
-			<file>Aircraft/A330Family/Nasal/fire.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/electrical.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/pneumatics.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/hydraulics.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/fuel.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/engines.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/ADIRS.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/fire.nas</file>
 		</systems>
 		<thrust>
-			<file>Aircraft/A330Family/Nasal/fadec-common.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/fadec-common.nas</file>
 		</thrust>
 		<fbw>
-			<file>Aircraft/A330Family/Nasal/it-fbw.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/it-fbw.nas</file>
 		</fbw>
 		<fmgc>
-			<file>Aircraft/A330Family/Nasal/FMGC.nas</file>
-			<file>Aircraft/A330Family/Nasal/FMGC-b.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/FMGC.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/FMGC-b.nas</file>
 		</fmgc>
 		<mcdu1>
-			<file>Aircraft/A330Family/Nasal/MCDU1/MCDU.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU1/F-PLNA.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU1/INITA.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU1/INITB.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU1/PERFCLB.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU1/PERFCRZ.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU1/PERFDES.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU1/PERFTO.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU1/RADNAV.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU1/DATA.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU1/STATUS.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU1/MCDU.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU1/F-PLNA.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU1/INITA.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU1/INITB.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU1/PERFCLB.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU1/PERFCRZ.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU1/PERFDES.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU1/PERFTO.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU1/RADNAV.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU1/DATA.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU1/STATUS.nas</file>
 		</mcdu1>
 		<mcdu2>
-			<file>Aircraft/A330Family/Nasal/MCDU2/MCDU.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU2/F-PLNA.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU2/INITA.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU2/INITB.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU2/PERFCLB.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU2/PERFCRZ.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU2/PERFDES.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU2/PERFTO.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU2/RADNAV.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU2/DATA.nas</file>
-			<file>Aircraft/A330Family/Nasal/MCDU2/STATUS.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU2/MCDU.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU2/F-PLNA.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU2/INITA.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU2/INITB.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU2/PERFCLB.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU2/PERFCRZ.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU2/PERFDES.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU2/PERFTO.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU2/RADNAV.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU2/DATA.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/MCDU2/STATUS.nas</file>
 		</mcdu2>
 		<canvas_nd>
-			<file>Aircraft/A330Family/Models/Instruments/ND/canvas/ND.nas</file>
+			<file>Aircraft/IDG-A33X/Models/Instruments/ND/canvas/ND.nas</file>
 		</canvas_nd>
 		<canvas_ecam>
-			<file>Aircraft/A330Family/Models/Instruments/Upper-ECAM/Upper-ECAM.nas</file>
-			<file>Aircraft/A330Family/Models/Instruments/Lower-ECAM/Lower-ECAM.nas</file>
+			<file>Aircraft/IDG-A33X/Models/Instruments/Upper-ECAM/Upper-ECAM.nas</file>
+			<file>Aircraft/IDG-A33X/Models/Instruments/Lower-ECAM/Lower-ECAM.nas</file>
 		</canvas_ecam>
 		<icing>
-			<file>Aircraft/A330Family/Nasal/icing.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/icing.nas</file>
 		</icing>
 	</nasal>
 

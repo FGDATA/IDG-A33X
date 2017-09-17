@@ -5,19 +5,9 @@
 # Copyright (c) it0uchpods Design Group #
 #########################################
 
-# :)
-print("          ____ ____   ___  ______              _ _       ");
-print("    /\   |___ \___ \ / _ \|  ____|            (_) |      ");
-print("   /  \    __) |__) | | | | |__ __ _ _ __ ___  _| |_   _ ");
-print("  / /\ \  |__ <|__ <| | | |  __/ _` | '_ ` _ \| | | | | |");
-print(" / ____ \ ___) |__) | |_| | | | (_| | | | | | | | | |_| |");
-print("/_/    \_\____/____/ \___/|_|  \__,_|_| |_| |_|_|_|\__, |");
-print("                                                    __/ |");
-print("                                                   |___/ ");
 print("-----------------------------------------------------------------------------");
 print("Copyright (c) 2017 it0uchpods Design Group");
 print("-----------------------------------------------------------------------------");
-print(" ");
 
 # Dimmers
 setprop("/controls/lighting/ndl-norm", 1);
@@ -214,7 +204,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 	fmgc.FMGCinit();
 	mcdu1.MCDU_init();
 	mcdu2.MCDU_init();
-	var autopilot = gui.Dialog.new("sim/gui/dialogs/autopilot/dialog", "Aircraft/A330Family/Systems/autopilot-dlg.xml");
+	var autopilot = gui.Dialog.new("sim/gui/dialogs/autopilot/dialog", "Aircraft/IDG-A33X/Systems/autopilot-dlg.xml");
 	setprop("/it-autoflight/input/fd1", 1);
 	setprop("/it-autoflight/input/fd2", 1);
 	libraries.ECAMinit();

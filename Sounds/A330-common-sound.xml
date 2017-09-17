@@ -133,7 +133,7 @@
 <!-- Custom GPWS -->
 	    <gpws>
 			<name>2500</name>
-			<path>Aircraft/A330Family/Sounds/GPWS/altitude-2500.wav</path>
+			<path>Aircraft/IDG-A33X/Sounds/GPWS/altitude-2500.wav</path>
 			<mode>once</mode>
 			<condition>
 				<and>
@@ -163,7 +163,7 @@
 		</gpws>
 	    <gpws>
 			<name>2000</name>
-			<path>Aircraft/A330Family/Sounds/GPWS/altitude-2000.wav</path>
+			<path>Aircraft/IDG-A33X/Sounds/GPWS/altitude-2000.wav</path>
 			<mode>once</mode>
 			<condition>
 				<and>
@@ -193,7 +193,7 @@
 		</gpws>
 	    <gpws>
 			<name>10ftaland</name>
-			<path>Aircraft/A330Family/Sounds/GPWS/altitude-10ft.wav</path>
+			<path>Aircraft/IDG-A33X/Sounds/GPWS/altitude-10ft.wav</path>
 			<mode>once</mode>
 			<condition>
 				<and>
@@ -237,7 +237,7 @@
 		</gpws>
 	    <gpws>
 			<name>5</name>
-			<path>Aircraft/A330Family/Sounds/GPWS/altitude-5.wav</path>
+			<path>Aircraft/IDG-A33X/Sounds/GPWS/altitude-5.wav</path>
 			<mode>once</mode>
 			<condition>
 				<and>
@@ -280,7 +280,7 @@
 		
 	    <gpws>
 			<name>100above</name>
-			<path>Aircraft/A330Family/Sounds/GPWS/100-above.wav</path>
+			<path>Aircraft/IDG-A33X/Sounds/GPWS/100-above.wav</path>
 			<mode>once</mode>
 			<condition>
 				<and>
@@ -314,7 +314,7 @@
 			
 		<retard>
 			<name>retard</name>
-			<path>Aircraft/A330Family/Sounds/GPWS/retard.wav</path>
+			<path>Aircraft/IDG-A33X/Sounds/GPWS/retard.wav</path>
 			<mode>looped</mode>
 			<condition>
 				<and>
@@ -389,7 +389,7 @@
 	
   <apoff>
    <name>apoff</name>
-   <path>/Aircraft/A330Family/Sounds/apoff.wav</path>
+   <path>/Aircraft/IDG-A33X/Sounds/apoff.wav</path>
    <condition>
 	 <property>/it-autoflight/sound/apoffsound</property>
    </condition>
@@ -400,7 +400,7 @@
   
   <apoff>
    <name>apoff2</name>
-   <path>/Aircraft/A330Family/Sounds/apoff.wav</path>
+   <path>/Aircraft/IDG-A33X/Sounds/apoff.wav</path>
    <condition>
 	 <property>/it-autoflight/sound/apoffsound2</property>
    </condition>
@@ -801,7 +801,7 @@
 	<switch>
 		<name>Button</name>
 		<mode>once</mode>
-		<path>Aircraft/A330Family/Sounds/Cockpit/button.wav</path>
+		<path>Aircraft/IDG-A33X/Sounds/Cockpit/button.wav</path>
 		<condition>
 			<property>/sim/sounde/btn1</property>
 		</condition>
@@ -813,7 +813,7 @@
 	<switch>
 		<name>ButtonOH</name>
 		<mode>once</mode>
-		<path>Aircraft/A330Family/Sounds/Cockpit/button2.wav</path>
+		<path>Aircraft/IDG-A33X/Sounds/Cockpit/button2.wav</path>
 		<condition>
 			<property>/sim/sounde/oh-btn</property>
 		</condition>
@@ -825,7 +825,7 @@
 	<switch>
 		<name>Button3</name>
 		<mode>once</mode>
-		<path>Aircraft/A330Family/Sounds/Cockpit/button3.wav</path>
+		<path>Aircraft/IDG-A33X/Sounds/Cockpit/button3.wav</path>
 		<condition>
 			<property>/sim/sounde/btn3</property>
 		</condition>
@@ -837,7 +837,7 @@
 	<switch>
 		<name>Knob</name>
 		<mode>once</mode>
-		<path>Aircraft/A330Family/Sounds/Cockpit/knob.wav</path>
+		<path>Aircraft/IDG-A33X/Sounds/Cockpit/knob.wav</path>
 		<condition>
 			<property>/sim/sounde/knb1</property>
 		</condition>
@@ -849,7 +849,7 @@
 	<switch>
 		<name>Switch</name>
 		<mode>once</mode>
-		<path>Aircraft/A330Family/Sounds/Cockpit/switch.wav</path>
+		<path>Aircraft/IDG-A33X/Sounds/Cockpit/switch.wav</path>
 		<condition>
 			<property>/sim/sounde/switch1</property>
 		</condition>
@@ -861,7 +861,7 @@
 	<cvrtone>
 		<name>CVRtone</name>
 		<mode>once</mode>
-		<path>Aircraft/A330Family/Sounds/Cockpit/700hz.wav</path>
+		<path>Aircraft/IDG-A33X/Sounds/Cockpit/700hz.wav</path>
 		<condition>
 			<equals>
 				<property>controls/CVR/tone</property>
@@ -876,7 +876,7 @@
 	<relay>
 		<name>RelayBatt1</name>
 		<mode>once</mode>
-		<path>Aircraft/A320Family/Sounds/Cockpit/relay2.wav</path>
+		<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay2.wav</path>
 		<condition>
 			<greater-than>
 				<property>/systems/electrical/battery1-amps</property>
@@ -891,7 +891,7 @@
 	<relay>
 		<name>RelayBatt2</name>
 		<mode>once</mode>
-		<path>Aircraft/A320Family/Sounds/Cockpit/relay2.wav</path>
+		<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay2.wav</path>
 		<condition>
 			<greater-than>
 				<property>/systems/electrical/battery2-amps</property>
@@ -906,7 +906,7 @@
 	<relay>
 		<name>RelayEXT</name>
 		<mode>once</mode>
-		<path>Aircraft/A330Family/Sounds/Cockpit/relay1.wav</path>
+		<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay1.wav</path>
 		<condition>
 			<and>
 				<equals>
@@ -927,7 +927,7 @@
 	<relay>
 		<name>RelayAPU</name>
 		<mode>once</mode>
-		<path>Aircraft/A330Family/Sounds/Cockpit/relay1.wav</path>
+		<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay1.wav</path>
 		<condition>
 			<equals>
 				<property>/systems/electrical/gen-apu</property>

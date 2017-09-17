@@ -12,12 +12,12 @@
 
 	<model>
 		<name>Rolls Royce Engines</name>
-		<path>Aircraft/A330Family/Models/trent772b-60.xml</path>
+		<path>Aircraft/IDG-A33X/Models/trent772b-60.xml</path>
 	</model>
 	
 	<model>
 		<name>Flightdeck</name>
-		<path>Aircraft/A330Family/Models/FlightDeck/a330.flightdeck.xml</path>
+		<path>Aircraft/IDG-A33X/Models/FlightDeck/a330.flightdeck.xml</path>
 		<offsets>
 			<x-m>-23.1172</x-m>
 			<z-m>1.0528</z-m>
@@ -28,7 +28,7 @@
 	
 	<model>
 		<name>Left nav light</name>
-		<path>Aircraft/A330Family/Models/Lights/rednav.xml</path> 
+		<path>Aircraft/IDG-A33X/Models/Lights/rednav.xml</path> 
 		<offsets>
 			<x-m>12.764</x-m>
 			<y-m>-28.821</y-m>
@@ -38,7 +38,7 @@
 
 	<model>
 		<name>Left nav light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/rednav.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/rednav.xml</path>
 		<offsets>
 			<x-m>12.764</x-m>
 			<y-m>-28.821</y-m>
@@ -48,7 +48,7 @@
 
 	<model>
 		<name>Right nav light</name>
-		<path>Aircraft/A330Family/Models/Lights/greennav.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/greennav.xml</path>
 		<offsets>
 			<x-m>12.764</x-m>
 			<y-m>28.821</y-m>
@@ -58,7 +58,7 @@
 	
 	<model>
 		<name>Right nav light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/greennav.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/greennav.xml</path>
 		<offsets>
 			<x-m>12.764</x-m>
 			<y-m>28.821</y-m>
@@ -68,7 +68,7 @@
 
 	<model>
 		<name>Left strobe light</name>
-		<path>Aircraft/A330Family/Models/Lights/strobe.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/strobe.xml</path>
 		<offsets>
 			<x-m>12.764</x-m>
 			<y-m>-28.821</y-m>
@@ -78,7 +78,7 @@
 
 	<model>
 		<name>Left strobe light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/left-strobe.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/left-strobe.xml</path>
 		<offsets>
 			<x-m>12.764</x-m>
 			<y-m>-28.821</y-m>
@@ -88,7 +88,7 @@
 
 	<model>
 		<name>Right strobe light</name>
-		<path>Aircraft/A330Family/Models/Lights/strobe.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/strobe.xml</path>
 		<offsets>
 			<x-m>12.764</x-m>
 			<y-m>28.821</y-m>
@@ -98,7 +98,7 @@
 
 	<model>
 		<name>Right strobe light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/right-strobe.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/right-strobe.xml</path>
 		<offsets>
 			<x-m>12.764</x-m>
 			<y-m>28.821</y-m>
@@ -108,7 +108,7 @@
 
 	<model>
 		<name>Top beacon light</name>
-		<path>Aircraft/A330Family/Models/Lights/beacon.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/beacon.xml</path>
 		<offsets>
 			<x-m>7.34</x-m>
 			<y-m>0</y-m>
@@ -118,7 +118,7 @@
 
 	<model>
 		<name>Bottom beacon light</name>
-		<path>Aircraft/A330Family/Models/Lights/beacon.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/beacon.xml</path>
 		<offsets>
 			<x-m>-5.08</x-m>
 			<y-m>0</y-m>
@@ -128,7 +128,7 @@
 
 		 <model>
 		<name>Top beacon light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/beacon.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/beacon.xml</path>
 		<offsets>
 			<x-m>7.34</x-m>
 			<y-m>0</y-m>
@@ -138,7 +138,7 @@
 
 	<model>
 		<name>Bottom beacon light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/beacon.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/beacon.xml</path>
 		<offsets>
 			<x-m>-5.08</x-m>
 			<y-m>0</y-m>
@@ -148,7 +148,7 @@
 
 		 <model>
 		<name>Port landing light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/landinglightL.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/landinglightL.xml</path>
 		 <offsets>
 			<x-m>-1.89</x-m>
 			<y-m>-3.53</y-m>
@@ -158,7 +158,7 @@
 
 	<model>
 		<name>Nosegear landing light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/taxilight.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/taxilight.xml</path>
 		 <offsets>
 				  <x-m>-16.08</x-m>
 				  <y-m>0</y-m>
@@ -168,7 +168,7 @@
 
 	<model>
 		<name>Starboard landing light ALS</name>
-		<path>Aircraft/A330Family/Models/Lights/ALS/landinglightR.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/landinglightR.xml</path>
 		 <offsets>
 			<x-m>-1.89</x-m>
 			<y-m>3.53</y-m>
@@ -189,7 +189,7 @@
 	<!-- New Effects -->
 	
 	<model>
- <path>Aircraft/A330Family/Models/Effects/Contrail/contrail.xml</path>
+ <path>Aircraft/IDG-A33X/Models/Effects/Contrail/contrail.xml</path>
  <condition>
   <equals>
    <property>controls/switches/contrails</property>
@@ -206,7 +206,7 @@
 </model>
 
 <model>
-  <path>Aircraft/A330Family/Models/Effects/Contrail/contrail.xml</path>
+  <path>Aircraft/IDG-A33X/Models/Effects/Contrail/contrail.xml</path>
  <condition>
   <equals>
    <property>controls/switches/contrails</property>

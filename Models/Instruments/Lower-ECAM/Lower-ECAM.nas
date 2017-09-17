@@ -669,9 +669,9 @@ setlistener("sim/signals/fdm-initialized", func {
 	var groupEng = lowerECAM_display.createGroup();
 	var groupFctl = lowerECAM_display.createGroup();
 
-	lowerECAM_apu = canvas_lowerECAM_apu.new(groupApu, "Aircraft/A330Family/Models/Instruments/Lower-ECAM/res/apu.svg");
-	lowerECAM_eng = canvas_lowerECAM_eng.new(groupEng, "Aircraft/A330Family/Models/Instruments/Lower-ECAM/res/eng.svg");
-	lowerECAM_fctl = canvas_lowerECAM_fctl.new(groupFctl, "Aircraft/A330Family/Models/Instruments/Lower-ECAM/res/fctl.svg");
+	lowerECAM_apu = canvas_lowerECAM_apu.new(groupApu, "Aircraft/IDG-A33X/Models/Instruments/Lower-ECAM/res/apu.svg");
+	lowerECAM_eng = canvas_lowerECAM_eng.new(groupEng, "Aircraft/IDG-A33X/Models/Instruments/Lower-ECAM/res/eng.svg");
+	lowerECAM_fctl = canvas_lowerECAM_fctl.new(groupFctl, "Aircraft/IDG-A33X/Models/Instruments/Lower-ECAM/res/fctl.svg");
 
 	lowerECAM_apu.update();
 	lowerECAM_eng.update();

@@ -703,8 +703,8 @@ setlistener("sim/signals/fdm-initialized", func {
 	var group_ge = upperECAM_display.createGroup();
 	var group_pwrr = upperECAM_display.createGroup();
 
-	upperECAM_ge = canvas_upperECAM_ge.new(group_ge, "Aircraft/A330Family/Models/Instruments/Upper-ECAM/res/ge.svg");
-	upperECAM_pwrr = canvas_upperECAM_pwrr.new(group_pwrr, "Aircraft/A330Family/Models/Instruments/Upper-ECAM/res/pwrr.svg");
+	upperECAM_ge = canvas_upperECAM_ge.new(group_ge, "Aircraft/IDG-A33X/Models/Instruments/Upper-ECAM/res/ge.svg");
+	upperECAM_pwrr = canvas_upperECAM_pwrr.new(group_pwrr, "Aircraft/IDG-A33X/Models/Instruments/Upper-ECAM/res/pwrr.svg");
 
 	upperECAM_ge.update();
 	upperECAM_pwrr.update();

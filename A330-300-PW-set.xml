@@ -11,14 +11,14 @@
 	<sim>
 	
 		<sound>
-			<path>Aircraft/A330Family/Sounds/pw4000-sound.xml</path>
+			<path>Aircraft/IDG-A33X/Sounds/pw4000-sound.xml</path>
 		</sound>
 	
 		<description>Airbus A330-323 (PW4168)</description>
 		<flight-model>jsb</flight-model>
 		<aero>A330-300-PW</aero>
 		<model>
-			<path>Aircraft/A330Family/Models/Article-5.xml</path>
+			<path>Aircraft/IDG-A33X/Models/Article-5.xml</path>
 			<livery>
 				<file>White</file>
 			</livery>
@@ -102,7 +102,7 @@
 		
 		<systems n="0">
             <autopilot n="0">
-                <path>Aircraft/A330Family/Systems/fadec-pw.xml</path>
+                <path>Aircraft/IDG-A33X/Systems/fadec-pw.xml</path>
             </autopilot>
 		</systems>
 		
@@ -121,10 +121,10 @@
 	
 	<nasal>
 		<specific>
-			<file>Aircraft/A330Family/Nasal/a333livery-pw.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/a333livery-pw.nas</file>
 		</specific>
 		<fadec>
-			<file>Aircraft/A330Family/Nasal/fadec-pwrr.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/fadec-pwrr.nas</file>
 		</fadec>
 	</nasal>
 

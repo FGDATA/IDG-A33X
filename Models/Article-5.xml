@@ -12,7 +12,7 @@
 
 	<model>
 		<name>A330-323 Main</name>
-		<path>Aircraft/A330Family/Models/A330-323-main.xml</path>
+		<path>Aircraft/IDG-A33X/Models/A330-323-main.xml</path>
 	</model>
 
 <!-- LIVERY SELECT -->
@@ -40,7 +40,7 @@
 	<!-- Nasal code -->
 	<nasal>
 		<load>
-		 var livery_update = aircraft.livery_update.new("Aircraft/A330Family/Models/Liveries/A333PW/");
+		 var livery_update = aircraft.livery_update.new("Aircraft/IDG-A33X/Models/Liveries/A333PW/");
 		</load>
 		<unload>
 		 livery_update.stop();
