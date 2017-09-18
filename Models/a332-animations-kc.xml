@@ -1461,7 +1461,6 @@
   <type>rotate</type>
   <object-name>wing.in0</object-name>
   <object-name>engine0</object-name>
-  <object-name>fueldumpL</object-name>
   <object-name>wing.mid0</object-name>
   <object-name>wing.out0</object-name>
   <object-name>Left nav light ALS</object-name>
@@ -1483,7 +1482,6 @@
 
 <animation>
   <type>rotate</type>
-  <object-name>fueldumpL</object-name>
   <object-name>wing.mid0</object-name>
   <object-name>wing.out0</object-name>
   <object-name>Left nav light ALS</object-name>
@@ -1527,7 +1525,6 @@
   <type>rotate</type>
   <object-name>wing.in1</object-name>
   <object-name>engine1</object-name>
-  <object-name>fueldumpR</object-name>
   <object-name>wing.mid1</object-name>
   <object-name>wing.out1</object-name>
   <object-name>Right nav light ALS</object-name>
@@ -1549,7 +1546,6 @@
 
 <animation>
   <type>rotate</type>
-  <object-name>fueldumpR</object-name>
   <object-name>wing.mid1</object-name>
   <object-name>wing.out1</object-name>
   <object-name>Right nav light ALS</object-name>
