@@ -21,7 +21,7 @@
 		</condition>
 	</animation>
 	
-	<animation>
+	<!--animation>
 		<type>pick</type>
 		<object-name>pod-left</object-name>
 		<object-name>pod-right</object-name>
@@ -33,7 +33,7 @@
 				<property>options/drogue-cmd</property>
 			</binding>
 		</action>
-	</animation>
+	</animation-->
 	
 	<!-- Surface Animations -->
 	
