@@ -1,5 +1,5 @@
-# A330Family
-A very advanced simulation of the Airbus A330 Family for FlightGear.
+# IDG-A33X
+A very advanced simulation of the Airbus A330 Family for FlightGear by it0uchpods Design Group.
 
 Brought to you by:
 - Joshua Davidson (it0uchpods)
@@ -7,7 +7,7 @@ Brought to you by:
 - Charlie Schwehm (Wecsje)
 - J Maverick 16
 
-Present pack includes the following Airbus variants:
+Present pack includes the following Airbus A330 Family variants:
 - A330-203
 - A330-223
 - A330-243
