@@ -98,8 +98,6 @@
 		<object-name>CFuelTank2Btn1F</object-name>
 		<object-name>CFuelTank2Btn2O</object-name>
 		<object-name>CrewOxyBtn2O</object-name>
-		<object-name>ELAC1Btn1F</object-name>
-		<object-name>ELAC1Btn2O</object-name>
 		<object-name>ELAC2Btn1F</object-name>
 		<object-name>ELAC2Btn2O</object-name>
 		<object-name>EmerCallBtn1C</object-name>
@@ -171,6 +169,7 @@
 		<object-name>SEC2Btn2O</object-name>
 		<object-name>SEC3Btn1F</object-name>
 		<object-name>SEC3Btn2O</object-name>
+		<object-name>TurbDampBtn2O</object-name>
 		<object-name>VentBlowBtn1F</object-name>
 		<object-name>VentBlowBtn2O</object-name>
 		<object-name>VentExtractBtn1F</object-name>
@@ -792,13 +791,12 @@
 		</emission>
 	</animation>
 
-	<!-- ELAC 1 -->
+	<!-- Turb Damp -->
 	<animation>
 		<type>pick</type>
-		<object-name>ELAC1Btn1</object-name>
-		<object-name>ELAC1Btn2</object-name>
-		<object-name>ELAC1Btn1F</object-name>
-		<object-name>ELAC1Btn2O</object-name>
+		<object-name>TurbDampBtn1</object-name>
+		<object-name>TurbDampBtn2</object-name>
+		<object-name>TurbDampBtn2O</object-name>
 		<action>
 			<button>0</button>
 			<repeatable>false</repeatable>
@@ -816,7 +814,7 @@
 					</or>
 				</condition>
 				<command>property-toggle</command>
-				<property>controls/fctl/elac1</property>
+				<property>controls/fctl/turb-damp</property>
 			</binding>
 			<binding>
 				<command>nasal</command>
@@ -827,16 +825,115 @@
 	
 	<animation>
 		<type>select</type>
-		<object-name>ELAC1Btn1F</object-name>
+		<object-name>TurbDampBtn2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/fctl/turb-damp</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<!-- PRIM 1 -->
+	<animation>
+		<type>pick</type>
+		<object-name>PRIM1Btn1</object-name>
+		<object-name>PRIM1Btn2</object-name>
+		<object-name>PRIM1Btn1F</object-name>
+		<object-name>PRIM1Btn2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/prim1</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc1</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc2</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/fctl/prim1</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>PRIM1Btn1</object-name>
+		<object-name>PRIM1Btn2</object-name>
+		<object-name>PRIM1Btn1F</object-name>
+		<object-name>PRIM1Btn2O</object-name>
+		<object-name>PRIM1Prot</object-name>
+		<action>
+			<button>1</button>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/prim1</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/OH/protectors/prim1</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>setprop("/sim/sounde/oh-cover", 1);</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>PRIM1Prot</object-name>
+		<property>controls/OH/protectors/prim1</property>
+		<factor>-145</factor>
+		<axis>
+			<x1-m>0.00063</x1-m>
+			<y1-m>-0.24497</y1-m>
+			<z1-m>0.06982</z1-m>
+			<x2-m>-0.00225</x2-m>
+			<y2-m>-0.22219</y2-m>
+			<z2-m>0.06982</z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>PRIM1Btn1F</object-name>
 		<condition>
 			<or>
 				<and>
 					<equals>
-						<property>systems/failures/elac1</property>
+						<property>systems/failures/prim1</property>
 						<value>1</value>
 					</equals>
 					<equals>
-						<property>controls/fctl/elac1</property>
+						<property>controls/fctl/prim1</property>
 						<value>1</value>
 					</equals>
 				</and>
@@ -850,11 +947,11 @@
 	
 	<animation>
 		<type>select</type>
-		<object-name>ELAC1Btn2O</object-name>
+		<object-name>PRIM1Btn2O</object-name>
 		<condition>
 			<or>
 				<equals>
-					<property>controls/fctl/elac1</property>
+					<property>controls/fctl/prim1</property>
 					<value>0</value>
 				</equals>
 				<equals>
@@ -877,16 +974,22 @@
 			<repeatable>false</repeatable>
 			<binding>
 				<condition>
-					<or>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc1</property>
-							<value>25</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc2</property>
-							<value>25</value>
-						</greater-than-equals>
-					</or>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/sec1</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc1</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc2</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
 				</condition>
 				<command>property-toggle</command>
 				<property>controls/fctl/sec1</property>
@@ -896,6 +999,49 @@
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
 		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>SEC1Btn1</object-name>
+		<object-name>SEC1Btn2</object-name>
+		<object-name>SEC1Btn1F</object-name>
+		<object-name>SEC1Btn2O</object-name>
+		<object-name>SEC1Prot</object-name>
+		<action>
+			<button>1</button>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/sec1</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/OH/protectors/sec1</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>setprop("/sim/sounde/oh-cover", 1);</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>SEC1Prot</object-name>
+		<property>controls/OH/protectors/sec1</property>
+		<factor>-145</factor>
+		<axis>
+			<x1-m>-0.00225</x1-m>
+			<y1-m>-0.22219</y1-m>
+			<z1-m>0.06982</z1-m>
+			<x2-m>-0.00593</x2-m>
+			<y2-m>-0.19213</y2-m>
+			<z2-m>0.06982</z2-m>
+		</axis>
 	</animation>
 	
 	<animation>
@@ -938,31 +1084,37 @@
 		</condition>
 	</animation>
 	
-	<!-- FAC 1 -->
+	<!-- PRIM 2 -->
 	<animation>
 		<type>pick</type>
-		<object-name>FAC1Btn1</object-name>
-		<object-name>FAC1Btn2</object-name>
-		<object-name>FAC1Btn1F</object-name>
-		<object-name>FAC1Btn2O</object-name>
+		<object-name>PRIM2Btn1</object-name>
+		<object-name>PRIM2Btn2</object-name>
+		<object-name>PRIM2Btn1F</object-name>
+		<object-name>PRIM2Btn2O</object-name>
 		<action>
 			<button>0</button>
 			<repeatable>false</repeatable>
 			<binding>
 				<condition>
-					<or>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc1</property>
-							<value>25</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc2</property>
-							<value>25</value>
-						</greater-than-equals>
-					</or>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/prim2</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc1</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc2</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
 				</condition>
 				<command>property-toggle</command>
-				<property>controls/fctl/fac1</property>
+				<property>controls/fctl/prim2</property>
 			</binding>
 			<binding>
 				<command>nasal</command>
@@ -973,16 +1125,16 @@
 	
 	<animation>
 		<type>select</type>
-		<object-name>FAC1Btn1F</object-name>
+		<object-name>PRIM2Btn1F</object-name>
 		<condition>
 			<or>
 				<and>
 					<equals>
-						<property>systems/failures/fac1</property>
+						<property>systems/failures/prim2</property>
 						<value>1</value>
 					</equals>
 					<equals>
-						<property>controls/fctl/fac1</property>
+						<property>controls/fctl/prim2</property>
 						<value>1</value>
 					</equals>
 				</and>
@@ -996,11 +1148,11 @@
 	
 	<animation>
 		<type>select</type>
-		<object-name>FAC1Btn2O</object-name>
+		<object-name>PRIM2Btn2O</object-name>
 		<condition>
 			<or>
 				<equals>
-					<property>controls/fctl/fac1</property>
+					<property>controls/fctl/prim2</property>
 					<value>0</value>
 				</equals>
 				<equals>
@@ -1011,80 +1163,7 @@
 		</condition>
 	</animation>
 	
-	<!-- ELAC 2 -->
-	<animation>
-		<type>pick</type>
-		<object-name>ELAC2Btn1</object-name>
-		<object-name>ELAC2Btn2</object-name>
-		<object-name>ELAC2Btn1F</object-name>
-		<object-name>ELAC2Btn2O</object-name>
-		<action>
-			<button>0</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<condition>
-					<or>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc1</property>
-							<value>25</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc2</property>
-							<value>25</value>
-						</greater-than-equals>
-					</or>
-				</condition>
-				<command>property-toggle</command>
-				<property>controls/fctl/elac2</property>
-			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>setprop("/sim/sounde/oh-btn", 1);</script>
-			</binding>
-		</action>
-	</animation>
-	
-	<animation>
-		<type>select</type>
-		<object-name>ELAC2Btn1F</object-name>
-		<condition>
-			<or>
-				<and>
-					<equals>
-						<property>systems/failures/elac2</property>
-						<value>1</value>
-					</equals>
-					<equals>
-						<property>controls/fctl/elac2</property>
-						<value>1</value>
-					</equals>
-				</and>
-				<equals>
-					<property>controls/switches/annun-test</property>
-					<value>1</value>
-				</equals>
-			</or>
-		</condition>
-	</animation>
-	
-	<animation>
-		<type>select</type>
-		<object-name>ELAC2Btn2O</object-name>
-		<condition>
-			<or>
-				<equals>
-					<property>controls/fctl/elac2</property>
-					<value>0</value>
-				</equals>
-				<equals>
-					<property>controls/switches/annun-test</property>
-					<value>1</value>
-				</equals>
-			</or>
-		</condition>
-	</animation>
-	
-	<!-- SEC 3 -->
+	<!-- SEC 2 -->
 	<animation>
 		<type>pick</type>
 		<object-name>SEC2Btn1</object-name>
@@ -1096,16 +1175,22 @@
 			<repeatable>false</repeatable>
 			<binding>
 				<condition>
-					<or>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc1</property>
-							<value>25</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc2</property>
-							<value>25</value>
-						</greater-than-equals>
-					</or>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/sec2</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc1</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc2</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
 				</condition>
 				<command>property-toggle</command>
 				<property>controls/fctl/sec2</property>
@@ -1157,31 +1242,37 @@
 		</condition>
 	</animation>
 	
-	<!-- SEC 3 -->
+	<!-- PRIM 3 -->
 	<animation>
 		<type>pick</type>
-		<object-name>SEC3Btn1</object-name>
-		<object-name>SEC3Btn2</object-name>
-		<object-name>SEC3Btn1F</object-name>
-		<object-name>SEC3Btn2O</object-name>
+		<object-name>PRIM3Btn1</object-name>
+		<object-name>PRIM3Btn2</object-name>
+		<object-name>PRIM3Btn1F</object-name>
+		<object-name>PRIM3Btn2O</object-name>
 		<action>
 			<button>0</button>
 			<repeatable>false</repeatable>
 			<binding>
 				<condition>
-					<or>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc1</property>
-							<value>25</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc2</property>
-							<value>25</value>
-						</greater-than-equals>
-					</or>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/prim3</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc1</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc2</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
 				</condition>
 				<command>property-toggle</command>
-				<property>controls/fctl/sec3</property>
+				<property>controls/fctl/prim3</property>
 			</binding>
 			<binding>
 				<command>nasal</command>
@@ -1192,16 +1283,16 @@
 	
 	<animation>
 		<type>select</type>
-		<object-name>SEC3Btn1F</object-name>
+		<object-name>PRIM3Btn1F</object-name>
 		<condition>
 			<or>
 				<and>
 					<equals>
-						<property>systems/failures/sec3</property>
+						<property>systems/failures/prim3</property>
 						<value>1</value>
 					</equals>
 					<equals>
-						<property>controls/fctl/sec3</property>
+						<property>controls/fctl/prim3</property>
 						<value>1</value>
 					</equals>
 				</and>
@@ -1215,84 +1306,11 @@
 	
 	<animation>
 		<type>select</type>
-		<object-name>SEC3Btn2O</object-name>
+		<object-name>PRIM3Btn2O</object-name>
 		<condition>
 			<or>
 				<equals>
-					<property>controls/fctl/sec3</property>
-					<value>0</value>
-				</equals>
-				<equals>
-					<property>controls/switches/annun-test</property>
-					<value>1</value>
-				</equals>
-			</or>
-		</condition>
-	</animation>
-	
-	<!-- FAC 2 -->
-	<animation>
-		<type>pick</type>
-		<object-name>FAC2Btn1</object-name>
-		<object-name>FAC2Btn2</object-name>
-		<object-name>FAC2Btn1F</object-name>
-		<object-name>FAC2Btn2O</object-name>
-		<action>
-			<button>0</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<condition>
-					<or>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc1</property>
-							<value>25</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc2</property>
-							<value>25</value>
-						</greater-than-equals>
-					</or>
-				</condition>
-				<command>property-toggle</command>
-				<property>controls/fctl/fac2</property>
-			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>setprop("/sim/sounde/oh-btn", 1);</script>
-			</binding>
-		</action>
-	</animation>
-	
-	<animation>
-		<type>select</type>
-		<object-name>FAC2Btn1F</object-name>
-		<condition>
-			<or>
-				<and>
-					<equals>
-						<property>systems/failures/fac2</property>
-						<value>1</value>
-					</equals>
-					<equals>
-						<property>controls/fctl/fac2</property>
-						<value>1</value>
-					</equals>
-				</and>
-				<equals>
-					<property>controls/switches/annun-test</property>
-					<value>1</value>
-				</equals>
-			</or>
-		</condition>
-	</animation>
-	
-	<animation>
-		<type>select</type>
-		<object-name>FAC2Btn2O</object-name>
-		<condition>
-			<or>
-				<equals>
-					<property>controls/fctl/fac2</property>
+					<property>controls/fctl/prim3</property>
 					<value>0</value>
 				</equals>
 				<equals>

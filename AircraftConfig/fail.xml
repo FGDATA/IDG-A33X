@@ -60,9 +60,9 @@
 			</group>
 			
 			<checkbox>
-				<label>ELAC1</label>
+				<label>PRIM1</label>
 				<halign>left</halign>
-				<property>/systems/failures/elac1</property>
+				<property>/systems/failures/prim1</property>
 				<binding>
 					<command>dialog-apply</command>
 				</binding>
@@ -70,9 +70,19 @@
 			</checkbox>
 			
 			<checkbox>
-				<label>ELAC2</label>
+				<label>PRIM2</label>
 				<halign>left</halign>
-				<property>/systems/failures/elac2</property>
+				<property>/systems/failures/prim2</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>PRIM3</label>
+				<halign>left</halign>
+				<property>/systems/failures/prim3</property>
 				<binding>
 					<command>dialog-apply</command>
 				</binding>
@@ -93,36 +103,6 @@
 				<label>SEC2</label>
 				<halign>left</halign>
 				<property>/systems/failures/sec2</property>
-				<binding>
-					<command>dialog-apply</command>
-				</binding>
-				<live>true</live>
-			</checkbox>
-			
-			<checkbox>
-				<label>SEC3</label>
-				<halign>left</halign>
-				<property>/systems/failures/sec3</property>
-				<binding>
-					<command>dialog-apply</command>
-				</binding>
-				<live>true</live>
-			</checkbox>
-			
-			<checkbox>
-				<label>FAC2</label>
-				<halign>left</halign>
-				<property>/systems/failures/fac2</property>
-				<binding>
-					<command>dialog-apply</command>
-				</binding>
-				<live>true</live>
-			</checkbox>
-			
-			<checkbox>
-				<label>FAC1</label>
-				<halign>left</halign>
-				<property>/systems/failures/fac1</property>
 				<binding>
 					<command>dialog-apply</command>
 				</binding>

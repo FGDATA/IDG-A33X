@@ -643,8 +643,13 @@
 				<IDG1 type="bool">0</IDG1>
 				<IDG2 type="bool">0</IDG2>
 				<maskman type="bool">0</maskman>
+				<prim1 type="bool">0</prim1>
+				<prim2 type="bool">0</prim2>
+				<prim3 type="bool">0</prim3>
 				<ramair type="bool">0</ramair>
 				<ratman type="bool">0</ratman>
+				<sec1 type="bool">0</sec1>
+				<sec2 type="bool">0</sec2>
 			</protectors>
 		</OH>
 		<pneumatic n="0">
