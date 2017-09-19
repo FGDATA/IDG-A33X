@@ -52,60 +52,64 @@ var update_loop = func {
 	
 	if (prim1_sw and !prim1_fail and ac_ess >= 110) {
 		setprop("/systems/fctl/prim1", 1);
+		setprop("/systems/failures/spoiler-l5", 0);
+		setprop("/systems/failures/spoiler-r5", 0);
+		setprop("/systems/failures/rudder", 0);
 	} else {
 		setprop("/systems/fctl/prim1", 0);
+		setprop("/systems/failures/spoiler-l5", 1);
+		setprop("/systems/failures/spoiler-r5", 1);
+		if (!sec1_sw or sec1_fail) {
+			setprop("/systems/failures/rudder", 1);
+		}
 	}
 	
 	if (prim2_sw and !prim2_fail and ac_ess >= 110) {
 		setprop("/systems/fctl/prim2", 1);
-	} else {
-		setprop("/systems/fctl/prim2", 0);
-	}
-	
-	if (prim3_sw and !prim3_fail and ac_ess >= 110) {
-		setprop("/systems/fctl/prim3", 1);
-	} else {
-		setprop("/systems/fctl/prim3", 0);
-	}
-	
-	# Temporary until I figure out where it comes from. -JD
-	setprop("/systems/failures/rudder", 1);
-	
-	# FIXME: The spoiler computer assignment may or may not be correct for the A330. -JD
-	if (sec1_sw and !sec1_fail and ac_ess >= 110) {
-		setprop("/systems/fctl/sec1", 1);
-		setprop("/systems/failures/spoiler-l1", 0);
-		setprop("/systems/failures/spoiler-r1", 0);
-		setprop("/systems/failures/spoiler-l3", 0);
-		setprop("/systems/failures/spoiler-r3", 0);
 		setprop("/systems/failures/spoiler-l4", 0);
 		setprop("/systems/failures/spoiler-r4", 0);
 	} else {
-		setprop("/systems/fctl/sec1", 0);
-		setprop("/systems/failures/spoiler-l1", 1);
-		setprop("/systems/failures/spoiler-r1", 1);
-		setprop("/systems/failures/spoiler-l3", 1);
-		setprop("/systems/failures/spoiler-r3", 1);
+		setprop("/systems/fctl/prim2", 0);
 		setprop("/systems/failures/spoiler-l4", 1);
 		setprop("/systems/failures/spoiler-r4", 1);
 	}
 	
-	if (sec2_sw and !sec2_fail and ac_ess >= 110) {
-		setprop("/systems/fctl/sec2", 1);
+	if (prim3_sw and !prim3_fail and ac_ess >= 110) {
+		setprop("/systems/fctl/prim3", 1);
+		setprop("/systems/failures/spoiler-l1", 0);
+		setprop("/systems/failures/spoiler-r1", 0);
 		setprop("/systems/failures/spoiler-l2", 0);
 		setprop("/systems/failures/spoiler-r2", 0);
-		setprop("/systems/failures/spoiler-l5", 0);
-		setprop("/systems/failures/spoiler-r5", 0);
-		setprop("/systems/failures/spoiler-l6", 0);
-		setprop("/systems/failures/spoiler-r6", 0);
 	} else {
-		setprop("/systems/fctl/sec2", 0);
+		setprop("/systems/fctl/prim3", 0);
+		setprop("/systems/failures/spoiler-l1", 1);
+		setprop("/systems/failures/spoiler-r1", 1);
 		setprop("/systems/failures/spoiler-l2", 1);
 		setprop("/systems/failures/spoiler-r2", 1);
-		setprop("/systems/failures/spoiler-l5", 1);
-		setprop("/systems/failures/spoiler-r5", 1);
+	}
+	
+	if (sec1_sw and !sec1_fail and ac_ess >= 110) {
+		setprop("/systems/fctl/sec1", 1);
+		setprop("/systems/failures/spoiler-l6", 0);
+		setprop("/systems/failures/spoiler-r6", 0);
+		setprop("/systems/failures/rudder", 0);
+	} else {
+		setprop("/systems/fctl/sec1", 0);
 		setprop("/systems/failures/spoiler-l6", 1);
 		setprop("/systems/failures/spoiler-r6", 1);
+		if (!prim1_sw or prim1_fail) {
+			setprop("/systems/failures/rudder", 1);
+		}
+	}
+	
+	if (sec2_sw and !sec2_fail and ac_ess >= 110) {
+		setprop("/systems/fctl/sec2", 1);
+		setprop("/systems/failures/spoiler-l3", 0);
+		setprop("/systems/failures/spoiler-r3", 0);
+	} else {
+		setprop("/systems/fctl/sec2", 0);
+		setprop("/systems/failures/spoiler-l3", 1);
+		setprop("/systems/failures/spoiler-r3", 1);
 	}
 	
 	var turbdamp = getprop("/systems/fctl/turb-damp");
