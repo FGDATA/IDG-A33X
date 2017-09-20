@@ -654,9 +654,8 @@
 		</OH>
 		<pneumatic n="0">
 			<switches n="0">
-				<aft-temp type="double">0.5</aft-temp>
 				<cockpit-temp type="double">0.5</cockpit-temp>
-				<fwd-temp type="double">0.5</fwd-temp>
+				<cabin-temp type="double">0.5</cabin-temp>
 			</switches>
 		</pneumatic>
 		<switches>

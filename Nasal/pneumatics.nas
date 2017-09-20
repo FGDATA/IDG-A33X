@@ -16,7 +16,8 @@ setlistener("/sim/signals/fdm-initialized", func {
 	var bleedapu_sw = getprop("/controls/pneumatic/switches/bleedapu");
 	var pack1_sw = getprop("/controls/pneumatic/switches/pack1");
 	var pack2_sw = getprop("/controls/pneumatic/switches/pack2");
-	var hot_air_sw = getprop("/controls/pneumatic/switches/hot-air");
+	var hot_air1_sw = getprop("/controls/pneumatic/switches/hot-air1");
+	var hot_air2_sw = getprop("/controls/pneumatic/switches/hot-air2");
 	var ram_air_sw	= getprop("/controls/pneumatic/switches/ram-air");
 	var pack_flo_sw = getprop("/controls/pneumatic/switches/pack-flo");
 	var xbleed_sw = getprop("/controls/pneumatic/switches/xbleed");
@@ -85,7 +86,8 @@ var pneu_init = func {
 	setprop("/controls/pneumatic/switches/groundair", 0);
 	setprop("/controls/pneumatic/switches/pack1", 1);
 	setprop("/controls/pneumatic/switches/pack2", 1);
-	setprop("/controls/pneumatic/switches/hot-air", 1);
+	setprop("/controls/pneumatic/switches/hot-air1", 1);
+	setprop("/controls/pneumatic/switches/hot-air2", 1);
 	setprop("/controls/pneumatic/switches/ram-air", 0);
 	setprop("/controls/pneumatic/switches/pack-flo", 9); # LO: 7, NORM: 9, HI: 11.
 	setprop("/controls/pneumatic/switches/xbleed", 1); # SHUT: 0, AUTO: 1, OPEN: 2.
@@ -104,7 +106,8 @@ var pneu_init = func {
 	setprop("/systems/pneumatic/bleed1-fault", 0);
 	setprop("/systems/pneumatic/bleed2-fault", 0);
 	setprop("/systems/pneumatic/bleedapu-fault", 0);
-	setprop("/systems/pneumatic/hotair-fault", 0);
+	setprop("/systems/pneumatic/hotair1-fault", 0);
+	setprop("/systems/pneumatic/hotair2-fault", 0);
 	setprop("/systems/pneumatic/pack1-fault", 0);
 	setprop("/systems/pneumatic/pack2-fault", 0);
 	setprop("/systems/pneumatic/xbleed", 0);
@@ -155,7 +158,8 @@ var master_pneu = func {
 	bleedapu_sw = getprop("/controls/pneumatic/switches/bleedapu");
 	pack1_sw = getprop("/controls/pneumatic/switches/pack1");
 	pack2_sw = getprop("/controls/pneumatic/switches/pack2");
-	hot_air_sw = getprop("/controls/pneumatic/switches/hot-air");
+	hot_air1_sw = getprop("/controls/pneumatic/switches/hot-air1");
+	hot_air2_sw = getprop("/controls/pneumatic/switches/hot-air2");
 	ram_air_sw	= getprop("/controls/pneumatic/switches/ram-air");
 	pack_flo_sw = getprop("/controls/pneumatic/switches/pack-flo");
 	xbleed_sw = getprop("/controls/pneumatic/switches/xbleed");

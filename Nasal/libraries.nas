@@ -58,19 +58,12 @@ setlistener("controls/lighting/taxi-light-switch", func {
 }, 1, 0);
 
 setlistener("controls/lighting/landing-lights[1]", func {
-	var landl = getprop("/controls/lighting/landing-lights[1]");
-	if (landl == 1) {
+	var land = getprop("/controls/lighting/landing-lights[1]");
+	if (land == 1) {
 		setprop("/sim/rendering/als-secondary-lights/use-landing-light",1);
-	} else {
-		setprop("/sim/rendering/als-secondary-lights/use-landing-light",0);
-	}
-});
-
-setlistener("controls/lighting/landing-lights[2]", func {
-	var landr = getprop("/controls/lighting/landing-lights[2]");
-	if (landr == 1) {
 		setprop("/sim/rendering/als-secondary-lights/use-alt-landing-light",1);
 	} else {
+		setprop("/sim/rendering/als-secondary-lights/use-landing-light",0);
 		setprop("/sim/rendering/als-secondary-lights/use-alt-landing-light",0);
 	}
 });

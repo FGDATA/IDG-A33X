@@ -138,8 +138,10 @@
 		<object-name>GPWSTerrBtn2O</object-name>
 		<object-name>GreenEngPump1F</object-name>
 		<object-name>GreenEngPump2O</object-name>
-		<object-name>HotAirBtn1F</object-name>
-		<object-name>HotAirBtn2O</object-name>
+		<object-name>HotAir1Btn1F</object-name>
+		<object-name>HotAir1Btn2O</object-name>
+		<object-name>HotAir2Btn1F</object-name>
+		<object-name>HotAir2Btn2O</object-name>
 		<object-name>IDG1Btn1F</object-name>
 		<object-name>IDG2Btn1F</object-name>
 		<object-name>IR1Btn1F</object-name>
@@ -3565,8 +3567,8 @@
 		</axis>
 		<center>
 			<x-m>0</x-m>
-			<y-m>-0.1289</y-m>
-			<z-m>-0.10197</z-m>
+			<y-m>-0.06671</y-m>
+			<z-m>-0.11848</z-m>
 		</center>
 	</animation>
 	
@@ -3615,22 +3617,22 @@
 		</axis>
 		<center>
 			<x-m>0</x-m>
-			<y-m>-0.05105</y-m>
-			<z-m>-0.10202</z-m>
+			<y-m>-0.00052</y-m>
+			<z-m>-0.11051</z-m>
 		</center>
 	</animation>
 	
 	<animation>
-		<name>FWD Temp pick</name>
+		<name>Cabin Temp pick</name>
 		<type>pick</type>
-		<object-name>FwdCabinACKnb</object-name>
+		<object-name>CabinACKnb</object-name>
 		<action>
 			<button>0</button>
 			<button>3</button>
 			<repeatable>false</repeatable>
 			<binding>
 				<command>property-adjust</command>
-				<property>controls/pneumatic/switches/fwd-temp</property>
+				<property>controls/pneumatic/switches/cabin-temp</property>
 				<step>0.1</step>
 				<min>0</min>
 				<max>1</max>
@@ -3642,7 +3644,7 @@
 			<repeatable>false</repeatable>
 			<binding>
 				<command>property-adjust</command>
-				<property>controls/pneumatic/switches/fwd-temp</property>
+				<property>controls/pneumatic/switches/cabin-temp</property>
 				<step>-0.1</step>
 				<min>0</min>
 				<max>1</max>
@@ -3650,10 +3652,10 @@
 		</action>
 	</animation>
 	<animation>
-		<name>FWD Temp rotate</name>
+		<name>Cabin Temp rotate</name>
 		<type>rotate</type>
-		<object-name>FwdCabinACKnb</object-name>
-		<property>controls/pneumatic/switches/fwd-temp</property>
+		<object-name>CabinACKnb</object-name>
+		<property>controls/pneumatic/switches/cabin-temp</property>
 		<interpolation>
 			<entry><ind>0</ind><dep> 135</dep></entry>
 			<entry><ind>1</ind><dep>-135</dep></entry>
@@ -3665,58 +3667,8 @@
 		</axis>
 		<center>
 			<x-m>0</x-m>
-			<y-m>0.00045</y-m>
-			<z-m>-0.10202</z-m>
-		</center>
-	</animation>
-	
-	<animation>
-		<name>AFT Temp pick</name>
-		<type>pick</type>
-		<object-name>AftCabinACKnb</object-name>
-		<action>
-			<button>0</button>
-			<button>3</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<command>property-adjust</command>
-				<property>controls/pneumatic/switches/aft-temp</property>
-				<step>0.1</step>
-				<min>0</min>
-				<max>1</max>
-			</binding>
-		</action>
-		<action>
-			<button>1</button>
-			<button>4</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<command>property-adjust</command>
-				<property>controls/pneumatic/switches/aft-temp</property>
-				<step>-0.1</step>
-				<min>0</min>
-				<max>1</max>
-			</binding>
-		</action>
-	</animation>
-	<animation>
-		<name>AFT Temp rotate</name>
-		<type>rotate</type>
-		<object-name>AftCabinACKnb</object-name>
-		<property>controls/pneumatic/switches/aft-temp</property>
-		<interpolation>
-			<entry><ind>0</ind><dep> 135</dep></entry>
-			<entry><ind>1</ind><dep>-135</dep></entry>
-		</interpolation>
-		<axis>
-			<x>1</x>
-			<y>0</y>
-			<z>0</z>
-		</axis>
-		<center>
-			<x-m>0</x-m>
-			<y-m>0.05275</y-m>
-			<z-m>-0.10202</z-m>
+			<y-m>0.06511</y-m>
+			<z-m>-0.11051</z-m>
 		</center>
 	</animation>
 	
@@ -3735,6 +3687,10 @@
 				<value>1</value>
 				<value>2</value>
 			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/knb1", 1);</script>
+			</binding>
 		</action>
 		<action>
 			<button>1</button>
@@ -3746,6 +3702,10 @@
 				<value>2</value>
 				<value>1</value>
 				<value>0</value>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/knb1", 1);</script>
 			</binding>
 		</action>
 	</animation>
@@ -3766,8 +3726,8 @@
 		</axis>
 		<center>
 			<x-m>0</x-m>
-			<y-m>0.05215</y-m>
-			<z-m>-0.16802</z-m>
+			<y-m>0.02206</y-m>
+			<z-m>-0.16607</z-m>
 		</center>
 	</animation>
 
@@ -4080,11 +4040,11 @@
 	</animation>
 	
 	<animation>
-		<name>Hot Air pick</name>
+		<name>Hot Air 1 pick</name>
 		<type>pick</type>
-		<object-name>HotAirBtn</object-name>
-		<object-name>HotAirBtn1F</object-name>
-		<object-name>HotAirBtn2O</object-name>
+		<object-name>HotAir1Btn</object-name>
+		<object-name>HotAir1Btn1F</object-name>
+		<object-name>HotAir1Btn2O</object-name>
 		<action>
 			<button>0</button>
 			<repeatable>false</repeatable>
@@ -4102,7 +4062,7 @@
 					</or>
 				</condition>
 				<command>property-toggle</command>
-				<property>controls/pneumatic/switches/hot-air</property>
+				<property>controls/pneumatic/switches/hot-air1</property>
 			</binding>
 			<binding>
 				<command>nasal</command>
@@ -4113,16 +4073,16 @@
 	
 	<animation>
 		<type>select</type>
-		<object-name>HotAirBtn1F</object-name>
+		<object-name>HotAir1Btn1F</object-name>
 		<condition>
 			<or>
 				<and>
 					<equals>
-						<property>systems/pneumatic/hotair-fault</property>
+						<property>systems/pneumatic/hotair1-fault</property>
 						<value>1</value>
 					</equals>
 					<equals>
-						<property>controls/pneumatic/switches/hot-air</property>
+						<property>controls/pneumatic/switches/hot-air1</property>
 						<value>1</value>
 					</equals>
 				</and>
@@ -4136,11 +4096,83 @@
 
 	<animation>
 		<type>select</type>
-		<object-name>HotAirBtn2O</object-name>
+		<object-name>HotAir1Btn2O</object-name>
 		<condition>
 			<or>
 				<equals>
-					<property>controls/pneumatic/switches/hot-air</property>
+					<property>controls/pneumatic/switches/hot-air1</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<name>Hot Air 2 pick</name>
+		<type>pick</type>
+		<object-name>HotAir2Btn</object-name>
+		<object-name>HotAir2Btn1F</object-name>
+		<object-name>HotAir2Btn2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<or>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc1</property>
+							<value>25</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc2</property>
+							<value>25</value>
+						</greater-than-equals>
+					</or>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/pneumatic/switches/hot-air2</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>HotAir2Btn1F</object-name>
+		<condition>
+			<or>
+				<and>
+					<equals>
+						<property>systems/pneumatic/hotair1-fault</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/pneumatic/switches/hot-air2</property>
+						<value>1</value>
+					</equals>
+				</and>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>HotAir2Btn2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/pneumatic/switches/hot-air2</property>
 					<value>0</value>
 				</equals>
 				<equals>
@@ -4310,12 +4342,12 @@
 		<property>controls/OH/protectors/ramair</property>
 		<factor>-145</factor>
 		<axis>
-			<x1-m>-0.00619</x1-m>
-			<y1-m>-0.05762</y1-m>
-			<z1-m>-0.15269</z1-m>
-			<x2-m>-0.00619</x2-m>
-			<y2-m>-0.03467</y2-m>
-			<z2-m>-0.15269</z2-m>
+			<x1-m>-0.00899</x1-m>
+			<y1-m>-0.15243</y1-m>
+			<z1-m>-0.0947</z1-m>
+			<x2-m>-0.00899</x2-m>
+			<y2-m>-0.12947</y2-m>
+			<z2-m>-0.0947</z2-m>
 		</axis>
 	</animation>
 	
@@ -4781,7 +4813,7 @@
 	<animation>
 		<name>landing light pick</name>
 		<type>pick</type>
-		<object-name>LandingLtLSwtch</object-name>
+		<object-name>LandingLtSwtch</object-name>
 		<action>
 			<button>0</button>
 			<repeatable>false</repeatable>
@@ -4797,47 +4829,10 @@
 	</animation>
 	
 	<animation>
-		<name>landing light pick</name>
-		<type>pick</type>
-		<object-name>LandingLtRSwtch</object-name>
-		<action>
-			<button>0</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<command>property-toggle</command>
-				<property>controls/lighting/landing-lights[2]</property>
-			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>setprop("/sim/sounde/switch1", 1);</script>
-			</binding>
-		</action>
-	</animation>
-	<animation>
 		<name>landing light rotate</name>
 		<type>rotate</type>
-		<object-name>LandingLtLSwtch</object-name>
+		<object-name>LandingLtSwtch</object-name>
 		<property>controls/lighting/landing-lights[1]</property>
-		<interpolation>
-			<entry><ind>0</ind><dep>35</dep></entry>
-			<entry><ind>1</ind><dep>-35</dep></entry>
-		</interpolation>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-		<center>
-			<x-m>-0.01</x-m>
-			<y-m>0</y-m>
-			<z-m>-0.3037</z-m>
-		</center>
-	</animation>
-	<animation>
-		<name>landing light rotate</name>
-		<type>rotate</type>
-		<object-name>LandingLtRSwtch</object-name>
-		<property>controls/lighting/landing-lights[2]</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>35</dep></entry>
 			<entry><ind>1</ind><dep>-35</dep></entry>
