@@ -388,7 +388,6 @@
 			</tank>
 		</fuel>
 	</consumables>
-	
 
 	<payload>
 		<weight n="0">
@@ -745,6 +744,7 @@
 	<options n="0">
 		<EIS2 type="bool">1</EIS2> <!-- For Canvas ECAMs, force EIS2 Style, as EIS1 style in A330 is almost exactly the same in A330. Will be removed eventually. -->
 		<system n="0">
+			<allow-damage type="bool">0</allow-damage>
 			<keyboard-mode userarchive="y" type="bool">0</keyboard-mode>
 		</system>
 		<enable-ecam-actions>0</enable-ecam-actions>

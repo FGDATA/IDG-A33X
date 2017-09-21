@@ -129,6 +129,9 @@
 		<fadec>
 			<file>Aircraft/IDG-A33X/Nasal/fadec-pwrr.nas</file>
 		</fadec>
+		<damage>
+			<file>Aircraft/IDG-A33X/Nasal/damage.nas</file>
+		</damage>
 	</nasal>
 
 </PropertyList>
