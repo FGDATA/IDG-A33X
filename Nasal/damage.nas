@@ -272,9 +272,9 @@ var fail_systems = func (probability) {
 	var failure_modes = FailureMgr._failmgr.failure_modes;
 	var mode_list = keys(failure_modes);
 	var failed = 0;
-	foreach(var failure_prop; props.globals.getNode("/systems").getChildren("failures")) {
+	foreach(var failure_prop; props.globals.getNode("/systems/failures").getChildren()) {
 		if (rand() < probability) {
-			failure_prop.setValue(0);
+			failure_prop.setValue(1);
 			failed += 1;
 		}
 	}
