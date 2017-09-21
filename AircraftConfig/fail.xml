@@ -438,6 +438,40 @@
 				</binding>
 				<live>true</live>
 			</checkbox>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>Cargo Fire</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>AFT</label>
+				<halign>left</halign>
+				<property>/systems/failures/cargo-aft-fire</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>FWD</label>
+				<halign>left</halign>
+				<property>/systems/failures/cargo-fwd-fire</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
 		
 			<hrule/>
 			
