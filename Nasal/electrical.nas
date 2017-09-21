@@ -24,12 +24,15 @@ setlistener("/sim/signals/fdm-initialized", func {
 	var gen2_sw = getprop("/controls/electrical/switches/gen2");
 	var gen_apu_sw = getprop("/controls/electrical/switches/gen-apu");
 	var gen_ext_sw = getprop("/controls/electrical/switches/gen-ext");
+	var gen_extb_sw = getprop("/controls/electrical/switches/gen-extb");
 	var apu_ext_crosstie_sw = getprop("/controls/electrical/switches/apu-ext-crosstie");
 	var ac_ess_feed_sw = getprop("/controls/electrical/switches/ac-ess-feed");
 	var battery1_sw = getprop("/controls/electrical/switches/battery1");
 	var battery2_sw = getprop("/controls/electrical/switches/battery2");
+	var battery3_sw = getprop("/controls/electrical/switches/battery3");
 	var battery1_volts = getprop("/systems/electrical/battery1-volts");
 	var battery2_volts = getprop("/systems/electrical/battery2-volts");
+	var battery3_volts = getprop("/systems/electrical/battery3-volts");
 	var rpmapu = getprop("/systems/apu/rpm");
 	var extpwr_on = getprop("/controls/switches/cart");
 	var stateL = getprop("/engines/engine[0]/state");
@@ -59,11 +62,13 @@ setlistener("/sim/signals/fdm-initialized", func {
 	var gen2_fail = getprop("/systems/failures/elec-gen2");
 	var bat1_volts = getprop("/systems/electrical/battery1-volts");
 	var bat2_volts = getprop("/systems/electrical/battery2-volts");
+	var bat3_volts = getprop("/systems/electrical/battery3-volts");
 	var replay = getprop("/sim/replay/replay-state");
 });
 
 var elec_init = func {
 	setprop("/controls/switches/annun-test", 0);
+	setprop("/controls/electrical/switches/commercial", 1);
 	setprop("/controls/electrical/switches/galley", 1);
 	setprop("/controls/electrical/switches/idg1", 0);
 	setprop("/controls/electrical/switches/idg2", 0);
@@ -72,14 +77,18 @@ var elec_init = func {
 	setprop("/controls/electrical/switches/emer-gen", 0);
 	setprop("/controls/electrical/switches/gen-apu", 1);
 	setprop("/controls/electrical/switches/gen-ext", 0);
+	setprop("/controls/electrical/switches/gen-extb", 0);
 	setprop("/controls/electrical/switches/apu-ext-crosstie", 1);
 	setprop("/controls/electrical/switches/ac-ess-feed", 1);
 	setprop("/controls/electrical/switches/battery1", 0);
 	setprop("/controls/electrical/switches/battery2", 0);
+	setprop("/controls/electrical/switches/battery3", 0);
 	setprop("/systems/electrical/battery1-volts", 25.9);
 	setprop("/systems/electrical/battery2-volts", 25.9);
+	setprop("/systems/electrical/battery3-volts", 26.7);
 	setprop("/systems/electrical/battery1-amps", 0);
 	setprop("/systems/electrical/battery2-amps", 0);
+	setprop("/systems/electrical/battery3-amps", 0);
 	setprop("/systems/electrical/bus/dc1", 0);
 	setprop("/systems/electrical/bus/dc2", 0);
 	setprop("/systems/electrical/bus/dcbat", 0);
@@ -107,6 +116,7 @@ var elec_init = func {
 	setprop("/systems/electrical/apugen-fault", 0);
 	setprop("/systems/electrical/batt1-fault", 0);
 	setprop("/systems/electrical/batt2-fault", 0);
+	setprop("/systems/electrical/batt3-fault", 0);
 	setprop("/systems/electrical/ac-ess-feed-fault", 0);
 	setprop("/systems/electrical/gen1-fault", 0);
 	setprop("/systems/electrical/idg1-fault", 0);
@@ -159,12 +169,15 @@ var master_elec = func {
 	gen2_sw = getprop("/controls/electrical/switches/gen2");
 	gen_apu_sw = getprop("/controls/electrical/switches/gen-apu");
 	gen_ext_sw = getprop("/controls/electrical/switches/gen-ext");
+	gen_extb_sw = getprop("/controls/electrical/switches/gen-extb");
 	apu_ext_crosstie_sw = getprop("/controls/electrical/switches/apu-ext-crosstie");
 	ac_ess_feed_sw = getprop("/controls/electrical/switches/ac-ess-feed");
 	battery1_sw = getprop("/controls/electrical/switches/battery1");
 	battery2_sw = getprop("/controls/electrical/switches/battery2");
+	battery3_sw = getprop("/controls/electrical/switches/battery3");
 	battery1_volts = getprop("/systems/electrical/battery1-volts");
 	battery2_volts = getprop("/systems/electrical/battery2-volts");
+	battery3_volts = getprop("/systems/electrical/battery3-volts");
 	rpmapu = getprop("/systems/apu/rpm");
 	extpwr_on = getprop("/controls/switches/cart");
 	stateL = getprop("/engines/engine[0]/state");
@@ -194,7 +207,7 @@ var master_elec = func {
 	gen2_fail = getprop("/systems/failures/elec-gen2");
 	replay = getprop("/sim/replay/replay-state");
 	
-	if (extpwr_on and gen_ext_sw) {
+	if (extpwr_on and (gen_ext_sw or gen_extb_sw)) {
 		setprop("/systems/electrical/gen-ext", 1);
 	} else {
 		setprop("/systems/electrical/gen-ext", 0);
@@ -206,14 +219,13 @@ var master_elec = func {
 		setprop("/systems/electrical/gen-apu", 0);
 	}
 	
-	
 	gen_apu = getprop("/systems/electrical/gen-apu");
 	gen_ext = getprop("/systems/electrical/gen-ext");
 	
 	# Left cross tie yes?
 	if (stateL == 3 and gen1_sw and !gen1_fail) {
 		setprop("/controls/electrical/xtie/xtieR", 1);
-	} else if (extpwr_on and gen_ext_sw) {
+	} else if (extpwr_on and (gen_ext_sw or gen_extb_sw)) {
 		setprop("/controls/electrical/xtie/xtieR", 1);
 	} else if (rpmapu >= 94.9 and gen_apu_sw and !genapu_fail) {
 		setprop("/controls/electrical/xtie/xtieR", 1);
@@ -224,7 +236,7 @@ var master_elec = func {
 	# Right cross tie yes?
 	if (stateR == 3 and gen2_sw and !gen2_fail) {
 		setprop("/controls/electrical/xtie/xtieL", 1);
-	} else if (extpwr_on and gen_ext_sw) {
+	} else if (extpwr_on and (gen_ext_sw or gen_extb_sw)) {
 		setprop("/controls/electrical/xtie/xtieL", 1);
 	} else if (rpmapu >= 94.9 and gen_apu_sw and !genapu_fail) {
 		setprop("/controls/electrical/xtie/xtieL", 1);
@@ -237,7 +249,7 @@ var master_elec = func {
 		setprop("/systems/electrical/bus/dc1", dc_volt_std);
 		setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
 		setprop("/systems/electrical/bus/dc1-amps", dc_amps_std); 
-	} else if (extpwr_on and gen_ext_sw) {
+	} else if (extpwr_on and (gen_ext_sw or gen_extb_sw)) {
 		setprop("/systems/electrical/bus/dc1", dc_volt_std);
 		setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
 		setprop("/systems/electrical/bus/dc1-amps", dc_amps_std); 
@@ -266,7 +278,7 @@ var master_elec = func {
 		setprop("/systems/electrical/bus/dc2", dc_volt_std);
 		setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
 		setprop("/systems/electrical/bus/dc2-amps", dc_amps_std); 
-	} else if (extpwr_on and gen_ext_sw) {
+	} else if (extpwr_on and (gen_ext_sw or gen_extb_sw)) {
 		setprop("/systems/electrical/bus/dc2", dc_volt_std);
 		setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
 		setprop("/systems/electrical/bus/dc2-amps", dc_amps_std); 
@@ -293,7 +305,7 @@ var master_elec = func {
 	# Left AC bus yes?
 	if (stateL == 3 and gen1_sw and !gen1_fail) {
 		setprop("/systems/electrical/bus/ac1", ac_volt_std);
-	} else if (extpwr_on and gen_ext_sw) {
+	} else if (extpwr_on and (gen_ext_sw or gen_extb_sw)) {
 		setprop("/systems/electrical/bus/ac1", ac_volt_std);
 	} else if (gen_apu and !genapu_fail) {
 		setprop("/systems/electrical/bus/ac1", ac_volt_std);
@@ -308,7 +320,7 @@ var master_elec = func {
 	# Right AC bus yes?
 	if (stateR == 3 and gen2_sw and !gen2_fail) {
 		setprop("/systems/electrical/bus/ac2", ac_volt_std);
-	} else if (extpwr_on and gen_ext_sw) {
+	} else if (extpwr_on and (gen_ext_sw or gen_extb_sw)) {
 		setprop("/systems/electrical/bus/ac2", ac_volt_std);
 	} else if (gen_apu and !genapu_fail) {
 		setprop("/systems/electrical/bus/ac2", ac_volt_std);
@@ -337,7 +349,7 @@ var master_elec = func {
 		setprop("/systems/electrical/bus/gen2-hz", 0);
 	}
 	
-	if (extpwr_on and gen_ext_sw) {
+	if (extpwr_on and (gen_ext_sw or gen_extb_sw)) {
 		setprop("/systems/electrical/extra/ext-volts", ac_volt_std);
 		setprop("/systems/electrical/extra/ext-hz", ac_hz_std);
 	} else {
@@ -374,7 +386,7 @@ var master_elec = func {
 		setprop("/systems/electrical/bus/galley", 0);
 	}
 	
-	if (!gen_apu and !gen_ext_sw and (!gen1_sw or !gen2_sw)) {
+	if (!gen_apu and !gen_ext_sw and !gen_extb_sw and (!gen1_sw or !gen2_sw)) {
 		setprop("/systems/electrical/extra/galleyshed", 1); 
 	} else {
 		setprop("/systems/electrical/extra/galleyshed", 0); 
@@ -403,6 +415,12 @@ var master_elec = func {
 		setprop("/systems/electrical/battery2-amps", 0);
 	}
 	
+	if (battery3_sw) {
+		setprop("/systems/electrical/battery3-amps", dc_amps_std);
+	} else {
+		setprop("/systems/electrical/battery3-amps", 0);
+	}
+	
 	if ((getprop("/systems/electrical/battery1-amps") > 120) or (getprop("/systems/electrical/battery2-amps") > 120)) {
 		setprop("/systems/electrical/bus/dcbat", dc_volt_std);
 	} else {
@@ -421,6 +439,10 @@ var master_elec = func {
 		charge2.stop();
 	}
 	
+	if (battery3_volts > 27.9 or (dcbat == 0)) {
+		charge3.stop();
+	}
+	
 	dc1 = getprop("/systems/electrical/bus/dc1");
 	dc2 = getprop("/systems/electrical/bus/dc2");
 	
@@ -430,8 +452,13 @@ var master_elec = func {
 	}
 	
 	if ((dc1 > 25 or dc2 > 25) and battery2_sw and !batt2_fail) {
-		decharge1.stop();
+		decharge2.stop();
 		charge2.start();
+	}
+	
+	if ((dc1 > 25 or dc2 > 25) and battery3_sw) {
+		decharge3.stop();
+		charge3.start();
 	}
 
 	if ((dcbat == 0) and battery1_sw and !batt1_fail) {
@@ -440,6 +467,10 @@ var master_elec = func {
 	
 	if ((dcbat == 0) and battery2_sw and !batt2_fail) {
 		decharge2.start();
+	}
+	
+	if ((dcbat == 0) and battery3_sw) {
+		decharge3.start();
 	}
 		
 	if (getprop("/systems/electrical/bus/ac-ess") < 110) {
@@ -581,6 +612,10 @@ var charge2 = maketimer(6, func {
 	bat2_volts = getprop("/systems/electrical/battery2-volts");
 	setprop("/systems/electrical/battery2-volts", bat2_volts + 0.1);
 });
+var charge3 = maketimer(6, func {
+	bat3_volts = getprop("/systems/electrical/battery3-volts");
+	setprop("/systems/electrical/battery3-volts", bat3_volts + 0.1);
+});
 var decharge1 = maketimer(69, func { # interval is at 69 seconds, to allow about 30 min from 25.9
 	bat1_volts = getprop("/systems/electrical/battery1-volts");
 	setprop("/systems/electrical/battery1-volts", bat1_volts - 0.1);
@@ -588,4 +623,8 @@ var decharge1 = maketimer(69, func { # interval is at 69 seconds, to allow about
 var decharge2 = maketimer(69, func {
 	bat2_volts = getprop("/systems/electrical/battery2-volts");
 	setprop("/systems/electrical/battery2-volts", bat2_volts - 0.1);
+});
+var decharge3 = maketimer(69, func {
+	bat3_volts = getprop("/systems/electrical/battery3volts");
+	setprop("/systems/electrical/battery3-volts", bat3_volts - 0.1);
 });

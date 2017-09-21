@@ -33,6 +33,8 @@
 		<object-name>BatteryBtn12O</object-name>
 		<object-name>BatteryBtn21F</object-name>
 		<object-name>BatteryBtn22O</object-name>
+		<object-name>BatteryBtnAPU1F</object-name>
+		<object-name>BatteryBtnAPU2O</object-name>
 		<object-name>BusTieBtn2O</object-name>
 		<object-name>DitchBtn2O</object-name>
 		<object-name>EmerExtLtBtn2O</object-name>
@@ -97,6 +99,8 @@
 		<object-name>CFuelTank1Btn2O</object-name>
 		<object-name>CFuelTank2Btn1F</object-name>
 		<object-name>CFuelTank2Btn2O</object-name>
+		<object-name>CommercialPwrBtn1F</object-name>
+		<object-name>CommercialPwrBtn2O</object-name>
 		<object-name>CrewOxyBtn2O</object-name>
 		<object-name>ELAC2Btn1F</object-name>
 		<object-name>ELAC2Btn2O</object-name>
@@ -235,7 +239,9 @@
 	
 	<animation>
 		<type>material</type>
-		<object-name>Battery-volt</object-name>
+		<object-name>Battery-volt-1</object-name>
+		<object-name>Battery-volt-2</object-name>
+		<object-name>Battery-volt-3</object-name>
 		<object-name>Battery-volt-test</object-name>
 		<emission>
 			<red>1</red>
@@ -3109,6 +3115,66 @@
 	</animation>
 	
 	<animation>
+		<name>Commercial pick</name>
+		<type>pick</type>
+		<object-name>CommercialPwrBtn</object-name>
+		<object-name>CommercialPwrBtn1F</object-name>
+		<object-name>CommercialPwrBtn2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<or>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc1</property>
+							<value>25</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc2</property>
+							<value>25</value>
+						</greater-than-equals>
+					</or>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/electrical/switches/commercial</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>CommercialPwrBtn1F</object-name>
+		<condition>
+			<equals>
+				<property>controls/switches/annun-test</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>CommercialPwrBtn2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/electrical/switches/commercial</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
 		<name>Battery1 pick</name>
 		<type>pick</type>
 		<object-name>BatteryBtn11</object-name>
@@ -3220,6 +3286,75 @@
 			<or>
 				<equals>
 					<property>controls/electrical/switches/battery2</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<name>BatteryAPU pick</name>
+		<type>pick</type>
+		<object-name>BatteryBtnAPU1</object-name>
+		<object-name>BatteryBtnAPU2</object-name>
+		<object-name>BatteryBtnAPU1F</object-name>
+		<object-name>BatteryBtnAPU2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<or>
+						<greater-than-equals>
+							<property>systems/electrical/battery1-amps</property>
+							<value>120</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>systems/electrical/battery2-amps</property>
+							<value>120</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc1</property>
+							<value>25</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc2</property>
+							<value>25</value>
+						</greater-than-equals>
+					</or>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/electrical/switches/battery3</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>BatteryBtnAPU1F</object-name>
+		<condition>
+			<equals>
+				<property>controls/switches/annun-test</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>BatteryBtnAPU2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/electrical/switches/battery3</property>
 					<value>0</value>
 				</equals>
 				<equals>
@@ -3637,6 +3772,91 @@
 					</equals>
 					<equals>
 						<property>controls/electrical/switches/gen-ext</property>
+						<value>1</value>
+					</equals>
+				</and>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<name>External power pick</name>
+		<type>pick</type>
+		<object-name>ExtPwrBBtn1</object-name>
+		<object-name>ExtPwrBBtn2</object-name>
+		<object-name>ExtPwrBBtn1A</object-name>
+		<object-name>ExtPwrBBtn2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electrical/switches/gen-extb</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>ExtPwrBBtn1A</object-name>
+		<condition>
+			<or>
+				<and>
+					<equals>
+						<property>controls/switches/cart</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/switches/gen-extb</property>
+						<value>0</value>
+					</equals>
+				</and>
+				<and>
+					<equals>
+						<property>controls/switches/annun-test</property>
+						<value>1</value>
+					</equals>
+					<or>
+						<greater-than-equals>
+							<property>systems/electrical/battery1-amps</property>
+							<value>120</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>systems/electrical/battery2-amps</property>
+							<value>120</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc1</property>
+							<value>25</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc2</property>
+							<value>25</value>
+						</greater-than-equals>
+					</or>
+				</and>
+			</or>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>ExtPwrBBtn2A</object-name>
+		<condition>
+			<or>
+				<and>
+					<equals>
+						<property>controls/switches/cart</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/switches/gen-extb</property>
 						<value>1</value>
 					</equals>
 				</and>
@@ -6105,11 +6325,11 @@
 	
 	<!-- Texts -->
 	<text>
-		<name>Battery-volt</name>
+		<name>Battery-volt-1</name>
 		<offsets>
 			<x-m>-0.008</x-m>
-			<y-m>-0.057</y-m>
-			<z-m>0.0155</z-m>
+			<y-m>-0.0906</y-m>
+			<z-m>0.01935</z-m>
 			<pitch-deg>62</pitch-deg>
 			<roll-deg>88</roll-deg>
 			<heading-deg>32</heading-deg>
@@ -6131,39 +6351,13 @@
 	</text>
 	
 	<text>
-		<name>Battery-volt-test</name>
+		<name>Battery-volt-2</name>
 		<offsets>
 			<x-m>-0.008</x-m>
-			<y-m>-0.057</y-m>
-			<z-m>0.0155</z-m>
+			<y-m>-0.0906</y-m>
+			<z-m>0.01935</z-m>
 			<pitch-deg>62</pitch-deg>
 			<roll-deg>88</roll-deg>
-			<heading-deg>32</heading-deg>
-		</offsets>
-		<alignment>center-center</alignment>
-		<axis-alignment>xy-plane</axis-alignment>
-		<type type="string">text-value</type>
-		<format type="string">88.8</format>
-		<property>autopilot/serviceable</property>
-		<font type="string">led.txf</font>
-		<draw-text type="bool">true</draw-text>
-		<draw-alignment type="bool">false</draw-alignment>
-		<draw-boundingbox type="bool">false</draw-boundingbox>
-		<character-size>0.007</character-size>
-		<font-resolution>
-			<width type="int">32</width>
-			<height type="int">32</height>
-		</font-resolution>
-	</text>
-
-	<text>
-		<name>Battery-volt</name>
-		<offsets>
-			<x-m>-0.008</x-m>
-			<y-m>0.035</y-m>
-			<z-m>0.0155</z-m>
-			<pitch-deg>62</pitch-deg>
-			<roll-deg>90</roll-deg>
 			<heading-deg>32</heading-deg>
 		</offsets>
 		<alignment>center-center</alignment>
@@ -6183,13 +6377,39 @@
 	</text>
 	
 	<text>
+		<name>Battery-volt-3</name>
+		<offsets>
+			<x-m>-0.008</x-m>
+			<y-m>-0.0906</y-m>
+			<z-m>0.01935</z-m>
+			<pitch-deg>62</pitch-deg>
+			<roll-deg>88</roll-deg>
+			<heading-deg>32</heading-deg>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>xy-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%2.1f</format>
+		<property>systems/electrical/battery3-volts</property>
+		<font type="string">led.txf</font>
+		<draw-text type="bool">true</draw-text>
+		<draw-alignment type="bool">false</draw-alignment>
+		<draw-boundingbox type="bool">false</draw-boundingbox>
+		<character-size>0.007</character-size>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
 		<name>Battery-volt-test</name>
 		<offsets>
 			<x-m>-0.008</x-m>
-			<y-m>0.035</y-m>
-			<z-m>0.0155</z-m>
+			<y-m>-0.0906</y-m>
+			<z-m>0.01935</z-m>
 			<pitch-deg>62</pitch-deg>
-			<roll-deg>90</roll-deg>
+			<roll-deg>88</roll-deg>
 			<heading-deg>32</heading-deg>
 		</offsets>
 		<alignment>center-center</alignment>
@@ -6210,12 +6430,52 @@
 	
 	<animation>
 		<type>select</type>
-		<object-name>Battery-volt</object-name>
+		<object-name>Battery-volt-1</object-name>
 		<condition>
-			<equals>
-				<property>controls/switches/annun-test</property>
-				<value>0</value>
-			</equals>
+			<and>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/battery-sel</property>
+					<value>0</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>Battery-volt-2</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/battery-sel</property>
+					<value>1</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>Battery-volt-3</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/battery-sel</property>
+					<value>2</value>
+				</equals>
+			</and>
 		</condition>
 	</animation>
 	
@@ -6228,6 +6488,54 @@
 				<value>1</value>
 			</equals>
 		</condition>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>BattVoltSwitch</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-cycle</command>
+				<property>controls/switches/battery-sel</property>
+				<value>0</value>
+				<value>1</value>
+				<value>2</value>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-cycle</command>
+				<property>controls/switches/battery-sel</property>
+				<value>2</value>
+				<value>1</value>
+				<value>0</value>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<name>Battery volt select rotate</name>
+		<type>rotate</type>
+		<object-name>BattVoltSwitch</object-name>
+		<property>controls/switches/battery-sel</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>-35</dep></entry>
+			<entry><ind>2</ind><dep>35</dep></entry>
+		</interpolation>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>-0.01</x-m>
+			<y-m>0</y-m>
+			<z-m>0.01929</z-m>
+		</center>
 	</animation>
 	
 	<!-- Fire Buttons -->

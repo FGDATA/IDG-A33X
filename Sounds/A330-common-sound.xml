@@ -925,6 +925,31 @@
 	</relay>
 	
 	<relay>
+		<name>RelayEXTB</name>
+		<mode>once</mode>
+		<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay1.wav</path>
+		<condition>
+			<and>
+				<equals>
+					<property>/controls/switches/cart</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>/controls/electrical/switches/gen-ext</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>/controls/electrical/switches/gen-extb</property>
+					<value>1</value>
+				</equals>
+			</and>
+		</condition>
+		<volume>
+			<factor>0.60</factor>
+		</volume>
+	</relay>
+	
+	<relay>
 		<name>RelayAPU</name>
 		<mode>once</mode>
 		<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay1.wav</path>
