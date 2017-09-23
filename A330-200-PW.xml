@@ -121,8 +121,6 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 				<z>-97.71</z>
 			</location>
 		</pointmass>
-
-
 	</mass_balance>
 
 	<ground_reactions>
@@ -238,98 +236,71 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	</ground_reactions>
 
 	<propulsion>
-
 		<engine file="pw4168">
-		<location unit="IN">
-			<x>-45.31</x>	
-			<y>-370.36</y>
-			<z>-97.71</z>
-		</location>
-		<orient unit="DEG">
-			<roll> 0.0 </roll>
-			<pitch> 2.2 </pitch>
-			<yaw> 1 </yaw>
-		</orient>
-		<feed>7</feed>
-		<thruster file="direct">
 			<location unit="IN">
-			<x>-45.31</x>	
-			<y>-370.36</y>
-			<z>-97.71</z>
+				<x>-45.31</x>	
+				<y>-370.36</y>
+				<z>-97.71</z>
 			</location>
 			<orient unit="DEG">
-			<roll> 0.0 </roll>
-			<pitch> 2.2 </pitch>
-			<yaw> 1 </yaw>
+				<roll> 0.0 </roll>
+				<pitch> 2.2 </pitch>
+				<yaw> 1 </yaw>
 			</orient>
-		</thruster>
+			<feed>3</feed>
+			<thruster file="direct">
+				<location unit="IN">
+				<x>-45.31</x>	
+				<y>-370.36</y>
+				<z>-97.71</z>
+				</location>
+				<orient unit="DEG">
+				<roll> 0.0 </roll>
+				<pitch> 2.2 </pitch>
+				<yaw> 1 </yaw>
+				</orient>
+			</thruster>
 		</engine>
 
 		<engine file="pw4168">
-		<location unit="IN">
-			<x>-45.31</x>	
-			<y>370.36</y>
-			<z>-97.71</z>
-		</location>
-		<orient unit="DEG">
-			<roll> 0.0 </roll>
-			<pitch> 2.2 </pitch>
-			<yaw> -1 </yaw>
-		</orient>
-		<feed>8</feed>
-		<thruster file="direct">
 			<location unit="IN">
-			<x>-45.31</x>	
-			<y>370.36</y>
-			<z>-97.71</z>
+				<x>-45.31</x>	
+				<y>370.36</y>
+				<z>-97.71</z>
 			</location>
 			<orient unit="DEG">
-			<roll> 0.0 </roll>
-			<pitch> 2.2 </pitch>
-			<yaw> -1 </yaw>
+				<roll> 0.0 </roll>
+				<pitch> 2.2 </pitch>
+				<yaw> -1 </yaw>
 			</orient>
-		</thruster>
+			<feed>4</feed>
+			<thruster file="direct">
+				<location unit="IN">
+				<x>-45.31</x>	
+				<y>370.36</y>
+				<z>-97.71</z>
+				</location>
+				<orient unit="DEG">
+				<roll> 0.0 </roll>
+				<pitch> 2.2 </pitch>
+				<yaw> -1 </yaw>
+				</orient>
+			</thruster>
 		</engine>
 
-		<tank type="FUEL">    <!-- Left Tank (Vent) -->
-			<location unit="IN">
-				<x> 479.50 </x>
-				<y> -1022.04 </y>
-				<z> 32.72 </z>
-			</location>
-			<capacity unit="LBS"> 800 </capacity> <!-- Needs to be reviewed -->
-			<contents unit="LBS"> 0 </contents>
-			<priority>0</priority>
-			<type>JET-A1</type>
-			<temperature>50</temperature>
-		</tank>
-		<tank type="FUEL">    <!-- Left Tank (Outer) -->
-			<location unit="IN">
-				<x> 364.45 </x>
-				<y> -761.21 </y>
-				<z> 11.82 </z>
-			</location>
-			<capacity unit="LBS"> 6317 </capacity>
-			<contents unit="LBS"> 5000 </contents>
-			<standpipe unit="LBS">21</standpipe><!-- minimun fuel on pipes -->
-			<priority>2</priority>
-			<type>JET-A1</type>
-			<temperature>50</temperature>
-		</tank>
-		<tank type="FUEL">    <!-- Left Tank (Inner) -->
+		<tank type="FUEL">    <!-- Left Wing Tank -->
 			<location unit="IN">
 				<x> 167.06 </x>
 				<y> -316.38 </y>
 				<z> -19.70 </z>
 			</location>
-			<capacity unit="LBS"> 60686 </capacity>
-			<contents unit="LBS"> 10000 </contents>
+			<capacity unit="LBS"> 67803 </capacity>
+			<contents unit="LBS"> 15000 </contents>
 			<standpipe unit="LBS">31</standpipe><!-- minimun fuel on pipes -->
-			<priority>3</priority>
+			<priority>1</priority>
 			<type>JET-A1</type>
 			<temperature>50</temperature>
 		</tank>
-
 		<tank type="FUEL">    <!-- Center Tank -->
 			<location unit="IN">
 				<x> 167.06 </x>
@@ -343,63 +314,38 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			<type>JET-A1</type>
 			<temperature>50</temperature>
 		</tank>
-		<tank type="FUEL">    <!-- Right Tank (Inner) -->
+		<tank type="FUEL">    <!-- Right Wing Tank -->
 			<location unit="IN">
 				<x> 167.06 </x>
 				<y> 316.38 </y>
 				<z> -19.70 </z>
 			</location>
-			<capacity unit="LBS"> 60686 </capacity>
-			<contents unit="LBS"> 10000 </contents>
+			<capacity unit="LBS"> 67803 </capacity>
+			<contents unit="LBS"> 15000 </contents>
 			<standpipe unit="LBS">31</standpipe><!-- minimun fuel on pipes -->
-			<priority>3</priority>
+			<priority>1</priority>
 			<type>JET-A1</type>
 			<temperature>50</temperature>
 		</tank>
-		<tank type="FUEL">    <!-- Right Tank (Outer) -->
+		<tank type="FUEL">    <!-- Engines 1 Pipes -->
 			<location unit="IN">
-				<x> 364.45 </x>
-				<y> 761.21 </y>
-				<z> 11.82 </z>
-			</location>
-			<capacity unit="LBS"> 6317 </capacity>
-			<contents unit="LBS"> 5000 </contents>
-			<standpipe unit="LBS">21</standpipe><!-- minimun fuel on pipes -->
-			<priority>2</priority>
-			<type>JET-A1</type>
-			<temperature>50</temperature>
-		</tank>
-		<tank type="FUEL">    <!-- Right Tank (Vent) -->
-			<location unit="IN">
-				<x> 479.50 </x>
-				<y> 1022.04 </y>
-				<z> 32.72 </z>
-			</location>
-			<capacity unit="LBS"> 800 </capacity> <!-- Needs to be reviewed -->
-			<contents unit="LBS"> 0 </contents>
-			<priority>0</priority>
-			<type>JET-A1</type>
-			<temperature>50</temperature>
-		</tank>
-		<tank type="FUEL">    <!-- LEFT FUEL PIPES (Engine 1 feed from this) -->
-			<location unit="IN">
-				<x>75.65</x>	
+				<x>167.06</x>	
 				<y>0</y>
-				<z>-27.58</z>
+				<z>-19.70</z>
 			</location>
-			<capacity unit="LBS"> 100 </capacity>
-			<contents unit="LBS"> 0 </contents>
+			<capacity unit="LBS">1.00</capacity>
+			<contents unit="LBS">0.00</contents>
 			<priority>1</priority>
 			<type>JET-A1</type>
 		</tank>
-		<tank type="FUEL">    <!-- RIGHT FUEL PIPES (Engine 2 feed from this) -->
+		<tank type="FUEL">    <!-- Engine 2 Pipes -->
 			<location unit="IN">
-				<x>75.65</x>	
+				<x>167.06</x>	
 				<y>0</y>
-				<z>-27.58</z>
+				<z>-19.70</z>
 			</location>
-			<capacity unit="LBS"> 100 </capacity>
-			<contents unit="LBS"> 0 </contents>
+			<capacity unit="LBS">1.00</capacity>
+			<contents unit="LBS">0.00</contents>
 			<priority>1</priority>
 			<type>JET-A1</type>
 		</tank>

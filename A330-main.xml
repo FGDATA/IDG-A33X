@@ -360,31 +360,19 @@
 	<consumables>
 		<fuel>
 			<tank n="0">
-				<name>Left Wing Surge</name>
+				<name>Left Wing</name>
 			</tank>
 			<tank n="1">
-				<name>Left Wing Outer</name>
-			</tank>
-			<tank n="2">
-				<name>Left Wing Inner</name>
-			</tank>
-			<tank n="3">
 				<name>Center</name>
 			</tank>
+			<tank n="2">
+				<name>Right Wing</name>
+			</tank>
+			<tank n="3">
+				<name>Engine 1 Pipes</name>
+			</tank>
 			<tank n="4">
-				<name>Right Wing Inner</name>
-			</tank>
-			<tank n="5">
-				<name>Right Wing Outer</name>
-			</tank>
-			<tank n="6">
-				<name>Right Wing Surge</name>
-			</tank>
-			<tank n="7">
-				<name>Left Pipes</name>
-			</tank>
-			<tank n="8">
-				<name>Right Pipes</name>
+				<name>Engine 2 Pipes</name>
 			</tank>
 		</fuel>
 	</consumables>
@@ -722,18 +710,16 @@
 	<systems>
 		<fuel n="0">
 			<only-use-ctr-tank type="bool">0</only-use-ctr-tank>
+			<tank n="0">
+				<feed type="bool">0</feed>
+			</tank>
+			<tank n="1">
+				<feed type="bool">0</feed>
+			</tank>
 			<tank n="2">
-				<feed0 type="bool">0</feed0>
-				<feed1 type="bool">0</feed1>
+				<feed type="bool">0</feed>
 			</tank>
-			<tank n="3">
-				<feed0 type="bool">0</feed0>
-				<feed1 type="bool">0</feed1>
-			</tank>
-			<tank n="4">
-				<feed0 type="bool">0</feed0>
-				<feed1 type="bool">0</feed1>
-			</tank>
+			<x-feed type="bool">0</x-feed>
 		</fuel>
 		<hydraulic n="0">
 			<blue-psi>0</blue-psi>
