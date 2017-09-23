@@ -25,6 +25,8 @@ setprop("/ECAM/Lower/Oil-PSI[0]", 0);
 setprop("/ECAM/Lower/Oil-PSI[1]", 0);
 setprop("/ECAM/Lower/aileron-ind-in-left", 0);
 setprop("/ECAM/Lower/aileron-ind-in-right", 0);
+setprop("/ECAM/Lower/aileron-ind-out-left", 0);
+setprop("/ECAM/Lower/aileron-ind-out-right", 0);
 setprop("/ECAM/Lower/elevator-ind-left", 0);
 setprop("/ECAM/Lower/elevator-ind-right", 0);
 setprop("/ECAM/Lower/elevator-trim-deg", 0);
@@ -277,12 +279,12 @@ var canvas_lowerECAM_fctl = {
 		return m;
 	},
 	getKeys: func() {
-		return["ailL","ailR","elevL","elevR","PTcc","PT","PTupdn","GW","TAT","SAT","elac1","elac2","sec1","sec2","sec3","ailLblue","ailRblue","elevLblue","elevRblue","rudderblue","ailLgreen","ailRgreen","elevLgreen","ruddergreen","PTgreen","elevRyellow",
-		"rudderyellow","PTyellow","rudder","spdbrkblue","spdbrkgreen","spdbrkyellow","spoiler1Rex","spoiler1Rrt","spoiler2Rex","spoiler2Rrt","spoiler3Rex","spoiler3Rrt","spoiler4Rex","spoiler4Rrt","spoiler5Rex","spoiler5Rrt","spoiler1Lex","spoiler1Lrt",
-		"spoiler2Lex","spoiler2Lrt","spoiler3Lex","spoiler3Lrt","spoiler4Lex","spoiler4Lrt","spoiler5Lex","spoiler5Lrt","spoiler1Rf","spoiler2Rf","spoiler3Rf","spoiler4Rf","spoiler5Rf","spoiler1Lf","spoiler2Lf","spoiler3Lf","spoiler4Lf","spoiler5Lf",
-		"ailLscale","ailRscale","path4249","path4249-3","path4249-3-6-7","path4249-3-6-7-5","path4249-3-6"];
+		return["ailL","ailR","ailL_out","ailR_out","elevL","elevR","PTcc","PT","PTupdn","GW","TAT","SAT","prim1","prim2","prim3","sec1","sec2","ailLblue","ailRblue","elevLblue","elevRblue","rudderblue","ailLgreen","ailRgreen","ailLgreen2","ailRgreen2",
+		"elevLgreen","ruddergreen","PTgreen","elevRyellow","rudderyellow","ailLyellow","ailRyellow","PTyellow","rudder","spdbrkblue","spdbrkgreen","spdbrkyellow","spoiler1Rex","spoiler1Rrt","spoiler2Rex","spoiler2Rrt","spoiler3Rex","spoiler3Rrt","spoiler4Rex",
+		"spoiler4Rrt","spoiler5Rex","spoiler5Rrt","spoiler1Lex","spoiler1Lrt","spoiler2Lex","spoiler2Lrt","spoiler3Lex","spoiler3Lrt","spoiler4Lex","spoiler4Lrt","spoiler5Lex","spoiler5Lrt","spoiler1Rf","spoiler2Rf","spoiler3Rf","spoiler4Rf","spoiler5Rf",
+		"spoiler1Lf","spoiler2Lf","spoiler3Lf","spoiler4Lf","spoiler5Lf","ailLscale","ailRscale","path4249","path4249-3","path4338","path4249-3-6-7","path4249-3-6-7-5"];
 	},
-	update: func() {
+	update: func() { 
 		var blue_psi = getprop("/systems/hydraulic/blue-psi");
 		var green_psi = getprop("/systems/hydraulic/green-psi");
 		var yellow_psi = getprop("/systems/hydraulic/yellow-psi");
@@ -309,13 +311,19 @@ var canvas_lowerECAM_fctl = {
 		# Ailerons
 		me["ailL"].setTranslation(0,getprop("/ECAM/Lower/aileron-ind-in-left")*100);
 		me["ailR"].setTranslation(0,getprop("/ECAM/Lower/aileron-ind-in-right")*(-100));
+		me["ailL_out"].setTranslation(0,getprop("/ECAM/Lower/aileron-ind-out-left")*100);
+		me["ailR_out"].setTranslation(0,getprop("/ECAM/Lower/aileron-ind-out-right")*(-100));
 			
 		if (blue_psi < 1500 and green_psi < 1500) {
 			me["ailL"].setColor(1,0.6,0);
 			me["ailR"].setColor(1,0.6,0);
+			me["ailL_out"].setColor(1,0.6,0);
+			me["ailR_out"].setColor(1,0.6,0);
 		} else {
 			me["ailL"].setColor(0,1,0);
 			me["ailR"].setColor(0,1,0);
+			me["ailL_out"].setColor(0,1,0);
+			me["ailR_out"].setColor(0,1,0);
 		}
 		
 		# Elevators
@@ -566,48 +574,48 @@ var canvas_lowerECAM_fctl = {
 		}
 		
 		# Flight Computers		
-		if (getprop("/systems/fctl/elac1")){
-			me["elac1"].setColor(0,1,0);
+		if (getprop("/systems/fctl/prim1")) {
+			me["prim1"].setColor(0,1,0);
 			me["path4249"].setColor(0,1,0);
-		} else if ((getprop("/systems/fctl/elac1") == 0) or (getprop("/systems/failures/elac1") == 1)){
-			me["elac1"].setColor(1,0.6,0);
+		} else if ((getprop("/systems/fctl/prim1") == 0) or (getprop("/systems/failures/prim1") == 1)) {
+			me["prim1"].setColor(1,0.6,0);
 			me["path4249"].setColor(1,0.6,0);
 		}
 		
-		if (getprop("/systems/fctl/elac2")){
-			me["elac2"].setColor(0,1,0);
+		if (getprop("/systems/fctl/prim2")) {
+			me["prim2"].setColor(0,1,0);
 			me["path4249-3"].setColor(0,1,0);
-		} else if ((getprop("/systems/fctl/elac2") == 0) or (getprop("/systems/failures/elac2") == 1)){
-			me["elac2"].setColor(1,0.6,0);
+		} else if ((getprop("/systems/fctl/prim2") == 0) or (getprop("/systems/failures/prim2") == 1)) {
+			me["prim2"].setColor(1,0.6,0);
 			me["path4249-3"].setColor(1,0.6,0);
 		}
 		
-		if (getprop("/systems/fctl/sec1")){
+		if (getprop("/systems/fctl/prim3")) {
+			me["prim3"].setColor(0,1,0);
+			me["path4338"].setColor(0,1,0);
+		} else if ((getprop("/systems/fctl/prim3") == 0) or (getprop("/systems/failures/prim3") == 1)) {
+			me["prim3"].setColor(1,0.6,0);
+			me["path4338"].setColor(1,0.6,0);
+		}
+		
+		if (getprop("/systems/fctl/sec1")) {
 			me["sec1"].setColor(0,1,0);
 			me["path4249-3-6-7"].setColor(0,1,0);
-		} else if ((getprop("/systems/fctl/sec1") == 0) or (getprop("/systems/failures/sec1") == 1)){
+		} else if ((getprop("/systems/fctl/sec1") == 0) or (getprop("/systems/failures/sec1") == 1)) {
 			me["sec1"].setColor(1,0.6,0);
 			me["path4249-3-6-7"].setColor(1,0.6,0);
 		}
 		
-		if (getprop("/systems/fctl/sec2")){
+		if (getprop("/systems/fctl/sec2")) {
 			me["sec2"].setColor(0,1,0);
 			me["path4249-3-6-7-5"].setColor(0,1,0);
-		} else if ((getprop("/systems/fctl/sec2") == 0) or (getprop("/systems/failures/sec2") == 1)){
+		} else if ((getprop("/systems/fctl/sec2") == 0) or (getprop("/systems/failures/sec2") == 1)) {
 			me["sec2"].setColor(1,0.6,0);
 			me["path4249-3-6-7-5"].setColor(1,0.6,0);
 		}
 		
-		if (getprop("/systems/fctl/sec3")){
-			me["sec3"].setColor(0,1,0);
-			me["path4249-3-6"].setColor(0,1,0);
-		} else if ((getprop("/systems/fctl/sec3") == 0) or (getprop("/systems/failures/sec3") == 1)){
-			me["sec3"].setColor(1,0.6,0);
-			me["path4249-3-6"].setColor(1,0.6,0);
-		}
-		
 		# Hydraulic Indicators
-		if (getprop("/systems/hydraulic/blue-psi") > 1500){
+		if (getprop("/systems/hydraulic/blue-psi") > 1500) {
 			me["ailLblue"].setColor(0,1,0);
 			me["ailRblue"].setColor(0,1,0);
 			me["elevLblue"].setColor(0,1,0);
@@ -623,9 +631,11 @@ var canvas_lowerECAM_fctl = {
 			me["spdbrkblue"].setColor(1,0.6,0);
 		}
 		
-		if (getprop("/systems/hydraulic/green-psi") > 1500){
+		if (getprop("/systems/hydraulic/green-psi") > 1500) {
 			me["ailLgreen"].setColor(0,1,0);
 			me["ailRgreen"].setColor(0,1,0);
+			me["ailLgreen2"].setColor(0,1,0);
+			me["ailRgreen2"].setColor(0,1,0);
 			me["elevLgreen"].setColor(0,1,0);
 			me["ruddergreen"].setColor(0,1,0);
 			me["PTgreen"].setColor(0,1,0);
@@ -633,18 +643,24 @@ var canvas_lowerECAM_fctl = {
 		} else {
 			me["ailLgreen"].setColor(1,0.6,0);
 			me["ailRgreen"].setColor(1,0.6,0);
+			me["ailLgreen2"].setColor(1,0.6,0);
+			me["ailRgreen2"].setColor(1,0.6,0);
 			me["elevLgreen"].setColor(1,0.6,0);
 			me["ruddergreen"].setColor(1,0.6,0);
 			me["PTgreen"].setColor(1,0.6,0);
 			me["spdbrkgreen"].setColor(1,0.6,0);
 		}
 		
-		if (getprop("/systems/hydraulic/yellow-psi") > 1500){
+		if (getprop("/systems/hydraulic/yellow-psi") > 1500) {
+			me["ailLyellow"].setColor(0,1,0);
+			me["ailRyellow"].setColor(0,1,0);
 			me["elevRyellow"].setColor(0,1,0);
 			me["rudderyellow"].setColor(0,1,0);
 			me["PTyellow"].setColor(0,1,0);
 			me["spdbrkyellow"].setColor(0,1,0);
 		} else {
+			me["ailLyellow"].setColor(1,0.6,0);
+			me["ailRyellow"].setColor(1,0.6,0);
 			me["elevRyellow"].setColor(1,0.6,0);
 			me["rudderyellow"].setColor(1,0.6,0);
 			me["PTyellow"].setColor(1,0.6,0);

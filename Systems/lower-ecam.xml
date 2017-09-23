@@ -112,13 +112,13 @@
 	</filter>
 	
 	<filter>
-		<name>Aileron L Indication</name>
+		<name>Aileron L In Indication</name>
 		<type>gain</type>
 		<gain>1</gain>
 		<input>
 			<expression>
 				<table>
-					<property>/controls/flight/aileron-left</property>
+					<property>/controls/flight/aileron-in-left</property>
 					<entry><ind>-0.5</ind><dep>-0.73</dep></entry>
 					<entry><ind> 0.0</ind><dep> 0.00</dep></entry>
 					<entry><ind> 0.5</ind><dep> 0.83</dep></entry>
@@ -129,13 +129,13 @@
 	</filter>
 	
 	<filter>
-		<name>Aileron R Indication</name>
+		<name>Aileron R In Indication</name>
 		<type>gain</type>
 		<gain>1</gain>
 		<input>
 			<expression>
 				<table>
-					<property>/controls/flight/aileron-right</property>
+					<property>/controls/flight/aileron-in-right</property>
 					<entry><ind>-0.5</ind><dep>-0.83</dep></entry>
 					<entry><ind> 0.0</ind><dep> 0.00</dep></entry>
 					<entry><ind> 0.5</ind><dep> 0.73</dep></entry>
@@ -143,6 +143,40 @@
 			</expression>
 		</input>
 		<output>/ECAM/Lower/aileron-ind-in-right</output>
+	</filter>
+	
+	<filter>
+		<name>Aileron L Out Indication</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<input>
+			<expression>
+				<table>
+					<property>/controls/flight/aileron-out-left</property>
+					<entry><ind>-0.5</ind><dep>-0.73</dep></entry>
+					<entry><ind> 0.0</ind><dep> 0.00</dep></entry>
+					<entry><ind> 0.5</ind><dep> 0.83</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/ECAM/Lower/aileron-ind-out-left</output>
+	</filter>
+	
+	<filter>
+		<name>Aileron R Out Indication</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<input>
+			<expression>
+				<table>
+					<property>/controls/flight/aileron-out-right</property>
+					<entry><ind>-0.5</ind><dep>-0.83</dep></entry>
+					<entry><ind> 0.0</ind><dep> 0.00</dep></entry>
+					<entry><ind> 0.5</ind><dep> 0.73</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/ECAM/Lower/aileron-ind-out-right</output>
 	</filter>
 	
 	<filter>
