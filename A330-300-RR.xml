@@ -27,7 +27,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<vtailarea unit="FT2">  496.25 </vtailarea>
 		<vtailarm  unit="FT" >    0.00 </vtailarm>
 		<location name="AERORP" unit="IN">
-			<x> 25.00 </x>
+			<x> 15.00 </x>
 			<y> 0 </y>
 			<z> 0.00 </z>
 		</location>
@@ -49,21 +49,23 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	<mass_balance>
 		<ixx unit="SLUG*FT2">  7375399 </ixx>
 		<iyy unit="SLUG*FT2">  1604014 </iyy>
-		<izz unit="SLUG*FT2">  2008984 </izz> 
+		<izz unit="SLUG*FT2">  2008984 </izz>
+		
 		<ixy unit="SLUG*FT2">         0 </ixy>
 		<ixz unit="SLUG*FT2">         0 </ixz>
 		<iyz unit="SLUG*FT2">         0 </iyz>
 		<emptywt unit="LBS">     224000 </emptywt>
+		
 		<location name="CG" unit="IN">
-		<x> -95 </x>
-		<y> 0 </y>
-		<z> -60 </z>
+			<x> -95 </x>
+			<y> 0 </y>
+			<z> 0 </z>
 		</location>
 
 		<pointmass name="Crew">
-			<weight unit="LBS">1080</weight>
+			<weight unit="LBS">380</weight>
 			<location name="POINTMASS" unit="IN">
-				<x>-235.2</x>
+				<x>-95</x>
 				<y>0</y>
 				<z>0</z>
 			</location>
@@ -72,7 +74,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<pointmass name="PAX">
 			<weight unit="LBS">39000</weight>
 			<location name="POINTMASS" unit="IN">
-				<x>110.936</x>
+				<x>-95</x>
 				<y>0</y>
 				<z>0</z>
 			</location>
