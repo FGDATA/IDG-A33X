@@ -54,16 +54,16 @@ var canvas_upperECAM_base = {
 			if (getprop("/options/eng") == "GE") {
 				upperECAM_ge.page.show();
 				upperECAM_pwrr.page.hide();
+				upperECAM_ge.update();
 			} else if (getprop("/options/eng") == "PW" or getprop("/options/eng") == "RR") {
 				upperECAM_ge.page.hide();
 				upperECAM_pwrr.page.show();
+				upperECAM_pwrr.update();
 			}
 		} else {
 			upperECAM_ge.page.hide();
 			upperECAM_pwrr.page.hide();
 		}
-		
-		settimer(func me.update(), 0.02);
 	},
 	updateBase: func() {
 		# Reversers
@@ -431,8 +431,6 @@ var canvas_upperECAM_ge = {
 		}
 		
 		me.updateBase();
-		
-		settimer(func me.update(), 0.02);
 	},
 };
 
@@ -687,8 +685,6 @@ var canvas_upperECAM_pwrr = {
 		}
 		
 		me.updateBase();
-		
-		settimer(func me.update(), 0.02);
 	},
 };
 
@@ -706,8 +702,10 @@ setlistener("sim/signals/fdm-initialized", func {
 	upperECAM_ge = canvas_upperECAM_ge.new(group_ge, "Aircraft/IDG-A33X/Models/Instruments/Upper-ECAM/res/ge.svg");
 	upperECAM_pwrr = canvas_upperECAM_pwrr.new(group_pwrr, "Aircraft/IDG-A33X/Models/Instruments/Upper-ECAM/res/pwrr.svg");
 
-	upperECAM_ge.update();
-	upperECAM_pwrr.update();
+	upperECAM_update.start();
+});
+
+var upperECAM_update = maketimer(0.05, func {
 	canvas_upperECAM_base.update();
 });
 
