@@ -201,21 +201,8 @@
 
 		<menubar>
 			<default>
-				<menu n="3">
-					<item>
-						<name>autopilot</name>
-						<label>Autopilot</label>
-						<binding>
-							<command>nasal</command>
-							<script>
-							 var autopilot = gui.Dialog.new("sim/gui/dialogs/autopilot/dialog", "Aircraft/A320Family/Systems/autopilot-dlg.xml");
-							 autopilot.open();
-							</script>
-						</binding>
-					</item>
-				</menu>
 				<menu n="100">
-					<label>Airbus A3XX</label>
+					<label>A33X Professional</label>
 					<enabled type="bool">true</enabled>
 					<item>
 						<label>Aircraft Config</label>

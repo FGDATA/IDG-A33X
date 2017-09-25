@@ -1,4 +1,4 @@
-# IDG-A33X
+# IDG A33X Professional
 A very advanced simulation of the Airbus A330 Family for FlightGear by it0uchpods Design Group.
 
 Brought to you by:
