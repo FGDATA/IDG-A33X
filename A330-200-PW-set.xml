@@ -18,7 +18,7 @@
 		<flight-model>jsb</flight-model>
 		<aero>A330-200-PW</aero>
 		<model>
-			<path>Aircraft/IDG-A33X/Models/Article-2.xml</path>
+			<path>Aircraft/IDG-A33X/Models/A330-200-PW.xml</path>
 			<livery>
 				<file>White</file>
 			</livery>

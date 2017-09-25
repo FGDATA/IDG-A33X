@@ -14,11 +14,11 @@
 			<path>Aircraft/IDG-A33X/Sounds/pw4000-sound.xml</path>
 		</sound>
 	
-		<description>Airbus A330-223F (PW4168)</description>
+		<description>Airbus A330-223F (PW4170)</description>
 		<flight-model>jsb</flight-model>
-		<aero>A330-200-PW</aero>
+		<aero>A330-200F-PW</aero>
 		<model>
-			<path>Aircraft/IDG-A33X/Models/Article-7.xml</path>
+			<path>Aircraft/IDG-A33X/Models/A330-200F-PW.xml</path>
 			<livery>
 				<file>White</file>
 			</livery>
@@ -116,7 +116,7 @@
 	
 	<MCDUC n="0">
 		<type>A330-223F</type>
-		<eng>PW4168</eng>
+		<eng>PW4170</eng>
 	</MCDUC>
 	
 	<nasal>
