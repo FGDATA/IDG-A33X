@@ -10,6 +10,14 @@
 
 	<sim>
 	
+		<previews>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>Splash/Voyager.png</path>
+			</preview>
+		</previews>
+		
 		<sound>
 			<path>Aircraft/IDG-A33X/Sounds/rrtrent-sound.xml</path>
 		</sound>
