@@ -278,7 +278,7 @@ var fail_systems = func (probability) {
 			failed += 1;
 		}
 	}
-	for ( i = 0; i < 2; i = i + 1 ) {
+	for (i = 0; i < 2; i = i + 1) {
 		if (rand() < probability) {
 			setprop("/controls/engines/engine[" ~ i ~ "]/cutoff-switch", 1);
 			failed += 1;

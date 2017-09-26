@@ -21,19 +21,61 @@
 		</condition>
 	</animation>
 	
-	<!--animation>
-		<type>pick</type>
-		<object-name>pod-left</object-name>
-		<object-name>pod-right</object-name>
-		<action>
-			<button>0</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<command>property-toggle</command>
-				<property>options/drogue-cmd</property>
-			</binding>
-		</action>
-	</animation-->
+	<!-- Drogues -->
+	
+	<animation>
+		<type>select</type>
+		<object-name>boom</object-name>
+		<condition>
+			<equals>
+				<property>sim/multiplay/generic/float[15]</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<name>Boom rotate</name>
+		<type>rotate</type>
+		<object-name>refuelBoom</object-name>
+		<object-name>refuelTube</object-name>
+		<property>sim/multiplay/generic/float[18]</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.7</ind><dep>40</dep></entry>
+			<entry><ind>1</ind><dep>40</dep></entry>
+		</interpolation>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>16.15</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.6614</z-m>
+		</center>
+	</animation>
+	
+	<animation>
+		<name>Boom extend</name>
+		<type>translate</type>
+		<object-name>refuelTube</object-name>
+		<property>sim/multiplay/generic/float[18]</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.7</ind><dep>0</dep></entry>
+			<entry><ind>1</ind><dep>4.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>16.15</x1-m>
+			<y1-m>0</y1-m>
+			<z1-m>-0.6614</z1-m>
+			<x2-m>24.293</x2-m>
+			<y2-m>0</y2-m>
+			<z2-m>0.9878</z2-m>
+		</axis>
+	</animation>
 	
 	<!-- Surface Animations -->
 	
@@ -1465,7 +1507,8 @@
   <object-name>wing.out0</object-name>
   <object-name>Left nav light ALS</object-name>
   <object-name>Left strobe light ALS</object-name>
-  <property>aircraft/wingflex</property>
+  <object-name>refuelLeft</object-name>
+  <property>sim/multiplay/generic/float[15]</property>
   <factor>0.000005</factor>
   <offset-deg>0</offset-deg>
   <center>
@@ -1486,7 +1529,8 @@
   <object-name>wing.out0</object-name>
   <object-name>Left nav light ALS</object-name>
   <object-name>Left strobe light ALS</object-name>
-  <property>aircraft/wingflex</property>
+  <object-name>refuelLeft</object-name>
+  <property>sim/multiplay/generic/float[15]</property>
   <factor>0.000005</factor>
   <offset-deg>-1</offset-deg>
   <center>
@@ -1506,7 +1550,7 @@
   <object-name>wing.out0</object-name>
   <object-name>Left nav light ALS</object-name>
   <object-name>Left strobe light ALS</object-name>
-  <property>aircraft/wingflex</property>
+  <property>sim/multiplay/generic/float[15]</property>
   <factor>0.000005</factor>
   <offset-deg>-1</offset-deg>
   <center>
@@ -1529,7 +1573,8 @@
   <object-name>wing.out1</object-name>
   <object-name>Right nav light ALS</object-name>
   <object-name>Right strobe light ALS</object-name>
-  <property>aircraft/wingflex</property>
+  <object-name>refuelRight</object-name>
+  <property>sim/multiplay/generic/float[15]</property>
   <factor>0.000005</factor>
   <offset-deg>0</offset-deg>
   <center>
@@ -1550,7 +1595,8 @@
   <object-name>wing.out1</object-name>
   <object-name>Right nav light ALS</object-name>
   <object-name>Right strobe light ALS</object-name>
-  <property>aircraft/wingflex</property>
+  <object-name>refuelRight</object-name>
+  <property>sim/multiplay/generic/float[15]</property>
   <factor>0.000005</factor>
   <offset-deg>-1</offset-deg>
   <center>
@@ -1570,7 +1616,7 @@
   <object-name>wing.out1</object-name>
   <object-name>Right nav light ALS</object-name>
   <object-name>Right strobe light ALS</object-name>
-  <property>aircraft/wingflex</property>
+  <property>sim/multiplay/generic/float[15]</property>
   <factor>0.000005</factor>
   <offset-deg>-1</offset-deg>
   <center>

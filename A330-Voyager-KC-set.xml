@@ -140,6 +140,9 @@
 		<damage>
 			<file>Aircraft/IDG-A33X/Nasal/damage.nas</file>
 		</damage>
+		<refuel_control>
+			<file>Aircraft/IDG-A33X/Nasal/refuel-control.nas</file>
+		</refuel_control>
 	</nasal>
 
 </PropertyList>
