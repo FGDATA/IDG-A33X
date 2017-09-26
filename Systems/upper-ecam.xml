@@ -28,7 +28,7 @@
 			<expression>
 				<table>
 					<property>/engines/engine[0]/epr-actual</property>
-					<entry><ind>0.850</ind><dep>-115</dep></entry>
+					<entry><ind>0.790</ind><dep>-134</dep></entry>
 					<entry><ind>1.000</ind><dep> -91</dep></entry>
 					<entry><ind>1.400</ind><dep>   1</dep></entry>
 					<entry><ind>1.800</ind><dep>  88</dep></entry>
@@ -60,7 +60,7 @@
 			<expression>
 				<table>
 					<property>/engines/engine[0]/epr-cmd</property>
-					<entry><ind>0.850</ind><dep>-115</dep></entry>
+					<entry><ind>0.790</ind><dep>-134</dep></entry>
 					<entry><ind>1.000</ind><dep> -91</dep></entry>
 					<entry><ind>1.400</ind><dep>   1</dep></entry>
 					<entry><ind>1.800</ind><dep>  88</dep></entry>
@@ -92,7 +92,7 @@
 			<expression>
 				<table>
 					<property>/engines/engine[1]/epr-actual</property>
-					<entry><ind>0.850</ind><dep>-115</dep></entry>
+					<entry><ind>0.790</ind><dep>-134</dep></entry>
 					<entry><ind>1.000</ind><dep> -91</dep></entry>
 					<entry><ind>1.400</ind><dep>   1</dep></entry>
 					<entry><ind>1.800</ind><dep>  88</dep></entry>
@@ -124,7 +124,7 @@
 			<expression>
 				<table>
 					<property>/engines/engine[1]/epr-cmd</property>
-					<entry><ind>0.850</ind><dep>-115</dep></entry>
+					<entry><ind>0.790</ind><dep>-134</dep></entry>
 					<entry><ind>1.000</ind><dep> -91</dep></entry>
 					<entry><ind>1.400</ind><dep>   1</dep></entry>
 					<entry><ind>1.800</ind><dep>  88</dep></entry>
@@ -156,7 +156,7 @@
 			<expression>
 				<table>
 					<property>/systems/thrust/epr/toga-lim</property>
-					<entry><ind>0.850</ind><dep>-115</dep></entry>
+					<entry><ind>0.790</ind><dep>-134</dep></entry>
 					<entry><ind>1.000</ind><dep> -91</dep></entry>
 					<entry><ind>1.400</ind><dep>   1</dep></entry>
 					<entry><ind>1.800</ind><dep>  88</dep></entry>
