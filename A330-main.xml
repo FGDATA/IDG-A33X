@@ -78,14 +78,6 @@
 				</iceable>
 			</icing>
 		</model>
-		
-		<previews>
-			<preview>
-				<type>exterior</type>
-				<splash type="bool">true</splash>
-				<path>Splash/splash1.png</path>
-			</preview>
-		</previews>
 
 		<startup>
 			<splash-texture>Aircraft/IDG-A33X/Splash/SplashOld.png</splash-texture>

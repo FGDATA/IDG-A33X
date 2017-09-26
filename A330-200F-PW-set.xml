@@ -9,7 +9,15 @@
 <PropertyList include="A330-main.xml">
 
 	<sim>
-	
+			
+		<previews>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>Splash/A330-223F.png</path>
+			</preview>
+		</previews>
+		
 		<sound>
 			<path>Aircraft/IDG-A33X/Sounds/pw4000-sound.xml</path>
 		</sound>
