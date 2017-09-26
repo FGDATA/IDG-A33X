@@ -310,6 +310,7 @@
 				<float n="13" alias="/controls/flight/aileron-out-left" />
 				<float n="14" alias="/controls/flight/aileron-out-right" />
 				<float n="15" alias="/aircraft/wingflex" />
+				<float n="16" alias="/options/boom-pos-norm" />
 				<int n="2" alias="/controls/lighting/landing-lights[0]" />
 				<int n="3" alias="/controls/lighting/landing-lights[1]" />
 				<int n="4" alias="/controls/lighting/landing-lights[2]" />

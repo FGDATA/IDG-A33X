@@ -6,3 +6,25 @@
 # Copyright (c) it0uchpods Design Group #
 #########################################
 
+var refeulInit = func {
+	setprop("/options/boom-pos-norm", 0);
+	setprop("/options/drogue-pos-norm", 0);
+}
+
+var toggleBoom = func {
+	var drogueCmd = getprop("/options/boom-pos-norm");
+	if (drogueCmd < 1) {
+		interpolate("/options/boom-pos-norm", 1, 5);
+	} else {
+		interpolate("/options/boom-pos-norm", 0, 5);
+	}
+}
+
+var toggleDrogues = func {
+	var drogueCmd = getprop("/options/drogue-pos-norm");
+	if (drogueCmd < 1) {
+		interpolate("/options/drogue-pos-norm", 1, 1);
+	} else {
+		interpolate("/options/drogue-pos-norm", 0, 1);
+	}
+}

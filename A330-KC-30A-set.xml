@@ -108,6 +108,31 @@
 			</config>
 		</view>
 		
+		<menubar>
+			<default>
+				<menu n="100">
+					<item n="2">
+						<label>Toggle Boom</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							refuel_control.toggleBoom();
+							</script>
+						</binding>
+					</item>
+					<item n="3">
+						<label>Toggle Drogues</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							refuel_control.toggleDrogues();
+							</script>
+						</binding>
+					</item>
+				</menu>
+			</default>
+		</menubar>
+		
 		<systems n="0">
             <autopilot n="0">
                 <path>Aircraft/IDG-A33X/Systems/fadec-ge.xml</path>
@@ -120,9 +145,9 @@
 		<!--EIS2 type="bool">0</EIS2-->
 		<eng>GE</eng>
 		<maxblock>306.6</maxblock>
-		<hasboom>0</hasboom>
-		<drogue-cmd>0</drogue-cmd>
-		<drogue-pos-norm>0</drogue-pos-norm>
+		<hasboom type="bool">0</hasboom>
+		<boom-pos-norm type="double">0</boom-pos-norm>
+		<drogue-pos-norm type="double">0</drogue-pos-norm>
 	</options>
 	
 	<MCDUC n="0">

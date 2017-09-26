@@ -25,16 +25,58 @@
 	
 	<animation>
 		<type>select</type>
-		<object-name>boom</object-name>
+		<object-name>refuelProbeLeft</object-name>
+		<object-name>refuelProbeRight</object-name>
 		<condition>
 			<equals>
-				<property>sim/multiplay/generic/float[15]</property>
+				<property>sim/multiplay/generic/float[12]</property>
 				<value>1</value>
 			</equals>
 		</condition>
 	</animation>
 	
-
+	<animation>
+		<name>Boom rotate</name>
+		<type>rotate</type>
+		<object-name>refuelBoom</object-name>
+		<object-name>refuelTube</object-name>
+		<property>sim/multiplay/generic/float[16]</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.7</ind><dep>40</dep></entry>
+			<entry><ind>1</ind><dep>40</dep></entry>
+		</interpolation>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>26.4575</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.76922</z-m>
+		</center>
+	</animation>
+	
+	<animation>
+		<name>Boom extend</name>
+		<type>translate</type>
+		<object-name>refuelTube</object-name>
+		<property>sim/multiplay/generic/float[16]</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.7</ind><dep>0</dep></entry>
+			<entry><ind>1</ind><dep>4.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>26.4575</x1-m>
+			<y1-m>0</y1-m>
+			<z1-m>-0.76922</z1-m>
+			<x2-m>34.3389</x2-m>
+			<y2-m>0</y2-m>
+			<z2-m>1.86007</z2-m>
+		</axis>
+	</animation>
 	
 	<!-- Surface Animations -->
 	
