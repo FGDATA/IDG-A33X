@@ -9,14 +9,6 @@
 <PropertyList include="A330-main.xml">
 
 	<sim>
-	
-		<previews>
-			<preview>
-				<type>exterior</type>
-				<splash type="bool">true</splash>
-				<path>Splash/A330-343.png</path>
-			</preview>
-		</previews>
 		
 		<sound>
 			<path>Aircraft/IDG-A33X/Sounds/rrtrent-sound.xml</path>
@@ -31,6 +23,14 @@
 				<file>White</file>
 			</livery>
 		</model>
+		
+		<previews>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>Splash/A330-343.png</path>
+			</preview>
+		</previews>
 		
 		<chase-distance-m type="double" archive="y">-130.0</chase-distance-m>
 		<view>
