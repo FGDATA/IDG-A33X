@@ -140,6 +140,14 @@
                 <type>double</type>
                 <property>aircraft/wingflex</property>
             </signal>
+            <signal>
+                <type>double</type>
+                <property>options/boom-pos-norm</property>
+            </signal>
+            <signal>
+                <type>double</type>
+                <property>options/drogue-pos-norm</property>
+            </signal>
         </signals>
     </config>
 
