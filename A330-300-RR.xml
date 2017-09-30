@@ -62,12 +62,12 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			<z> 0.25204 </z>
 		</location>
 
-		<!--pointmass name="Crew">
+		<pointmass name="Crew">
 			<weight unit="LBS">380</weight>
 			<location name="POINTMASS" unit="M">
-				<x> 0.88086 </x>
+				<x> -22.9127 </x>
 				<y> 0 </y>
-				<z> 0.25204 </z>
+				<z> 0.1561 </z>
 			</location>
 		</pointmass>
 		
@@ -83,29 +83,29 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<pointmass name="Fwd Cargo">
 			<weight unit="LBS">3000</weight>
 			<location name="POINTMASS" unit="M"> 
-				<x> 0.88086 </x>
+				<x> -6.08922 </x>
 				<y> 0 </y>
-				<z> 0.25204 </z>
+				<z> -1.02745 </z>
 			</location>
 		</pointmass>
 
 		<pointmass name="Aft Cargo">
 			<weight unit="LBS">3000</weight>
 			<location name="POINTMASS" unit="M">
-				<x> 0.88086 </x>
+				<x> 12.5936 </x>
 				<y> 0 </y>
-				<z> 0.25204 </z>
+				<z> -1.02745 </z>
 			</location>
 		</pointmass>
 		
 		<pointmass name="Rear Bulk Cargo">
 			<weight unit="LBS">6500</weight>
 			<location name="POINTMASS" unit="M">
-				<x> 0.88086 </x>
+				<x> 15.253 </x>
 				<y> 0 </y>
-				<z> 0.25204 </z>
+				<z> -1.02745 </z>
 			</location>
-		</pointmass-->
+		</pointmass>
 	</mass_balance>
 
 	<ground_reactions>
@@ -113,12 +113,12 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			<location unit="M">
 				<x> -18.7085 </x>
 				<y> 0 </y>
-				<z> -5.38384 </z> 
+				<z> -5.43654 </z> 
 			</location>
 			<static_friction> 0.5 </static_friction>
 			<dynamic_friction> 0.5 </dynamic_friction>
 			<rolling_friction> 0.02 </rolling_friction>
-			<spring_coeff unit="LBS/FT"> 32935.5 </spring_coeff>
+			<spring_coeff unit="LBS/FT"> 29935.5 </spring_coeff>
 			<damping_coeff unit="LBS/FT/SEC"> 19978.5 </damping_coeff>
 			<max_steer unit="DEG"> 70 </max_steer>
 			<brake_group> NONE </brake_group>
