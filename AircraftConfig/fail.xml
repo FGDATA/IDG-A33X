@@ -215,9 +215,19 @@
 			</checkbox>
 			
 			<checkbox>
+				<label>Blue ENG 1 Pump</label>
+				<halign>left</halign>
+				<property>/systems/failures/pump-blue-eng</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
 				<label>Blue ELEC Pump</label>
 				<halign>left</halign>
-				<property>/systems/failures/pump-blue</property>
+				<property>/systems/failures/pump-blue-elec</property>
 				<binding>
 					<command>dialog-apply</command>
 				</binding>
@@ -237,7 +247,27 @@
 			<checkbox>
 				<label>Green ENG 1 Pump</label>
 				<halign>left</halign>
-				<property>/systems/failures/pump-green</property>
+				<property>/systems/failures/pump-green-eng</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Green ENG 2 Pump</label>
+				<halign>left</halign>
+				<property>/systems/failures/pump-green-eng2</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Green ELEC Pump</label>
+				<halign>left</halign>
+				<property>/systems/failures/pump-green-elec</property>
 				<binding>
 					<command>dialog-apply</command>
 				</binding>

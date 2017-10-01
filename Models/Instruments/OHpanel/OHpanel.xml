@@ -89,8 +89,11 @@
 		<object-name>AftCargoIsoBtn2O</object-name>
 		<object-name>AftCargoSmkBtn1S</object-name>
 		<object-name>AftCargoSmkBtn2D</object-name>
-		<object-name>BlueElecPump1F</object-name>
 		<object-name>BlueElecPump2O</object-name>
+		<object-name>BlueElec2Pump1F</object-name>
+		<object-name>BlueElec2Pump2O</object-name>
+		<object-name>BlueEngPump1F</object-name>
+		<object-name>BlueEngPump2O</object-name>
 		<object-name>CabinPressModeBtn1F</object-name>
 		<object-name>CabinPressModeBtn2M</object-name>
 		<object-name>CabinFansBtn2O</object-name>
@@ -139,8 +142,13 @@
 		<object-name>GPWSGSBtn2O</object-name>
 		<object-name>GPWSTerrBtn1F</object-name>
 		<object-name>GPWSTerrBtn2O</object-name>
+		<object-name>GreenElecPump2O</object-name>
+		<object-name>GreenElec2Pump1F</object-name>
+		<object-name>GreenElec2Pump2O</object-name>
 		<object-name>GreenEngPump1F</object-name>
 		<object-name>GreenEngPump2O</object-name>
+		<object-name>Green2EngPump1F</object-name>
+		<object-name>Green2EngPump2O</object-name>
 		<object-name>HotAir1Btn1F</object-name>
 		<object-name>HotAir1Btn2O</object-name>
 		<object-name>HotAir2Btn1F</object-name>
@@ -195,8 +203,9 @@
 		<object-name>VentExtractBtn2O</object-name>
 		<object-name>WingAntiIceBtn1F</object-name>
 		<object-name>WingAntiIceBtn2O</object-name>
-		<object-name>YellowElecPump1F</object-name>
 		<object-name>YellowElecPump2O</object-name>
+		<object-name>YellowElec2Pump1F</object-name>
+		<object-name>YellowElec2Pump2O</object-name>
 		<object-name>YellowEngPump1F</object-name>
 		<object-name>YellowEngPump2O</object-name>
 		<condition>
@@ -2042,7 +2051,6 @@
 	
 	<!-- Hydraulic -->
 	<animation>
-		<name>Green Eng Pump pick</name>
 		<type>pick</type>
 		<object-name>GreenEngPump1</object-name>
 		<object-name>GreenEngPump2</object-name>
@@ -2053,25 +2061,81 @@
 			<repeatable>false</repeatable>
 			<binding>
 				<condition>
-					<or>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc1</property>
-							<value>25</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc2</property>
-							<value>25</value>
-						</greater-than-equals>
-					</or>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/green-eng1</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc1</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc2</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
 				</condition>
 				<command>property-toggle</command>
-				<property>controls/hydraulic/eng1-pump</property>
+				<property>controls/hydraulic/eng1-pump-green</property>
 			</binding>
 			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/green-eng1</property>
+						<value>1</value>
+					</equals>
+				</condition>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
 		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>GreenEngPump1</object-name>
+		<object-name>GreenEngPump2</object-name>
+		<object-name>GreenEngPump1F</object-name>
+		<object-name>GreenEngPump2O</object-name>
+		<object-name>GreenEngPumpProt</object-name>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/green-eng1</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/OH/protectors/green-eng1</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>setprop("/sim/sounde/oh-cover", 1);</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>GreenEngPumpProt</object-name>
+		<property>controls/OH/protectors/green-eng1</property>
+		<factor>-145</factor>
+		<axis>
+			<x1-m>-0.00899</x1-m>
+			<y1-m>-0.12595</y1-m>
+			<z1-m>0.1701</z1-m>
+			<x2-m>-0.00899</x2-m>
+			<y2-m>-0.10299</y2-m>
+			<z2-m>0.1701</z2-m>
+		</axis>
 	</animation>
 	
 	<animation>
@@ -2081,11 +2145,11 @@
 			<or>
 				<and>
 					<equals>
-						<property>systems/pneumatic/eng1-pump-fault</property>
+						<property>systems/hydraulic/eng1-pump-green-fault</property>
 						<value>1</value>
 					</equals>
 					<equals>
-						<property>controls/hydraulic/eng1-pump</property>
+						<property>controls/hydraulic/eng1-pump-green</property>
 						<value>1</value>
 					</equals>
 				</and>
@@ -2103,7 +2167,916 @@
 		<condition>
 			<or>
 				<equals>
-					<property>controls/hydraulic/eng1-pump</property>
+					<property>controls/hydraulic/eng1-pump-green</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>GreenElecPump1</object-name>
+		<object-name>GreenElecPump2</object-name>
+		<object-name>GreenElecPump2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/green-elec</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc1</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc2</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/hydraulic/elec-up-pump-green</property>
+			</binding>
+			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/green-elec</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>GreenElecPump1</object-name>
+		<object-name>GreenElecPump2</object-name>
+		<object-name>GreenElecPump2O</object-name>
+		<object-name>GreenElecPumpProt</object-name>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/green-elec</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/OH/protectors/green-elec</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>setprop("/sim/sounde/oh-cover", 1);</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>GreenElecPumpProt</object-name>
+		<property>controls/OH/protectors/green-elec</property>
+		<factor>-145</factor>
+		<axis>
+			<x1-m>-0.00899</x1-m>
+			<y1-m>-0.15448</y1-m>
+			<z1-m>0.20153</z1-m>
+			<x2-m>-0.00899</x2-m>
+			<y2-m>-0.13152</y2-m>
+			<z2-m>0.20153</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>GreenElecPump2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/hydraulic/elec-up-pump-green</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>GreenElec2Pump1</object-name>
+		<object-name>GreenElec2Pump2</object-name>
+		<object-name>GreenElec2Pump1F</object-name>
+		<object-name>GreenElec2Pump2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<or>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc1</property>
+							<value>25</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc2</property>
+							<value>25</value>
+						</greater-than-equals>
+					</or>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/hydraulic/elec-pump-green</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>GreenElec2Pump1F</object-name>
+		<condition>
+			<or>
+				<and>
+					<equals>
+						<property>systems/hydraulic/elec-pump-green-fault</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/hydraulic/elec-pump-green</property>
+						<value>1</value>
+					</equals>
+				</and>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>GreenElec2Pump2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/hydraulic/elec-pump-green</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>BlueEngPump1</object-name>
+		<object-name>BlueEngPump2</object-name>
+		<object-name>BlueEngPump1F</object-name>
+		<object-name>BlueEngPump2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/blue-eng1</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc1</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc2</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/hydraulic/eng1-pump-blue</property>
+			</binding>
+			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/blue-eng1</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>BlueEngPump1</object-name>
+		<object-name>BlueEngPump2</object-name>
+		<object-name>BlueEngPump1F</object-name>
+		<object-name>BlueEngPump2O</object-name>
+		<object-name>BlueEngPumpProt</object-name>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/blue-eng1</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/OH/protectors/blue-eng1</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>setprop("/sim/sounde/oh-cover", 1);</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>BlueEngPumpProt</object-name>
+		<property>controls/OH/protectors/blue-eng1</property>
+		<factor>-145</factor>
+		<axis>
+			<x1-m>-0.00899</x1-m>
+			<y1-m>-0.04253</y1-m>
+			<z1-m>0.1701</z1-m>
+			<x2-m>-0.00899</x2-m>
+			<y2-m>-0.01958</y2-m>
+			<z2-m>0.1701</z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>BlueEngPump1F</object-name>
+		<condition>
+			<or>
+				<and>
+					<equals>
+						<property>systems/hydraulic/eng1-pump-blue-fault</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/hydraulic/eng1-pump-blue</property>
+						<value>1</value>
+					</equals>
+				</and>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>BlueEngPump2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/hydraulic/eng1-pump-blue</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>BlueElecPump1</object-name>
+		<object-name>BlueElecPump2</object-name>
+		<object-name>BlueElecPump2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/blue-elec</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc1</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc2</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/hydraulic/elec-up-pump-blue</property>
+			</binding>
+			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/blue-elec</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>BlueElecPump1</object-name>
+		<object-name>BlueElecPump2</object-name>
+		<object-name>BlueElecPump2O</object-name>
+		<object-name>BlueElecPumpProt</object-name>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/blue-elec</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/OH/protectors/blue-elec</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>setprop("/sim/sounde/oh-cover", 1);</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>BlueElecPumpProt</object-name>
+		<property>controls/OH/protectors/blue-elec</property>
+		<factor>-145</factor>
+		<axis>
+			<x1-m>-0.00899</x1-m>
+			<y1-m>-0.07106</y1-m>
+			<z1-m>0.20153</z1-m>
+			<x2-m>-0.00899</x2-m>
+			<y2-m>-0.04811</y2-m>
+			<z2-m>0.20153</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>BlueElecPump2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/hydraulic/elec-up-pump-blue</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>BlueElec2Pump1</object-name>
+		<object-name>BlueElec2Pump2</object-name>
+		<object-name>BlueElec2Pump1F</object-name>
+		<object-name>BlueElec2Pump2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<or>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc1</property>
+							<value>25</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc2</property>
+							<value>25</value>
+						</greater-than-equals>
+					</or>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/hydraulic/elec-pump-blue</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>BlueElec2Pump1F</object-name>
+		<condition>
+			<or>
+				<and>
+					<equals>
+						<property>systems/hydraulic/elec-pump-blue-fault</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/hydraulic/elec-pump-blue</property>
+						<value>1</value>
+					</equals>
+				</and>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>BlueElec2Pump2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/hydraulic/elec-pump-blue</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>YellowEngPump1</object-name>
+		<object-name>YellowEngPump2</object-name>
+		<object-name>YellowEngPump1F</object-name>
+		<object-name>YellowEngPump2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/yellow-eng2</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc1</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc2</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/hydraulic/eng2-pump-yellow</property>
+			</binding>
+			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/yellow-eng2</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>YellowEngPump1</object-name>
+		<object-name>YellowEngPump2</object-name>
+		<object-name>YellowEngPump1F</object-name>
+		<object-name>YellowEngPump2O</object-name>
+		<object-name>YellowEngPumpProt</object-name>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/yellow-eng2</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/OH/protectors/yellow-eng2</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>setprop("/sim/sounde/oh-cover", 1);</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>YellowEngPumpProt</object-name>
+		<property>controls/OH/protectors/yellow-eng2</property>
+		<factor>-145</factor>
+		<axis>
+			<x1-m>-0.00899</x1-m>
+			<y1-m>0.03993</y1-m>
+			<z1-m>0.1701</z1-m>
+			<x2-m>-0.00899</x2-m>
+			<y2-m>0.06289</y2-m>
+			<z2-m>0.1701</z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>YellowEngPump1F</object-name>
+		<condition>
+			<or>
+				<and>
+					<equals>
+						<property>systems/hydraulic/eng2-pump-yellow-fault</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/hydraulic/eng2-pump-yellow</property>
+						<value>1</value>
+					</equals>
+				</and>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>YellowEngPump2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/hydraulic/eng2-pump-yellow</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>YellowElecPump1</object-name>
+		<object-name>YellowElecPump2</object-name>
+		<object-name>YellowElecPump2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/yellow-elec</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc1</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc2</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/hydraulic/elec-up-pump-yellow</property>
+			</binding>
+			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/yellow-elec</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>YellowElecPump1</object-name>
+		<object-name>YellowElecPump2</object-name>
+		<object-name>YellowElecPump2O</object-name>
+		<object-name>YellowElecPumpProt</object-name>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/yellow-elec</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/OH/protectors/yellow-elec</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>setprop("/sim/sounde/oh-cover", 1);</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>YellowElecPumpProt</object-name>
+		<property>controls/OH/protectors/yellow-elec</property>
+		<factor>-145</factor>
+		<axis>
+			<x1-m>-0.00899</x1-m>
+			<y1-m>0.0114</y1-m>
+			<z1-m>0.20153</z1-m>
+			<x2-m>-0.00899</x2-m>
+			<y2-m>0.03436</y2-m>
+			<z2-m>0.20153</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>YellowElecPump2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/hydraulic/elec-up-pump-yellow</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>YellowElec2Pump1</object-name>
+		<object-name>YellowElec2Pump2</object-name>
+		<object-name>YellowElec2Pump1F</object-name>
+		<object-name>YellowElec2Pump2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<or>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc1</property>
+							<value>25</value>
+						</greater-than-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc2</property>
+							<value>25</value>
+						</greater-than-equals>
+					</or>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/hydraulic/elec-pump-yellow</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>YellowElec2Pump1F</object-name>
+		<condition>
+			<or>
+				<and>
+					<equals>
+						<property>systems/hydraulic/elec-pump-yellow-fault</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/hydraulic/elec-pump-yellow</property>
+						<value>1</value>
+					</equals>
+				</and>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>YellowElec2Pump2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/hydraulic/elec-pump-yellow</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>Green2EngPump1</object-name>
+		<object-name>Green2EngPump2</object-name>
+		<object-name>Green2EngPump1F</object-name>
+		<object-name>Green2EngPump2O</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/green-eng2</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc1</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc2</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
+				</condition>
+				<command>property-toggle</command>
+				<property>controls/hydraulic/eng2-pump-green</property>
+			</binding>
+			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/green-eng2</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-btn", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>Green2EngPump1</object-name>
+		<object-name>Green2EngPump2</object-name>
+		<object-name>Green2EngPump1F</object-name>
+		<object-name>Green2EngPump2O</object-name>
+		<object-name>Green2EngPumpProt</object-name>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/green-eng2</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/OH/protectors/green-eng2</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>setprop("/sim/sounde/oh-cover", 1);</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>Green2EngPumpProt</object-name>
+		<property>controls/OH/protectors/green-eng2</property>
+		<factor>-145</factor>
+		<axis>
+			<x1-m>-0.00899</x1-m>
+			<y1-m>0.09832</y1-m>
+			<z1-m>0.1701</z1-m>
+			<x2-m>-0.00899</x2-m>
+			<y2-m>0.12128</y2-m>
+			<z2-m>0.1701</z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>Green2EngPump1F</object-name>
+		<condition>
+			<or>
+				<and>
+					<equals>
+						<property>systems/hydraulic/eng2-pump-green-fault</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/hydraulic/eng2-pump-green</property>
+						<value>1</value>
+					</equals>
+				</and>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>Green2EngPump2O</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/hydraulic/eng2-pump-green</property>
 					<value>0</value>
 				</equals>
 				<equals>
@@ -2195,304 +3168,12 @@
 		<factor>-145</factor>
 		<axis>
 			<x1-m>-0.0086</x1-m>
-			<y1-m>-0.05506</y1-m>
-			<z1-m>0.14462</z1-m>
+			<y1-m>-0.13483</y1-m>
+			<z1-m>0.19542</z1-m>
 			<x2-m>-0.0086</x2-m>
-			<y2-m>-0.04306</y2-m>
-			<z2-m>0.14462</z2-m>
+			<y2-m>0.14683</y2-m>
+			<z2-m>0.19542</z2-m>
 		</axis>
-	</animation>
-	
-	<animation>
-		<name>Blue Elec Pump pick</name>
-		<type>pick</type>
-		<object-name>BlueElecPump1</object-name>
-		<object-name>BlueElecPump2</object-name>
-		<object-name>BlueElecPump1F</object-name>
-		<object-name>BlueElecPump2O</object-name>
-		<action>
-			<button>0</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<condition>
-					<or>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc1</property>
-							<value>25</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc2</property>
-							<value>25</value>
-						</greater-than-equals>
-					</or>
-				</condition>
-				<command>property-toggle</command>
-				<property>controls/hydraulic/elec-pump-blue</property>
-			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>setprop("/sim/sounde/oh-btn", 1);</script>
-			</binding>
-		</action>
-	</animation>
-	
-	<animation>
-		<type>select</type>
-		<object-name>BlueElecPump1F</object-name>
-		<condition>
-			<or>
-				<and>
-					<equals>
-						<property>systems/pneumatic/elec-pump-b-fault</property>
-						<value>1</value>
-					</equals>
-					<equals>
-						<property>controls/hydraulic/elec-pump-blue</property>
-						<value>1</value>
-					</equals>
-				</and>
-				<equals>
-					<property>controls/switches/annun-test</property>
-					<value>1</value>
-				</equals>
-			</or>
-		</condition>
-	</animation>
-
-	<animation>
-		<type>select</type>
-		<object-name>BlueElecPump2O</object-name>
-		<condition>
-			<or>
-				<equals>
-					<property>controls/hydraulic/elec-pump-blue</property>
-					<value>0</value>
-				</equals>
-				<equals>
-					<property>controls/switches/annun-test</property>
-					<value>1</value>
-				</equals>
-			</or>
-		</condition>
-	</animation>
-	
-	<animation>
-		<name>PTU pick</name>
-		<type>pick</type>
-		<object-name>PTU1</object-name>
-		<object-name>PTU2</object-name>
-		<object-name>PTU1F</object-name>
-		<object-name>PTU2O</object-name>
-		<action>
-			<button>0</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<condition>
-					<or>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc1</property>
-							<value>25</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc2</property>
-							<value>25</value>
-						</greater-than-equals>
-					</or>
-				</condition>
-				<command>property-toggle</command>
-				<property>controls/hydraulic/ptu</property>
-			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>setprop("/sim/sounde/oh-btn", 1);</script>
-			</binding>
-		</action>
-	</animation>
-	
-	<animation>
-		<type>select</type>
-		<object-name>PTU1F</object-name>
-		<condition>
-			<or>
-				<and>
-					<equals>
-						<property>systems/pneumatic/ptu-fault</property>
-						<value>1</value>
-					</equals>
-					<equals>
-						<property>controls/hydraulic/ptu</property>
-						<value>1</value>
-					</equals>
-				</and>
-				<equals>
-					<property>controls/switches/annun-test</property>
-					<value>1</value>
-				</equals>
-			</or>
-		</condition>
-	</animation>
-
-	<animation>
-		<type>select</type>
-		<object-name>PTU2O</object-name>
-		<condition>
-			<or>
-				<equals>
-					<property>controls/hydraulic/ptu</property>
-					<value>0</value>
-				</equals>
-				<equals>
-					<property>controls/switches/annun-test</property>
-					<value>1</value>
-				</equals>
-			</or>
-		</condition>
-	</animation>
-	
-	<animation>
-		<name>Yellow Eng Pump pick</name>
-		<type>pick</type>
-		<object-name>YellowEngPump1</object-name>
-		<object-name>YellowEngPump2</object-name>
-		<object-name>YellowEngPump1F</object-name>
-		<object-name>YellowEngPump2O</object-name>
-		<action>
-			<button>0</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<condition>
-					<or>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc1</property>
-							<value>25</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc2</property>
-							<value>25</value>
-						</greater-than-equals>
-					</or>
-				</condition>
-				<command>property-toggle</command>
-				<property>controls/hydraulic/eng2-pump</property>
-			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>setprop("/sim/sounde/oh-btn", 1);</script>
-			</binding>
-		</action>
-	</animation>
-	
-	<animation>
-		<type>select</type>
-		<object-name>YellowEngPump1F</object-name>
-		<condition>
-			<or>
-				<and>
-					<equals>
-						<property>systems/pneumatic/eng2-pump-fault</property>
-						<value>1</value>
-					</equals>
-					<equals>
-						<property>controls/hydraulic/eng2-pump</property>
-						<value>1</value>
-					</equals>
-				</and>
-				<equals>
-					<property>controls/switches/annun-test</property>
-					<value>1</value>
-				</equals>
-			</or>
-		</condition>
-	</animation>
-
-	<animation>
-		<type>select</type>
-		<object-name>YellowEngPump2O</object-name>
-		<condition>
-			<or>
-				<equals>
-					<property>controls/hydraulic/eng2-pump</property>
-					<value>0</value>
-				</equals>
-				<equals>
-					<property>controls/switches/annun-test</property>
-					<value>1</value>
-				</equals>
-			</or>
-		</condition>
-	</animation>
-	
-	<animation>
-		<name>Yellow Eng Pump pick</name>
-		<type>pick</type>
-		<object-name>YellowElecPump1</object-name>
-		<object-name>YellowElecPump2</object-name>
-		<object-name>YellowElecPump1F</object-name>
-		<object-name>YellowElecPump2O</object-name>
-		<action>
-			<button>0</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<condition>
-					<or>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc1</property>
-							<value>25</value>
-						</greater-than-equals>
-						<greater-than-equals>
-							<property>systems/electrical/bus/dc2</property>
-							<value>25</value>
-						</greater-than-equals>
-					</or>
-				</condition>
-				<command>property-toggle</command>
-				<property>controls/hydraulic/elec-pump-yellow</property>
-			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>setprop("/sim/sounde/oh-btn", 1);</script>
-			</binding>
-		</action>
-	</animation>
-	
-	<animation>
-		<type>select</type>
-		<object-name>YellowElecPump1F</object-name>
-		<condition>
-			<or>
-				<and>
-					<equals>
-						<property>systems/pneumatic/elec-pump-y-fault</property>
-						<value>1</value>
-					</equals>
-					<equals>
-						<property>controls/hydraulic/elec-pump-yellow</property>
-						<value>1</value>
-					</equals>
-				</and>
-				<equals>
-					<property>controls/switches/annun-test</property>
-					<value>1</value>
-				</equals>
-			</or>
-		</condition>
-	</animation>
-
-	<animation>
-		<type>select</type>
-		<object-name>YellowElecPump2O</object-name>
-		<condition>
-			<or>
-				<equals>
-					<property>controls/hydraulic/elec-pump-yellow</property>
-					<value>1</value>
-				</equals>
-				<equals>
-					<property>controls/switches/annun-test</property>
-					<value>1</value>
-				</equals>
-			</or>
-		</condition>
 	</animation>
 	
 	<!-- Fuel -->

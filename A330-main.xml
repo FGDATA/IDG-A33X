@@ -572,11 +572,16 @@
 		<OH>
 			<protectors>
 				<ac-ess-feed type="bool">0</ac-ess-feed>
+				<blue-elec type="bool">0</blue-elec>
+				<blue-eng1 type="bool">0</blue-eng1>
 				<ditching type="bool">0</ditching>
 				<eng1-manstart type="bool">0</eng1-manstart>
 				<eng2-manstart type="bool">0</eng2-manstart>
 				<eng1-n1 type="bool">0</eng1-n1>
 				<eng2-n1 type="bool">0</eng2-n1>
+				<green-elec type="bool">0</green-elec>
+				<green-eng1 type="bool">0</green-eng1>
+				<green-eng2 type="bool">0</green-eng2>
 				<IDG1 type="bool">0</IDG1>
 				<IDG2 type="bool">0</IDG2>
 				<maskman type="bool">0</maskman>
@@ -587,6 +592,8 @@
 				<ratman type="bool">0</ratman>
 				<sec1 type="bool">0</sec1>
 				<sec2 type="bool">0</sec2>
+				<yellow-elec type="bool">0</yellow-elec>
+				<yellow-eng2 type="bool">0</yellow-eng2>
 			</protectors>
 		</OH>
 		<pneumatic n="0">
