@@ -626,6 +626,6 @@ var decharge2 = maketimer(69, func {
 	setprop("/systems/electrical/battery2-volts", bat2_volts - 0.1);
 });
 var decharge3 = maketimer(69, func {
-	bat3_volts = getprop("/systems/electrical/battery3volts");
+	bat3_volts = getprop("/systems/electrical/battery3-volts");
 	setprop("/systems/electrical/battery3-volts", bat3_volts - 0.1);
 });
