@@ -571,6 +571,7 @@
 		</lighting>
 		<OH>
 			<protectors>
+				<ac-ess-feed type="bool">0</ac-ess-feed>
 				<ditching type="bool">0</ditching>
 				<eng1-manstart type="bool">0</eng1-manstart>
 				<eng2-manstart type="bool">0</eng2-manstart>

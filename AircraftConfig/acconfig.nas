@@ -259,10 +259,12 @@ var beforestart_b = func {
 	# Continue with engine start prep.
 	setprop("/controls/fuel/tank0pump1", 1);
 	setprop("/controls/fuel/tank0pump2", 1);
+	setprop("/controls/fuel/tank0pump3", 1);
 	setprop("/controls/fuel/tank1pump1", 1);
 	setprop("/controls/fuel/tank1pump2", 1);
 	setprop("/controls/fuel/tank2pump1", 1);
 	setprop("/controls/fuel/tank2pump2", 1);
+	setprop("/controls/fuel/tank2pump3", 1);
 	setprop("/controls/electrical/switches/gen-apu", 1);
 	setprop("/controls/electrical/switches/galley", 1);
 	setprop("/controls/electrical/switches/gen1", 1);
@@ -335,10 +337,12 @@ var taxi_b = func {
 	# Continue with engine start prep, and start engine 2.
 	setprop("/controls/fuel/tank0pump1", 1);
 	setprop("/controls/fuel/tank0pump2", 1);
+	setprop("/controls/fuel/tank0pump3", 1);
 	setprop("/controls/fuel/tank1pump1", 1);
 	setprop("/controls/fuel/tank1pump2", 1);
 	setprop("/controls/fuel/tank2pump1", 1);
 	setprop("/controls/fuel/tank2pump2", 1);
+	setprop("/controls/fuel/tank2pump3", 1);
 	setprop("/controls/electrical/switches/gen-apu", 1);
 	setprop("/controls/electrical/switches/galley", 1);
 	setprop("/controls/electrical/switches/gen1", 1);

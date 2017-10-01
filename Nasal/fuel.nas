@@ -13,10 +13,12 @@ setlistener("/sim/signals/fdm-initialized", func {
 	var xfeed_sw = getprop("/controls/fuel/x-feed");
 	var tank0pump1_sw = getprop("/controls/fuel/tank0pump1");
 	var tank0pump2_sw = getprop("/controls/fuel/tank0pump2");
+	var tank0pump3_sw = getprop("/controls/fuel/tank0pump3");
 	var tank1pump1_sw = getprop("/controls/fuel/tank1pump1");
 	var tank1pump2_sw = getprop("/controls/fuel/tank1pump2");
 	var tank2pump1_sw = getprop("/controls/fuel/tank2pump1");
 	var tank2pump2_sw = getprop("/controls/fuel/tank2pump2");
+	var tank2pump3_sw = getprop("/controls/fuel/tank2pump3");
 	var mode_sw = getprop("/controls/fuel/mode");
 	var xfeed = getprop("/systems/fuel/x-feed");
 	var ac1 = getprop("/systems/electrical/bus/ac1");
@@ -47,10 +49,12 @@ var fuel_init = func {
 	setprop("/controls/fuel/x-feed", 0);
 	setprop("/controls/fuel/tank0pump1", 0);
 	setprop("/controls/fuel/tank0pump2", 0);
+	setprop("/controls/fuel/tank0pump3", 0);
 	setprop("/controls/fuel/tank1pump1", 0);
 	setprop("/controls/fuel/tank1pump2", 0);
 	setprop("/controls/fuel/tank2pump1", 0);
 	setprop("/controls/fuel/tank2pump2", 0);
+	setprop("/controls/fuel/tank2pump3", 0);
 	setprop("/controls/fuel/mode", 1);
 	setprop("/systems/fuel/x-feed", 0);
 	setprop("/systems/fuel/tank[0]/feed", 0);
@@ -74,10 +78,12 @@ var master_fuel = func {
 	xfeed_sw = getprop("/controls/fuel/x-feed");
 	tank0pump1_sw = getprop("/controls/fuel/tank0pump1");
 	tank0pump2_sw = getprop("/controls/fuel/tank0pump2");
+	tank0pump3_sw = getprop("/controls/fuel/tank0pump3");
 	tank1pump1_sw = getprop("/controls/fuel/tank1pump1");
 	tank1pump2_sw = getprop("/controls/fuel/tank1pump2");
 	tank2pump1_sw = getprop("/controls/fuel/tank2pump1");
 	tank2pump2_sw = getprop("/controls/fuel/tank2pump2");
+	tank2pump3_sw = getprop("/controls/fuel/tank2pump3");
 	mode_sw = getprop("/controls/fuel/mode");
 	xfeed = getprop("/systems/fuel/x-feed");
 	ac1 = getprop("/systems/electrical/bus/ac1");
@@ -111,6 +117,8 @@ var master_fuel = func {
 		setprop("/systems/fuel/tank[0]/feed", 1);
 	} else if ((ac1 >= 110 or ac2 >= 110) and tank0pump2_sw and !tank0pump2_fail) {
 		setprop("/systems/fuel/tank[0]/feed", 1);
+	} else if ((ac1 >= 110 or ac2 >= 110) and tank0pump3_sw) {
+		setprop("/systems/fuel/tank[0]/feed", 1);
 	} else if (gravityfeedL_output) {
 		setprop("/systems/fuel/tank[0]/feed", 1);
 	} else {
@@ -129,6 +137,8 @@ var master_fuel = func {
 		setprop("/systems/fuel/tank[2]/feed", 1);
 	} else if ((ac1 >= 110 or ac2 >= 110) and tank2pump2_sw and !tank2pump2_fail) {
 		setprop("/systems/fuel/tank[2]/feed", 1);
+	} else if ((ac1 >= 110 or ac2 >= 110) and tank2pump3_sw) {
+		setprop("/systems/fuel/tank[2]/feed", 1);
 	} else if (gravityfeedR_output) {
 		setprop("/systems/fuel/tank[2]/feed", 1);
 	} else {
@@ -145,13 +155,13 @@ var master_fuel = func {
 	tank1 = getprop("/systems/fuel/tank[1]/feed");
 	tank2 = getprop("/systems/fuel/tank[2]/feed");
 	
-	if ((ac1 >= 110 or ac2 >= 110) and (tank0pump1_sw or tank0pump2_sw)) {
+	if ((ac1 >= 110 or ac2 >= 110) and (tank0pump1_sw or tank0pump2_sw or tank0pump3_sw)) {
 		setprop("/systems/fuel/gravityfeedL", 0);
 	} else {
 		setprop("/systems/fuel/gravityfeedL", 1);
 	}
 	
-	if ((ac1 >= 110 or ac2 >= 110) and (tank2pump1_sw or tank2pump2_sw)) {
+	if ((ac1 >= 110 or ac2 >= 110) and (tank2pump1_sw or tank2pump2_sw or tank2pump3_sw)) {
 		setprop("/systems/fuel/gravityfeedR", 0);
 	} else {
 		setprop("/systems/fuel/gravityfeedR", 1);
