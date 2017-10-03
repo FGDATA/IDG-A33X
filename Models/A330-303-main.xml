@@ -160,10 +160,10 @@
 		<name>Nosegear landing light ALS</name>
 		<path>Aircraft/IDG-A33X/Models/Lights/ALS/taxilight.xml</path>
 		 <offsets>
-				  <x-m>-16.08</x-m>
+				  <x-m>-19.2</x-m>
 				  <y-m>0</y-m>
-				  <z-m>-2.98</z-m>
-				 </offsets>
+				  <z-m>-3.25</z-m>
+		</offsets>
 	</model>
 
 	<model>
