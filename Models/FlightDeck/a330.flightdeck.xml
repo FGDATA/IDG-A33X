@@ -5386,7 +5386,6 @@
 	 <animation>
         <type>translate</type>
         <object-name>tray</object-name>
-		<object-name>cylinder01</object-name>
         <property>controls/tray/lefttrayext</property>
         <interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
@@ -5403,7 +5402,6 @@
 	 <animation>
         <type>translate</type>
         <object-name>tray.001</object-name>
-		<object-name>cylinder01.001</object-name>
         <property>controls/tray/righttrayext</property>
 		<interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
@@ -5420,7 +5418,6 @@
 	 <animation>
         <type>translate</type>
         <object-name>tray</object-name>
-		<object-name>cylinder01</object-name>
         <property>controls/tray/lefttrayext</property>
         <interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
@@ -5437,7 +5434,6 @@
 	 <animation>
         <type>translate</type>
         <object-name>tray.001</object-name>
-		<object-name>cylinder01.001</object-name>
         <property>controls/tray/righttrayext</property>
         <interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
@@ -5479,8 +5475,7 @@
 		<property>controls/tray/lefttrayext</property>
 		<interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
-			<entry><ind>0.4</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>8</dep></entry>
+			<entry><ind>0.5</ind><dep>0</dep></entry>
 			<entry><ind>1</ind><dep>185</dep></entry>
 		</interpolation>
 		<center>
@@ -5523,8 +5518,7 @@
 		<property>controls/tray/righttrayext</property>
 		<interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
-			<entry><ind>0.4</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>10</dep></entry>
+			<entry><ind>0.5</ind><dep>0</dep></entry>
 			<entry><ind>1</ind><dep>185</dep></entry>
 		</interpolation>
 		<center>
