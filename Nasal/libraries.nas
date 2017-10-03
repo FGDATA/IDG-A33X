@@ -192,7 +192,6 @@ setlistener("/sim/signals/fdm-initialized", func {
 	systems.hyd_init();
 	systems.fuel_init();
 	systems.eng_init();
-	systems.tray_init();
   	fmgc.APinit();			
 	librariesLoop.start();
 	fmgc.FMGCinit();

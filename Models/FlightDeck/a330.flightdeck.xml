@@ -5387,7 +5387,7 @@
         <type>translate</type>
         <object-name>tray</object-name>
 		<object-name>cylinder01</object-name>
-        <property>/controls/tray/lefttrayext</property>
+        <property>controls/tray/lefttrayext</property>
         <interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
 			<entry><ind>0.5</ind><dep>0.160</dep></entry>
@@ -5404,7 +5404,7 @@
         <type>translate</type>
         <object-name>tray.001</object-name>
 		<object-name>cylinder01.001</object-name>
-        <property>/controls/tray/righttrayext</property>
+        <property>controls/tray/righttrayext</property>
 		<interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
 			<entry><ind>0.5</ind><dep>0.160</dep></entry>
@@ -5421,7 +5421,7 @@
         <type>translate</type>
         <object-name>tray</object-name>
 		<object-name>cylinder01</object-name>
-        <property>/controls/tray/lefttrayext</property>
+        <property>controls/tray/lefttrayext</property>
         <interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
 			<entry><ind>0.5</ind><dep>0.045</dep></entry>
@@ -5438,7 +5438,7 @@
         <type>translate</type>
         <object-name>tray.001</object-name>
 		<object-name>cylinder01.001</object-name>
-        <property>/controls/tray/righttrayext</property>
+        <property>controls/tray/righttrayext</property>
         <interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
 			<entry><ind>0.5</ind><dep>0.045</dep></entry>
@@ -5454,7 +5454,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>tray</object-name>
-		<property>/controls/tray/lefttrayext</property>
+		<property>controls/tray/lefttrayext</property>
 		<interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
 			<entry><ind>0.4</ind><dep>0</dep></entry>
@@ -5476,7 +5476,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>cylinder01.002</object-name>
-		<property>/controls/tray/lefttrayext</property>
+		<property>controls/tray/lefttrayext</property>
 		<interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
 			<entry><ind>0.4</ind><dep>0</dep></entry>
@@ -5498,7 +5498,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>tray.001</object-name>
-		<property>/controls/tray/righttrayext</property>
+		<property>controls/tray/righttrayext</property>
 		<interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
 			<entry><ind>0.4</ind><dep>0</dep></entry>
@@ -5520,7 +5520,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>cylinder01.001</object-name>
-		<property>/controls/tray/righttrayext</property>
+		<property>controls/tray/righttrayext</property>
 		<interpolation>
 			<entry><ind>0</ind><dep> 0</dep></entry>
 			<entry><ind>0.4</ind><dep>0</dep></entry>
@@ -5546,21 +5546,8 @@
         <action>
 			<button>0</button>
 			<binding>
-				<command>property-cycle</command>
-				<property>/controls/tray/cmdL</property>
-				<value>0</value>
-				<value>0.5</value>
-				<value>1</value>
-			</binding>
-		</action>
-		<action>
-			<button>1</button>
-			<binding>
-				<command>property-cycle</command>
-				<property>/controls/tray/cmdL</property>
-				<value>1</value>
-				<value>0.5</value>
-				<value>0</value>
+				<command>nasal</command>
+				<script>libraries.lTray();</script>
 			</binding>
 		</action>
     </animation>
@@ -5572,21 +5559,8 @@
         <action>
 			<button>0</button>
 			<binding>
-				<command>property-cycle</command>
-				<property>/controls/tray/cmdR</property>
-				<value>0</value>
-				<value>0.5</value>
-				<value>1</value>
-			</binding>
-		</action>
-		<action>
-			<button>1</button>
-			<binding>
-				<command>property-cycle</command>
-				<property>/controls/tray/cmdR</property>
-				<value>1</value>
-				<value>0.5</value>
-				<value>0</value>
+				<command>nasal</command>
+				<script>libraries.rTray();</script>
 			</binding>
 		</action>
     </animation>
