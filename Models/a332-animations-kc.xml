@@ -1506,6 +1506,8 @@
   <object-name>engine0</object-name>
   <object-name>wing.mid0</object-name>
   <object-name>wing.out0</object-name>
+  <object-name>Left nav light</object-name>
+  <object-name>Left strobe light</object-name>
   <object-name>Left nav light ALS</object-name>
   <object-name>Left strobe light ALS</object-name>
   <object-name>refuelLeft</object-name>
@@ -1528,6 +1530,8 @@
   <type>rotate</type>
   <object-name>wing.mid0</object-name>
   <object-name>wing.out0</object-name>
+  <object-name>Left nav light</object-name>
+  <object-name>Left strobe light</object-name>
   <object-name>Left nav light ALS</object-name>
   <object-name>Left strobe light ALS</object-name>
   <object-name>refuelLeft</object-name>
@@ -1549,6 +1553,8 @@
 <animation>
   <type>rotate</type>
   <object-name>wing.out0</object-name>
+  <object-name>Left nav light</object-name>
+  <object-name>Left strobe light</object-name>
   <object-name>Left nav light ALS</object-name>
   <object-name>Left strobe light ALS</object-name>
   <property>sim/multiplay/generic/float[15]</property>
@@ -1572,6 +1578,8 @@
   <object-name>engine1</object-name>
   <object-name>wing.mid1</object-name>
   <object-name>wing.out1</object-name>
+  <object-name>Right nav light</object-name>
+  <object-name>Right strobe light</object-name>
   <object-name>Right nav light ALS</object-name>
   <object-name>Right strobe light ALS</object-name>
   <object-name>refuelRight</object-name>
@@ -1594,6 +1602,8 @@
   <type>rotate</type>
   <object-name>wing.mid1</object-name>
   <object-name>wing.out1</object-name>
+  <object-name>Right nav light</object-name>
+  <object-name>Right strobe light</object-name>
   <object-name>Right nav light ALS</object-name>
   <object-name>Right strobe light ALS</object-name>
   <object-name>refuelRight</object-name>
@@ -1615,6 +1625,8 @@
 <animation>
   <type>rotate</type>
   <object-name>wing.out1</object-name>
+  <object-name>Right nav light</object-name>
+  <object-name>Right strobe light</object-name>
   <object-name>Right nav light ALS</object-name>
   <object-name>Right strobe light ALS</object-name>
   <property>sim/multiplay/generic/float[15]</property>
