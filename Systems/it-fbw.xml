@@ -837,14 +837,6 @@
 						<property>/it-fbw/spd-hold</property>
 						<value>0</value>
 					</equals>
-					<less-than>
-						<property>/orientation/roll-deg</property>
-						<value>40</value>
-					</less-than>
-					<greater-than>
-						<property>/orientation/roll-deg</property>
-						<value>-40</value>
-					</greater-than>
 					<or>
 						<equals>
 							<property>/it-fbw/law</property>
@@ -925,14 +917,6 @@
 						<property>/it-fbw/spd-hold</property>
 						<value>0</value>
 					</equals>
-					<less-than>
-						<property>/orientation/roll-deg</property>
-						<value>40</value>
-					</less-than>
-					<greater-than>
-						<property>/orientation/roll-deg</property>
-						<value>-40</value>
-					</greater-than>
 					<or>
 						<equals>
 							<property>/it-fbw/law</property>
@@ -1036,14 +1020,6 @@
 						<property>/it-fbw/spd-hold</property>
 						<value>1</value>
 					</equals>
-					<less-than>
-						<property>/orientation/roll-deg</property>
-						<value>40</value>
-					</less-than>
-					<greater-than>
-						<property>/orientation/roll-deg</property>
-						<value>-40</value>
-					</greater-than>
 					<or>
 						<equals>
 							<property>/it-fbw/law</property>
@@ -1096,14 +1072,6 @@
 						<property>/it-fbw/spd-hold</property>
 						<value>1</value>
 					</equals>
-					<less-than>
-						<property>/orientation/roll-deg</property>
-						<value>40</value>
-					</less-than>
-					<greater-than>
-						<property>/orientation/roll-deg</property>
-						<value>-40</value>
-					</greater-than>
 					<or>
 						<equals>
 							<property>/it-fbw/law</property>
@@ -1156,14 +1124,6 @@
 						<property>/gear/gear[2]/wow</property>
 						<value>0</value>
 					</equals>
-					<less-than>
-						<property>/orientation/roll-deg</property>
-						<value>40</value>
-					</less-than>
-					<greater-than>
-						<property>/orientation/roll-deg</property>
-						<value>-40</value>
-					</greater-than>
 					<or>
 						<equals>
 							<property>/it-fbw/law</property>
@@ -1193,14 +1153,6 @@
 						<property>/it-fbw/law</property>
 						<value>2</value>
 					</equals>
-					<greater-than-equals>
-						<property>/orientation/roll-deg</property>
-						<value>40</value>
-					</greater-than-equals>
-					<less-than-equals>
-						<property>/orientation/roll-deg</property>
-						<value>-40</value>
-					</less-than-equals>
 				</or>
 			</condition>
 			<property>/controls/flight/elevator-input-fast</property>
