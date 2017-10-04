@@ -863,13 +863,10 @@
 			<mode>once</mode>
 			<path>Aircraft/IDG-A33X/Sounds/Cockpit/700hz.wav</path>
 			<condition>
-				<and>
-					<property>sim/current-view/internal</property>
-					<equals>
-						<property>controls/CVR/tone</property>
-						<value>1</value>
-					</equals>
-				</and>
+				<equals>
+					<property>controls/CVR/tone</property>
+					<value>1</value>
+				</equals>
 			</condition>
 			<volume>
 				<factor>0.60</factor>
@@ -881,13 +878,10 @@
 			<mode>once</mode>
 			<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay2.wav</path>
 			<condition>
-				<and>
-					<property>sim/current-view/internal</property>
-					<greater-than>
-						<property>/systems/electrical/battery1-amps</property>
-						<value>25</value>
-					</greater-than>
-				</and>
+				<greater-than>
+					<property>/systems/electrical/battery1-amps</property>
+					<value>25</value>
+				</greater-than>
 			</condition>
 			<volume>
 				<factor>0.60</factor>
@@ -899,13 +893,10 @@
 			<mode>once</mode>
 			<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay2.wav</path>
 			<condition>
-				<and>
-					<property>sim/current-view/internal</property>
-					<greater-than>
-						<property>/systems/electrical/battery2-amps</property>
-						<value>25</value>
-					</greater-than>
-				</and>
+				<greater-than>
+					<property>/systems/electrical/battery2-amps</property>
+					<value>25</value>
+				</greater-than>
 			</condition>
 			<volume>
 				<factor>0.60</factor>
@@ -918,7 +909,6 @@
 			<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay4.wav</path>
 			<condition>
 				<and>
-					<property>sim/current-view/internal</property>
 					<equals>
 						<property>/controls/switches/cart</property>
 						<value>1</value>
@@ -940,7 +930,6 @@
 			<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay4.wav</path>
 			<condition>
 				<and>
-					<property>sim/current-view/internal</property>
 					<equals>
 						<property>/controls/switches/cart</property>
 						<value>1</value>
@@ -965,13 +954,10 @@
 			<mode>once</mode>
 			<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay4.wav</path>
 			<condition>
-				<and>
-					<property>sim/current-view/internal</property>
-					<equals>
-						<property>/systems/electrical/gen-apu</property>
-						<value>1</value>
-					</equals>
-				</and>
+				<equals>
+					<property>/systems/electrical/gen-apu</property>
+					<value>1</value>
+				</equals>
 			</condition>
 			<volume>
 				<factor>0.60</factor>
