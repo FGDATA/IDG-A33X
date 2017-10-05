@@ -276,14 +276,14 @@
 			</product>
 		</function>
 
-		<function name="aero/moment/Roll_aileron">
-			<description>Roll moment due to aileron</description>
+		<function name="aero/moment/Roll_control">
+			<description>Roll moment due to roll control</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/bw-ft</property>
-				<property>fcs/left-aileron-pos-rad</property>
-				<value>0.20</value>
+				<property>fcs/roll-pos-rad</property>
+				<value>0.19</value>
 			</product>
 		</function>
 
@@ -313,18 +313,18 @@
 			</product>
 		</function>
 
-		<function name="aero/moment/Pitch_elevator">
-			<description>Pitch moment due to elevator</description>
+		<function name="aero/moment/Pitch_control">
+			<description>Pitch moment due to pitch control</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/cbarw-ft</property>
-				<property>fcs/elevator-pos-rad</property>
+				<property>fcs/pitch-pos-rad</property>
 				<table>
 					<independentVar lookup="row">velocities/mach</independentVar>
 					<tableData>
-						0.0     -1.400
-						0.2     -1.300
+						0.0     -1.450
+						0.2     -1.350
 						2.0     -0.500
 					</tableData>
 				</table>
