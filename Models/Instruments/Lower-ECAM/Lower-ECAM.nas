@@ -11,6 +11,9 @@ var lowerECAM_fctl = nil;
 var lowerECAM_display = nil;
 var page = "eng";
 var oat = getprop("/environment/temperature-degc");
+var blue_psi = 0;
+var green_psi = 0;
+var yellow_psi = 0;
 setprop("/systems/electrical/extra/apu-load", 0);
 setprop("/systems/electrical/extra/apu-volts", 0);
 setprop("/systems/electrical/extra/apu-hz", 0);
@@ -282,9 +285,9 @@ var canvas_lowerECAM_fctl = {
 		"spoiler1Lf","spoiler2Lf","spoiler3Lf","spoiler4Lf","spoiler5Lf","ailLscale","ailRscale","path4249","path4249-3","path4338","path4249-3-6-7","path4249-3-6-7-5"];
 	},
 	update: func() { 
-		var blue_psi = getprop("/systems/hydraulic/blue-psi");
-		var green_psi = getprop("/systems/hydraulic/green-psi");
-		var yellow_psi = getprop("/systems/hydraulic/yellow-psi");
+		blue_psi = getprop("/systems/hydraulic/blue-psi");
+		green_psi = getprop("/systems/hydraulic/green-psi");
+		yellow_psi = getprop("/systems/hydraulic/yellow-psi");
 		
 		# Pitch Trim
 		me["PT"].setText(sprintf("%2.1f", getprop("/ECAM/Lower/elevator-trim-deg")));
@@ -349,7 +352,7 @@ var canvas_lowerECAM_fctl = {
 		}
 		
 		# Spoilers
-		if (getprop("/controls/flight/spoiler-l1") < 0.083) {
+		if (getprop("/controls/flight/spoiler-l1") < 0.033) {
 			me["spoiler1Lex"].hide();
 			me["spoiler1Lrt"].show();
 		} else {
@@ -357,7 +360,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler1Lex"].show();
 		}
 		
-		if (getprop("/controls/flight/spoiler-l2") < 0.083) {
+		if (getprop("/controls/flight/spoiler-l2") < 0.033) {
 			me["spoiler2Lex"].hide();
 			me["spoiler2Lrt"].show();
 		} else {
@@ -365,7 +368,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler2Lex"].show();
 		}
 		
-		if (getprop("/controls/flight/spoiler-l3") < 0.083) {
+		if (getprop("/controls/flight/spoiler-l3") < 0.033) {
 			me["spoiler3Lex"].hide();
 			me["spoiler3Lrt"].show();
 		} else {
@@ -373,7 +376,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler3Lex"].show();
 		}
 		
-		if (getprop("/controls/flight/spoiler-l4") < 0.083) {
+		if (getprop("/controls/flight/spoiler-l4") < 0.033) {
 			me["spoiler4Lex"].hide();
 			me["spoiler4Lrt"].show();
 		} else {
@@ -381,7 +384,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler4Lex"].show();
 		}
 		
-		if (getprop("/controls/flight/spoiler-l5") < 0.083) {
+		if (getprop("/controls/flight/spoiler-l5") < 0.033) {
 			me["spoiler5Lex"].hide();
 			me["spoiler5Lrt"].show();
 		} else {
@@ -389,7 +392,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler5Lex"].show();
 		}
 		
-		if (getprop("/controls/flight/spoiler-r1") < 0.083) {
+		if (getprop("/controls/flight/spoiler-r1") < 0.033) {
 			me["spoiler1Rex"].hide();
 			me["spoiler1Rrt"].show();
 		} else {
@@ -397,7 +400,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler1Rex"].show();
 		}
 		
-		if (getprop("/controls/flight/spoiler-r2")<0.083) {
+		if (getprop("/controls/flight/spoiler-r2") < 0.033) {
 			me["spoiler2Rex"].hide();
 			me["spoiler2Rrt"].show();
 		} else {
@@ -405,7 +408,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler2Rex"].show();
 		}
 		
-		if (getprop("/controls/flight/spoiler-r3") < 0.083) {
+		if (getprop("/controls/flight/spoiler-r3") < 0.033) {
 			me["spoiler3Rex"].hide();
 			me["spoiler3Rrt"].show();
 		} else {
@@ -413,7 +416,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler3Rex"].show();
 		}
 		
-		if (getprop("/controls/flight/spoiler-r4") < 0.083) {
+		if (getprop("/controls/flight/spoiler-r4") < 0.033) {
 			me["spoiler4Rex"].hide();
 			me["spoiler4Rrt"].show();
 		} else {
@@ -421,7 +424,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler4Rex"].show();
 		}
 		
-		if (getprop("/controls/flight/spoiler-r5") < 0.083) {
+		if (getprop("/controls/flight/spoiler-r5") < 0.033) {
 			me["spoiler5Rex"].hide();
 			me["spoiler5Rrt"].show();
 		} else {
@@ -430,10 +433,10 @@ var canvas_lowerECAM_fctl = {
 		}
 		
 		# Spoiler Fail
-		if (getprop("/controls/flight/spoiler-l1-failed")) {
+		if (getprop("/controls/flight/spoiler-l1-failed") or green_psi < 1500) {
 			me["spoiler1Lex"].setColor(1,0.6,0);
 			me["spoiler1Lrt"].setColor(1,0.6,0);
-			if (getprop("/controls/flight/spoiler-l1") < 0.083) {
+			if (getprop("/controls/flight/spoiler-l1") < 0.033) {
 				me["spoiler1Lf"].show();
 			} else {
 				me["spoiler1Lf"].hide();
@@ -444,10 +447,10 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler1Lf"].hide();
 		}
 		
-		if (getprop("/controls/flight/spoiler-l2-failed")) {
+		if (getprop("/controls/flight/spoiler-l2-failed") or blue_psi < 1500) {
 			me["spoiler2Lex"].setColor(1,0.6,0);
 			me["spoiler2Lrt"].setColor(1,0.6,0);
-			if (getprop("/controls/flight/spoiler-l2") < 0.083) {
+			if (getprop("/controls/flight/spoiler-l2") < 0.033) {
 				me["spoiler2Lf"].show();
 			} else {
 				me["spoiler2Lf"].hide();
@@ -458,10 +461,10 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler2Lf"].hide();
 		}
 		
-		if (getprop("/controls/flight/spoiler-l3-failed")) {
+		if (getprop("/controls/flight/spoiler-l3-failed") or blue_psi < 1500) {
 			me["spoiler3Lex"].setColor(1,0.6,0);
 			me["spoiler3Lrt"].setColor(1,0.6,0);
-			if (getprop("/controls/flight/spoiler-l3") < 0.083) {
+			if (getprop("/controls/flight/spoiler-l3") < 0.033) {
 				me["spoiler3Lf"].show();
 			} else {
 				me["spoiler3Lf"].hide();
@@ -472,10 +475,10 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler3Lf"].hide();
 		}
 		
-		if (getprop("/controls/flight/spoiler-l4-failed")) {
+		if (getprop("/controls/flight/spoiler-l4-failed") or yellow_psi < 1500) {
 			me["spoiler4Lex"].setColor(1,0.6,0);
 			me["spoiler4Lrt"].setColor(1,0.6,0);
-			if (getprop("/controls/flight/spoiler-l4") < 0.083) {
+			if (getprop("/controls/flight/spoiler-l4") < 0.033) {
 				me["spoiler4Lf"].show();
 			} else {
 				me["spoiler4Lf"].hide();
@@ -486,10 +489,10 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler4Lf"].hide();
 		}
 		
-		if (getprop("/controls/flight/spoiler-l5-failed")) {
+		if (getprop("/controls/flight/spoiler-l5-failed") or green_psi < 1500) {
 			me["spoiler5Lex"].setColor(1,0.6,0);
 			me["spoiler5Lrt"].setColor(1,0.6,0);
-			if (getprop("/controls/flight/spoiler-l5") < 0.083) {
+			if (getprop("/controls/flight/spoiler-l5") < 0.033) {
 				me["spoiler5Lf"].show();
 			} else {
 				me["spoiler5Lf"].hide();
@@ -500,10 +503,10 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler5Lf"].hide();
 		}
 		
-		if (getprop("/controls/flight/spoiler-r1-failed")) {
+		if (getprop("/controls/flight/spoiler-r1-failed") or green_psi < 1500) {
 			me["spoiler1Rex"].setColor(1,0.6,0);
 			me["spoiler1Rrt"].setColor(1,0.6,0);
-			if (getprop("/controls/flight/spoiler-r1") < 0.083) {
+			if (getprop("/controls/flight/spoiler-r1") < 0.033) {
 				me["spoiler1Rf"].show();
 			} else {
 				me["spoiler1Rf"].hide();
@@ -514,10 +517,10 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler1Rf"].hide();
 		}
 		
-		if (getprop("/controls/flight/spoiler-r2-failed")) {
+		if (getprop("/controls/flight/spoiler-r2-failed") or blue_psi < 1500) {
 			me["spoiler2Rex"].setColor(1,0.6,0);
 			me["spoiler2Rrt"].setColor(1,0.6,0);
-			if (getprop("/controls/flight/spoiler-r2") < 0.083) {
+			if (getprop("/controls/flight/spoiler-r2") < 0.033) {
 				me["spoiler2Rf"].show();
 			} else {
 				me["spoiler2Rf"].hide();
@@ -528,10 +531,10 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler2Rf"].hide();
 		}
 		
-		if (getprop("/controls/flight/spoiler-r3-failed")) {
+		if (getprop("/controls/flight/spoiler-r3-failed") or blue_psi < 1500) {
 			me["spoiler3Rex"].setColor(1,0.6,0);
 			me["spoiler3Rrt"].setColor(1,0.6,0);
-			if (getprop("/controls/flight/spoiler-r3") < 0.083) {
+			if (getprop("/controls/flight/spoiler-r3") < 0.033) {
 				me["spoiler3Rf"].show();
 			} else {
 				me["spoiler3Rf"].hide();
@@ -542,10 +545,10 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler3Rf"].hide();
 		}
 		
-		if (getprop("/controls/flight/spoiler-r4-failed")) {
+		if (getprop("/controls/flight/spoiler-r4-failed") or yellow_psi < 1500) {
 			me["spoiler4Rex"].setColor(1,0.6,0);
 			me["spoiler4Rrt"].setColor(1,0.6,0);
-			if (getprop("/controls/flight/spoiler-r4") < 0.083) {
+			if (getprop("/controls/flight/spoiler-r4") < 0.033) {
 				me["spoiler4Rf"].show();
 			} else {
 				me["spoiler4Rf"].hide();
@@ -556,10 +559,10 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler4Rf"].hide();
 		}
 		
-		if (getprop("/controls/flight/spoiler-r5-failed")) {
+		if (getprop("/controls/flight/spoiler-r5-failed") or green_psi < 1500) {
 			me["spoiler5Rex"].setColor(1,0.6,0);
 			me["spoiler5Rrt"].setColor(1,0.6,0);
-			if (getprop("/controls/flight/spoiler-r5") < 0.083) {
+			if (getprop("/controls/flight/spoiler-r5") < 0.033) {
 				me["spoiler5Rf"].show();
 			} else {
 				me["spoiler5Rf"].hide();
