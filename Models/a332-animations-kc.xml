@@ -1689,5 +1689,11 @@
     </and>
    </condition>
  </animation>
+ 
+ <effect>
+        <inherits-from>Aircraft/IDG-A33X/Models/Effects/logo</inherits-from>
+		<object-name>Vstab</object-name>
+		<object-name>Rudder</object-name>
+	</effect>
 		
 </PropertyList>
