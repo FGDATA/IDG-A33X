@@ -396,13 +396,12 @@ var logoTimer = maketimer(0.1, func {
 	if (setting == 0 and logo_lights == 1) {
 		 setprop("/sim/model/lights/logo-lights", 0);
 	} else if (setting == 1 or setting == 2) {
-		if (wow or slats == 1) {
+		if (wow) {
 			setprop("/sim/model/lights/logo-lights", 1);
-		} else if (!wow and slats < 1) {
+		} else if (!wow and slats > 1) {
 			setprop("/sim/model/lights/logo-lights", 1);
 		} else {
 			setprop("/sim/model/lights/logo-lights", 0);
-			print("Logo Lights: Unknown Condition on line 390"); # this is important for debugging
 		}
 	} else {
 	 # do nothing
