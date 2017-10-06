@@ -607,6 +607,7 @@
 		</pneumatic>
 		<switches>
 			<battery-sel type="int">0</battery-sel>
+			<cart type="bool">0</cart>
 			<!-- Smoking is bad :P -->
 			<no-smoking-sign type="bool">1</no-smoking-sign>
 			<seatbelt-sign type="bool">0</seatbelt-sign>
