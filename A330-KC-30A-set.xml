@@ -140,6 +140,14 @@
 		</systems>
 		
 	</sim>
+        
+        <limits>
+		<mass-and-balance> <!-- Data source: https://en.wikipedia.org/wiki/Airbus_A330_MRTT#Specifications -->
+			<maximum-takeoff-mass-lbs>514000</maximum-takeoff-mass-lbs>
+			<maximum-landing-mass-lbs>401241</maximum-landing-mass-lbs>
+			<maximum-zero-fuel-mass-lbs>374786</maximum-zero-fuel-mass-lbs>
+		</mass-and-balance>
+	</limits>
 	
 	<options n="0">
 		<!--EIS2 type="bool">0</EIS2-->
