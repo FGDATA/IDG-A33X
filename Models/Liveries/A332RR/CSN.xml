@@ -4,8 +4,8 @@
 	<sim>
 		<model>
 			<livery>
-				<name>Air Canada (new livery)</name>
-				<texture>Liveries/A333RR/ACA2.png</texture>
+				<name>China Southern Airlines</name>
+				<texture>Liveries/A332RR/CSN.png</texture>
 			</livery>
 		</model>
 	</sim>
