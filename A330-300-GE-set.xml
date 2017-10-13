@@ -13,7 +13,7 @@
 		<sound>
 			<path>Aircraft/IDG-A33X/Sounds/cf680-sound.xml</path>
 		</sound>
-	
+                <checklists include="A33X-Checklists.xml"/>
 		<description>Airbus A330-303 (GE CF6-80E1)</description>
 		<flight-model>jsb</flight-model>
 		<aero>A330-300-GE</aero>
