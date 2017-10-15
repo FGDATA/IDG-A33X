@@ -1163,6 +1163,12 @@
 				<property>controls/fctl/prim1</property>
 			</binding>
 			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/prim1</property>
+						<value>1</value>
+					</equals>
+				</condition>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
@@ -1285,6 +1291,12 @@
 				<property>controls/fctl/sec1</property>
 			</binding>
 			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/sec1</property>
+						<value>1</value>
+					</equals>
+				</condition>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
@@ -1407,6 +1419,12 @@
 				<property>controls/fctl/prim2</property>
 			</binding>
 			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/prim2</property>
+						<value>1</value>
+					</equals>
+				</condition>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
@@ -1529,6 +1547,12 @@
 				<property>controls/fctl/sec2</property>
 			</binding>
 			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/sec2</property>
+						<value>1</value>
+					</equals>
+				</condition>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
@@ -1651,6 +1675,12 @@
 				<property>controls/fctl/prim3</property>
 			</binding>
 			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/prim3</property>
+						<value>1</value>
+					</equals>
+				</condition>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
