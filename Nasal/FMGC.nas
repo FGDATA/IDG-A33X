@@ -44,6 +44,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 	var flaps = getprop("/controls/flight/flap-pos");
 	var modelat = getprop("/modes/pfd/fma/roll-mode");
 	var mode = getprop("/modes/pfd/fma/pitch-mode");
+	var modeI = getprop("/it-autoflight/mode/vert");
 	var gs = getprop("/velocities/groundspeed-kt");
 	var alt = getprop("/instrumentation/altimeter/indicated-altitude-ft");
 	var aglalt = getprop("/position/gear-agl-ft");
@@ -184,6 +185,7 @@ var phasecheck = maketimer(0.2, func {
 	flaps = getprop("/controls/flight/flap-pos");
 	modelat = getprop("/modes/pfd/fma/roll-mode");
 	mode = getprop("/modes/pfd/fma/pitch-mode");
+	modeI = getprop("/it-autoflight/mode/vert");
 	gs = getprop("/velocities/groundspeed-kt");
 	alt = getprop("/instrumentation/altimeter/indicated-altitude-ft");
 	aglalt = getprop("/position/gear-agl-ft");
@@ -210,7 +212,7 @@ var phasecheck = maketimer(0.2, func {
 		setprop("/systems/pressurization/mode", "TO");
 	}
 	
-	if ((alt <= cruiseft_b) and (phase == "1") and (phase != "4") and (mode != "SRS")) {
+	if ((alt <= cruiseft_b) and (phase == "1") and (phase != "4") and (mode == "OP CLB" or mode == "CLB" or (modeI == "V/S" and getprop("/it-autoflight/input/vs") >= 100))) {
 		setprop("/FMGC/status/phase", "2");
 		setprop("/systems/pressurization/mode", "TO");
 	} else if ((phase == 3 or phase == 4) and (mode == "OP CLB" or mode == "CLB" or (modeI == "V/S" and getprop("/it-autoflight/input/vs") >= 100))) {
