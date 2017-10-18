@@ -616,7 +616,7 @@ var canvas_lowerECAM_fctl = {
 		}
 		
 		# Hydraulic Indicators
-		if (getprop("/systems/hydraulic/blue-psi") > 1500) {
+		if (getprop("/systems/hydraulic/blue-psi") >= 1500) {
 			me["ailLblue"].setColor(0.0667,0.7294,0.3137);
 			me["ailRblue"].setColor(0.0667,0.7294,0.3137);
 			me["elevLblue"].setColor(0.0667,0.7294,0.3137);
@@ -632,7 +632,7 @@ var canvas_lowerECAM_fctl = {
 			me["spdbrkblue"].setColor(0.7333,0.3803,0);
 		}
 		
-		if (getprop("/systems/hydraulic/green-psi") > 1500) {
+		if (getprop("/systems/hydraulic/green-psi") >= 1500) {
 			me["ailLgreen"].setColor(0.0667,0.7294,0.3137);
 			me["ailRgreen"].setColor(0.0667,0.7294,0.3137);
 			me["ailLgreen2"].setColor(0.0667,0.7294,0.3137);
@@ -652,7 +652,7 @@ var canvas_lowerECAM_fctl = {
 			me["spdbrkgreen"].setColor(0.7333,0.3803,0);
 		}
 		
-		if (getprop("/systems/hydraulic/yellow-psi") > 1500) {
+		if (getprop("/systems/hydraulic/yellow-psi") >= 1500) {
 			me["ailLyellow"].setColor(0.0667,0.7294,0.3137);
 			me["ailRyellow"].setColor(0.0667,0.7294,0.3137);
 			me["elevRyellow"].setColor(0.0667,0.7294,0.3137);
