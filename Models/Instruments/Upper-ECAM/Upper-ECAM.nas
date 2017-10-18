@@ -75,9 +75,9 @@ var canvas_upperECAM_base = {
 		}
 		
 		if (getprop("/engines/engine[0]/reverser-pos-norm") >= 0.95) {
-			me["REV1"].setColor(0,1,0);
+			me["REV1"].setColor(0.0667,0.7294,0.3137);
 		} else {
-			me["REV1"].setColor(1,0.6,0);
+			me["REV1"].setColor(0.7333,0.3803,0);
 		}
 		
 		if (getprop("/engines/engine[1]/reverser-pos-norm") >= 0.01 and getprop("/systems/fadec/eng2/n1") == 1 and getprop("/options/eng") == "GE") {
@@ -92,9 +92,9 @@ var canvas_upperECAM_base = {
 		}
 		
 		if (getprop("/engines/engine[1]/reverser-pos-norm") >= 0.95) {
-			me["REV2"].setColor(0,1,0);
+			me["REV2"].setColor(0.0667,0.7294,0.3137);
 		} else {
-			me["REV2"].setColor(1,0.6,0);
+			me["REV2"].setColor(0.7333,0.3803,0);
 		}
 		
 		# Flap Indicator
@@ -120,97 +120,97 @@ var canvas_upperECAM_base = {
 		me["ECAML8"].setText(sprintf("%s", getprop("/ECAM/msg/line8")));
 		
 		if (getprop("/ECAM/msg/line1c") == "w") {
-			me["ECAML1"].setColor(1,1,1);
+			me["ECAML1"].setColor(0.8078,0.8039,0.8078);
 		} else if (getprop("/ECAM/msg/line1c") == "b") {
-			me["ECAML1"].setColor(0,0.5,0.7);
+			me["ECAML1"].setColor(0.1372,0.5372,0.5843);
 		} else if (getprop("/ECAM/msg/line1c") == "g") {
-			me["ECAML1"].setColor(0,1,0);
+			me["ECAML1"].setColor(0.0667,0.7294,0.3137);
 		} else if (getprop("/ECAM/msg/line1c") == "a") {
-			me["ECAML1"].setColor(1,0.6,0);
+			me["ECAML1"].setColor(0.7333,0.3803,0);
 		} else if (getprop("/ECAM/msg/line1c") == "r") {
 			me["ECAML1"].setColor(1,0,0);
 		}
 		
 		if (getprop("/ECAM/msg/line2c") == "w") {
-			me["ECAML2"].setColor(1,1,1);
+			me["ECAML2"].setColor(0.8078,0.8039,0.8078);
 		} else if (getprop("/ECAM/msg/line2c") == "b") {
-			me["ECAML2"].setColor(0,0.5,0.7);
+			me["ECAML2"].setColor(0.1372,0.5372,0.5843);
 		} else if (getprop("/ECAM/msg/line2c") == "g") {
-			me["ECAML2"].setColor(0,1,0);
+			me["ECAML2"].setColor(0.0667,0.7294,0.3137);
 		} else if (getprop("/ECAM/msg/line2c") == "a") {
-			me["ECAML2"].setColor(1,0.6,0);
+			me["ECAML2"].setColor(0.7333,0.3803,0);
 		} else if (getprop("/ECAM/msg/line2c") == "r") {
 			me["ECAML2"].setColor(1,0,0);
 		}
 		
 		if (getprop("/ECAM/msg/line3c") == "w") {
-			me["ECAML3"].setColor(1,1,1);
+			me["ECAML3"].setColor(0.8078,0.8039,0.8078);
 		} else if (getprop("/ECAM/msg/line3c") == "b") {
-			me["ECAML3"].setColor(0,0.5,0.7);
+			me["ECAML3"].setColor(0.1372,0.5372,0.5843);
 		} else if (getprop("/ECAM/msg/line3c") == "g") {
-			me["ECAML3"].setColor(0,1,0);
+			me["ECAML3"].setColor(0.0667,0.7294,0.3137);
 		} else if (getprop("/ECAM/msg/line3c") == "a") {
-			me["ECAML3"].setColor(1,0.6,0);
+			me["ECAML3"].setColor(0.7333,0.3803,0);
 		} else if (getprop("/ECAM/msg/line3c") == "r") {
 			me["ECAML3"].setColor(1,0,0);
 		}
 		
 		if (getprop("/ECAM/msg/line4c") == "w") {
-			me["ECAML4"].setColor(1,1,1);
+			me["ECAML4"].setColor(0.8078,0.8039,0.8078);
 		} else if (getprop("/ECAM/msg/line4c") == "b") {
-			me["ECAML4"].setColor(0,0.5,0.7);
+			me["ECAML4"].setColor(0.1372,0.5372,0.5843);
 		} else if (getprop("/ECAM/msg/line4c") == "g") {
-			me["ECAML4"].setColor(0,1,0);
+			me["ECAML4"].setColor(0.0667,0.7294,0.3137);
 		} else if (getprop("/ECAM/msg/line4c") == "a") {
-			me["ECAML4"].setColor(1,0.6,0);
+			me["ECAML4"].setColor(0.7333,0.3803,0);
 		} else if (getprop("/ECAM/msg/line4c") == "r") {
 			me["ECAML4"].setColor(1,0,0);
 		}
 		
 		if (getprop("/ECAM/msg/line5c") == "w") {
-			me["ECAML5"].setColor(1,1,1);
+			me["ECAML5"].setColor(0.8078,0.8039,0.8078);
 		} else if (getprop("/ECAM/msg/line5c") == "b") {
-			me["ECAML5"].setColor(0,0.5,0.7);
+			me["ECAML5"].setColor(0.1372,0.5372,0.5843);
 		} else if (getprop("/ECAM/msg/line5c") == "g") {
-			me["ECAML5"].setColor(0,1,0);
+			me["ECAML5"].setColor(0.0667,0.7294,0.3137);
 		} else if (getprop("/ECAM/msg/line5c") == "a") {
-			me["ECAML5"].setColor(1,0.6,0);
+			me["ECAML5"].setColor(0.7333,0.3803,0);
 		} else if (getprop("/ECAM/msg/line5c") == "r") {
 			me["ECAML5"].setColor(1,0,0);
 		}
 		
 		if (getprop("/ECAM/msg/line6c") == "w") {
-			me["ECAML6"].setColor(1,1,1);
+			me["ECAML6"].setColor(0.8078,0.8039,0.8078);
 		} else if (getprop("/ECAM/msg/line6c") == "b") {
-			me["ECAML6"].setColor(0,0.5,0.7);
+			me["ECAML6"].setColor(0.1372,0.5372,0.5843);
 		} else if (getprop("/ECAM/msg/line6c") == "g") {
-			me["ECAML6"].setColor(0,1,0);
+			me["ECAML6"].setColor(0.0667,0.7294,0.3137);
 		} else if (getprop("/ECAM/msg/line6c") == "a") {
-			me["ECAML6"].setColor(1,0.6,0);
+			me["ECAML6"].setColor(0.7333,0.3803,0);
 		} else if (getprop("/ECAM/msg/line6c") == "r") {
 			me["ECAML6"].setColor(1,0,0);
 		}
 		
 		if (getprop("/ECAM/msg/line7c") == "w") {
-			me["ECAML7"].setColor(1,1,1);
+			me["ECAML7"].setColor(0.8078,0.8039,0.8078);
 		} else if (getprop("/ECAM/msg/line7c") == "b") {
-			me["ECAML7"].setColor(0,0.5,0.7);
+			me["ECAML7"].setColor(0.1372,0.5372,0.5843);
 		} else if (getprop("/ECAM/msg/line7c") == "g") {
-			me["ECAML7"].setColor(0,1,0);
+			me["ECAML7"].setColor(0.0667,0.7294,0.3137);
 		} else if (getprop("/ECAM/msg/line7c") == "a") {
-			me["ECAML7"].setColor(1,0.6,0);
+			me["ECAML7"].setColor(0.7333,0.3803,0);
 		} else if (getprop("/ECAM/msg/line7c") == "r") {
 			me["ECAML7"].setColor(1,0,0);
 		}
 		
 		if (getprop("/ECAM/msg/line8c") == "w") {
-			me["ECAML8"].setColor(1,1,1);
+			me["ECAML8"].setColor(0.8078,0.8039,0.8078);
 		} else if (getprop("/ECAM/msg/line8c") == "b") {
-			me["ECAML8"].setColor(0,0.5,0.7);
+			me["ECAML8"].setColor(0.1372,0.5372,0.5843);
 		} else if (getprop("/ECAM/msg/line8c") == "g") {
-			me["ECAML8"].setColor(0,1,0);
+			me["ECAML8"].setColor(0.0667,0.7294,0.3137);
 		} else if (getprop("/ECAM/msg/line8c") == "a") {
-			me["ECAML8"].setColor(1,0.6,0);
+			me["ECAML8"].setColor(0.7333,0.3803,0);
 		} else if (getprop("/ECAM/msg/line8c") == "r") {
 			me["ECAML8"].setColor(1,0,0);
 		}
@@ -457,7 +457,7 @@ var canvas_upperECAM_pwrr = {
 		me["EPR2-ylim"].setRotation((getprop("/ECAM/Upper/EPRylim") + 90)*D2R);
 		
 		if (getprop("/systems/fadec/eng1/epr") == 1) {
-			me["EPR1-scale"].setColor(1,1,1);
+			me["EPR1-scale"].setColor(0.8078,0.8039,0.8078);
 			me["EPR1"].show();
 			me["EPR1-needle"].show();
 			me["EPR1-ylim"].show();
@@ -467,7 +467,7 @@ var canvas_upperECAM_pwrr = {
 			me["EPR1-XX2"].hide();
 			me["EPR1-XX-box"].hide();
 		} else {
-			me["EPR1-scale"].setColor(1,0.6,0);
+			me["EPR1-scale"].setColor(0.7333,0.3803,0);
 			me["EPR1"].hide();
 			me["EPR1-needle"].hide();
 			me["EPR1-ylim"].hide();
@@ -485,7 +485,7 @@ var canvas_upperECAM_pwrr = {
 		}
 		
 		if (getprop("/systems/fadec/eng2/epr") == 1) {
-			me["EPR2-scale"].setColor(1,1,1);
+			me["EPR2-scale"].setColor(0.8078,0.8039,0.8078);
 			me["EPR2"].show();
 			me["EPR2-needle"].show();
 			me["EPR2-ylim"].show();
@@ -495,7 +495,7 @@ var canvas_upperECAM_pwrr = {
 			me["EPR2-XX2"].hide();
 			me["EPR2-XX-box"].hide();
 		} else {
-			me["EPR2-scale"].setColor(1,0.6,0);
+			me["EPR2-scale"].setColor(0.7333,0.3803,0);
 			me["EPR2"].hide();
 			me["EPR2-needle"].hide();
 			me["EPR2-ylim"].hide();
