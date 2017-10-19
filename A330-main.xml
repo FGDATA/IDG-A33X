@@ -143,7 +143,7 @@
 				<path>Aircraft/IDG-A33X/Systems/lower-ecam.xml</path>
             </autopilot>
 			<autopilot n="11">
-				<path>Aircraft/IDG-A32X/Systems/pfd.xml</path>
+				<path>Aircraft/IDG-A33X/Systems/pfd.xml</path>
 			</autopilot>
 		</systems>
 
