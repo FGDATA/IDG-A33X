@@ -239,7 +239,7 @@ var canvas_upperECAM_base = {
 
 var canvas_upperECAM_ge = {
 	new: func(canvas_group, file) {
-		var m = { parents: [canvas_upperECAM_ge , canvas_upperECAM_base] };
+		var m = {parents: [canvas_upperECAM_ge, canvas_upperECAM_base]};
 		m.init(canvas_group, file);
 
 		return m;
@@ -432,7 +432,7 @@ var canvas_upperECAM_ge = {
 
 var canvas_upperECAM_pwrr = {
 	new: func(canvas_group, file) {
-		var m = { parents: [canvas_upperECAM_pwrr , canvas_upperECAM_base] };
+		var m = {parents: [canvas_upperECAM_pwrr, canvas_upperECAM_base]};
 		m.init(canvas_group, file);
 
 		return m;
