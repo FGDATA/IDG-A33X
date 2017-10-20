@@ -256,7 +256,7 @@ setlistener("/it-autoflight/mode/vert", func {
 		}
 	} else if (vert == "T/O CLB") {
 		if (newvertarm != "CLB") {
-			setprop("/modes/pfd/fma/pitch-mode2-armed", "CLB");
+			setprop("/modes/pfd/fma/pitch-mode2-armed", "      CLB");
 		}
 	} else if (vert == "G/A CLB") {
 		if (newvert != "SRS") {
