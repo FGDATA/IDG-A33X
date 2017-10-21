@@ -435,10 +435,6 @@ var doTOGAThrust = func {
 # Reverse Thrust System #
 #########################
 
-#########################
-# Reverse Thrust System #
-#########################
-
 var toggleFastRevThrust = func {
 	var state1 = getprop("/systems/thrust/state1");
 	var state2 = getprop("/systems/thrust/state2");
