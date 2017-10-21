@@ -238,7 +238,7 @@ var phasecheck = maketimer(0.2, func {
 	
 	if (getprop("/autopilot/route-manager/route/num") > 0 and getprop("/autopilot/route-manager/active") == 1 and getprop("/autopilot/route-manager/distance-remaining-nm") <= 15) {
 		setprop("/FMGC/internal/decel", 1);
-	} else if (getprop("/FMGC/internal/decel") == 1 and phase != 5) {
+	} else if (getprop("/FMGC/internal/decel") == 1 and (phase == 0 or phase == 6)) {
 		setprop("/FMGC/internal/decel", 0);
 	}
 	
@@ -462,19 +462,21 @@ var ManagedSPD = maketimer(0.25, func {
 				setprop("/FMGC/internal/mach-switchover", 0);
 			}
 			
-			if (mode == "SRS" and phase == 0 or phase == 1) {
+			if (mode == "SRS" and (phase == 0 or phase == 1)) {
 				if (mngktsmach) {
 					setprop("/FMGC/internal/mng-kts-mach", 0);
 				}
 				if (mng_spd_cmd != srsSPD) {
 					setprop("/FMGC/internal/mng-spd-cmd", srsSPD);
 				}
-			} else if (phase == 2 and altitude <= 10050) {
+			} else if ((phase == 2 or phase == 3) and altitude <= 10050) {
 				if (mngktsmach) {
 					setprop("/FMGC/internal/mng-kts-mach", 0);
 				}
-				if (mng_spd_cmd != 250) {
+				if (mng_spd_cmd != 250 and !decel) {
 					setprop("/FMGC/internal/mng-spd-cmd", 250);
+				} else if (mng_spd_cmd != minspeed and decel) {
+					setprop("/FMGC/internal/mng-spd-cmd", minspeed);
 				}
 			} else if ((phase == 2 or phase == 3) and altitude > 10070 and !mach_switchover) {
 				if (mngktsmach) {
@@ -490,21 +492,21 @@ var ManagedSPD = maketimer(0.25, func {
 				if (mng_spd_cmd != mng_alt_mach) {
 					setprop("/FMGC/internal/mng-spd-cmd", mng_alt_mach);
 				}
-			} else if (phase == 4 and altitude > 11100 and !mach_switchover) {
+			} else if (phase == 4 and altitude > 11000 and !mach_switchover) {
 				if (mngktsmach) {
 					setprop("/FMGC/internal/mng-kts-mach", 0);
 				}
 				if (mng_spd_cmd != mng_alt_spd) {
 					setprop("/FMGC/internal/mng-spd-cmd", mng_alt_spd);
 				}
-			} else if (phase == 4 and altitude > 11100 and mach_switchover) {
+			} else if (phase == 4 and altitude > 11000 and mach_switchover) {
 				if (!mngktsmach) {
 					setprop("/FMGC/internal/mng-kts-mach", 1);
 				}
 				if (mng_spd_cmd != mng_alt_mach) {
 					setprop("/FMGC/internal/mng-spd-cmd", mng_alt_mach);
 				}
-			} else if ((phase == 4 or phase == 5 or phase == 6) and altitude > 11100 and !mach_switchover) {
+			} else if ((phase == 4 or phase == 5 or phase == 6) and altitude > 11000 and !mach_switchover) {
 				if (mngktsmach) {
 					setprop("/FMGC/internal/mng-kts-mach", 0);
 				}
@@ -513,7 +515,7 @@ var ManagedSPD = maketimer(0.25, func {
 				} else if (mng_spd_cmd != minspeed and decel) {
 					setprop("/FMGC/internal/mng-spd-cmd", minspeed);
 				}
-			} else if ((phase == 4 or phase == 5 or phase == 6) and altitude <= 11080) {
+			} else if ((phase == 4 or phase == 5 or phase == 6) and altitude <= 10080) {
 				if (mngktsmach) {
 					setprop("/FMGC/internal/mng-kts-mach", 0);
 				}
