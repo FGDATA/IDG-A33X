@@ -462,7 +462,7 @@ var ManagedSPD = maketimer(0.25, func {
 				setprop("/FMGC/internal/mach-switchover", 0);
 			}
 			
-			if (mode == "SRS" and (phase == 0 or phase == 1)) {
+			if ((mode == " " or mode == "SRS") and (phase == 0 or phase == 1)) {
 				if (mngktsmach) {
 					setprop("/FMGC/internal/mng-kts-mach", 0);
 				}
