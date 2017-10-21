@@ -178,7 +178,7 @@
 					<table>
 						<property>/instrumentation/altimeter/indicated-altitude-ft</property>
 						<entry><ind>20000</ind><dep>0.685</dep></entry>
-						<entry><ind>42000</ind><dep>0.873</dep></entry>
+						<entry><ind>42000</ind><dep>0.843</dep></entry>
 					</table>
 					<table>
 						<property>/FMGC/internal/cost-index</property>
