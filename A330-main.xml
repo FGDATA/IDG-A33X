@@ -1231,7 +1231,7 @@
 			<file>Aircraft/IDG-A33X/Nasal/engines.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/ADIRS.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/fire.nas</file>
-			<file>Aircraft/IDG-A33X/Nasal/autobrake.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/brakes.nas</file>
 		</systems>
 		<thrust>
 			<file>Aircraft/IDG-A33X/Nasal/fadec-common.nas</file>
