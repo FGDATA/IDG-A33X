@@ -454,7 +454,7 @@ var ManagedSPD = maketimer(0.25, func {
 			mng_alt_mach_cmd = getprop("/FMGC/internal/mng-alt-mach");
 			mng_alt_mach = math.round(mng_alt_mach_cmd, 0.001);
 			
-			if (mach > mng_alt_mach and phase == 2) {
+			if (mach > mng_alt_mach and (phase == 2 or phase == 3)) {
 				setprop("/FMGC/internal/mach-switchover", 1);
 			}
 			
