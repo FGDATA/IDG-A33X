@@ -19,12 +19,13 @@
 		<name>Flightdeck</name>
 		<path>Aircraft/IDG-A33X/Models/FlightDeck/a330.flightdeck.xml</path>
 		<offsets>
-			<x-m>-20.3752</x-m>
-			<z-m>1.0528</z-m>
+			<x-m>-20.34536</x-m>
+			<y-m>0.00263</y-m>
+			<z-m>0.7129</z-m>
 		</offsets>
 	</model>
 		
-	  <!-- New Lights -->
+	<!-- New Lights -->
 	
 	<model>
 		<name>Left nav light</name>
