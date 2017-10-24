@@ -8,6 +8,42 @@
 
 <PropertyList>
 
+	<filter>
+		<name>Gear AGL Altitude FT</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<update-interval-secs type="double">0.05</update-interval-secs>
+		<input> 
+			<expression>
+				<dif>
+					<property>/position/altitude-agl-ft</property>
+					<value>22.611</value>
+				</dif>
+			</expression>
+		</input>
+		<output>/position/gear-agl-ft</output>
+		<min>0</min>
+		<max>50000</max>
+	</filter>
+	
+	<filter>
+		<name>Gear AGL Altitude M</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<update-interval-secs type="double">0.05</update-interval-secs>
+		<input> 
+			<expression>
+				<product>
+					<property>/position/gear-agl-ft</property>
+					<value>0.3048</value>
+				</product>
+			</expression>
+		</input>
+		<output>/position/gear-agl-m</output>
+		<min>0</min>
+		<max>50000</max>
+	</filter>
+
 	<predict-simple>
 		<name>Gear AGL Altitude</name>
 		<debug>false</debug>
@@ -34,6 +70,23 @@
 	</filter>
 	
 	<filter>
+		<name>Gear AGL Tilt FT</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<input> 
+			<expression>
+				<dif>
+					<property>/position/altitude-agl-ft</property>
+					<value>18.569</value>
+				</dif>
+			</expression>
+		</input>
+		<output>/position/gear-tilt-agl-ft</output>
+		<min>0</min>
+		<max>50000</max>
+	</filter>
+	
+	<filter>
 		<name>Gear Tilt 1</name>
 		<type>gain</type>
 		<gain>1</gain>
@@ -47,7 +100,7 @@
 			<expression>
 				<sum>
 					<table>
-						<property>/position/gear-agl-ft</property>
+						<property>/position/gear-tilt-agl-ft</property>
 						<entry><ind>1.5</ind><dep> 0</dep></entry>
 						<entry><ind>5.0</ind><dep>40</dep></entry>
 					</table>
@@ -90,7 +143,7 @@
 			<expression>
 				<sum>
 					<table>
-						<property>/position/gear-agl-ft</property>
+						<property>/position/gear-tilt-agl-ft</property>
 						<entry><ind>1.5</ind><dep> 0</dep></entry>
 						<entry><ind>5.0</ind><dep>40</dep></entry>
 					</table>
