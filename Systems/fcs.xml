@@ -9,7 +9,7 @@
 <system name="A3XX: FCS">
 
 	<property value="2">fcs/internal-fbw-law</property>
-
+	
 	<channel name="FBW">
 
 		<switch name="Internal FBW Law">
@@ -122,30 +122,108 @@
 			<output>fcs/throttle-pos-norm[1]</output>
 		</lag_filter>
 		
+		<fcs_function name="fcs/thr-norm[0]">
+			<function>
+				<quotient>
+					<table>
+						<independentVar lookup="row">/engines/engine[0]/n1</independentVar>
+						<tableData>
+							 21.2    0
+							103.8    1
+						</tableData>
+					</table>
+					<property>/controls/engines/throttle-scale</property>
+				</quotient>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fcs/thr-norm[1]">
+			<function>
+				<quotient>
+					<table>
+						<independentVar lookup="row">/engines/engine[1]/n1</independentVar>
+						<tableData>
+							 21.2    0
+							103.8    1
+						</tableData>
+					</table>
+					<property>/controls/engines/throttle-scale</property>
+				</quotient>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fcs/n1-norm[0]">
+			<function>
+				<table>
+					<independentVar lookup="row">fcs/thr-norm[0]</independentVar>
+					<tableData>
+						0     21.2
+						1    103.8
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fcs/n1-norm[1]">
+			<function>
+				<table>
+					<independentVar lookup="row">fcs/thr-norm[1]</independentVar>
+					<tableData>
+						0     21.2
+						1    103.8
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fcs/n1-c1[0]">
+			<function>
+				<table>
+					<independentVar lookup="row">fcs/n1-norm[0]</independentVar>
+					<tableData>
+						51.0    2.25
+						91.8    0.45
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fcs/n1-c1[1]">
+			<function>
+				<table>
+					<independentVar lookup="row">fcs/n1-norm[1]</independentVar>
+					<tableData>
+						51.0    2.25
+						91.7    0.45
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
 		<lag_filter name="fcs/n1-actual1">
 			<input>/engines/engine[0]/n1</input>
-			<c1>2.25</c1>
+			<c1>fcs/n1-c1[0]</c1>
 			<output>/engines/engine[0]/n1-actual</output>
 			<output>/engines/engine[3]/n1</output>
 		</lag_filter>
 		
 		<lag_filter name="fcs/n1-actual2">
 			<input>/engines/engine[1]/n1</input>
-			<c1>2.25</c1>
+			<c1>fcs/n1-c1[1]</c1>
 			<output>/engines/engine[1]/n1-actual</output>
 			<output>/engines/engine[4]/n1</output>
 		</lag_filter>
 		
 		<lag_filter name="fcs/n2-actual1">
 			<input>/engines/engine[0]/n2</input>
-			<c1>2.25</c1>
+			<c1>fcs/n1-c1[0]</c1>
 			<output>/engines/engine[0]/n2-actual</output>
 			<output>/engines/engine[3]/n2</output>
 		</lag_filter>
 		
 		<lag_filter name="fcs/n2-actual2">
 			<input>/engines/engine[1]/n2</input>
-			<c1>2.25</c1>
+			<c1>fcs/n1-c1[1]</c1>
 			<output>/engines/engine[1]/n2-actual</output>
 			<output>/engines/engine[4]/n2</output>
 		</lag_filter>
