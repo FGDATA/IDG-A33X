@@ -102,7 +102,7 @@
 					<table>
 						<property>/position/gear-tilt-agl-ft</property>
 						<entry><ind>1.5</ind><dep> 0</dep></entry>
-						<entry><ind>5.0</ind><dep>40</dep></entry>
+						<entry><ind>4.8</ind><dep>40</dep></entry>
 					</table>
 					<table>
 						<property>/orientation/roll-deg</property>
@@ -145,7 +145,7 @@
 					<table>
 						<property>/position/gear-tilt-agl-ft</property>
 						<entry><ind>1.5</ind><dep> 0</dep></entry>
-						<entry><ind>5.0</ind><dep>40</dep></entry>
+						<entry><ind>4.8</ind><dep>40</dep></entry>
 					</table>
 					<table>
 						<property>/orientation/roll-deg</property>

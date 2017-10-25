@@ -582,35 +582,6 @@
 	</filter>
 	
 	<filter>
-		<name>IT-FBW: OUTER AILERON FBW</name>
-		<type>noise-spike</type>
-		<feedback-if-disabled>true</feedback-if-disabled>
-		<initialize-to>output</initialize-to>
-		<input>/controls/flight/roll-fbw</input>
-		<output>/controls/flight/roll-fbw-outer</output>
-		<max-rate-of-change>
-			<condition>
-				<and>
-					<equals>
-						<property>/gear/gear[1]/wow</property>
-						<value>0</value>
-					</equals>
-					<equals>
-						<property>/gear/gear[2]/wow</property>
-						<value>0</value>
-					</equals>
-					<equals>
-						<property>/it-fbw/law</property>
-						<value>0</value>
-					</equals>
-				</and>
-			</condition>
-			<value>1.5</value>
-		</max-rate-of-change>
-		<max-rate-of-change>10.0</max-rate-of-change>
-	</filter>
-	
-	<filter>
 		<name>IT-FBW: SPOILER</name>
 		<type>gain</type>
 		<gain>1</gain>
@@ -861,8 +832,7 @@
 			<expression>
 				<table>
 					<property>/velocities/mach</property>
-					<entry><ind>0.2</ind><dep>-0.18</dep></entry>
-					<entry><ind>0.5</ind><dep>-0.07</dep></entry>
+					<entry><ind>0.2</ind><dep>-0.21</dep></entry>
 					<entry><ind>0.9</ind><dep>-0.05</dep></entry>
 				</table>
 			</expression>

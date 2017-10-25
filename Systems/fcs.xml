@@ -9,6 +9,7 @@
 <system name="A3XX: FCS">
 
 	<property value="2">fcs/internal-fbw-law</property>
+	<property value="1.5">fcs/inner-aileron-c1</property>
 	
 	<channel name="FBW">
 
@@ -23,6 +24,21 @@
 	</channel>
 
 	<channel name="Roll">
+	
+		<switch name="inner-aileron-c1">
+			<default value="1000"/>
+			<test logic="AND" value="5">
+				/gear/gear[1]/wow == 0
+				/gear/gear[2]/wow == 0
+				/it-fbw/law == 0
+			</test>
+		</switch>
+	
+		<lag_filter name="fcs/inner-aileron">
+			<input>/controls/flight/roll-fbw</input>
+			<c1>fcs/inner-aileron-c1</c1>
+			<output>/controls/flight/roll-fbw-inner</output>
+		</lag_filter>
 	
 		<summer name="Roll Trim Sum">
 			<input>/controls/flight/aileron-sum</input>
