@@ -20,7 +20,7 @@
 		<path>Aircraft/IDG-A33X/Models/FlightDeck/a330.flightdeck.xml</path>
 		<offsets>
 			<x-m>-20.34536</x-m>
-			<y-m>0.00263</y-m>
+			<y-m>0.0</y-m>
 			<z-m>0.7129</z-m>
 		</offsets>
 	</model>
