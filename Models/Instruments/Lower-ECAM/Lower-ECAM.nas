@@ -193,7 +193,7 @@ var canvas_lowerECAM_apu = {
 		}
 
 		if (getprop("/controls/pneumatic/switches/bleedapu") == 1) {
-			me["APUBleedValve"].setRotation(90*D2R);
+			me["APUBleedValve"].setRotation(90 * D2R);
 			me["APUBleedOnline"].show();
 		} else {
 			me["APUBleedValve"].setRotation(0);
@@ -217,8 +217,8 @@ var canvas_lowerECAM_apu = {
 			me["APUEGT"].setColor(0.7333,0.3803,0);
 			me["APUEGT"].setText(sprintf("%s", "XX"));
 		}
-		me["APUN-needle"].setRotation((getprop("/ECAM/Lower/APU-N") + 90)*D2R);
-		me["APUEGT-needle"].setRotation((getprop("/ECAM/Lower/APU-EGT") + 90)*D2R);
+		me["APUN-needle"].setRotation((getprop("/ECAM/Lower/APU-N") + 90) * D2R);
+		me["APUEGT-needle"].setRotation((getprop("/ECAM/Lower/APU-EGT") + 90) * D2R);
 
 		me.updateBottomStatus();
 	},
@@ -241,8 +241,8 @@ var canvas_lowerECAM_eng = {
 		me["OilQT1-decimal"].setText(sprintf("%s", int(10*math.mod(getprop("/engines/engine[0]/oil-qt-actual"),1))));
 		me["OilQT2-decimal"].setText(sprintf("%s", int(10*math.mod(getprop("/engines/engine[1]/oil-qt-actual"),1))));
 		
-		me["OilQT1-needle"].setRotation((getprop("/ECAM/Lower/Oil-QT[0]") + 90)*D2R);
-		me["OilQT2-needle"].setRotation((getprop("/ECAM/Lower/Oil-QT[1]") + 90)*D2R);
+		me["OilQT1-needle"].setRotation((getprop("/ECAM/Lower/Oil-QT[0]") + 90) * D2R);
+		me["OilQT2-needle"].setRotation((getprop("/ECAM/Lower/Oil-QT[1]") + 90) * D2R);
 		
 		# Oil Pressure
 		if (getprop("/engines/engine[0]/oil-psi-actual") >= 20) {
@@ -264,8 +264,8 @@ var canvas_lowerECAM_eng = {
 		me["OilPSI1"].setText(sprintf("%s", math.round(getprop("/engines/engine[0]/oil-psi-actual"))));
 		me["OilPSI2"].setText(sprintf("%s", math.round(getprop("/engines/engine[1]/oil-psi-actual"))));
 		
-		me["OilPSI1-needle"].setRotation((getprop("/ECAM/Lower/Oil-PSI[0]") + 90)*D2R);
-		me["OilPSI2-needle"].setRotation((getprop("/ECAM/Lower/Oil-PSI[1]") + 90)*D2R);
+		me["OilPSI1-needle"].setRotation((getprop("/ECAM/Lower/Oil-PSI[0]") + 90) * D2R);
+		me["OilPSI2-needle"].setRotation((getprop("/ECAM/Lower/Oil-PSI[1]") + 90) * D2R);
 		
 		me.updateBottomStatus();
 	},
