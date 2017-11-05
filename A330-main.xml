@@ -192,7 +192,7 @@
 		<menubar>
 			<default>
 				<menu n="100">
-					<label>A33X Professional</label>
+					<label>IDG-A33X</label>
 					<enabled type="bool">true</enabled>
 					<item>
 						<label>Aircraft Config</label>
