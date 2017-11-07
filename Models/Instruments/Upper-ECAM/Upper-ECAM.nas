@@ -46,7 +46,7 @@ var canvas_upperECAM_base = {
 		return [];
 	},
 	update: func() {
-		if (getprop("/systems/electrical/bus/ac1") >= 110 or getprop("/systems/electrical/bus/ac2") >= 110) {
+		if (getprop("/systems/electrical/bus/ac1") >= 110 or getprop("/systems/electrical/bus/ac2") >= 110 and getprop("/controls/lighting/DU/du3") > 0) {
 			if (getprop("/options/eng") == "GE") {
 				upperECAM_ge.page.show();
 				upperECAM_pwrr.page.hide();
