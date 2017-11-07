@@ -30,14 +30,12 @@ setprop("/engines/engine[1]/oil-qt-actual", qty2);
 var beacon_switch = props.globals.getNode("/controls/switches/beacon", 2);
 var beacon = aircraft.light.new("/sim/model/lights/beacon", [0.015, 3], "/controls/lighting/beacon");
 var strobe_switch = props.globals.getNode("/controls/switches/strobe", 2);
-var strobe = aircraft.light.new("/sim/model/lights/strobe", [0.025, 1.5], "/controls/lighting/strobe");
+var strobe = aircraft.light.new("/sim/model/lights/strobe", [0.005, 0.005, 0.005, 1], "/controls/lighting/strobe");
 
 setlistener("controls/lighting/nav-lights-switch", func {
 	var nav_lights = props.globals.getNode("/sim/model/lights/nav-lights");
 	var setting = getprop("/controls/lighting/nav-lights-switch");
-	if (setting == 1) {
-		nav_lights.setBoolValue(1);
-	} else if (setting == 2) {
+	if (setting == 1 or setting == 2) {
 		nav_lights.setBoolValue(1);
 	} else {
 		nav_lights.setBoolValue(0);
