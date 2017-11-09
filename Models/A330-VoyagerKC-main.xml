@@ -187,6 +187,46 @@
 		</offsets>
 	</model>
 	
+	<model>
+		<name>Tail nav light</name>
+		<path>Aircraft/IDG-A33X/Models/Lights/tailnav.xml</path>
+		<offsets>
+			<x-m>34.23674</x-m>
+			<y-m>0.0495674</y-m>
+			<z-m>2.84668</z-m>
+		</offsets>
+	</model>
+	
+	<model>
+		<name>Tail nav light ALS</name>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/tailnav.xml</path>
+		<offsets>
+			<x-m>34.23674</x-m>
+			<y-m>0.0495674</y-m>
+			<z-m>2.84668</z-m>
+		</offsets>
+	</model>
+	
+	<model>
+		<name>Tail strobe light</name>
+		<path>Aircraft/IDG-A33X/Models/Lights/tailstrobe.xml</path>
+		<offsets>
+			<x-m>34.23674</x-m>
+			<y-m>-0.0495674</y-m>
+			<z-m>2.84668</z-m>
+		</offsets>
+	</model>
+	
+	<model>
+		<name>Tail strobe light ALS</name>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/tail-strobe.xml</path>
+		<offsets>
+			<x-m>34.23674</x-m>
+			<y-m>-0.0495674</y-m>
+			<z-m>2.84668</z-m>
+		</offsets>
+	</model>
+	
 	<!-- New Effects -->
 	
 	<model>
