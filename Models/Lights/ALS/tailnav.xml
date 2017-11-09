@@ -8,22 +8,26 @@
 
 <PropertyList>
 
- <path>beacon.ac</path>
+ <path>tailnav.ac</path>
  <nopreview/>
 
 
+
+ <effect>
+   <inherits-from>Aircraft/IDG-A33X/Models/lights/ALS/tailnav</inherits-from>
+   <object-name>tailnavlightals</object-name>
+ </effect>
+ 
  <animation>
   <type>scale</type>
-  <x-offset>1</x-offset>
-  <y-offset>1</y-offset>
-  <z-offset>1</z-offset>
+  <x-offset>0.5</x-offset>
+  <y-offset>0.5</y-offset>
+  <z-offset>0.5</z-offset>
  </animation>
- 
-
  
 <animation>
   <type>dist-scale</type>
-  <object-name>beaconals</object-name>
+  <object-name>tailnavlightals</object-name>
   <interpolation>
    <entry>
     <ind>0</ind>
@@ -39,13 +43,6 @@
    </entry>
   </interpolation>
  </animation>
- 
-
- 
-<effect>
-   <inherits-from>Aircraft/IDG-A33X/Models/lights/ALS/beacon</inherits-from>
-   <object-name>beaconals</object-name>
- </effect>
 
 
 </PropertyList>
