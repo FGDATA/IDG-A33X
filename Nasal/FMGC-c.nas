@@ -1,5 +1,5 @@
-# Airbus PFD FMA
-# Joshua Davidson (it0uchpods)
+# A3XX FMGC/Autoflight
+# Joshua Davidson (it0uchpods) and Jonathan Redpath (legoboyvdlp)
 
 #########################################
 # Copyright (c) it0uchpods Design Group #
@@ -16,6 +16,7 @@ setprop("/modes/pfd/fma/roll-mode-armed", " ");
 setprop("/modes/pfd/fma/ap-mode", " ");
 setprop("/modes/pfd/fma/fd-mode", " ");
 setprop("/modes/pfd/fma/at-mode", " ");
+setprop("/modes/pfd/fma/athr-armed", 0);
 setprop("/modes/pfd/fma/throttle-mode-box", 0);
 setprop("/modes/pfd/fma/pitch-mode-box", 0);
 setprop("/modes/pfd/fma/pitch-mode-armed-box", 0);
