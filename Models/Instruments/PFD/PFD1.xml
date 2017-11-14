@@ -53,8 +53,6 @@
 					<or>
 						<property>gear/gear[1]/wow</property>
 						<property>gear/gear[2]/wow</property>
-						<property>gear/gear[3]/wowa</property>
-						<property>gear/gear[4]/wowa</property>
 					</or>
 					<not-equals>
 						<property>FMGC/status/phase</property>
@@ -69,8 +67,6 @@
 					<or>
 						<property>gear/gear[1]/wow</property>
 						<property>gear/gear[2]/wow</property>
-						<property>gear/gear[3]/wowa</property>
-						<property>gear/gear[4]/wowa</property>
 					</or>
 					<or>
 						<equals>
@@ -91,8 +87,6 @@
 					<or>
 						<property>gear/gear[1]/wow</property>
 						<property>gear/gear[2]/wow</property>
-						<property>gear/gear[3]/wowa</property>
-						<property>gear/gear[4]/wowa</property>
 					</or>
 					<or>
 						<equals>
@@ -293,8 +287,6 @@
 					<and>
 						<not><property>gear/gear[1]/wow</property></not>
 						<not><property>gear/gear[2]/wow</property></not>
-						<not><property>gear/gear[3]/wowa</property></not>
-						<not><property>gear/gear[4]/wowa</property></not>
 						<not-equals>
 							<property>modes/pfd/fma/roll-mode</property>
 							<value> </value>
@@ -342,8 +334,6 @@
 					<and>
 						<not><property>gear/gear[1]/wow</property></not>
 						<not><property>gear/gear[2]/wow</property></not>
-						<not><property>gear/gear[3]/wowa</property></not>
-						<not><property>gear/gear[4]/wowa</property></not>
 						<not-equals>
 							<property>modes/pfd/fma/pitch-mode</property>
 							<value> </value>
@@ -385,8 +375,6 @@
 			<and>
 				<not><property>gear/gear[1]/wow</property></not>
 				<not><property>gear/gear[2]/wow</property></not>
-				<not><property>gear/gear[3]/wowa</property></not>
-				<not><property>gear/gear[4]/wowa</property></not>
 				<equals>
 					<property>it-autoflight/custom/trk-fpa</property>
 					<value>1</value>
@@ -406,8 +394,6 @@
 				</equals>
 				<not><property>gear/gear[1]/wow</property></not>
 				<not><property>gear/gear[2]/wow</property></not>
-				<not><property>gear/gear[3]/wowa</property></not>
-				<not><property>gear/gear[4]/wowa</property></not>
 				<equals>
 					<property>it-autoflight/custom/trk-fpa</property>
 					<value>1</value>
