@@ -237,9 +237,9 @@ setlistener("/it-autoflight/mode/lat", func {
 var locupdate = maketimer(0.5, func {
 	var lat = getprop("/it-autoflight/mode/lat");
 	var newlat = getprop("/modes/pfd/fma/roll-mode");
-	var nav_defl = getprop("/it-autoflight/internal/nav-heading-error-deg");
+	var nav_defl = getprop("/instrumentation/nav[0]/heading-needle-deflection-norm");
 	if (lat == "LOC") {
-		if (nav_defl > -1 and nav_defl < 1) {
+		if (nav_defl > -0.15 and nav_defl < 0.15) {
 			locupdate.stop();
 			if (newlat != "LOC") {
 				setprop("/modes/pfd/fma/roll-mode", "LOC");
@@ -366,8 +366,8 @@ setlistener("/FMGC/internal/v2-set", func {
 
 var updatePitchArm2 = func {
 	var newvertarm = getprop("/modes/pfd/fma/pitch-mode2-armed");
-	if (newvertarm != "      CLB" and getprop("/FMGC/internal/v2-set") == 1) {
-		setprop("/modes/pfd/fma/pitch-mode2-armed", "      CLB");
+	if (newvertarm != "CLB" and getprop("/FMGC/internal/v2-set") == 1) {
+		setprop("/modes/pfd/fma/pitch-mode2-armed", "CLB");
 	} else if (newvertarm != " " and getprop("/FMGC/internal/v2-set") != 1) {
 		setprop("/modes/pfd/fma/pitch-mode2-armed", " ");
 	}
@@ -455,21 +455,14 @@ setlistener("/it-autoflight/output/loc-armed", func {
 # Arm G/S
 setlistener("/it-autoflight/output/appr-armed", func {
 	var appa = getprop("/it-autoflight/output/appr-armed");
-	var newvertarm = getprop("/modes/pfd/fma/pitch-mode2-armed");
 	var newvert2arm = getprop("/modes/pfd/fma/pitch-mode-armed");
 	if (appa) {
 		if (newvert2arm != "G/S") {
 			setprop("/modes/pfd/fma/pitch-mode-armed", "G/S");
 		}
-		if (newvertarm == "      CLB" and newvertarm != "CLB") {
-			setprop("/modes/pfd/fma/pitch-mode2-armed", "CLB");
-		}
 	} else {
 		if (newvert2arm != " ") {
 			setprop("/modes/pfd/fma/pitch-mode-armed", " ");
-		}
-		if (newvertarm == "CLB" and newvertarm != "      CLB") {
-			setprop("/modes/pfd/fma/pitch-mode2-armed", "      CLB");
 		}
 	}
 });
@@ -541,38 +534,23 @@ var boxchk = func {
 var boxchk_b = func {
 	var newlat = getprop("/modes/pfd/fma/roll-mode");
 	if (newlat != " ") {
-		setprop("/modes/pfd/fma/roll-mode-box", 1);
-		settimer(func {
-			setprop("/modes/pfd/fma/roll-mode-box", 0);
-		}, 5);
+		setprop("/modes/pfd/fma/roll-mode-time", getprop("/sim/time/elapsed-sec"));
 	}
 	var newvert = getprop("/modes/pfd/fma/pitch-mode");
 	if (newvert != " ") {
-		setprop("/modes/pfd/fma/pitch-mode-box", 1);
-		settimer(func {
-			setprop("/modes/pfd/fma/pitch-mode-box", 0);
-		}, 5);
+		setprop("/modes/pfd/fma/pitch-mode-time", getprop("/sim/time/elapsed-sec"));
 	}
 	var newarmr = getprop("/modes/pfd/fma/roll-mode-armed");
 	if (newarmr != " ") {
-		setprop("/modes/pfd/fma/roll-mode-armed-box", 1);
-		settimer(func {
-			setprop("/modes/pfd/fma/roll-mode-armed-box", 0);
-		}, 5);
+		setprop("/modes/pfd/fma/roll-mode-armed-time", getprop("/sim/time/elapsed-sec"));
 	}
 	var newarmp = getprop("/modes/pfd/fma/pitch-mode-armed");
 	if (newarmp != " ") {
-		setprop("/modes/pfd/fma/pitch-mode-armed-box", 1);
-		settimer(func {
-			setprop("/modes/pfd/fma/pitch-mode-armed-box", 0);
-		}, 5);
+		setprop("/modes/pfd/fma/pitch-mode-armed-time", getprop("/sim/time/elapsed-sec"));
 	}
 	var newarmp2 = getprop("/modes/pfd/fma/pitch-mode2-armed");
 	if (newarmp2 != " ") {
-		setprop("/modes/pfd/fma/pitch-mode2-armed-box", 1);
-		settimer(func {
-			setprop("/modes/pfd/fma/pitch-mode2-armed-box", 0);
-		}, 5);
+		setprop("/modes/pfd/fma/pitch-mode2-armed-time", getprop("/sim/time/elapsed-sec"));
 	}
 }
 
