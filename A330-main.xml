@@ -250,6 +250,24 @@
 						</binding>
 					</item>
 					<item>
+						<label>Show Captain's PFD</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_pfd.showPFD1();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Show First Officer's PFD</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_pfd.showPFD2();
+							</script>
+						</binding>
+					</item>
+					<item>
 						<label>Show Captain's ND</label>
 						<binding>
 							<command>nasal</command>
@@ -913,19 +931,35 @@
 			<oldqnh>29.92</oldqnh>
 		</altimeter>
 		<pfd>
-			<minimums-mode>DH</minimums-mode>
 			<ILS1>0</ILS1>
 			<ILS2>0</ILS2>
-			<stallvls>-10</stallvls>
-			<fma>
-				<man-box>O.</man-box>
-				<flex-box>O..</flex-box>
-			</fma>
 		</pfd>
 	</modes>
 
 	<input>
 		<keyboard>
+			<key n="33">
+				<name>PAGE UP</name>
+				<desc>Throttle Increase</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						setprop("/controls/engines/engine[0]/throttle", getprop("/controls/engines/engine[0]/throttle") + 0.01);
+						setprop("/controls/engines/engine[1]/throttle", getprop("/controls/engines/engine[0]/throttle") + 0.01); # Not a typo, always use engine[0] as a reference
+					</script>
+				</binding>
+			</key>
+			<key n="34">
+				<name>PAGE DN</name>
+				<desc>Throttle Decrease</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						setprop("/controls/engines/engine[0]/throttle", getprop("/controls/engines/engine[0]/throttle") - 0.01);
+						setprop("/controls/engines/engine[1]/throttle", getprop("/controls/engines/engine[0]/throttle") - 0.01); # Not a typo, always use engine[0] as a reference
+					</script>
+				</binding>
+			</key>
 			<key n="49">
 				<name>1</name>
 				<desc>Captain View/Elevator Trim Up</desc>
@@ -1286,6 +1320,9 @@
 			<file>Aircraft/IDG-A33X/Nasal/MCDU2/DATA.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/MCDU2/STATUS.nas</file>
 		</mcdu2>
+		<canvas_pfd>
+			<file>Aircraft/IDG-A33X/Models/Instruments/PFD/PFD.nas</file>
+		</canvas_pfd>
 		<canvas_nd>
 			<file>Aircraft/IDG-A33X/Models/Instruments/ND/canvas/ND.nas</file>
 		</canvas_nd>

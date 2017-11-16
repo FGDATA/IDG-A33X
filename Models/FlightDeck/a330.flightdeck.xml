@@ -133,26 +133,10 @@
 			<pitch-deg>-16.534</pitch-deg>
 		</offsets>
 		<condition>
-			<and>
-				<or>
-					<greater-than-equals>
-						<property>systems/electrical/bus/ac1</property>
-						<value>110</value>
-					</greater-than-equals>
-					<greater-than-equals>
-						<property>systems/electrical/bus/ac2</property>
-						<value>110</value>
-					</greater-than-equals>
-				</or>
-				<not-equals>
-					<property>modes/cpt-du-xfr</property>
-					<value>2</value>
-				</not-equals>
-				<equals>
-					<property>systems/acconfig/mismatch-code</property>
-					<value>0x000</value>
-				</equals>
-			</and>
+			<equals>
+				<property>systems/acconfig/mismatch-code</property>
+				<value>0x000</value>
+			</equals>
 		</condition>
 	</model>
 	
@@ -196,28 +180,10 @@
 			<pitch-deg>-16.534</pitch-deg>
 		</offsets>
 		<condition>
-			<and>
-				<greater-than-equals>
-					<property>systems/electrical/bus/ac1</property>
-					<value>25</value>
-				</greater-than-equals>
-				<greater-than-equals>
-					<property>systems/electrical/bus/ac2</property>
-					<value>25</value>
-				</greater-than-equals>
-				<not-equals>
-					<property>modes/fo-du-xfr</property>
-					<value>2</value>
-				</not-equals>
-				<not-equals>
-					<property>controls/electrical/switches/emer-gen</property>
-					<value>1</value>
-				</not-equals>
-				<equals>
-					<property>systems/acconfig/mismatch-code</property>
-					<value>0x000</value>
-				</equals>
-			</and>
+			<equals>
+				<property>systems/acconfig/mismatch-code</property>
+				<value>0x000</value>
+			</equals>
 		</condition>
 	</model>
 	
@@ -3572,7 +3538,7 @@
 		<alignment>center-center</alignment>
 		<axis-alignment>xy-plane</axis-alignment>
 		<type type="string">number-value</type>
-		<format type="string">%2.0f</format>
+		<format type="string">%2.1f</format>
 		<property>it-autoflight/input/fpa</property>
 		<truncate type="bool">false</truncate>
 		<font type="string">led.txf</font>
