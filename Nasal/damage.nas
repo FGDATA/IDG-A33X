@@ -2,9 +2,9 @@
 # Author: Nikolai V. Chr. (with some improvement by Onox and Pinto)
 # Modified for IDG-A33X by Joshua Davidson (it0uchpods)
 
-#########################################
-# Copyright (c) it0uchpods Design Group #
-#########################################
+##############################################
+# Copyright (c) Joshua Davidson (it0uchpods) #
+##############################################
 
 # Enable the damage checkbox in Aircraft Configuration
 setprop("/systems/acconfig/damage-loaded", 1);
