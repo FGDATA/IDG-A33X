@@ -112,7 +112,7 @@
 		<update-interval-secs type="double">0.05</update-interval-secs>
 		<gain>1.0</gain>
 		<input>
-			<property>/it-autoflight/settings/heading-bug-deg</property>
+			<property>/it-autoflight/input/hdg</property>
 			<period>
 				<min>-180.0</min>
 				<max>180.0</max>
