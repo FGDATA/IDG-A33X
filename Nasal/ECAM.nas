@@ -33,6 +33,12 @@ var ECAMinit = func {
 	setprop("/ECAM/phase-8-inhibit", 0);
 	setprop("/ECAM/phase-9-inhibit", 0);
 	setprop("/ECAM/phase-10-inhibit", 0);
+	setprop("/engines/engine/vibration/n1", 0.1);
+	setprop("/engines/engine/vibration/n2", 0.1);
+	setprop("/engines/engine/vibration/n3", 0.1);
+	setprop("/engines/engine[1]/vibration/n1", 0.1);
+	setprop("/engines/engine[1]/vibration/n2", 0.1);
+	setprop("/engines/engine[1]/vibration/n3", 0.1);
 	var stateL = getprop("/engines/engine[0]/state");
 	var stateR = getprop("/engines/engine[1]/state");
 	var thrustL = getprop("/systems/thrust/state1");
