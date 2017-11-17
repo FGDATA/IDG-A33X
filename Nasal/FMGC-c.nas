@@ -1,9 +1,9 @@
-# Airbus PFD FMA
-# Joshua Davidson (it0uchpods)
+# A3XX FMGC/Autoflight
+# Joshua Davidson (it0uchpods) and Jonathan Redpath (legoboyvdlp)
 
-#########################################
-# Copyright (c) it0uchpods Design Group #
-#########################################
+##############################################
+# Copyright (c) Joshua Davidson (it0uchpods) #
+##############################################
 
 setprop("/FMGC/internal/cruise-ft", 10000);
 setprop("/it-autoflight/internal/alt", 10000);
@@ -16,6 +16,7 @@ setprop("/modes/pfd/fma/roll-mode-armed", " ");
 setprop("/modes/pfd/fma/ap-mode", " ");
 setprop("/modes/pfd/fma/fd-mode", " ");
 setprop("/modes/pfd/fma/at-mode", " ");
+setprop("/modes/pfd/fma/athr-armed", 0);
 setprop("/modes/pfd/fma/throttle-mode-box", 0);
 setprop("/modes/pfd/fma/pitch-mode-box", 0);
 setprop("/modes/pfd/fma/pitch-mode-armed-box", 0);
@@ -34,6 +35,7 @@ setprop("/modes/pfd/fma/roll-mode-armed-time", 0);
 setprop("/modes/pfd/fma/ap-mode-time", 0);
 setprop("/modes/pfd/fma/fd-mode-time", 0);
 setprop("/modes/pfd/fma/athr-mode-time", 0);
+setprop("/modes/fcu/hdg-time", 0);
 
 setlistener("sim/signals/fdm-initialized", func {
 	loopFMA.start();
@@ -140,51 +142,58 @@ var loopFMA = maketimer(0.05, func {
 	}
 	
 	# Boxes
-	var boxtime = getprop("/sim/time/elapsed-sec");
-	if (getprop("/modes/pfd/fma/ap-mode-time") + 10 >= boxtime) {
+	var elapsedtime = getprop("/sim/time/elapsed-sec");
+	if (getprop("/modes/pfd/fma/ap-mode-time") + 10 >= elapsedtime) {
 		setprop("/modes/pfd/fma/ap-mode-box", 1);
 	} else {
 		setprop("/modes/pfd/fma/ap-mode-box", 0);
 	}
-	if (getprop("/modes/pfd/fma/fd-mode-time") + 10 >= boxtime) {
+	if (getprop("/modes/pfd/fma/fd-mode-time") + 10 >= elapsedtime) {
 		setprop("/modes/pfd/fma/fd-mode-box", 1);
 	} else {
 		setprop("/modes/pfd/fma/fd-mode-box", 0);
 	}
-	if (getprop("/modes/pfd/fma/athr-mode-time") + 10 >= boxtime) {
+	if (getprop("/modes/pfd/fma/athr-mode-time") + 10 >= elapsedtime) {
 		setprop("/modes/pfd/fma/athr-mode-box", 1);
 	} else {
 		setprop("/modes/pfd/fma/athr-mode-box", 0);
 	}
-	if (getprop("/modes/pfd/fma/throttle-mode-time") + 10 >= boxtime) {
+	if (getprop("/modes/pfd/fma/throttle-mode-time") + 10 >= elapsedtime) {
 		setprop("/modes/pfd/fma/throttle-mode-box", 1);
 	} else {
 		setprop("/modes/pfd/fma/throttle-mode-box", 0);
 	}
-	if (getprop("/modes/pfd/fma/roll-mode-time") + 10 >= boxtime) {
+	if (getprop("/modes/pfd/fma/roll-mode-time") + 10 >= elapsedtime) {
 		setprop("/modes/pfd/fma/roll-mode-box", 1);
 	} else {
 		setprop("/modes/pfd/fma/roll-mode-box", 0);
 	}
-	if (getprop("/modes/pfd/fma/pitch-mode-time") + 10 >= boxtime) {
+	if (getprop("/modes/pfd/fma/pitch-mode-time") + 10 >= elapsedtime) {
 		setprop("/modes/pfd/fma/pitch-mode-box", 1);
 	} else {
 		setprop("/modes/pfd/fma/pitch-mode-box", 0);
 	}
-	if (getprop("/modes/pfd/fma/roll-mode-armed-time") + 10 >= boxtime) {
+	if (getprop("/modes/pfd/fma/roll-mode-armed-time") + 10 >= elapsedtime) {
 		setprop("/modes/pfd/fma/roll-mode-armed-box", 1);
 	} else {
 		setprop("/modes/pfd/fma/roll-mode-armed-box", 0);
 	}
-	if (getprop("/modes/pfd/fma/pitch-mode-armed-time") + 10 >= boxtime) {
+	if (getprop("/modes/pfd/fma/pitch-mode-armed-time") + 10 >= elapsedtime) {
 		setprop("/modes/pfd/fma/pitch-mode-armed-box", 1);
 	} else {
 		setprop("/modes/pfd/fma/pitch-mode-armed-box", 0);
 	}
-	if (getprop("/modes/pfd/fma/pitch-mode2-armed-time") + 10 >= boxtime) {
+	if (getprop("/modes/pfd/fma/pitch-mode2-armed-time") + 10 >= elapsedtime) {
 		setprop("/modes/pfd/fma/pitch-mode2-armed-box", 1);
 	} else {
 		setprop("/modes/pfd/fma/pitch-mode2-armed-box", 0);
+	}
+	
+	# Preselect HDG
+	if (getprop("/modes/fcu/hdg-time") + 10 >= elapsedtime) {
+		setprop("/it-autoflight/custom/show-hdg", 1);
+	} else if (getprop("/it-autoflight/output/lat") != 0 and getprop("/it-autoflight/output/lat") != 5  and getprop("/it-autoflight/output/lat") != 9) {
+		setprop("/it-autoflight/custom/show-hdg", 0);
 	}
 });
 
@@ -236,9 +245,9 @@ setlistener("/it-autoflight/mode/lat", func {
 var locupdate = maketimer(0.5, func {
 	var lat = getprop("/it-autoflight/mode/lat");
 	var newlat = getprop("/modes/pfd/fma/roll-mode");
-	var nav_defl = getprop("/it-autoflight/internal/nav-heading-error-deg");
+	var nav_defl = getprop("/instrumentation/nav[0]/heading-needle-deflection-norm");
 	if (lat == "LOC") {
-		if (nav_defl > -1 and nav_defl < 1) {
+		if (nav_defl > -0.15 and nav_defl < 0.15) {
 			locupdate.stop();
 			if (newlat != "LOC") {
 				setprop("/modes/pfd/fma/roll-mode", "LOC");
@@ -365,8 +374,8 @@ setlistener("/FMGC/internal/v2-set", func {
 
 var updatePitchArm2 = func {
 	var newvertarm = getprop("/modes/pfd/fma/pitch-mode2-armed");
-	if (newvertarm != "      CLB" and getprop("/FMGC/internal/v2-set") == 1) {
-		setprop("/modes/pfd/fma/pitch-mode2-armed", "      CLB");
+	if (newvertarm != "CLB" and getprop("/FMGC/internal/v2-set") == 1) {
+		setprop("/modes/pfd/fma/pitch-mode2-armed", "CLB");
 	} else if (newvertarm != " " and getprop("/FMGC/internal/v2-set") != 1) {
 		setprop("/modes/pfd/fma/pitch-mode2-armed", " ");
 	}
@@ -454,21 +463,14 @@ setlistener("/it-autoflight/output/loc-armed", func {
 # Arm G/S
 setlistener("/it-autoflight/output/appr-armed", func {
 	var appa = getprop("/it-autoflight/output/appr-armed");
-	var newvertarm = getprop("/modes/pfd/fma/pitch-mode2-armed");
 	var newvert2arm = getprop("/modes/pfd/fma/pitch-mode-armed");
 	if (appa) {
 		if (newvert2arm != "G/S") {
 			setprop("/modes/pfd/fma/pitch-mode-armed", "G/S");
 		}
-		if (newvertarm == "      CLB" and newvertarm != "CLB") {
-			setprop("/modes/pfd/fma/pitch-mode2-armed", "CLB");
-		}
 	} else {
 		if (newvert2arm != " ") {
 			setprop("/modes/pfd/fma/pitch-mode-armed", " ");
-		}
-		if (newvertarm == "CLB" and newvertarm != "      CLB") {
-			setprop("/modes/pfd/fma/pitch-mode2-armed", "      CLB");
 		}
 	}
 });
@@ -540,38 +542,23 @@ var boxchk = func {
 var boxchk_b = func {
 	var newlat = getprop("/modes/pfd/fma/roll-mode");
 	if (newlat != " ") {
-		setprop("/modes/pfd/fma/roll-mode-box", 1);
-		settimer(func {
-			setprop("/modes/pfd/fma/roll-mode-box", 0);
-		}, 5);
+		setprop("/modes/pfd/fma/roll-mode-time", getprop("/sim/time/elapsed-sec"));
 	}
 	var newvert = getprop("/modes/pfd/fma/pitch-mode");
 	if (newvert != " ") {
-		setprop("/modes/pfd/fma/pitch-mode-box", 1);
-		settimer(func {
-			setprop("/modes/pfd/fma/pitch-mode-box", 0);
-		}, 5);
+		setprop("/modes/pfd/fma/pitch-mode-time", getprop("/sim/time/elapsed-sec"));
 	}
 	var newarmr = getprop("/modes/pfd/fma/roll-mode-armed");
 	if (newarmr != " ") {
-		setprop("/modes/pfd/fma/roll-mode-armed-box", 1);
-		settimer(func {
-			setprop("/modes/pfd/fma/roll-mode-armed-box", 0);
-		}, 5);
+		setprop("/modes/pfd/fma/roll-mode-armed-time", getprop("/sim/time/elapsed-sec"));
 	}
 	var newarmp = getprop("/modes/pfd/fma/pitch-mode-armed");
 	if (newarmp != " ") {
-		setprop("/modes/pfd/fma/pitch-mode-armed-box", 1);
-		settimer(func {
-			setprop("/modes/pfd/fma/pitch-mode-armed-box", 0);
-		}, 5);
+		setprop("/modes/pfd/fma/pitch-mode-armed-time", getprop("/sim/time/elapsed-sec"));
 	}
 	var newarmp2 = getprop("/modes/pfd/fma/pitch-mode2-armed");
 	if (newarmp2 != " ") {
-		setprop("/modes/pfd/fma/pitch-mode2-armed-box", 1);
-		settimer(func {
-			setprop("/modes/pfd/fma/pitch-mode2-armed-box", 0);
-		}, 5);
+		setprop("/modes/pfd/fma/pitch-mode2-armed-time", getprop("/sim/time/elapsed-sec"));
 	}
 }
 

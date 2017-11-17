@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!--
-#########################################
-# Copyright (c) it0uchpods Design Group #
-#########################################
+##############################################
+# Copyright (c) Joshua Davidson (it0uchpods) #
+##############################################
 -->
 
 <PropertyList include="Aircraft/Generic/Human/Include/walker-include.xml">
@@ -119,7 +119,7 @@
 				<path>Aircraft/IDG-A33X/Systems/it-fbw.xml</path>
 			</autopilot>
 			<autopilot n="3">
-				<path>Aircraft/IDG-A33X/Systems/fmgc-b.xml</path>
+				<path>Aircraft/IDG-A33X/Systems/fmgc-drivers.xml</path>
 			</autopilot>
 			<autopilot n="4">
 				<path>Aircraft/IDG-A33X/Systems/fmgc-roll-yaw.xml</path>
@@ -128,7 +128,7 @@
 				<path>Aircraft/IDG-A33X/Systems/fmgc-pitch.xml</path>
 			</autopilot>
             <autopilot n="6">
-                <path>Aircraft/IDG-A33X/Systems/custom-autothrust.xml</path>
+                <path>Aircraft/IDG-A33X/Systems/fmgc-thrust.xml</path>
             </autopilot>
             <autopilot n="7">
                 <path>Aircraft/IDG-A33X/Systems/libraries.xml</path>
@@ -247,6 +247,24 @@
 							<command>property-assign</command>
 							<property>/controls/adirs/skip</property>
 							<value>1</value>
+						</binding>
+					</item>
+					<item>
+						<label>Show Captain's PFD</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_pfd.showPFD1();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Show First Officer's PFD</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_pfd.showPFD2();
+							</script>
 						</binding>
 					</item>
 					<item>
@@ -913,19 +931,35 @@
 			<oldqnh>29.92</oldqnh>
 		</altimeter>
 		<pfd>
-			<minimums-mode>DH</minimums-mode>
 			<ILS1>0</ILS1>
 			<ILS2>0</ILS2>
-			<stallvls>-10</stallvls>
-			<fma>
-				<man-box>O.</man-box>
-				<flex-box>O..</flex-box>
-			</fma>
 		</pfd>
 	</modes>
 
 	<input>
 		<keyboard>
+			<key n="33">
+				<name>PAGE UP</name>
+				<desc>Throttle Increase</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						setprop("/controls/engines/engine[0]/throttle", getprop("/controls/engines/engine[0]/throttle") + 0.01);
+						setprop("/controls/engines/engine[1]/throttle", getprop("/controls/engines/engine[0]/throttle") + 0.01); # Not a typo, always use engine[0] as a reference
+					</script>
+				</binding>
+			</key>
+			<key n="34">
+				<name>PAGE DN</name>
+				<desc>Throttle Decrease</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						setprop("/controls/engines/engine[0]/throttle", getprop("/controls/engines/engine[0]/throttle") - 0.01);
+						setprop("/controls/engines/engine[1]/throttle", getprop("/controls/engines/engine[0]/throttle") - 0.01); # Not a typo, always use engine[0] as a reference
+					</script>
+				</binding>
+			</key>
 			<key n="49">
 				<name>1</name>
 				<desc>Captain View/Elevator Trim Up</desc>
@@ -1231,7 +1265,6 @@
 		<libraries>
 			<file>Aircraft/IDG-A33X/Nasal/libraries.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/buttons.nas</file>
-			<file>Aircraft/IDG-A33X/Nasal/PFD_FMA.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/gpws.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/efis.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/ECAM.nas</file>
@@ -1259,6 +1292,7 @@
 		<fmgc>
 			<file>Aircraft/IDG-A33X/Nasal/FMGC.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/FMGC-b.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/FMGC-c.nas</file>
 		</fmgc>
 		<mcdu1>
 			<file>Aircraft/IDG-A33X/Nasal/MCDU1/MCDU.nas</file>
@@ -1286,6 +1320,9 @@
 			<file>Aircraft/IDG-A33X/Nasal/MCDU2/DATA.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/MCDU2/STATUS.nas</file>
 		</mcdu2>
+		<canvas_pfd>
+			<file>Aircraft/IDG-A33X/Models/Instruments/PFD/PFD.nas</file>
+		</canvas_pfd>
 		<canvas_nd>
 			<file>Aircraft/IDG-A33X/Models/Instruments/ND/canvas/ND.nas</file>
 		</canvas_nd>

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 
 <!--
-#########################################
-# Copyright (c) it0uchpods Design Group #
-#########################################
+##############################################
+# Copyright (c) Joshua Davidson (it0uchpods) #
+##############################################
 -->
 
 <PropertyList>
@@ -19,7 +19,7 @@
 		<reference>
 			<property>/instrumentation/altimeter/indicated-altitude-ft</property>
 		</reference>
-		<output>instrumentation/pfd/ground-level-diff</output>
+		<output>/instrumentation/pfd/ground-level-diff</output>
 	</filter>
 	
 	<filter>
@@ -31,9 +31,9 @@
 			<property>/it-autoflight/internal/alt</property>
 		</input>
 		<reference>
-			<property>instrumentation/altimeter/indicated-altitude-ft</property>
+			<property>/instrumentation/altimeter/indicated-altitude-ft</property>
 		</reference>
-		<output>instrumentation/pfd/sel-alt-diff</output>
+		<output>/instrumentation/pfd/sel-alt-diff</output>
 	</filter>
 	
 	<filter>
@@ -45,57 +45,9 @@
 			<property>/it-autoflight/internal/mng-alt</property>
 		</input>
 		<reference>
-			<property>instrumentation/altimeter/indicated-altitude-ft</property>
+			<property>/instrumentation/altimeter/indicated-altitude-ft</property>
 		</reference>
-		<output>instrumentation/pfd/mng-alt-diff</output>
-	</filter>
-	
-	<filter>
-		<name>Heading Deg</name>
-		<type>gain</type>
-		<update-interval-secs type="double">0.05</update-interval-secs>
-		<gain>1.0</gain>
-		<input>
-			<property>/orientation/heading-deg</property>
-			<condition>
-				<property>instrumentation/efis/mfd/true-north</property>
-			</condition>
-		</input>
-		<input>
-			<property>/orientation/heading-magnetic-deg</property>
-		</input>
-		<reference>0</reference>
-		<output>instrumentation/pfd/heading-deg</output>
-		<enable>
-			<equals>
-				<property>/it-autoflight/output/lat</property>
-				<value>0</value>
-			</equals>
-		</enable>
-	</filter>
-	
-	<filter>
-		<name>Track Deg</name>
-		<type>gain</type>
-		<update-interval-secs type="double">0.05</update-interval-secs>
-		<gain>1.0</gain>
-		<input>
-			<property>/orientation/track-deg</property>
-			<condition>
-				<property>instrumentation/efis/mfd/true-north</property>
-			</condition>
-		</input>
-		<input>
-			<property>/orientation/track-magnetic-deg</property>
-		</input>
-		<reference>0</reference>
-		<output>instrumentation/pfd/track-deg</output>
-		<enable>
-			<equals>
-				<property>/it-autoflight/output/lat</property>
-				<value>0</value>
-			</equals>
-		</enable>
+		<output>/instrumentation/pfd/mng-alt-diff</output>
 	</filter>
 	
 	<filter>
@@ -104,24 +56,27 @@
 		<update-interval-secs type="double">0.05</update-interval-secs>
 		<gain>1.0</gain>
 		<input>
+			<property>/orientation/track-deg</property>
+		</input>
+		<reference>
+			<property>/instrumentation/pfd/heading-deg</property>
+		</reference>
+		<output>/instrumentation/pfd/track-diff</output>
+	</filter>
+	
+	<filter>
+		<name>Heading scale</name>
+		<type>gain</type>
+		<update-interval-secs type="double">0.05</update-interval-secs>
+		<gain>1.0</gain>
+		<input>
 			<condition>
 				<property>/it-autoflight/custom/trk-fpa</property>
 			</condition>
-			<property>/orientation/track-deg</property>
+			<property>/instrumentation/pfd/track-deg</property>
 		</input>
-		<input>
-			<property>/orientation/track-magnetic-deg</property>
-		</input>
-		<reference>
-			<property>instrumentation/pfd/heading-deg</property>
-		</reference>
-		<output>instrumentation/pfd/track-diff</output>
-		<enable>
-			<equals>
-				<property>/it-autoflight/output/vert</property>
-				<value>5</value>
-			</equals>
-		</enable>
+		<input>/instrumentation/pfd/heading-deg</input>
+		<output>/instrumentation/pfd/heading-scale</output>
 	</filter>
 	
 	<filter>
@@ -130,32 +85,51 @@
 		<update-interval-secs type="double">0.05</update-interval-secs>
 		<gain>1.0</gain>
 		<input>
-			<property>/it-autoflight/settings/heading-bug-deg</property>
+			<property>/it-autoflight/input/hdg</property>
 			<period>
 				<min>-180.0</min>
 				<max>180.0</max>
 			</period>
 		</input>
 		<reference>
-			<property>instrumentation/pfd/heading-deg</property>
+			<property>/instrumentation/pfd/heading-scale</property>
 			<period>
 				<min>-180.0</min>
 				<max>180.0</max>
 			</period>
 		</reference>
-		<output>instrumentation/pfd/hdg-diff</output>
+		<output>/instrumentation/pfd/hdg-diff</output>
 		<period>
 			<min>-180.0</min>
 			<max>180.0</max>
 		</period>
-		<enable>
-			<equals>
-				<property>/it-autoflight/output/lat</property>
-				<value>0</value>
-			</equals>
-		</enable>
 	</filter>
 	
+	<filter>
+		<name>Track bug diff</name>
+		<type>gain</type>
+		<update-interval-secs type="double">0.05</update-interval-secs>
+		<gain>1.0</gain>
+		<input>
+			<property>/instrumentation/pfd/track-deg</property>
+			<period>
+				<min>-180.0</min>
+				<max>180.0</max>
+			</period>
+		</input>
+		<reference>
+			<property>/instrumentation/pfd/heading-scale</property>
+			<period>
+				<min>-180.0</min>
+				<max>180.0</max>
+			</period>
+		</reference>
+		<output>/instrumentation/pfd/track-hdg-diff</output>
+		<period>
+			<min>-180.0</min>
+			<max>180.0</max>
+		</period>
+	</filter>
 	
 	<filter>
 		<name>Localizer course diff</name>
@@ -163,33 +137,24 @@
 		<update-interval-secs type="double">0.05</update-interval-secs>
 		<gain>1.0</gain>
 		<input>
-			<property>/instrumentation/nav/radials/selected-deg</property>
+			<property>/instrumentation/nav[0]/radials/selected-deg</property>
 			<period>
 				<min>-180.0</min>
 				<max>180.0</max>
 			</period>
 		</input>
 		<reference>
-			<property>instrumentation/pfd/heading-deg</property>
+			<property>/instrumentation/pfd/heading-deg</property>
 			<period>
 				<min>-180.0</min>
 				<max>180.0</max>
 			</period>
 		</reference>
-		<output>instrumentation/pfd/loc-crs-diff</output>
+		<output>/instrumentation/pfd/loc-crs-diff</output>
 		<period>
 			<min>-180.0</min>
 			<max>180.0</max>
 		</period>
-		<enable>
-			<property>/flight-management/freq/ils-mode</property>
-			<not>
-				<equals>
-					<property>/instrumentation/nav/nav-id</property>
-					<value></value>
-				</equals>
-			</not>
-		</enable>
 	</filter>
 	
   <!-- =============================================================== -->
@@ -201,13 +166,13 @@
 	  <type>gain</type>
 	  <gain>1.0</gain>
 	  <input>
-		  <property>instrumentation/weu/state/stall-speed</property>
+		  <property>/instrumentation/weu/state/stall-speed</property>
 	  </input>
 	  <reference>
-		  <property>velocities/airspeed-kt</property>
+		  <property>/velocities/airspeed-kt</property>
 		  <offset>85</offset>
 	  </reference>
-	  <output>instrumentation/pfd/stallspeed-diff</output>
+	  <output>/instrumentation/pfd/stallspeed-diff</output>
 	  <min>-205</min>
 	  <max>10</max>
   </filter>
@@ -217,13 +182,13 @@
 	  <type>gain</type>
 	  <gain>-1.0</gain>
 	  <input>
-		  <property>instrumentation/afds/max-airspeed-kts</property>
+		  <property>/instrumentation/afds/max-airspeed-kts</property>
 	  </input>
 	  <reference>
-		  <property>velocities/airspeed-kt</property>
+		  <property>/velocities/airspeed-kt</property>
 		  <offset>-95</offset>
 	  </reference>
-	  <output>instrumentation/pfd/overspeed-diff</output>
+	  <output>/instrumentation/pfd/overspeed-diff</output>
 	  <min>-200</min>
 	  <max>-10</max>
   </filter>  
@@ -235,8 +200,8 @@
   <predict-simple>
 	<name>speed predictor (smoothed)</name>
 	<debug>false</debug>
-	<input>velocities/airspeed-kt</input>
-	<output>instrumentation/pfd/speed-lookahead</output>
+	<input>/velocities/airspeed-kt</input>
+	<output>/instrumentation/pfd/speed-lookahead</output>
 	<seconds>10.0</seconds>
 	<filter-gain>0.01</filter-gain>
   </predict-simple>
@@ -246,14 +211,14 @@
 	<debug>false</debug>
 	<type>gain</type>
 	<input>
-	  <property>instrumentation/pfd/speed-lookahead</property>
+	  <property>/instrumentation/pfd/speed-lookahead</property>
 	</input>
 	<reference>
-	  <property>velocities/airspeed-kt</property>
+	  <property>/velocities/airspeed-kt</property>
 	  <offset>90</offset>
 	</reference>
 	<gain>-0.002667</gain>
-	<output>instrumentation/pfd/speed-trend-up</output>
+	<output>/instrumentation/pfd/speed-trend-up</output>
 	<max>0.24</max>
 	<min>0</min>
   </filter>
@@ -263,15 +228,15 @@
 	<debug>false</debug>
 	<type>gain</type>
 	<input>
-	  <property>instrumentation/pfd/speed-lookahead</property>
+	  <property>/instrumentation/pfd/speed-lookahead</property>
 	  <min>0</min>
 	</input>
 	<reference>
-	  <property>velocities/airspeed-kt</property>
+	  <property>/velocities/airspeed-kt</property>
 	  <offset>-90</offset>
 	</reference>
 	<gain>-0.002667</gain>
-	<output>instrumentation/pfd/speed-trend-down</output>
+	<output>/instrumentation/pfd/speed-trend-down</output>
 	<min>-0.24</min>
 	<max>0</max>
   </filter>
@@ -301,13 +266,13 @@
 				<dif>
 					<table>
 						<property>/position/gear-agl-ft</property> 
-						<entry><ind>  1</ind><dep>  0</dep></entry>
-						<entry><ind>150</ind><dep> 16</dep></entry>
+						<entry><ind>  1</ind><dep>  0.00</dep></entry>
+						<entry><ind>150</ind><dep> 17.35</dep></entry>
 					</table>
 					<table>
 						<property>/orientation/pitch-deg</property>
-						<entry><ind> 0</ind><dep>  0</dep></entry>
-						<entry><ind>16</ind><dep>-16</dep></entry>
+						<entry><ind> 0.00</ind><dep>  0.00</dep></entry>
+						<entry><ind>17.35</ind><dep>-17.35</dep></entry>
 					</table>
 				</dif>
 			</expression>
@@ -329,21 +294,21 @@
 				<dif>
 					<table>
 						<property>/position/gear-agl-ft</property> 
-						<entry><ind>  1</ind><dep>  0</dep></entry>
-						<entry><ind>150</ind><dep> 16</dep></entry>
+						<entry><ind>  1</ind><dep>  0.00</dep></entry>
+						<entry><ind>150</ind><dep> 17.35</dep></entry>
 					</table>
 					<table>
 						<property>/orientation/pitch-deg</property>
-						<entry><ind>-16</ind><dep> 16</dep></entry>
-						<entry><ind>  0</ind><dep>  0</dep></entry>
-						<entry><ind> 16</ind><dep>-16</dep></entry>
+						<entry><ind>-17.35</ind><dep> 17.35</dep></entry>
+						<entry><ind>  0.00</ind><dep>  0.00</dep></entry>
+						<entry><ind> 17.35</ind><dep>-17.35</dep></entry>
 					</table>
 				</dif>
 			</expression>
 		</input>
 		<output>/instrumentation/pfd/horizon-ground</output>
-		<min>-16</min>
-		<max>16</max>
+		<min>-17.35</min>
+		<max>17.35</max>
 	</filter>
 	
 	<filter>
@@ -352,8 +317,68 @@
 		<gain>1</gain>
 		<input>/orientation/pitch-deg</input>
 		<output>/instrumentation/pfd/horizon-pitch</output>
-		<min>-15</min>
-		<max>16</max>
+		<min>-17.35</min>
+		<max>17.35</max>
+	</filter>
+	
+	<filter>
+		<name>Vertical Speed Needle</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<input>
+			<expression>
+				<table>
+					<property>/it-autoflight/internal/vert-speed-fpm-filtered</property>
+					<entry><ind>-6000</ind><dep>-76.6</dep></entry>
+					<entry><ind>-4000</ind><dep>-74.8</dep></entry>
+					<entry><ind>-2000</ind><dep>-73.0</dep></entry>
+					<entry><ind>-1500</ind><dep>-70.2</dep></entry>
+					<entry><ind>-1000</ind><dep>-66.5</dep></entry>
+					<entry><ind> -750</ind><dep>-59.8</dep></entry>
+					<entry><ind> -500</ind><dep>-49.0</dep></entry>
+					<entry><ind> -250</ind><dep>-30.1</dep></entry>
+					<entry><ind>    0</ind><dep>  0.0</dep></entry>
+					<entry><ind>  250</ind><dep> 30.1</dep></entry>
+					<entry><ind>  500</ind><dep> 49.0</dep></entry>
+					<entry><ind>  750</ind><dep> 59.8</dep></entry>
+					<entry><ind> 1000</ind><dep> 66.5</dep></entry>
+					<entry><ind> 1500</ind><dep> 70.2</dep></entry>
+					<entry><ind> 2000</ind><dep> 73.0</dep></entry>
+					<entry><ind> 4000</ind><dep> 74.8</dep></entry>
+					<entry><ind> 6000</ind><dep> 76.6</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/instrumentation/pfd/vs-needle</output>
+	</filter>
+	
+	<filter>
+		<name>Vertical Speed Digit Translate</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<input>
+			<expression>
+				<table>
+					<property>/it-autoflight/internal/vert-speed-fpm-filtered</property>
+					<entry><ind>-6000</ind><dep> 340</dep></entry>
+					<entry><ind>-4000</ind><dep> 302</dep></entry>
+					<entry><ind>-2000</ind><dep> 269</dep></entry>
+					<entry><ind>-1500</ind><dep> 230</dep></entry>
+					<entry><ind>-1000</ind><dep> 197</dep></entry>
+					<entry><ind> -500</ind><dep> 110</dep></entry>
+					<entry><ind> -200</ind><dep>  61</dep></entry>
+					<entry><ind>    0</ind><dep>   0</dep></entry>
+					<entry><ind>  200</ind><dep> -61</dep></entry>
+					<entry><ind>  500</ind><dep>-110</dep></entry>
+					<entry><ind> 1000</ind><dep>-197</dep></entry>
+					<entry><ind> 1500</ind><dep>-230</dep></entry>
+					<entry><ind> 2000</ind><dep>-269</dep></entry>
+					<entry><ind> 4000</ind><dep>-302</dep></entry>
+					<entry><ind> 6000</ind><dep>-340</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/instrumentation/pfd/vs-digit-trans</output>
 	</filter>
 	
 </PropertyList>

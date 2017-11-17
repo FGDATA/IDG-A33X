@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 
 <!--
-#########################################
-# Copyright (c) it0uchpods Design Group #
-#########################################
+##############################################
+# Copyright (c) Joshua Davidson (it0uchpods) #
+##############################################
 -->
 
 <PropertyList>
@@ -14,9 +14,9 @@
 
  <animation>
   <type>scale</type>
-  <x-offset>0.5</x-offset>
-  <y-offset>0.5</y-offset>
-  <z-offset>0.5</z-offset>
+  <x-offset>1</x-offset>
+  <y-offset>1</y-offset>
+  <z-offset>1</z-offset>
  </animation>
  
 

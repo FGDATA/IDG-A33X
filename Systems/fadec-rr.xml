@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-#########################################
-# Copyright (c) it0uchpods Design Group #
-#########################################
+##############################################
+# Copyright (c) Joshua Davidson (it0uchpods) #
+##############################################
 -->
 
 <!-- A3XX Trent 700 FADEC -->
@@ -114,7 +114,7 @@
 				<table>
 					<property>/position/altitude-ft</property> 
 					<entry><ind>    0</ind><dep>0.706</dep></entry>
-					<entry><ind>44000</ind><dep>1.336</dep></entry>
+					<entry><ind>44000</ind><dep>1.321</dep></entry>
 				</table>
 			</expression>
 		</input>

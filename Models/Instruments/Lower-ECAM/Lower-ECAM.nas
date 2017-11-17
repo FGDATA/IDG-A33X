@@ -1,9 +1,9 @@
 # A3XX Lower ECAM Canvas
 # Joshua Davidson (it0uchpods)
 
-#########################################
-# Copyright (c) it0uchpods Design Group #
-#########################################
+##############################################
+# Copyright (c) Joshua Davidson (it0uchpods) #
+##############################################
 
 var lowerECAM_apu = nil;
 var lowerECAM_eng = nil;
@@ -68,7 +68,7 @@ var canvas_lowerECAM_base = {
 		return [];
 	},
 	update: func() {
-		if (getprop("/systems/electrical/bus/ac1") >= 110 and getprop("/systems/electrical/bus/ac2") >= 110 and getprop("/controls/electrical/switches/emer-gen") != 1 and getprop("/controls/lighting/DU/du4") > 0) {
+		if (getprop("/systems/electrical/bus/ac1") >= 110 and getprop("/systems/electrical/ac1-src") != "RAT" and getprop("/systems/electrical/bus/ac2") >= 110 and getprop("/systems/electrical/ac2-src") != "RAT" and getprop("/controls/lighting/DU/du4") > 0) {
 			page = getprop("/ECAM/Lower/page");
 			if (page == "apu") {
 				lowerECAM_apu.page.show();
