@@ -418,6 +418,7 @@ var takeoff = func {
 			setprop("/controls/flight/flap-txt", "1+F");
 			libraries.flaptimer.start();
 			setprop("/controls/flight/elevator-trim", -0.07);
+			systems.arm_autobrake(3);
 		}
 	});
 }
