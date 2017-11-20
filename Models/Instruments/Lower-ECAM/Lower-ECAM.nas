@@ -8,12 +8,14 @@
 var lowerECAM_apu = nil;
 var lowerECAM_eng = nil;
 var lowerECAM_fctl = nil;
+var lowerECAM_test = nil;
 var lowerECAM_display = nil;
 var page = "eng";
 var oat = getprop("/environment/temperature-degc");
 var blue_psi = 0;
 var green_psi = 0;
 var yellow_psi = 0;
+var elapsedtime = 0;
 setprop("/systems/electrical/extra/apu-load", 0);
 setprop("/systems/electrical/extra/apu-volts", 0);
 setprop("/systems/electrical/extra/apu-hz", 0);
@@ -46,6 +48,8 @@ setprop("/controls/flight/spoiler-r2-failed", 0);
 setprop("/controls/flight/spoiler-r3-failed", 0);
 setprop("/controls/flight/spoiler-r4-failed", 0);
 setprop("/controls/flight/spoiler-r5-failed", 0);
+setprop("/instrumentation/du/du4-test", 0);
+setprop("/instrumentation/du/du4-test-time", 0);
 
 var canvas_lowerECAM_base = {
 	init: func(canvas_group, file) {
@@ -53,7 +57,7 @@ var canvas_lowerECAM_base = {
 			return "LiberationFonts/LiberationSans-Regular.ttf";
 		};
 
-		canvas.parsesvg(canvas_group, file, {'font-mapper': font_mapper});
+		canvas.parsesvg(canvas_group, file, {"font-mapper": font_mapper});
 
 		var svg_keys = me.getKeys();
 		foreach(var key; svg_keys) {
@@ -68,29 +72,48 @@ var canvas_lowerECAM_base = {
 		return [];
 	},
 	update: func() {
+		elapsedtime = getprop("/sim/time/elapsed-sec");
+		if (getprop("/systems/electrical/bus/ac1") >= 110 and getprop("/systems/electrical/bus/ac2") >= 110) {
+			if (getprop("/instrumentation/du/du4-test") != 1) {
+				setprop("/instrumentation/du/du4-test", 1);
+				setprop("/instrumentation/du/du4-test-time", getprop("/sim/time/elapsed-sec"));
+			}
+		} else if (getprop("/systems/electrical/ac1-src") == "XX" or getprop("/systems/electrical/ac2-src") == "XX") {
+			setprop("/instrumentation/du/du4-test", 0);
+		}
+		
 		if (getprop("/systems/electrical/bus/ac1") >= 110 and getprop("/systems/electrical/ac1-src") != "RAT" and getprop("/systems/electrical/bus/ac2") >= 110 and getprop("/systems/electrical/ac2-src") != "RAT" and getprop("/controls/lighting/DU/du4") > 0) {
-			page = getprop("/ECAM/Lower/page");
-			if (page == "apu") {
-				lowerECAM_apu.page.show();
-				lowerECAM_eng.page.hide();
-				lowerECAM_fctl.page.hide();
-				lowerECAM_apu.update();
-			} else if (page == "eng") {
-				lowerECAM_apu.page.hide();
-				lowerECAM_eng.page.show();
-				lowerECAM_fctl.page.hide();
-				lowerECAM_eng.update();
-			} else if (page == "fctl") {
+			if (getprop("/instrumentation/du/du4-test-time") + 40 >= elapsedtime) {
 				lowerECAM_apu.page.hide();
 				lowerECAM_eng.page.hide();
-				lowerECAM_fctl.page.show();
-				lowerECAM_fctl.update();
+				lowerECAM_fctl.page.hide();
+				lowerECAM_test.page.show();
 			} else {
-				lowerECAM_apu.page.hide();
-				lowerECAM_eng.page.hide();
-				lowerECAM_fctl.page.hide();
+				lowerECAM_test.page.hide();
+				page = getprop("/ECAM/Lower/page");
+				if (page == "apu") {
+					lowerECAM_apu.page.show();
+					lowerECAM_eng.page.hide();
+					lowerECAM_fctl.page.hide();
+					lowerECAM_apu.update();
+				} else if (page == "eng") {
+					lowerECAM_apu.page.hide();
+					lowerECAM_eng.page.show();
+					lowerECAM_fctl.page.hide();
+					lowerECAM_eng.update();
+				} else if (page == "fctl") {
+					lowerECAM_apu.page.hide();
+					lowerECAM_eng.page.hide();
+					lowerECAM_fctl.page.show();
+					lowerECAM_fctl.update();
+				} else {
+					lowerECAM_apu.page.hide();
+					lowerECAM_eng.page.hide();
+					lowerECAM_fctl.page.hide();
+				}
 			}
 		} else {
+			lowerECAM_test.page.hide();
 			lowerECAM_apu.page.hide();
 			lowerECAM_eng.page.hide();
 			lowerECAM_fctl.page.hide();
@@ -672,6 +695,26 @@ var canvas_lowerECAM_fctl = {
 	},
 };
 
+var canvas_lowerECAM_test = {
+	init: func(canvas_group, file) {
+		var font_mapper = func(family, weight) {
+			return "LiberationFonts/LiberationSans-Regular.ttf";
+		};
+
+		canvas.parsesvg(canvas_group, file, {"font-mapper": font_mapper});
+
+		me.page = canvas_group;
+
+		return me;
+	},
+	new: func(canvas_group, file) {
+		var m = {parents: [canvas_lowerECAM_test]};
+		m.init(canvas_group, file);
+
+		return m;
+	},
+};
+
 setlistener("sim/signals/fdm-initialized", func {
 	lowerECAM_display = canvas.new({
 		"name": "lowerECAM",
@@ -683,10 +726,12 @@ setlistener("sim/signals/fdm-initialized", func {
 	var groupApu = lowerECAM_display.createGroup();
 	var groupEng = lowerECAM_display.createGroup();
 	var groupFctl = lowerECAM_display.createGroup();
+	var group_test = lowerECAM_display.createGroup();
 
 	lowerECAM_apu = canvas_lowerECAM_apu.new(groupApu, "Aircraft/IDG-A33X/Models/Instruments/Lower-ECAM/res/apu.svg");
 	lowerECAM_eng = canvas_lowerECAM_eng.new(groupEng, "Aircraft/IDG-A33X/Models/Instruments/Lower-ECAM/res/eng.svg");
 	lowerECAM_fctl = canvas_lowerECAM_fctl.new(groupFctl, "Aircraft/IDG-A33X/Models/Instruments/Lower-ECAM/res/fctl.svg");
+	lowerECAM_test = canvas_lowerECAM_test.new(group_test, "Aircraft/IDG-A33X/Models/Instruments/Common/res/du-test.svg");
 	
 	lowerECAM_update.start();
 });

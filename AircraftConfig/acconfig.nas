@@ -172,6 +172,15 @@ var systemsReset = func {
 	libraries.variousReset();
 }
 
+var skipDUTest = func {
+	setprop("/instrumentation/du/du1-test-time", getprop("/instrumentation/du/du1-test-time") - 35);
+	setprop("/instrumentation/du/du2-test-time", getprop("/instrumentation/du/du2-test-time") - 35);
+	setprop("/instrumentation/du/du3-test-time", getprop("/instrumentation/du/du3-test-time") - 35);
+	setprop("/instrumentation/du/du4-test-time", getprop("/instrumentation/du/du4-test-time") - 35);
+	setprop("/instrumentation/du/du5-test-time", getprop("/instrumentation/du/du5-test-time") - 35);
+	setprop("/instrumentation/du/du6-test-time", getprop("/instrumentation/du/du6-test-time") - 35);
+}
+
 ################
 # Panel States #
 ################
@@ -296,6 +305,7 @@ var beforestart_b = func {
 	setprop("/controls/adirs/mcducbtn", 1);
 	setprop("/controls/lighting/beacon", 1);
 	setprop("/controls/lighting/nav-lights-switch", 1);
+	skipDUTest();
 	setprop("/controls/gear/brake-left", 0);
 	setprop("/controls/gear/brake-right", 0);
 	setprop("/systems/acconfig/autoconfig-running", 0);
@@ -375,6 +385,7 @@ var taxi_b = func {
 	setprop("/controls/adirs/mcducbtn", 1);
 	setprop("/controls/lighting/beacon", 1);
 	setprop("/controls/lighting/nav-lights-switch", 1);
+	skipDUTest();
 	settimer(taxi_c, 2);
 }
 var taxi_c = func {

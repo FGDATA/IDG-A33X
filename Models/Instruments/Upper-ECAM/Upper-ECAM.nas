@@ -7,7 +7,9 @@
 
 var upperECAM_ge = nil;
 var upperECAM_pwrr = nil;
+var upperECAM_test = nil;
 var upperECAM_display = nil;
+var elapsedtime = 0;
 setprop("/engines/engine[0]/fuel-flow_actual", 0);
 setprop("/engines/engine[1]/fuel-flow_actual", 0);
 setprop("/engines/engine[0]/n3", 0);
@@ -24,6 +26,8 @@ setprop("/ECAM/Upper/N1[1]", 0);
 setprop("/ECAM/Upper/N1thr[0]", 0);
 setprop("/ECAM/Upper/N1thr[1]", 0);
 setprop("/ECAM/Upper/N1ylim", 0);
+setprop("/instrumentation/du/du3-test", 0);
+setprop("/instrumentation/du/du3-test-time", 0);
 
 var canvas_upperECAM_base = {
 	init: func(canvas_group, file) {
@@ -31,7 +35,7 @@ var canvas_upperECAM_base = {
 			return "LiberationFonts/LiberationSans-Regular.ttf";
 		};
 
-		canvas.parsesvg(canvas_group, file, {'font-mapper': font_mapper});
+		canvas.parsesvg(canvas_group, file, {"font-mapper": font_mapper});
 
 		var svg_keys = me.getKeys();
 		foreach(var key; svg_keys) {
@@ -46,17 +50,35 @@ var canvas_upperECAM_base = {
 		return [];
 	},
 	update: func() {
-		if (getprop("/systems/electrical/bus/ac1") >= 110 or getprop("/systems/electrical/bus/ac2") >= 110 and getprop("/controls/lighting/DU/du3") > 0) {
-			if (getprop("/options/eng") == "GE") {
-				upperECAM_ge.page.show();
-				upperECAM_pwrr.page.hide();
-				upperECAM_ge.update();
-			} else if (getprop("/options/eng") == "PW" or getprop("/options/eng") == "RR") {
-				upperECAM_ge.page.hide();
-				upperECAM_pwrr.page.show();
-				upperECAM_pwrr.update();
+		elapsedtime = getprop("/sim/time/elapsed-sec");
+		if (getprop("/systems/electrical/bus/ac1") >= 110 or getprop("/systems/electrical/bus/ac2") >= 110) {
+			if (getprop("/instrumentation/du/du3-test") != 1) {
+				setprop("/instrumentation/du/du3-test", 1);
+				setprop("/instrumentation/du/du3-test-time", getprop("/sim/time/elapsed-sec"));
 			}
 		} else {
+			setprop("/instrumentation/du/du3-test", 0);
+		}
+		
+		if (getprop("/systems/electrical/bus/ac1") >= 110 or getprop("/systems/electrical/bus/ac2") >= 110 and getprop("/controls/lighting/DU/du3") > 0) {
+			if (getprop("/instrumentation/du/du3-test-time") + 39 >= elapsedtime) {
+				upperECAM_ge.page.hide();
+				upperECAM_pwrr.page.hide();
+				upperECAM_test.page.show();
+			} else {
+				upperECAM_test.page.hide();
+				if (getprop("/options/eng") == "GE") {
+					upperECAM_ge.page.show();
+					upperECAM_pwrr.page.hide();
+					upperECAM_ge.update();
+				} else if (getprop("/options/eng") == "PW" or getprop("/options/eng") == "RR") {
+					upperECAM_ge.page.hide();
+					upperECAM_pwrr.page.show();
+					upperECAM_pwrr.update();
+				}
+			}
+		} else {
+			upperECAM_test.page.hide();
 			upperECAM_ge.page.hide();
 			upperECAM_pwrr.page.hide();
 		}
@@ -684,6 +706,26 @@ var canvas_upperECAM_pwrr = {
 	},
 };
 
+var canvas_upperECAM_test = {
+	init: func(canvas_group, file) {
+		var font_mapper = func(family, weight) {
+			return "LiberationFonts/LiberationSans-Regular.ttf";
+		};
+
+		canvas.parsesvg(canvas_group, file, {"font-mapper": font_mapper});
+
+		me.page = canvas_group;
+
+		return me;
+	},
+	new: func(canvas_group, file) {
+		var m = {parents: [canvas_upperECAM_test]};
+		m.init(canvas_group, file);
+
+		return m;
+	},
+};
+
 setlistener("sim/signals/fdm-initialized", func {
 	upperECAM_display = canvas.new({
 		"name": "upperECAM",
@@ -694,9 +736,11 @@ setlistener("sim/signals/fdm-initialized", func {
 	upperECAM_display.addPlacement({"node": "uecam.screen"});
 	var group_ge = upperECAM_display.createGroup();
 	var group_pwrr = upperECAM_display.createGroup();
+	var group_test = upperECAM_display.createGroup();
 
 	upperECAM_ge = canvas_upperECAM_ge.new(group_ge, "Aircraft/IDG-A33X/Models/Instruments/Upper-ECAM/res/ge.svg");
 	upperECAM_pwrr = canvas_upperECAM_pwrr.new(group_pwrr, "Aircraft/IDG-A33X/Models/Instruments/Upper-ECAM/res/pwrr.svg");
+	upperECAM_test = canvas_upperECAM_test.new(group_test, "Aircraft/IDG-A33X/Models/Instruments/Common/res/du-test.svg");
 
 	upperECAM_update.start();
 });
