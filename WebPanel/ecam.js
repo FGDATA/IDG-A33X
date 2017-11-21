@@ -100,6 +100,7 @@ require([
       eg1_oilPSIneedle : "/ECAM/Lower/Oil-PSI[1]",
       powered1 : "/systems/fadec/powered1",
       powered2 : "/systems/fadec/powered1",
+      gross_weight : "/FMGC/internal/gw",
       eng_options : "/options/eng",
       epr_limit : "/controls/engines/epr-limit",
       eprLim_mode : "/controls/engines/thrust-limit",
@@ -231,6 +232,11 @@ require([
 
         self.trunc0Egt0 = ko.pureComputed(function() {
             return truncP(self.eg0_egt(), 0);
+        });
+        
+        
+        self.trunc0GW = ko.pureComputed(function() {
+            return truncP(self.gross_weight(), 0);
         });
 
         self.Eg0egtXX = ko.pureComputed(function() {
