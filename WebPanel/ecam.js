@@ -346,7 +346,37 @@ require([
               return true;
             }
         });
+        
+    
+        self.trunc0Eg0OilQT = ko.pureComputed(function() {
+            return truncP(self.eg0_oilqt(), 0);
+        });
 
+        self.oneDecEg0OilQT = ko.pureComputed(function() {
+            return Math.abs(truncP((self.eg0_oilqt()-self.trunc0Eg0OilQT())*10, 0));
+        });
+        
+        self.trunc0Eg1OilQT = ko.pureComputed(function() {
+            return truncP(self.eg1_oilqt(), 0);
+        });
+
+        self.oneDecEg1OilQT = ko.pureComputed(function() {
+            return Math.abs(truncP((self.eg1_oilqt()-self.trunc0Eg1OilQT())*10, 0));
+        });
+          
+          
+          
+          
+          
+          
+        self.trunc0oilPSI0 = ko.pureComputed(function() {
+            return truncP(self.eg0_oilpsi(), 0);
+        });
+        
+        self.trunc0oilPSI1 = ko.pureComputed(function() {
+            return truncP(self.eg1_oilpsi(), 0);
+        });
+        
         self.trunc0Egt1 = ko.pureComputed(function() {
             return truncP(self.eg1_egt(), 0);
         });
