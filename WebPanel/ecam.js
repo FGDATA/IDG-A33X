@@ -94,6 +94,10 @@ require([
       eg1_EPRneedle : "/ECAM/Upper/EPR[1]",
       eg0_N1needle : "/ECAM/Upper/N1[0]",
       eg1_N1needle : "/ECAM/Upper/N1[1]",
+      eg0_oilQTneedle : "/ECAM/Lower/Oil-QT[0]",
+      eg1_oilQTneedle : "/ECAM/Lower/Oil-QT[1]",
+      eg0_oilPSIneedle : "/ECAM/Lower/Oil-PSI[0]",
+      eg1_oilPSIneedle : "/ECAM/Lower/Oil-PSI[1]",
       powered1 : "/systems/fadec/powered1",
       powered2 : "/systems/fadec/powered1",
       eng_options : "/options/eng",
@@ -249,6 +253,19 @@ require([
             } else {
               return true;
             }
+        });
+
+        self.Eg0OilQtNeedle = ko.pureComputed(function() {
+          return self.eg0_oilQTneedle();
+        });
+        self.Eg1OilQtNeedle = ko.pureComputed(function() {
+          return self.eg1_oilQTneedle();
+        });
+        self.Eg0OilPSINeedle = ko.pureComputed(function() {
+          return self.eg0_oilPSIneedle ();
+        });
+        self.Eg1OilPSINeedle = ko.pureComputed(function() {
+          return self.eg1_oilPSIneedle();
         });
         self.Eg0EGTNeedle = ko.pureComputed(function() {
           return self.eg0_EGTneedle();
