@@ -64,6 +64,9 @@ setprop("/it-autoflight/internal/vert-speed-fpm-pfd", 0);
 setprop("/position/gear-agl-ft", 0);
 setprop("/controls/flight/aileron-input-fast", 0);
 setprop("/controls/flight/elevator-input-fast", 0);
+setprop("/instrumentation/adirs/adr[0]/active", 0);
+setprop("/instrumentation/adirs/adr[1]/active", 0);
+setprop("/instrumentation/adirs/adr[2]/active", 0);
 setprop("/instrumentation/adirs/ir[0]/aligned", 0);
 setprop("/instrumentation/adirs/ir[1]/aligned", 0);
 setprop("/instrumentation/adirs/ir[2]/aligned", 0);
@@ -728,37 +731,41 @@ var canvas_PFD_1 = {
 		wow2 = getprop("/gear/gear[2]/wow");
 		
 		# Errors
-		if (getprop("/instrumentation/adirs/ir[0]/aligned") == 1) {
+		if (getprop("/instrumentation/adirs/adr[0]/active") == 1) {
 			me["ASI_group"].show();
-			me["AI_group"].show();
 			me["ALT_group"].show();
 			me["ALT_group2"].show();
 			me["ALT_scale"].show();
 			me["VS_group"].show();
-			me["HDG_group"].show();
 			me["ASI_error"].hide();
 			me["ASI_frame"].setColor(1,1,1);
-			me["AI_error"].hide();
 			me["ALT_error"].hide();
 			me["ALT_frame"].setColor(1,1,1);
 			me["VS_error"].hide();
-			me["HDG_error"].hide();
-			me["HDG_frame"].setColor(1,1,1);
 		} else {
 			me["ASI_error"].show();
 			me["ASI_frame"].setColor(1,0,0);
-			me["AI_error"].show();
 			me["ALT_error"].show();
 			me["ALT_frame"].setColor(1,0,0);
 			me["VS_error"].show();
-			me["HDG_error"].show();
-			me["HDG_frame"].setColor(1,0,0);
 			me["ASI_group"].hide();
-			me["AI_group"].hide();
 			me["ALT_group"].hide();
 			me["ALT_group2"].hide();
 			me["ALT_scale"].hide();
 			me["VS_group"].hide();
+		}
+		
+		if (getprop("/instrumentation/adirs/ir[0]/aligned") == 1) {
+			me["AI_group"].show();
+			me["HDG_group"].show();
+			me["AI_error"].hide();
+			me["HDG_error"].hide();
+			me["HDG_frame"].setColor(1,1,1);
+		} else {
+			me["AI_error"].show();
+			me["HDG_error"].show();
+			me["HDG_frame"].setColor(1,0,0);
+			me["AI_group"].hide();
 			me["HDG_group"].hide();
 		}
 		
@@ -817,37 +824,41 @@ var canvas_PFD_2 = {
 		wow2 = getprop("/gear/gear[2]/wow");
 		
 		# Errors
-		if (getprop("/instrumentation/adirs/ir[1]/aligned") == 1) {
+		if (getprop("/instrumentation/adirs/adr[1]/active") == 1) {
 			me["ASI_group"].show();
-			me["AI_group"].show();
 			me["ALT_group"].show();
 			me["ALT_group2"].show();
 			me["ALT_scale"].show();
 			me["VS_group"].show();
-			me["HDG_group"].show();
 			me["ASI_error"].hide();
 			me["ASI_frame"].setColor(1,1,1);
-			me["AI_error"].hide();
 			me["ALT_error"].hide();
 			me["ALT_frame"].setColor(1,1,1);
 			me["VS_error"].hide();
-			me["HDG_error"].hide();
-			me["HDG_frame"].setColor(1,1,1);
 		} else {
 			me["ASI_error"].show();
 			me["ASI_frame"].setColor(1,0,0);
-			me["AI_error"].show();
 			me["ALT_error"].show();
 			me["ALT_frame"].setColor(1,0,0);
 			me["VS_error"].show();
-			me["HDG_error"].show();
-			me["HDG_frame"].setColor(1,0,0);
 			me["ASI_group"].hide();
-			me["AI_group"].hide();
 			me["ALT_group"].hide();
 			me["ALT_group2"].hide();
 			me["ALT_scale"].hide();
 			me["VS_group"].hide();
+		}
+		
+		if (getprop("/instrumentation/adirs/ir[1]/aligned") == 1) {
+			me["AI_group"].show();
+			me["HDG_group"].show();
+			me["AI_error"].hide();
+			me["HDG_error"].hide();
+			me["HDG_frame"].setColor(1,1,1);
+		} else {
+			me["AI_error"].show();
+			me["HDG_error"].show();
+			me["HDG_frame"].setColor(1,0,0);
+			me["AI_group"].hide();
 			me["HDG_group"].hide();
 		}
 		
@@ -950,9 +961,9 @@ setlistener("sim/signals/fdm-initialized", func {
 	var group_pfd2 = PFD2_display.createGroup();
 	var group_pfd2_test = PFD2_display.createGroup();
 
-	PFD_1 = canvas_PFD_1.new(group_pfd1, "Aircraft/IDG-A33X/Models/Instruments/PFD/res/pfd.svg");
+	PFD_1 = canvas_PFD_1.new(group_pfd1, "Aircraft/IDG-A32X/Models/Instruments/PFD/res/pfd.svg");
 	PFD_1_test = canvas_PFD_1_test.new(group_pfd1_test, "Aircraft/IDG-A33X/Models/Instruments/Common/res/du-test.svg");
-	PFD_2 = canvas_PFD_2.new(group_pfd2, "Aircraft/IDG-A33X/Models/Instruments/PFD/res/pfd.svg");
+	PFD_2 = canvas_PFD_2.new(group_pfd2, "Aircraft/IDG-A32X/Models/Instruments/PFD/res/pfd.svg");
 	PFD_2_test = canvas_PFD_2_test.new(group_pfd2_test, "Aircraft/IDG-A33X/Models/Instruments/Common/res/du-test.svg");
 	
 	PFD_update.start();

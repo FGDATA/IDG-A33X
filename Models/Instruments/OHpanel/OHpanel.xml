@@ -552,10 +552,9 @@
 			<binding>
 				<command>property-cycle</command>
 				<property>controls/adirs/ir[0]/knob</property>
+				<value>0</value>
 				<value>1</value>
 				<value>2</value>
-				<value>3</value>
-				<max>3</max>
 			</binding>
 			<binding>
 				<command>nasal</command>
@@ -569,10 +568,9 @@
 			<binding>
 				<command>property-cycle</command>
 				<property>controls/adirs/ir[0]/knob</property>
-				<value>3</value>
 				<value>2</value>
 				<value>1</value>
-				<min>1</min>
+				<value>0</value>
 			</binding>
 			<binding>
 				<command>nasal</command>
@@ -586,9 +584,9 @@
 		<object-name>IR1ModeKnb</object-name>
 		<property>controls/adirs/ir[0]/knob</property>
 		<interpolation>
-			<entry><ind>1</ind><dep>-35</dep></entry>
-			<entry><ind>2</ind><dep>0</dep></entry>
-			<entry><ind>3</ind><dep>35</dep></entry>
+			<entry><ind>0</ind><dep>-35</dep></entry>
+			<entry><ind>1</ind><dep>0</dep></entry>
+			<entry><ind>2</ind><dep>35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>0.01578</x1-m>
@@ -644,10 +642,9 @@
 			<binding>
 				<command>property-cycle</command>
 				<property>controls/adirs/ir[1]/knob</property>
+				<value>0</value>
 				<value>1</value>
 				<value>2</value>
-				<value>3</value>
-				<max>3</max>
 			</binding>
 			<binding>
 				<command>nasal</command>
@@ -661,10 +658,9 @@
 			<binding>
 				<command>property-cycle</command>
 				<property>controls/adirs/ir[1]/knob</property>
-				<value>3</value>
 				<value>2</value>
 				<value>1</value>
-				<min>1</min>
+				<value>0</value>
 			</binding>
 			<binding>
 				<command>nasal</command>
@@ -678,9 +674,9 @@
 		<object-name>IR2ModeKnb</object-name>
 		<property>controls/adirs/ir[1]/knob</property>
 		<interpolation>
-			<entry><ind>1</ind><dep>-35</dep></entry>
-			<entry><ind>2</ind><dep>0</dep></entry>
-			<entry><ind>3</ind><dep>35</dep></entry>
+			<entry><ind>0</ind><dep>-35</dep></entry>
+			<entry><ind>1</ind><dep>0</dep></entry>
+			<entry><ind>2</ind><dep>35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>0.00444</x1-m>
@@ -736,10 +732,9 @@
 			<binding>
 				<command>property-cycle</command>
 				<property>controls/adirs/ir[2]/knob</property>
+				<value>0</value>
 				<value>1</value>
 				<value>2</value>
-				<value>3</value>
-				<max>3</max>
 			</binding>
 			<binding>
 				<command>nasal</command>
@@ -753,10 +748,9 @@
 			<binding>
 				<command>property-cycle</command>
 				<property>controls/adirs/ir[2]/knob</property>
-				<value>3</value>
 				<value>2</value>
 				<value>1</value>
-				<min>1</min>
+				<value>0</value>
 			</binding>
 			<binding>
 				<command>nasal</command>
@@ -770,9 +764,9 @@
 		<object-name>IR3ModeKnb</object-name>
 		<property>controls/adirs/ir[2]/knob</property>
 		<interpolation>
-			<entry><ind>1</ind><dep>-35</dep></entry>
-			<entry><ind>2</ind><dep>0</dep></entry>
-			<entry><ind>3</ind><dep>35</dep></entry>
+			<entry><ind>0</ind><dep>-35</dep></entry>
+			<entry><ind>1</ind><dep>0</dep></entry>
+			<entry><ind>2</ind><dep>35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>0.01021</x1-m>
