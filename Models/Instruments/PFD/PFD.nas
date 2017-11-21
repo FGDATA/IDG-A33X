@@ -961,9 +961,9 @@ setlistener("sim/signals/fdm-initialized", func {
 	var group_pfd2 = PFD2_display.createGroup();
 	var group_pfd2_test = PFD2_display.createGroup();
 
-	PFD_1 = canvas_PFD_1.new(group_pfd1, "Aircraft/IDG-A32X/Models/Instruments/PFD/res/pfd.svg");
+	PFD_1 = canvas_PFD_1.new(group_pfd1, "Aircraft/IDG-A33X/Models/Instruments/PFD/res/pfd.svg");
 	PFD_1_test = canvas_PFD_1_test.new(group_pfd1_test, "Aircraft/IDG-A33X/Models/Instruments/Common/res/du-test.svg");
-	PFD_2 = canvas_PFD_2.new(group_pfd2, "Aircraft/IDG-A32X/Models/Instruments/PFD/res/pfd.svg");
+	PFD_2 = canvas_PFD_2.new(group_pfd2, "Aircraft/IDG-A33X/Models/Instruments/PFD/res/pfd.svg");
 	PFD_2_test = canvas_PFD_2_test.new(group_pfd2_test, "Aircraft/IDG-A33X/Models/Instruments/Common/res/du-test.svg");
 	
 	PFD_update.start();
