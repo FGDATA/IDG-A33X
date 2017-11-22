@@ -1259,7 +1259,7 @@
 			<file>Aircraft/IDG-A33X/Nasal/pneumatics.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/hydraulics.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/fuel.nas</file>
-			<file>Aircraft/IDG-A33X/Nasal/engines.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/engines-common.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/ADIRS.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/fire.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/brakes.nas</file>
