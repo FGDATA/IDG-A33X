@@ -382,7 +382,7 @@
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/bw-ft</property>
 				<property>fcs/rudder-pos-rad</property>
-				<value>-0.185</value>
+				<value>-0.105</value>
 			</product>
 		</function>
 
