@@ -7,9 +7,45 @@
 -->
 
 <!-- A3XX Trent 700 FADEC -->
-<!-- Joshua Davidson -->
+<!-- Joshua Davidson (it0uchpods) -->
 
 <PropertyList>
+
+	<filter>
+		<name>OAT Thrust Scale</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<update-interval-secs type="double">0.05</update-interval-secs>
+		<input> 
+			<expression>
+				<table>
+					<property>/environment/temperature-degc</property>
+					<entry><ind> 70</ind><dep>0.791</dep></entry>
+					<entry><ind> 40</ind><dep>0.816</dep></entry>
+					<entry><ind>-60</ind><dep>1.000</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/controls/engines/throttle-scale</output>
+	</filter>
+	
+	<filter>
+		<name>FLX Thrust Scale</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<update-interval-secs type="double">0.05</update-interval-secs>
+		<input> 
+			<expression>
+				<table>
+					<property>/FMGC/internal/flex</property>
+					<entry><ind> 70</ind><dep>0.791</dep></entry>
+					<entry><ind> 40</ind><dep>0.816</dep></entry>
+					<entry><ind>-60</ind><dep>1.000</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/engines/flx-throttle</output>
+	</filter>
 
 	<filter>
 		<name>IDLE Limit</name>
@@ -152,7 +188,7 @@
 			<expression>
 				<table>
 					<property>/position/altitude-ft</property> 
-					<entry><ind>    0</ind><dep>0.706</dep></entry>
+					<entry><ind>    0</ind><dep>0.836</dep></entry>
 					<entry><ind>44000</ind><dep>1.321</dep></entry>
 				</table>
 			</expression>
@@ -188,8 +224,8 @@
 					<property>/engines/engine[0]/n1-actual</property> 
 					<table>
 						<property>/engines/engine[0]/n1-actual</property> 
-						<entry><ind> 21.2</ind><dep> 1</dep></entry>
-						<entry><ind>103.8</ind><dep>50</dep></entry>
+						<entry><ind> 23.7</ind><dep> 1</dep></entry>
+						<entry><ind>105.6</ind><dep>50</dep></entry>
 					</table>
 				</product>
 			</expression>
@@ -207,8 +243,8 @@
 					<property>/engines/engine[1]/n1-actual</property> 
 					<table>
 						<property>/engines/engine[1]/n1-actual</property> 
-						<entry><ind> 21.2</ind><dep> 1</dep></entry>
-						<entry><ind>103.8</ind><dep>50</dep></entry>
+						<entry><ind> 23.7</ind><dep> 1</dep></entry>
+						<entry><ind>105.6</ind><dep>50</dep></entry>
 					</table>
 				</product>
 			</expression>
@@ -225,17 +261,17 @@
 				<product>
 					<table>
 						<property>/controls/engines/engine[0]/throttle-cmd-man</property> 
-						<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-						<entry><ind>1.0</ind><dep>103.8</dep></entry>
+						<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+						<entry><ind>1.0</ind><dep>105.6</dep></entry>
 					</table>
 					<table>
 						<table>
 							<property>/controls/engines/engine[0]/throttle-cmd-man</property> 
-							<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-							<entry><ind>1.0</ind><dep>103.8</dep></entry>
+							<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+							<entry><ind>1.0</ind><dep>105.6</dep></entry>
 						</table>
-						<entry><ind> 21.2</ind><dep> 1</dep></entry>
-						<entry><ind>103.8</ind><dep>50</dep></entry>
+						<entry><ind> 23.7</ind><dep> 1</dep></entry>
+						<entry><ind>105.6</ind><dep>50</dep></entry>
 					</table>
 				</product>
 			</expression>
@@ -252,17 +288,17 @@
 				<product>
 					<table>
 						<property>/controls/engines/engine[1]/throttle-cmd-man</property> 
-						<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-						<entry><ind>1.0</ind><dep>103.8</dep></entry>
+						<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+						<entry><ind>1.0</ind><dep>105.6</dep></entry>
 					</table>
 					<table>
 						<table>
 							<property>/controls/engines/engine[1]/throttle-cmd-man</property> 
-							<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-							<entry><ind>1.0</ind><dep>103.8</dep></entry>
+							<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+							<entry><ind>1.0</ind><dep>105.6</dep></entry>
 						</table>
-						<entry><ind> 21.2</ind><dep> 1</dep></entry>
-						<entry><ind>103.8</ind><dep>50</dep></entry>
+						<entry><ind> 23.7</ind><dep> 1</dep></entry>
+						<entry><ind>105.6</ind><dep>50</dep></entry>
 					</table>
 				</product>
 			</expression>
@@ -282,8 +318,8 @@
 							<value>0.99</value>
 							<property>/engines/flx-throttle</property>
 						</product>
-						<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-						<entry><ind>1.0</ind><dep>103.8</dep></entry>
+						<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+						<entry><ind>1.0</ind><dep>105.6</dep></entry>
 					</table>
 					<table>
 						<table>
@@ -291,11 +327,11 @@
 								<value>0.99</value>
 								<property>/engines/flx-throttle</property>
 							</product>
-							<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-							<entry><ind>1.0</ind><dep>103.8</dep></entry>
+							<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+							<entry><ind>1.0</ind><dep>105.6</dep></entry>
 						</table>
-						<entry><ind> 21.2</ind><dep> 1</dep></entry>
-						<entry><ind>103.8</ind><dep>50</dep></entry>
+						<entry><ind> 23.7</ind><dep> 1</dep></entry>
+						<entry><ind>105.6</ind><dep>50</dep></entry>
 					</table>
 				</product>
 			</expression>
@@ -314,8 +350,8 @@
 				<table>
 					<property>/engines/engine[0]/epr-n1-input</property>
 					<entry><ind>  18.0</ind><dep>-0.15</dep></entry>
-					<entry><ind>  21.2</ind><dep> 0.03</dep></entry>
-					<entry><ind>5190.0</ind><dep> 1.00</dep></entry>
+					<entry><ind>  23.7</ind><dep> 0.03</dep></entry>
+					<entry><ind>5280.0</ind><dep> 1.00</dep></entry>
 				</table>
 			</expression>
 			<scale>/engines/epr-scale</scale>
@@ -359,8 +395,8 @@
 			<expression>
 				<table>
 					<property>/engines/epr-flex-input</property>
-					<entry><ind>  21.2</ind><dep>0.03</dep></entry>
-					<entry><ind>5190.0</ind><dep>1.00</dep></entry>
+					<entry><ind>  23.7</ind><dep>0.03</dep></entry>
+					<entry><ind>5280.0</ind><dep>1.00</dep></entry>
 				</table>
 			</expression>
 			<scale>/engines/epr-scale</scale>
@@ -369,8 +405,8 @@
 			<expression>
 				<table>
 					<property>/engines/engine[0]/epr-thr-input</property>
-					<entry><ind>  21.2</ind><dep>0.03</dep></entry>
-					<entry><ind>5190.0</ind><dep>1.00</dep></entry>
+					<entry><ind>  23.7</ind><dep>0.03</dep></entry>
+					<entry><ind>5280.0</ind><dep>1.00</dep></entry>
 				</table>
 			</expression>
 			<scale>/engines/epr-scale</scale>
@@ -403,8 +439,8 @@
 				<table>
 					<property>/engines/engine[1]/epr-n1-input</property>
 					<entry><ind>  18.0</ind><dep>-0.15</dep></entry>
-					<entry><ind>  21.2</ind><dep> 0.03</dep></entry>
-					<entry><ind>5190.0</ind><dep> 1.00</dep></entry>
+					<entry><ind>  23.7</ind><dep> 0.03</dep></entry>
+					<entry><ind>5280.0</ind><dep> 1.00</dep></entry>
 				</table>
 			</expression>
 			<scale>/engines/epr-scale</scale>
@@ -448,8 +484,8 @@
 			<expression>
 				<table>
 					<property>/engines/epr-flex-input</property>
-					<entry><ind>  21.2</ind><dep>0.03</dep></entry>
-					<entry><ind>5190.0</ind><dep>1.00</dep></entry>
+					<entry><ind>  23.7</ind><dep>0.03</dep></entry>
+					<entry><ind>5280.0</ind><dep>1.00</dep></entry>
 				</table>
 			</expression>
 			<scale>/engines/epr-scale</scale>
@@ -458,8 +494,8 @@
 			<expression>
 				<table>
 					<property>/engines/engine[1]/epr-thr-input</property>
-					<entry><ind>  21.2</ind><dep>0.03</dep></entry>
-					<entry><ind>5190.0</ind><dep>1.00</dep></entry>
+					<entry><ind>  23.7</ind><dep>0.03</dep></entry>
+					<entry><ind>5280.0</ind><dep>1.00</dep></entry>
 				</table>
 			</expression>
 			<scale>/engines/epr-scale</scale>
@@ -507,8 +543,8 @@
 						<value>0.99</value>
 						<property>/engines/flx-throttle</property>
 					</product>
-					<entry><ind>0.00</ind><dep> 21.2</dep></entry>
-					<entry><ind>1.00</ind><dep>103.8</dep></entry>
+					<entry><ind>0.00</ind><dep> 23.7</dep></entry>
+					<entry><ind>1.00</ind><dep>105.6</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -516,8 +552,8 @@
 			<expression>
 				<table>
 					<property>/controls/engines/engine[0]/throttle-cmd-man</property>
-					<entry><ind>0.00</ind><dep> 21.2</dep></entry>
-					<entry><ind>1.00</ind><dep>103.8</dep></entry>
+					<entry><ind>0.00</ind><dep> 23.7</dep></entry>
+					<entry><ind>1.00</ind><dep>105.6</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -548,8 +584,8 @@
 						<value>0.99</value>
 						<property>/engines/flx-throttle</property>
 					</product>
-					<entry><ind>0.00</ind><dep> 21.2</dep></entry>
-					<entry><ind>1.00</ind><dep>103.8</dep></entry>
+					<entry><ind>0.00</ind><dep> 23.7</dep></entry>
+					<entry><ind>1.00</ind><dep>105.6</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -557,8 +593,8 @@
 			<expression>
 				<table>
 					<property>/controls/engines/engine[1]/throttle-cmd-man</property>
-					<entry><ind>0.00</ind><dep> 21.2</dep></entry>
-					<entry><ind>1.00</ind><dep>103.8</dep></entry>
+					<entry><ind>0.00</ind><dep> 23.7</dep></entry>
+					<entry><ind>1.00</ind><dep>105.6</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -767,8 +803,8 @@
 								<value>0.99</value>
 								<property>/controls/engines/throttle-scale</property>
 							</product>
-							<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-							<entry><ind>1.0</ind><dep>103.8</dep></entry>
+							<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+							<entry><ind>1.0</ind><dep>105.6</dep></entry>
 						</table>
 						<table>
 							<table>
@@ -776,15 +812,15 @@
 									<value>0.99</value>
 									<property>/controls/engines/throttle-scale</property>
 								</product>
-								<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-								<entry><ind>1.0</ind><dep>103.8</dep></entry>
+								<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+								<entry><ind>1.0</ind><dep>105.6</dep></entry>
 							</table>
-							<entry><ind> 21.2</ind><dep> 1</dep></entry>
-							<entry><ind>103.8</ind><dep>50</dep></entry>
+							<entry><ind> 23.7</ind><dep> 1</dep></entry>
+							<entry><ind>105.6</ind><dep>50</dep></entry>
 						</table>
 					</product>
-					<entry><ind>  21.2</ind><dep>0.03</dep></entry>
-					<entry><ind>5190.0</ind><dep>1.00</dep></entry>
+					<entry><ind>  23.7</ind><dep>0.03</dep></entry>
+					<entry><ind>5280.0</ind><dep>1.00</dep></entry>
 				</table>
 			</expression>
 			<scale>/engines/epr-scale</scale>
@@ -822,8 +858,8 @@
 								<value>0.95</value>
 								<property>/controls/engines/throttle-scale</property>
 							</product>
-							<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-							<entry><ind>1.0</ind><dep>103.8</dep></entry>
+							<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+							<entry><ind>1.0</ind><dep>105.6</dep></entry>
 						</table>
 						<table>
 							<table>
@@ -831,15 +867,15 @@
 									<value>0.95</value>
 									<property>/controls/engines/throttle-scale</property>
 								</product>
-								<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-								<entry><ind>1.0</ind><dep>103.8</dep></entry>
+								<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+								<entry><ind>1.0</ind><dep>105.6</dep></entry>
 							</table>
-							<entry><ind> 21.2</ind><dep> 1</dep></entry>
-							<entry><ind>103.8</ind><dep>50</dep></entry>
+							<entry><ind> 23.7</ind><dep> 1</dep></entry>
+							<entry><ind>105.6</ind><dep>50</dep></entry>
 						</table>
 					</product>
-					<entry><ind>  21.2</ind><dep>0.03</dep></entry>
-					<entry><ind>5190.0</ind><dep>1.00</dep></entry>
+					<entry><ind>  23.7</ind><dep>0.03</dep></entry>
+					<entry><ind>5280.0</ind><dep>1.00</dep></entry>
 				</table>
 			</expression>
 			<scale>/engines/epr-scale</scale>
@@ -877,8 +913,8 @@
 								<value>0.99</value>
 								<property>/engines/flx-throttle</property>
 							</product>
-							<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-							<entry><ind>1.0</ind><dep>103.8</dep></entry>
+							<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+							<entry><ind>1.0</ind><dep>105.6</dep></entry>
 						</table>
 						<table>
 							<table>
@@ -886,15 +922,15 @@
 									<value>0.99</value>
 									<property>/engines/flx-throttle</property>
 								</product>
-								<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-								<entry><ind>1.0</ind><dep>103.8</dep></entry>
+								<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+								<entry><ind>1.0</ind><dep>105.6</dep></entry>
 							</table>
-							<entry><ind> 21.2</ind><dep> 1</dep></entry>
-							<entry><ind>103.8</ind><dep>50</dep></entry>
+							<entry><ind> 23.7</ind><dep> 1</dep></entry>
+							<entry><ind>105.6</ind><dep>50</dep></entry>
 						</table>
 					</product>
-					<entry><ind>  21.2</ind><dep>0.03</dep></entry>
-					<entry><ind>5190.0</ind><dep>1.00</dep></entry>
+					<entry><ind>  23.7</ind><dep>0.03</dep></entry>
+					<entry><ind>5280.0</ind><dep>1.00</dep></entry>
 				</table>
 			</expression>
 			<scale>/engines/epr-scale</scale>
@@ -932,8 +968,8 @@
 								<value>0.91</value>
 								<property>/controls/engines/throttle-scale</property>
 							</product>
-							<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-							<entry><ind>1.0</ind><dep>103.8</dep></entry>
+							<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+							<entry><ind>1.0</ind><dep>105.6</dep></entry>
 						</table>
 						<table>
 							<table>
@@ -941,15 +977,15 @@
 									<value>0.91</value>
 									<property>/controls/engines/throttle-scale</property>
 								</product>
-								<entry><ind>0.0</ind><dep> 21.2</dep></entry>
-								<entry><ind>1.0</ind><dep>103.8</dep></entry>
+								<entry><ind>0.0</ind><dep> 23.7</dep></entry>
+								<entry><ind>1.0</ind><dep>105.6</dep></entry>
 							</table>
-							<entry><ind> 21.2</ind><dep> 1</dep></entry>
-							<entry><ind>103.8</ind><dep>50</dep></entry>
+							<entry><ind> 23.7</ind><dep> 1</dep></entry>
+							<entry><ind>105.6</ind><dep>50</dep></entry>
 						</table>
 					</product>
-					<entry><ind>  21.2</ind><dep>0.03</dep></entry>
-					<entry><ind>5190.0</ind><dep>1.00</dep></entry>
+					<entry><ind>  23.7</ind><dep>0.03</dep></entry>
+					<entry><ind>5280.0</ind><dep>1.00</dep></entry>
 				</table>
 			</expression>
 			<scale>/engines/epr-scale</scale>
@@ -1073,7 +1109,7 @@
 			<expression>
 				<table>
 					<property>/engines/engine[0]/n1-actual</property> 
-					<entry><ind> 21.2</ind><dep>434</dep></entry>
+					<entry><ind> 23.7</ind><dep>434</dep></entry>
 					<entry><ind>110.0</ind><dep>620</dep></entry>
 				</table>
 			</expression>
@@ -1103,7 +1139,7 @@
 			<expression>
 				<table>
 					<property>/engines/engine[1]/n1-actual</property> 
-					<entry><ind> 21.2</ind><dep>434</dep></entry>
+					<entry><ind> 23.7</ind><dep>434</dep></entry>
 					<entry><ind>110.0</ind><dep>620</dep></entry>
 				</table>
 			</expression>
@@ -1121,8 +1157,8 @@
 					<property>/engines/engine[0]/n2-actual</property>
 					<entry><ind>0</ind><dep>0</dep></entry>
 					<entry><ind>10</ind><dep>15</dep></entry>
-					<entry><ind>60.7</ind><dep>72.8</dep></entry>
-					<entry><ind>102.1</ind><dep>105.2</dep></entry>
+					<entry><ind>62.9</ind><dep>72.8</dep></entry>
+					<entry><ind>104.1</ind><dep>105.6</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -1139,8 +1175,8 @@
 					<property>/engines/engine[1]/n2-actual</property>
 					<entry><ind>0</ind><dep>0</dep></entry>
 					<entry><ind>10</ind><dep>15</dep></entry>
-					<entry><ind>60.7</ind><dep>72.8</dep></entry>
-					<entry><ind>102.1</ind><dep>105.2</dep></entry>
+					<entry><ind>62.9</ind><dep>72.8</dep></entry>
+					<entry><ind>104.1</ind><dep>105.6</dep></entry>
 				</table>
 			</expression>
 		</input>
