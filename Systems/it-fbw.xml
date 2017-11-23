@@ -446,7 +446,7 @@
 			<expression>
 				<table>
 					<property>/velocities/mach</property>
-					<entry><ind>0.2</ind><dep>0.15</dep></entry>
+					<entry><ind>0.2</ind><dep>0.16</dep></entry>
 					<entry><ind>0.9</ind><dep>0.08</dep></entry>
 				</table>
 			</expression>
@@ -883,7 +883,7 @@
 				<table>
 					<property>/velocities/mach</property>
 					<entry><ind>0.2</ind><dep>-0.29</dep></entry>
-					<entry><ind>0.9</ind><dep>-0.09</dep></entry>
+					<entry><ind>0.9</ind><dep>-0.24</dep></entry>
 				</table>
 			</expression>
 		</input>

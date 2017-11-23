@@ -283,7 +283,7 @@
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/bw-ft</property>
 				<property>fcs/roll-pos-rad</property>
-				<value>0.18</value>
+				<value>0.12</value>
 			</product>
 		</function>
 
@@ -332,7 +332,7 @@
 				<property>metrics/cbarw-ft</property>
 				<property>aero/ci2vel</property>
 				<property>velocities/q-aero-rad_sec</property>
-				<value>-38.4</value>
+				<value>-37.2</value>
 			</product>
 		</function>
 
