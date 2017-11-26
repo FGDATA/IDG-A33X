@@ -73,10 +73,16 @@
 	<model>
 		<path>Aircraft/IDG-A33X/Models/Instruments/OHpanel/OHpanelEPR.xml</path>
 		<condition>
-			<equals>
-				<property>options/eng</property>
-				<value>IAE</value>
-			</equals>
+			<or>
+				<equals>
+					<property>options/eng</property>
+					<value>PW</value>
+				</equals>
+				<equals>
+					<property>options/eng</property>
+					<value>RR</value>
+				</equals>
+			</or>
 		</condition>
 		<offsets>
 			<x-m>0.12844</x-m>

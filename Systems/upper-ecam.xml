@@ -28,11 +28,11 @@
 			<expression>
 				<table>
 					<property>/engines/engine[0]/epr-actual</property>
-					<entry><ind>0.790</ind><dep>-134</dep></entry>
-					<entry><ind>1.000</ind><dep> -91</dep></entry>
-					<entry><ind>1.400</ind><dep>   1</dep></entry>
-					<entry><ind>1.800</ind><dep>  88</dep></entry>
-					<entry><ind>1.850</ind><dep>  97</dep></entry>
+					<entry><ind>0.800</ind><dep>-133</dep></entry>
+					<entry><ind>1.000</ind><dep> -90</dep></entry>
+					<entry><ind>1.400</ind><dep>  -6</dep></entry>
+					<entry><ind>1.800</ind><dep>  80</dep></entry>
+					<entry><ind>1.900</ind><dep> 101</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -60,11 +60,11 @@
 			<expression>
 				<table>
 					<property>/engines/engine[0]/epr-cmd</property>
-					<entry><ind>0.790</ind><dep>-134</dep></entry>
-					<entry><ind>1.000</ind><dep> -91</dep></entry>
-					<entry><ind>1.400</ind><dep>   1</dep></entry>
-					<entry><ind>1.800</ind><dep>  88</dep></entry>
-					<entry><ind>1.850</ind><dep>  97</dep></entry>
+					<entry><ind>0.800</ind><dep>-133</dep></entry>
+					<entry><ind>1.000</ind><dep> -90</dep></entry>
+					<entry><ind>1.400</ind><dep>  -6</dep></entry>
+					<entry><ind>1.800</ind><dep>  80</dep></entry>
+					<entry><ind>1.900</ind><dep> 101</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -92,11 +92,11 @@
 			<expression>
 				<table>
 					<property>/engines/engine[1]/epr-actual</property>
-					<entry><ind>0.790</ind><dep>-134</dep></entry>
-					<entry><ind>1.000</ind><dep> -91</dep></entry>
-					<entry><ind>1.400</ind><dep>   1</dep></entry>
-					<entry><ind>1.800</ind><dep>  88</dep></entry>
-					<entry><ind>1.850</ind><dep>  97</dep></entry>
+					<entry><ind>0.800</ind><dep>-133</dep></entry>
+					<entry><ind>1.000</ind><dep> -90</dep></entry>
+					<entry><ind>1.400</ind><dep>  -6</dep></entry>
+					<entry><ind>1.800</ind><dep>  80</dep></entry>
+					<entry><ind>1.900</ind><dep> 101</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -124,11 +124,11 @@
 			<expression>
 				<table>
 					<property>/engines/engine[1]/epr-cmd</property>
-					<entry><ind>0.790</ind><dep>-134</dep></entry>
-					<entry><ind>1.000</ind><dep> -91</dep></entry>
-					<entry><ind>1.400</ind><dep>   1</dep></entry>
-					<entry><ind>1.800</ind><dep>  88</dep></entry>
-					<entry><ind>1.850</ind><dep>  97</dep></entry>
+					<entry><ind>0.800</ind><dep>-133</dep></entry>
+					<entry><ind>1.000</ind><dep> -90</dep></entry>
+					<entry><ind>1.400</ind><dep>  -6</dep></entry>
+					<entry><ind>1.800</ind><dep>  80</dep></entry>
+					<entry><ind>1.900</ind><dep> 101</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -156,11 +156,11 @@
 			<expression>
 				<table>
 					<property>/systems/thrust/epr/toga-lim</property>
-					<entry><ind>0.790</ind><dep>-134</dep></entry>
-					<entry><ind>1.000</ind><dep> -91</dep></entry>
-					<entry><ind>1.400</ind><dep>   1</dep></entry>
-					<entry><ind>1.800</ind><dep>  88</dep></entry>
-					<entry><ind>1.850</ind><dep>  97</dep></entry>
+					<entry><ind>0.800</ind><dep>-133</dep></entry>
+					<entry><ind>1.000</ind><dep> -90</dep></entry>
+					<entry><ind>1.400</ind><dep>  -6</dep></entry>
+					<entry><ind>1.800</ind><dep>  80</dep></entry>
+					<entry><ind>1.900</ind><dep> 101</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -296,10 +296,11 @@
 			<expression>
 				<table>
 					<property>/engines/engine[0]/n1-actual</property>
-					<entry><ind> 23.7</ind><dep>-107</dep></entry>
-					<entry><ind> 60.0</ind><dep> -17</dep></entry>
-					<entry><ind>100.0</ind><dep>  65</dep></entry>
-					<entry><ind>110.0</ind><dep>  90</dep></entry>
+					<entry><ind> 20.0</ind><dep>-112.5</dep></entry>
+					<entry><ind> 40.0</ind><dep> -67.5</dep></entry>
+					<entry><ind> 60.0</ind><dep> -22.5</dep></entry>
+					<entry><ind>100.0</ind><dep>  67.5</dep></entry>
+					<entry><ind>110.0</ind><dep>  90.0</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -344,10 +345,11 @@
 			<expression>
 				<table>
 					<property>/engines/engine[0]/n1-actual-cmd</property>
-					<entry><ind> 23.7</ind><dep>-107</dep></entry>
-					<entry><ind> 60.0</ind><dep> -17</dep></entry>
-					<entry><ind>100.0</ind><dep>  65</dep></entry>
-					<entry><ind>110.0</ind><dep>  90</dep></entry>
+					<entry><ind> 20.0</ind><dep>-112.5</dep></entry>
+					<entry><ind> 40.0</ind><dep> -67.5</dep></entry>
+					<entry><ind> 60.0</ind><dep> -22.5</dep></entry>
+					<entry><ind>100.0</ind><dep>  67.5</dep></entry>
+					<entry><ind>110.0</ind><dep>  90.0</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -392,10 +394,11 @@
 			<expression>
 				<table>
 					<property>/engines/engine[1]/n1-actual</property>
-					<entry><ind> 23.7</ind><dep>-107</dep></entry>
-					<entry><ind> 60.0</ind><dep> -17</dep></entry>
-					<entry><ind>100.0</ind><dep>  65</dep></entry>
-					<entry><ind>110.0</ind><dep>  90</dep></entry>
+					<entry><ind> 20.0</ind><dep>-112.5</dep></entry>
+					<entry><ind> 40.0</ind><dep> -67.5</dep></entry>
+					<entry><ind> 60.0</ind><dep> -22.5</dep></entry>
+					<entry><ind>100.0</ind><dep>  67.5</dep></entry>
+					<entry><ind>110.0</ind><dep>  90.0</dep></entry>
 				</table>
 			</expression>
 		</input>
@@ -440,10 +443,11 @@
 			<expression>
 				<table>
 					<property>/engines/engine[1]/n1-actual-cmd</property>
-					<entry><ind> 23.7</ind><dep>-107</dep></entry>
-					<entry><ind> 60.0</ind><dep> -17</dep></entry>
-					<entry><ind>100.0</ind><dep>  65</dep></entry>
-					<entry><ind>110.0</ind><dep>  90</dep></entry>
+					<entry><ind> 20.0</ind><dep>-112.5</dep></entry>
+					<entry><ind> 40.0</ind><dep> -67.5</dep></entry>
+					<entry><ind> 60.0</ind><dep> -22.5</dep></entry>
+					<entry><ind>100.0</ind><dep>  67.5</dep></entry>
+					<entry><ind>110.0</ind><dep>  90.0</dep></entry>
 				</table>
 			</expression>
 		</input>
