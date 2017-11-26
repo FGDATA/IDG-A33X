@@ -272,7 +272,7 @@
 			<expression>
 				<table>
 					<property>/engines/engine[0]/n1-actual</property>
-					<entry><ind> 23.7</ind><dep>-131</dep></entry>
+					<entry><ind> 20.0</ind><dep>-131</dep></entry>
 					<entry><ind> 40.0</ind><dep> -87</dep></entry>
 					<entry><ind> 60.0</ind><dep> -42</dep></entry>
 					<entry><ind>100.0</ind><dep>  48</dep></entry>
@@ -320,7 +320,7 @@
 			<expression>
 				<table>
 					<property>/engines/engine[0]/n1-actual-cmd</property>
-					<entry><ind> 23.7</ind><dep>-131</dep></entry>
+					<entry><ind> 20.0</ind><dep>-131</dep></entry>
 					<entry><ind> 40.0</ind><dep> -87</dep></entry>
 					<entry><ind> 60.0</ind><dep> -42</dep></entry>
 					<entry><ind>100.0</ind><dep>  48</dep></entry>
@@ -368,7 +368,7 @@
 			<expression>
 				<table>
 					<property>/engines/engine[1]/n1-actual</property>
-					<entry><ind> 23.7</ind><dep>-131</dep></entry>
+					<entry><ind> 20.0</ind><dep>-131</dep></entry>
 					<entry><ind> 40.0</ind><dep> -87</dep></entry>
 					<entry><ind> 60.0</ind><dep> -42</dep></entry>
 					<entry><ind>100.0</ind><dep>  48</dep></entry>
@@ -416,7 +416,7 @@
 			<expression>
 				<table>
 					<property>/engines/engine[1]/n1-actual-cmd</property>
-					<entry><ind> 23.7</ind><dep>-131</dep></entry>
+					<entry><ind> 20.0</ind><dep>-131</dep></entry>
 					<entry><ind> 40.0</ind><dep> -87</dep></entry>
 					<entry><ind> 60.0</ind><dep> -42</dep></entry>
 					<entry><ind>100.0</ind><dep>  48</dep></entry>
@@ -458,7 +458,7 @@
 			<expression>
 				<table>
 					<property>/systems/thrust/n1/toga-lim</property>
-					<entry><ind> 23.7</ind><dep>-131</dep></entry>
+					<entry><ind> 20.0</ind><dep>-131</dep></entry>
 					<entry><ind> 40.0</ind><dep> -87</dep></entry>
 					<entry><ind> 60.0</ind><dep> -42</dep></entry>
 					<entry><ind>100.0</ind><dep>  48</dep></entry>
