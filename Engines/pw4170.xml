@@ -12,8 +12,8 @@
 	<bypassratio>     8.1 </bypassratio>
 	<tsfc>            0.5 </tsfc>
 	<bleed>          0.03 </bleed>
-	<idlen1>         23.7 </idlen1>
-	<idlen2>         62.9 </idlen2>
+	<idlen1>         22.7 </idlen1>
+	<idlen2>         62.4 </idlen2>
 	<n1spinup>        0.2 </n1spinup>
 	<n2spinup>        1.0 </n2spinup>
 	<maxn1>         105.6 </maxn1>
