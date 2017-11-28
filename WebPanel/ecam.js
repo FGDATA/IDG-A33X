@@ -40,7 +40,6 @@ require([
       pitch : "/orientation/pitch-deg",
       roll : "/orientation/roll-deg",
       heading : "/orientation/heading-magnetic-deg",
-      "true-heading" : "/orientation/heading-deg",
       altitude : "/position/altitude-ft",
       latitude : "/position/latitude-deg",
       longitude : "/position/longitude-deg",
@@ -59,12 +58,12 @@ require([
       eprYLim : "/ECAM/Upper/EPRylim",
       eg0_egt : "/engines/engine/egt-actual",
       eg1_egt : "/engines/engine[1]/egt-actual",
-      eg0_n1 : "/engines/engine/n1",
-      eg1_n1 : "/engines/engine[1]/n1",
-      eg0_n2 : "/engines/engine/n2",
-      eg1_n2 : "/engines/engine[1]/n2",
-      eg0_n3 : "/engines/engine/n3",
-      eg1_n3 : "/engines/engine[1]/n3",
+      eg0_n1 : "/engines/engine/n1-actual",
+      eg1_n1 : "/engines/engine[1]/n1-actual",
+      eg0_n2 : "/engines/engine/n2-actual",
+      eg1_n2 : "/engines/engine[1]/n2-actual",
+      eg0_n3 : "/engines/engine/n3-actual",
+      eg1_n3 : "/engines/engine[1]/n3-actual",
       eg0_n1Thr : "/ECAM/Upper/N1thr",
       eg1_n1Thr : "/ECAM/Upper/N1thr[1]",
       n1yLim : "/ECAM/Upper/N1ylim",
@@ -89,17 +88,28 @@ require([
       eg1_eprValid : "/systems/fadec/eng2/epr",
       eg0_FFValid : "/systems/fadec/eng1/ff",
       eg1_FFValid : "/systems/fadec/eng2/ff",
-      eg0_EGTneedle : "/ECAM/Upper/EGT",
+      eg0_EGTneedle : "/ECAM/Upper/EGT[0]",
       eg1_EGTneedle : "/ECAM/Upper/EGT[1]",
-      eg0_EPRneedle : "/ECAM/Upper/EPR",
+      eg0_EPRneedle : "/ECAM/Upper/EPR[0]",
       eg1_EPRneedle : "/ECAM/Upper/EPR[1]",
-      eg0_N1needle : "/ECAM/Upper/N1",
+      eg0_N1needle : "/ECAM/Upper/N1[0]",
       eg1_N1needle : "/ECAM/Upper/N1[1]",
+      eg0_oilQTneedle : "/ECAM/Lower/Oil-QT[0]",
+      eg1_oilQTneedle : "/ECAM/Lower/Oil-QT[1]",
+      eg0_oilPSIneedle : "/ECAM/Lower/Oil-PSI[0]",
+      eg1_oilPSIneedle : "/ECAM/Lower/Oil-PSI[1]",
       powered1 : "/systems/fadec/powered1",
       powered2 : "/systems/fadec/powered1",
+      gross_weight : "/FMGC/internal/gw",
       eng_options : "/options/eng",
       epr_limit : "/controls/engines/epr-limit",
-      eprLim_mode : "/controls/engines/thrust-limit"
+      eprLim_mode : "/controls/engines/thrust-limit",
+      eg0N1vib : "/engines/engine/vibration/n1",
+      eg0N2vib : "/engines/engine/vibration/n2",
+      eg0N3vib : "/engines/engine/vibration/n3",
+      eg1N1vib : "/engines/engine[1]/vibration/n1",
+      eg1N2vib : "/engines/engine[1]/vibration/n2",
+      eg1N3vib : "/engines/engine[1]/vibration/n3"
     });
 
     ko.bindingHandlers.svgRotate = {
@@ -223,6 +233,11 @@ require([
         self.trunc0Egt0 = ko.pureComputed(function() {
             return truncP(self.eg0_egt(), 0);
         });
+        
+        
+        self.trunc0GW = ko.pureComputed(function() {
+            return truncP(self.gross_weight(), 0);
+        });
 
         self.Eg0egtXX = ko.pureComputed(function() {
             if (self.eg0_egtValid() == 1) {
@@ -244,6 +259,19 @@ require([
             } else {
               return true;
             }
+        });
+
+        self.Eg0OilQtNeedle = ko.pureComputed(function() {
+          return self.eg0_oilQTneedle();
+        });
+        self.Eg1OilQtNeedle = ko.pureComputed(function() {
+          return self.eg1_oilQTneedle();
+        });
+        self.Eg0OilPSINeedle = ko.pureComputed(function() {
+          return self.eg0_oilPSIneedle ();
+        });
+        self.Eg1OilPSINeedle = ko.pureComputed(function() {
+          return self.eg1_oilPSIneedle();
         });
         self.Eg0EGTNeedle = ko.pureComputed(function() {
           return self.eg0_EGTneedle();
@@ -341,7 +369,37 @@ require([
               return true;
             }
         });
+        
+    
+        self.trunc0Eg0OilQT = ko.pureComputed(function() {
+            return truncP(self.eg0_oilqt(), 0);
+        });
 
+        self.oneDecEg0OilQT = ko.pureComputed(function() {
+            return Math.abs(truncP((self.eg0_oilqt()-self.trunc0Eg0OilQT())*10, 0));
+        });
+        
+        self.trunc0Eg1OilQT = ko.pureComputed(function() {
+            return truncP(self.eg1_oilqt(), 0);
+        });
+
+        self.oneDecEg1OilQT = ko.pureComputed(function() {
+            return Math.abs(truncP((self.eg1_oilqt()-self.trunc0Eg1OilQT())*10, 0));
+        });
+          
+          
+          
+          
+          
+          
+        self.trunc0oilPSI0 = ko.pureComputed(function() {
+            return truncP(self.eg0_oilpsi(), 0);
+        });
+        
+        self.trunc0oilPSI1 = ko.pureComputed(function() {
+            return truncP(self.eg1_oilpsi(), 0);
+        });
+        
         self.trunc0Egt1 = ko.pureComputed(function() {
             return truncP(self.eg1_egt(), 0);
         });
@@ -465,6 +523,54 @@ require([
           } else {
             return "N2" ;
           }
+        });
+
+        self.trunc0Eg0N1vib = ko.pureComputed(function() {
+            return truncP(self.eg0N1vib(), 0);
+        });
+
+        self.oneDecEg0N1vib = ko.pureComputed(function() {
+            return truncP((self.eg0N1vib()-self.trunc0Eg0N1vib())*10, 0);
+        });
+
+        self.trunc0Eg0N2vib = ko.pureComputed(function() {
+            return truncP(self.eg0N2vib(), 0);
+        });
+
+        self.oneDecEg0N2vib = ko.pureComputed(function() {
+            return truncP((self.eg0N2vib()-self.trunc0Eg0N2vib())*10, 0);
+        });
+
+        self.trunc0Eg0N3vib = ko.pureComputed(function() {
+            return truncP(self.eg0N3vib(), 0);
+        });
+
+        self.oneDecEg0N3vib = ko.pureComputed(function() {
+            return truncP((self.eg0N3vib()-self.trunc0Eg0N3vib())*10, 0);
+        });
+
+        self.trunc0Eg1N1vib = ko.pureComputed(function() {
+            return truncP(self.eg1N1vib(), 0);
+        });
+
+        self.oneDecEg1N1vib = ko.pureComputed(function() {
+            return truncP((self.eg1N1vib()-self.trunc0Eg1N1vib())*10, 0);
+        });
+
+        self.trunc0Eg1N2vib = ko.pureComputed(function() {
+            return truncP(self.eg1N2vib(), 0);
+        });
+
+        self.oneDecEg1N2vib = ko.pureComputed(function() {
+            return truncP((self.eg1N2vib()-self.trunc0Eg1N2vib())*10, 0);
+        });
+
+        self.trunc0Eg1N3vib = ko.pureComputed(function() {
+            return truncP(self.eg1N3vib(), 0);
+        });
+
+        self.oneDecEg1N3vib = ko.pureComputed(function() {
+            return truncP((self.eg1N3vib()-self.trunc0Eg1N3vib())*10, 0);
         });
 
     }
