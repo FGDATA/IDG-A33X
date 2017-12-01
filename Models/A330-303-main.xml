@@ -161,10 +161,40 @@
 		<name>Nosegear landing light ALS</name>
 		<path>Aircraft/IDG-A33X/Models/Lights/ALS/taxilight.xml</path>
 		 <offsets>
-				  <x-m>-19.2</x-m>
-				  <y-m>0</y-m>
-				  <z-m>-3.25</z-m>
-		</offsets>
+				  <x-m>-19.4</x-m>
+				  <y-m>-0.2</y-m>
+				  <z-m>-3.0</z-m>
+				 </offsets>
+	</model>
+	
+	<model>
+		<name>Second Nosegear landing light ALS</name>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/taxilight.xml</path>
+		 <offsets>
+				  <x-m>-19.4</x-m>
+				  <y-m>0.2</y-m>
+				  <z-m>-3.0</z-m>
+				 </offsets>
+	</model>
+	
+	<model>
+		<name>left turnoff light ALS</name>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/turnoffL.xml</path>
+		 <offsets>
+				  <x-m>-19.4</x-m>
+				  <y-m>-0.35</y-m>
+				  <z-m>-3.0</z-m>
+				 </offsets>
+	</model>
+	
+	<model>
+		<name>right turnoff light ALS</name>
+		<path>Aircraft/IDG-A33X/Models/Lights/ALS/turnoffR.xml</path>
+		 <offsets>
+				  <x-m>-19.4</x-m>
+				  <y-m>0.35</y-m>
+				  <z-m>-3.0</z-m>
+				 </offsets>
 	</model>
 
 	<model>
