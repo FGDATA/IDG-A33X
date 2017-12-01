@@ -711,11 +711,15 @@ var canvas_upperECAM_pwrr = {
 		if (getprop("/systems/fadec/powered1") == 1 or getprop("/systems/fadec/powered2") == 1) {
 			me["EPRLim-mode"].show();
 			me["EPRLim"].show();
+			me["EPRLim-decpnt"].show();
+			me["EPRLim-decimal"].show();
 			me["EPRLim-XX"].hide();
 			me["EPRLim-XX2"].hide();
 		} else {
 			me["EPRLim-mode"].hide();
 			me["EPRLim"].hide();
+			me["EPRLim-decpnt"].hide();
+			me["EPRLim-decimal"].hide();
 			me["EPRLim-XX"].show();
 			me["EPRLim-XX2"].show();
 		}
