@@ -435,20 +435,24 @@ var canvas_upperECAM_ge = {
 		
 		if (getprop("/systems/fadec/powered1") == 1 or getprop("/systems/fadec/powered2") == 1) {
 			me["N1Lim-mode"].show();
-			me["N1Lim"].show();
-			me["N1Lim-decpnt"].show();
-			me["N1Lim-decimal"].show();
-			me["N1Lim-percent"].show();
 			me["N1Lim-XX"].hide();
 			me["N1Lim-XX2"].hide();
 		} else {
 			me["N1Lim-mode"].hide();
+			me["N1Lim-XX"].show();
+			me["N1Lim-XX2"].show();
+		}
+		
+		if ((getprop("/systems/fadec/powered1") == 1 or getprop("/systems/fadec/powered2") == 1) and getprop("/controls/engines/thrust-limit") != "MREV") {
+			me["N1Lim"].show();
+			me["N1Lim-decpnt"].show();
+			me["N1Lim-decimal"].show();
+			me["N1Lim-percent"].show();
+		} else {
 			me["N1Lim"].hide();
 			me["N1Lim-decpnt"].hide();
 			me["N1Lim-decimal"].hide();
 			me["N1Lim-percent"].hide();
-			me["N1Lim-XX"].show();
-			me["N1Lim-XX2"].show();
 		}
 		
 		me.updateBase();
@@ -710,18 +714,22 @@ var canvas_upperECAM_pwrr = {
 		
 		if (getprop("/systems/fadec/powered1") == 1 or getprop("/systems/fadec/powered2") == 1) {
 			me["EPRLim-mode"].show();
-			me["EPRLim"].show();
-			me["EPRLim-decpnt"].show();
-			me["EPRLim-decimal"].show();
 			me["EPRLim-XX"].hide();
 			me["EPRLim-XX2"].hide();
 		} else {
 			me["EPRLim-mode"].hide();
+			me["EPRLim-XX"].show();
+			me["EPRLim-XX2"].show();
+		}
+		
+		if ((getprop("/systems/fadec/powered1") == 1 or getprop("/systems/fadec/powered2") == 1) and getprop("/controls/engines/thrust-limit") != "MREV") {
+			me["EPRLim"].show();
+			me["EPRLim-decpnt"].show();
+			me["EPRLim-decimal"].show();
+		} else {
 			me["EPRLim"].hide();
 			me["EPRLim-decpnt"].hide();
 			me["EPRLim-decimal"].hide();
-			me["EPRLim-XX"].show();
-			me["EPRLim-XX2"].show();
 		}
 		
 		me.updateBase();
