@@ -9,11 +9,29 @@
 <PropertyList>
 
 	<filter>
+		<name>Groundspeed Meters Per Second</name>
+		<type>gain</type>
+		<gain>0.51444444444</gain>
+		<input>/velocities/groundspeed-kt</input>
+		<output>/velocities/groundspeed-mps</output>
+		<min>0</min>
+		<max>1000</max>
+	</filter>
+	
+	<predict-simple>
+		<name>Groundspeed Meters Per Second Ahead</name>
+		<debug>false</debug>
+		<input>/velocities/groundspeed-mps</input>
+		<output>/velocities/groundspeed-mps-ahead</output>
+		<seconds>1.5</seconds>
+		<filter-gain>0.0</filter-gain>
+	</predict-simple>
+
+	<filter>
 		<name>Gear AGL Altitude FT</name>
 		<type>gain</type>
 		<gain>1.0</gain>
-		<update-interval-secs type="double">0.05</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<dif>
 					<property>/position/altitude-agl-ft</property>
@@ -30,8 +48,7 @@
 		<name>Gear AGL Altitude M</name>
 		<type>gain</type>
 		<gain>1.0</gain>
-		<update-interval-secs type="double">0.05</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<product>
 					<property>/position/gear-agl-ft</property>
@@ -58,7 +75,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.05</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<table>
 					<property>/controls/flight/rudder-trim</property>
@@ -91,7 +108,7 @@
 		<name>Gear AGL Tilt FT</name>
 		<type>gain</type>
 		<gain>1.0</gain>
-		<input> 
+		<input>
 			<expression>
 				<dif>
 					<property>/position/altitude-agl-ft</property>
@@ -195,7 +212,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.05</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<table>
 					<property>/engines/engine[0]/fuel-flow_pph</property> 
@@ -213,7 +230,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.05</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<table>
 					<property>/engines/engine[1]/fuel-flow_pph</property> 
@@ -231,7 +248,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.05</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<table>
 					<property>/engines/engine[0]/n2-actual</property> 
@@ -248,7 +265,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.05</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<table>
 					<property>/engines/engine[1]/n2-actual</property> 
@@ -265,7 +282,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.05</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<floor>
 					<div>
@@ -282,7 +299,7 @@
 		<name>V/S PFD</name>
 		<type>noise-spike</type>
 		<update-interval-secs type="double">0.05</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<floor>
 					<div>
@@ -361,7 +378,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.1</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<table>
 					<property>/instrumentation/altimeter/indicated-altitude-ft</property>
@@ -383,7 +400,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.1</update-interval-secs>
-		<input> 
+		<input>
 			<condition>
 				<or>
 					<equals>
@@ -398,7 +415,7 @@
 			</condition>
 			<property>/systems/pressurization/cabinalt-norm</property>
 		</input>
-		<input> 
+		<input>
 			<condition>
 				<not>
 					<property>/gear/gear[1]/wow</property>
@@ -415,7 +432,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.1</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<table>
 					<property>/systems/pressurization/cabinalt-norm</property>
@@ -441,7 +458,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.1</update-interval-secs>
-		<input> 
+		<input>
 			<condition>
 				<equals>
 					<property>/gear/gear[1]/wow</property>
@@ -450,7 +467,7 @@
 			</condition>
 			<property>/systems/pressurization/ambientpsi</property>
 		</input>
-		<input> 
+		<input>
 			<condition>
 				<not>
 					<property>/gear/gear[1]/wow</property>
@@ -467,7 +484,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.1</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<table>
 					<property>/instrumentation/altimeter/indicated-altitude-ft</property>
@@ -515,7 +532,7 @@
 	<filter>
 		<name>Outflow Valve</name>
 		<type>noise-spike</type>
-		<input> 
+		<input>
 			<property>/systems/pressurization/outflowpos</property> 
 		</input>
 		<output>/systems/pressurization/outflowpos-norm</output>
@@ -527,7 +544,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.1</update-interval-secs>
-		<input> 
+		<input>
 			<condition>
 				<equals>
 					<property>/systems/pressurization/auto</property>
@@ -536,7 +553,7 @@
 			</condition>
 			<property>/systems/pressurization/outflowpos-man</property>
 		</input>
-		<input> 
+		<input>
 			<condition>
 				<equals>
 					<property>/systems/pressurization/auto</property>
@@ -551,7 +568,7 @@
 	<filter>
 		<name>Cabin VS</name>
 		<type>noise-spike</type>
-		<input> 
+		<input>
 			<property>/systems/pressurization/vs</property> 
 		</input>
 		<output>/systems/pressurization/vs-norm</output>
@@ -561,7 +578,7 @@
 	<filter>
 		<name>Cabin Differential</name>
 		<type>noise-spike</type>
-		<input> 
+		<input>
 			<property>/systems/pressurization/deltap</property>
 		</input>
 		<output>/systems/pressurization/deltap-norm</output>
@@ -627,7 +644,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.1</update-interval-secs>
-		<input> 
+		<input>
 			<condition>
 				<equals>
 					<property>/gear/gear[1]/wow</property>
@@ -636,7 +653,7 @@
 			</condition>
 			<value>0</value>
 		</input>
-		<input> 
+		<input>
 			<condition>
 				<not>
 					<property>/gear/gear[1]/wow</property>
@@ -653,7 +670,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.1</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<table>
 					<property>/systems/icing/severity</property>
@@ -673,7 +690,7 @@
 		<name>TAS</name>
 		<type>gain</type>
 		<gain>1.0</gain>
-		<input> 
+		<input>
 			<expression>
 				<product>
 					<property>velocities/uBody-fps</property> 
@@ -735,7 +752,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.1</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<table>
 					<property>/instrumentation/altimeter/indicated-altitude-ft</property>
@@ -785,7 +802,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.1</update-interval-secs>
-		<input> 
+		<input>
 			<difference>
 				<property>/environment/temperature-degc</property>
 				<property>/FMGC/internal/ISAtemp</property>
@@ -799,7 +816,7 @@
 		<type>gain</type>
 		<gain>1.0</gain>
 		<update-interval-secs type="double">0.05</update-interval-secs>
-		<input> 
+		<input>
 			<expression>
 				<table>
 					<property>/velocities/airspeed-kt</property>
