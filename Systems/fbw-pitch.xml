@@ -61,7 +61,7 @@
 		<input>
 			<expression>
 				<sum>
-					<property>/accelerations/pilot-g</property>
+					<property>/accelerations/pilot-gdamped</property>
 					<div>
 						<value>1</value>
 						<cos>
@@ -132,7 +132,7 @@
 			<property>/it-fbw/g-elevator</property>
 		</output>
 		<config>
-			<Kp>-2.5</Kp>
+			<Kp>-1.5</Kp>
 			<Ki>-1.5</Ki>
 			<min>
 				<condition>
