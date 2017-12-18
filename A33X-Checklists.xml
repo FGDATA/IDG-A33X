@@ -53,32 +53,32 @@
                         <and>
                             <equals>
                                 <property>controls/adirs/ir/knob</property>
-                                <value>2</value>
+                                <value>1</value>
                             </equals>
                             <equals>
                                 <property>controls/adirs/ir[1]/knob</property>
-                                <value>2</value>
+                                <value>1</value>
                             </equals>
                             <equals>
                                 <property>controls/adirs/ir[2]/knob</property>
-                                <value>2</value>
+                                <value>1</value>
                             </equals>
                         </and>
                     </condition>
                     <binding>
                         <command>property-assign</command>
                         <property>controls/adirs/ir/knob</property>
-                        <value>2</value>
+                        <value>1</value>
                     </binding>
                     <binding>
                         <command>property-assign</command>
                         <property>controls/adirs/ir[1]/knob</property>
-                        <value>2</value>
+                        <value>1</value>
                     </binding>
                     <binding>
                         <command>property-assign</command>
                         <property>controls/adirs/ir[2]/knob</property>
-                        <value>2</value>
+                        <value>1</value>
                     </binding>
                 </item>
                 <item>
@@ -310,9 +310,20 @@
                 <value>CHECKED</value>
             </item>
             <item>
-                <name>PITCH TRIM</name>  <!-- Maybe compare with FMGC THS-data -->
-                <value>_._SET</value>
-            </item>
+			<name>PITCH TRIM</name>
+			<value>____SET</value>
+			<condition>
+				<less-than>
+					<property>controls/flight/elevator-trim</property>
+					<value>-0.005</value>
+				</less-than>
+			</condition>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/flight/elevator-trim</property>
+					<value>-0.03</value> 
+			</binding>
+		</item>
             <item>
                 <name>RUDDER TRIM</name>
                 <value>ZERO</value>
@@ -400,10 +411,38 @@
                     <name>ATC</name>
                     <value>SET</value>
                 </item>
-                <item> 
-                    <name>ECAM MEMO</name>             <!-- FIX ME ONCE ECAM MEMO IMPLEMENTED -->
-                    <value>TO NO BLUE</value>
-                </item>
+                <item>
+				<name>ECAM MEMO</name>
+				<value>TO NO BLUE</value>
+				<condition>
+					<and>
+						<equals>
+							<property>controls/autobrake/mode</property>
+							<value>3</value>
+						</equals>
+						<equals>
+							<property>controls/switches/seatbelt-sign</property>
+							<value>true</value>
+						</equals>
+						<equals>
+							<property>controls/switches/no-smoking-sign</property>
+							<value>true</value>
+						</equals>
+						<equals>
+							<property>controls/flight/speedbrake-arm</property>
+							<value>1</value>
+						</equals>
+						<greater-than>
+							<property>controls/flight/flap-lever</property>
+							<value>0</value>
+						</greater-than>
+						<less-than>
+							<property>controls/flight/flap-lever</property>
+							<value>3</value>
+						</less-than>
+					</and>
+				</condition>
+			</item>
                 <item>
                     <name>SIGNS ON</name>
                     <value>GREEN</value>
@@ -756,9 +795,41 @@
                 </binding>
             </item>
             <item>
-                <name>ECAM MEMO</name>
-                <value>LDG NO BLUE</value>
-            </item>
+			<name>ECAM MEMO</name>
+			<value>LDG NO BLUE</value>
+			<condition>
+				<and>
+					<equals>
+						<property>gear/gear/position-norm</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>gear/gear[1]/position-norm</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>gear/gear[2]/position-norm</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/switches/seatbelt-sign</property>
+						<value>true</value>
+					</equals>
+					<equals>
+						<property>controls/switches/no-smoking-sign</property>
+						<value>true</value>
+					</equals>
+					<equals>
+						<property>controls/flight/speedbrake-arm</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/flight/flap-lever</property>
+						<value>4</value>
+					</equals>
+				</and>
+			</condition>
+                </item>
             <item>
                 <name>SIGNS ON</name>
                 <value>GREEN</value>
@@ -1142,15 +1213,15 @@
                     <and>
                         <equals>
                             <property>controls/adirs/ir/knob</property>
-                            <value>1</value>
+                            <value>0</value>
                         </equals>
                         <equals>
                             <property>controls/adirs/ir[1]/knob</property>
-                            <value>1</value>
+                            <value>0</value>
                         </equals>
                         <equals>
                             <property>controls/adirs/ir[2]/knob</property>
-                            <value>1</value>
+                            <value>0</value>
                         </equals>
                         <equals>
                             <property>controls/adirs/adr/off</property>
@@ -1169,17 +1240,17 @@
 		<binding>
 		  <command>property-assign</command>
 		  <property>controls/adirs/ir/knob</property>
-		  <value>1</value>
+		  <value>0</value>
 		</binding>
                 <binding>
 		  <command>property-assign</command>
 		  <property>controls/adirs/ir[1]/knob</property>
-		  <value>1</value>
+		  <value>0</value>
 		</binding>
                 <binding>
 		  <command>property-assign</command>
 		  <property>controls/adirs/ir[2]/knob</property>
-		  <value>1</value>
+		  <value>0</value>
 		</binding>
                 <binding>
 		  <command>property-assign</command>
