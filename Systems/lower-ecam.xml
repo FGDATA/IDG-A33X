@@ -11,7 +11,7 @@
 	<filter>
 		<name>APU N Output</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
@@ -28,7 +28,7 @@
 	<filter>
 		<name>APU EGT Output</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
@@ -48,7 +48,7 @@
 	<filter>
 		<name>Oil QT Output 1</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
@@ -64,7 +64,7 @@
 	<filter>
 		<name>Oil QT Output 2</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
@@ -80,7 +80,7 @@
 	<filter>
 		<name>Oil PSI Output 1</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
@@ -97,7 +97,7 @@
 	<filter>
 		<name>Oil PSIOutput 2</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
@@ -114,7 +114,7 @@
 	<filter>
 		<name>Aileron L In Indication</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
@@ -131,7 +131,7 @@
 	<filter>
 		<name>Aileron R In Indication</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
@@ -148,7 +148,7 @@
 	<filter>
 		<name>Aileron L Out Indication</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
@@ -165,7 +165,7 @@
 	<filter>
 		<name>Aileron R Out Indication</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
@@ -182,7 +182,7 @@
 	<filter>
 		<name>Elevator L Indication</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
@@ -199,7 +199,7 @@
 	<filter>
 		<name>Elevator R Indication</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
@@ -216,7 +216,7 @@
 	<filter>
 		<name>Elevator Trim Deg</name>
 		<type>gain</type>
-		<gain>1</gain>
+		<gain>1.0</gain>
 		<input>
 			<expression>
 				<table>
