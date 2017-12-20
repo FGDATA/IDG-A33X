@@ -151,6 +151,9 @@
 			<autopilot n="13">
 				<path>Aircraft/IDG-A33X/Systems/pfd.xml</path>
 			</autopilot>
+			<autopilot n="14">
+				<path>Aircraft/IDG-A33X/Systems/zoom-views.xml</path>
+			</autopilot>
 		</systems>
 
 		<sounde>
@@ -329,6 +332,15 @@
 		<flight-recorder include="Systems/flight-recorder.xml"/>
 		
 		<gui n="0" include="Systems/it-gui.xml"/>
+
+        <current-view>
+            <z-offset-dec-step type="double">0.0</z-offset-dec-step>
+            <z-offset-inc-step type="double">0.0</z-offset-inc-step>
+            <can-change-z-offset type="bool">false</can-change-z-offset>
+
+            <z-offset-min-m type="float">30.0</z-offset-min-m>
+            <z-offset-max-m type="float">300.0</z-offset-max-m>
+        </current-view>
 	</sim>
 
 	<consumables>
@@ -928,6 +940,7 @@
 	</modes>
 
 	<input>
+        <mice include="Systems/zoom-mice.xml"/>
 		<keyboard>
 			<key n="33">
 				<name>PAGE UP</name>
