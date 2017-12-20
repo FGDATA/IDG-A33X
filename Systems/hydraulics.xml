@@ -2325,8 +2325,10 @@
 					<property>/controls/engines/engine[1]/throttle</property>
 					<value>0.15</value>
 				</less-than>
-				<property>/gear/gear[1]/wow</property>
-				<property>/gear/gear[2]/wow</property>
+				<or>
+					<property>/gear/gear[1]/wow</property>
+					<property>/gear/gear[2]/wow</property>
+				</or>
 				<greater-than>
 					<property>/velocities/groundspeed-kt</property>
 					<value>72</value>
