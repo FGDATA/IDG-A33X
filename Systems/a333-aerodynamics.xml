@@ -218,8 +218,18 @@
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<abs><property>fcs/pitch-pos-norm</property></abs>
-				<value>0.038</value>
+				<abs><property>fcs/pitch-pos-rad</property></abs>
+				<value>0.074</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_pitch_trim_control">
+			<description>Drag due to pitch trim control deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<abs><property>fcs/pitch-trim-pos-rad</property></abs>
+				<value>0.074</value>
 			</product>
 		</function>
 
@@ -283,7 +293,7 @@
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/bw-ft</property>
 				<property>fcs/roll-pos-rad</property>
-				<value>0.12</value>
+				<value>0.19</value>
 			</product>
 		</function>
 
@@ -320,7 +330,18 @@
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/cbarw-ft</property>
 				<property>fcs/pitch-pos-geared</property>
-				<value>-1.261</value>
+				<value>-1.314</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Pitch_trim_control">
+			<description>Pitch moment due to pitch trim control</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/cbarw-ft</property>
+				<property>fcs/pitch-trim-pos-geared</property>
+				<value>-2.361</value>
 			</product>
 		</function>
 

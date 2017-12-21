@@ -143,7 +143,7 @@
 					</equals>
 					<less-than-equals>
 						<property>/position/gear-agl-ft</property>
-						<value>30</value>
+						<value>50</value>
 					</less-than-equals>
 					<greater-than-equals>
 						<property>/controls/flight/flap-pos</property>
@@ -210,7 +210,7 @@
 					</equals>
 					<less-than-equals>
 						<property>/position/gear-agl-ft</property>
-						<value>30</value>
+						<value>50</value>
 					</less-than-equals>
 					<greater-than-equals>
 						<property>/controls/flight/flap-pos</property>

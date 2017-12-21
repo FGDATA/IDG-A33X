@@ -133,21 +133,21 @@
 			<autopilot n="7">
 				<path>Aircraft/IDG-A33X/Systems/fmgc-pitch.xml</path>
 			</autopilot>
-            <autopilot n="8">
-                <path>Aircraft/IDG-A33X/Systems/fmgc-thrust.xml</path>
-            </autopilot>
-            <autopilot n="9">
-                <path>Aircraft/IDG-A33X/Systems/libraries.xml</path>
-            </autopilot>
+			<autopilot n="8">
+				<path>Aircraft/IDG-A33X/Systems/fmgc-thrust.xml</path>
+			</autopilot>
+			<autopilot n="9">
+				<path>Aircraft/IDG-A33X/Systems/libraries.xml</path>
+			</autopilot>
 			<autopilot n="10">
 				<path>Aircraft/IDG-A33X/Systems/fl2070_sound.xml</path>
 			</autopilot>
-            <autopilot n="11">
+			<autopilot n="11">
 				<path>Aircraft/IDG-A33X/Systems/upper-ecam.xml</path>
-            </autopilot>
-            <autopilot n="12">
+			</autopilot>
+			<autopilot n="12">
 				<path>Aircraft/IDG-A33X/Systems/lower-ecam.xml</path>
-            </autopilot>
+			</autopilot>
 			<autopilot n="13">
 				<path>Aircraft/IDG-A33X/Systems/pfd.xml</path>
 			</autopilot>
@@ -310,6 +310,7 @@
 				<float n="14" alias="/controls/flight/aileron-out-right" />
 				<float n="15" alias="/aircraft/wingflex" />
 				<float n="16" alias="/options/boom-pos-norm" />
+				<float n="17" alias="/fdm/jsbsim/fcs/pitch-trim-pos-deg" />
 				<int n="2" alias="/controls/lighting/landing-lights[0]" />
 				<int n="3" alias="/controls/lighting/landing-lights[1]" />
 				<int n="4" alias="/controls/lighting/landing-lights[2]" />
@@ -512,10 +513,12 @@
 			<elevator-fbw>0</elevator-fbw>
 			<elevator-left>0.1</elevator-left>
 			<elevator-right>0.1</elevator-right>
-			<elevator-sum>0.2</elevator-sum>
+			<elevator-trim-fdm>0.0</elevator-trim-fdm>
 			<flap-pos type="int">0</flap-pos>
 			<ground-spoilers-armed type="bool">0</ground-spoilers-armed>
 			<roll-fbw>0</roll-fbw>
+			<roll-fbw-inner>0</roll-fbw-inner>
+			<rudder-trim-fdm>0.0</rudder-trim-fdm>
 			<spoiler-l1>0.0</spoiler-l1>
 			<spoiler-l2>0.0</spoiler-l2>
 			<spoiler-l3>0.0</spoiler-l3>
@@ -533,11 +536,12 @@
 			<speedbrake-output>0.0</speedbrake-output>
 			<speedbrake-arm>0</speedbrake-arm>
 			<speedbrake-lever type="double">0</speedbrake-lever>
+			<speedbrake-norm>0</speedbrake-norm>
 			<slats>0</slats>
 		</flight>
 		<gear>
 			<brake-parking type="bool">0</brake-parking>
-            <tiller-cmd-norm type="double">0</tiller-cmd-norm>
+			<tiller-cmd-norm type="double">0</tiller-cmd-norm>
 			<tiller-enabled type="bool">0</tiller-enabled>
 		</gear>
 		<lighting>
@@ -677,6 +681,29 @@
 	</gear>
 	
 	<systems>
+		<failures n="0">
+			<aileron-left type="bool">0</aileron-left>
+			<aileron-right type="bool">0</aileron-right>
+			<elevator-left type="bool">0</elevator-left>
+			<elevator-right type="bool">0</elevator-right>
+			<rudder type="bool">0</rudder>
+			<spoiler-l1 type="bool">0</spoiler-l1>
+			<spoiler-l2 type="bool">0</spoiler-l2>
+			<spoiler-l3 type="bool">0</spoiler-l3>
+			<spoiler-l4 type="bool">0</spoiler-l4>
+			<spoiler-l5 type="bool">0</spoiler-l5>
+			<spoiler-l6 type="bool">0</spoiler-l6>
+			<spoiler-r1 type="bool">0</spoiler-r1>
+			<spoiler-r2 type="bool">0</spoiler-r2>
+			<spoiler-r3 type="bool">0</spoiler-r3>
+			<spoiler-r4 type="bool">0</spoiler-r4>
+			<spoiler-r5 type="bool">0</spoiler-r5>
+			<spoiler-r6 type="bool">0</spoiler-r6>
+		</failures>
+		<fctl n="0">
+			<sec1 type="bool">0</sec1>
+			<sec2 type="bool">0</sec2>
+		</fctl>
 		<fuel n="0">
 			<only-use-ctr-tank type="bool">0</only-use-ctr-tank>
 			<tank n="0">

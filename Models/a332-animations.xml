@@ -17,11 +17,9 @@
 		<object-name>aileron.outer0</object-name>
 		<property>sim/multiplay/generic/float[13]</property>
 		<interpolation>
-			<entry><ind>-1</ind><dep>-23</dep></entry>
-			<entry><ind>-0.4</ind><dep>-18</dep></entry>
+			<entry><ind>-0.5</ind><dep>-25</dep></entry>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.4</ind><dep>15</dep></entry>
-			<entry><ind>1</ind><dep>22</dep></entry>
+			<entry><ind>0.5</ind><dep>25</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>14.1389</x1-m>
@@ -38,11 +36,9 @@
 		<object-name>aileron.inner0</object-name>
 		<property>sim/multiplay/generic/float[6]</property>
 		<interpolation>
-			<entry><ind>-1</ind><dep>-25</dep></entry>
-			<entry><ind>-0.4</ind><dep>-22</dep></entry>
+			<entry><ind>-0.5</ind><dep>-25</dep></entry>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.4</ind><dep>18</dep></entry>
-			<entry><ind>1</ind><dep>24</dep></entry>
+			<entry><ind>0.5</ind><dep>25</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>12.4497</x1-m>
@@ -59,11 +55,9 @@
 		<object-name>aileron.inner1</object-name>
 		<property>sim/multiplay/generic/float[7]</property>
 		<interpolation>
-			<entry><ind>-1</ind><dep>-25</dep></entry>
-			<entry><ind>-0.4</ind><dep>-22</dep></entry>
+			<entry><ind>-0.5</ind><dep>-25</dep></entry>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.4</ind><dep>18</dep></entry>
-			<entry><ind>1</ind><dep>24</dep></entry>
+			<entry><ind>0.5</ind><dep>25</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>12.4497</x1-m>
@@ -80,11 +74,9 @@
 		<object-name>aileron.outer1</object-name>
 		<property>sim/multiplay/generic/float[14]</property>
 		<interpolation>
-			<entry><ind>-1</ind><dep>-23</dep></entry>
-			<entry><ind>-0.4</ind><dep>-18</dep></entry>
+			<entry><ind>-0.5</ind><dep>-25</dep></entry>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.4</ind><dep>15</dep></entry>
-			<entry><ind>1</ind><dep>22</dep></entry>
+			<entry><ind>0.5</ind><dep>25</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>14.1389</x1-m>
@@ -104,8 +96,7 @@
 		<property>controls/flight/spoiler-l6</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>-15</dep></entry>
-			<entry><ind>1</ind><dep>-30</dep></entry>
+			<entry><ind>1</ind><dep>-35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>10.0655</x1-m>
@@ -123,8 +114,7 @@
 		<property>controls/flight/spoiler-l5</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>-15</dep></entry>
-			<entry><ind>1</ind><dep>-30</dep></entry>
+			<entry><ind>1</ind><dep>-35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>10.0655</x1-m>
@@ -142,8 +132,7 @@
 		<property>controls/flight/spoiler-l4</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>-15</dep></entry>
-			<entry><ind>1</ind><dep>-30</dep></entry>
+			<entry><ind>1</ind><dep>-35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>10.0655</x1-m>
@@ -161,8 +150,7 @@
 		<property>controls/flight/spoiler-l3</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>-15</dep></entry>
-			<entry><ind>1</ind><dep>-30</dep></entry>
+			<entry><ind>1</ind><dep>-35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>10.0655</x1-m>
@@ -180,8 +168,7 @@
 		<property>controls/flight/spoiler-l2</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>-15</dep></entry>
-			<entry><ind>1</ind><dep>-30</dep></entry>
+			<entry><ind>1</ind><dep>-35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>10.0655</x1-m>
@@ -199,8 +186,7 @@
 		<property>controls/flight/spoiler-l1</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>-15</dep></entry>
-			<entry><ind>1</ind><dep>-30</dep></entry>
+			<entry><ind>1</ind><dep>-35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>6.3220</x1-m>
@@ -218,8 +204,7 @@
 		<property>controls/flight/spoiler-r6</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>15</dep></entry>
-			<entry><ind>1</ind><dep>30</dep></entry>
+			<entry><ind>1</ind><dep>35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>10.0655</x1-m>
@@ -237,8 +222,7 @@
 		<property>controls/flight/spoiler-r5</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>15</dep></entry>
-			<entry><ind>1</ind><dep>30</dep></entry>
+			<entry><ind>1</ind><dep>35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>10.0655</x1-m>
@@ -256,8 +240,7 @@
 		<property>controls/flight/spoiler-r4</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>15</dep></entry>
-			<entry><ind>1</ind><dep>30</dep></entry>
+			<entry><ind>1</ind><dep>35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>10.0655</x1-m>
@@ -275,8 +258,7 @@
 		<property>controls/flight/spoiler-r3</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>15</dep></entry>
-			<entry><ind>1</ind><dep>30</dep></entry>
+			<entry><ind>1</ind><dep>35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>10.0655</x1-m>
@@ -294,8 +276,7 @@
 		<property>controls/flight/spoiler-r2</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>15</dep></entry>
-			<entry><ind>1</ind><dep>30</dep></entry>
+			<entry><ind>1</ind><dep>35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>10.0655</x1-m>
@@ -313,8 +294,7 @@
 		<property>controls/flight/spoiler-r1</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.5</ind><dep>15</dep></entry>
-			<entry><ind>1</ind><dep>30</dep></entry>
+			<entry><ind>1</ind><dep>35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>6.3220</x1-m>
@@ -333,9 +313,9 @@
 		<object-name>elevator0</object-name>
 		<property>sim/multiplay/generic/float[4]</property>
 		<interpolation>
-			<entry><ind>-1</ind><dep>-40</dep></entry>
+			<entry><ind>-1</ind><dep>-30</dep></entry>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>1</ind><dep>30</dep></entry>
+			<entry><ind>1</ind><dep>15</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>33.9466</x1-m>
@@ -352,9 +332,9 @@
 		<object-name>elevator1</object-name>
 		<property>sim/multiplay/generic/float[5]</property>
 		<interpolation>
-			<entry><ind>-1</ind><dep>40</dep></entry>
+			<entry><ind>-1</ind><dep>30</dep></entry>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>1</ind><dep>-30</dep></entry>
+			<entry><ind>1</ind><dep>-15</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>33.9466</x1-m>
@@ -373,8 +353,8 @@
 		<object-name>elevator0</object-name>
 		<object-name>elevator1</object-name>
 		<object-name>hstab</object-name>
-		<property>controls/flight/elevator-trim</property>
-		<factor>6</factor>
+		<property>sim/multiplay/generic/float[17]</property>
+		<factor>1.0</factor>
 		<center>
 			<x-m>31.3447</x-m>
 			<y-m>0</y-m>
@@ -392,9 +372,9 @@
 		<object-name>rudder</object-name>
 		<property>sim/multiplay/generic/float[8]</property>
 		<interpolation>
-			<entry><ind>-0.8</ind><dep>-20</dep></entry>
+			<entry><ind>-1.0</ind><dep>-35</dep></entry>
 			<entry><ind>0</ind><dep>0</dep></entry>
-			<entry><ind>0.8</ind><dep>20</dep></entry>
+			<entry><ind>1.0</ind><dep>35</dep></entry>
 		</interpolation>
 		<axis>
 			<x1-m>29.8261</x1-m>
