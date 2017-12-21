@@ -423,6 +423,7 @@
 						<entry><ind>0.0</ind><dep>   0</dep></entry>
 						<entry><ind>1.0</ind><dep>-0.4</dep></entry>
 					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
 				</sum>
 			</expression>
 		</input>
@@ -461,6 +462,7 @@
 						<entry><ind>0.0</ind><dep>   0</dep></entry>
 						<entry><ind>1.0</ind><dep>-0.5</dep></entry>
 					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
 				</sum>
 			</expression>
 		</input>
@@ -493,11 +495,14 @@
 				</and>
 			</condition>
 			<expression>
-				<table>
-					<property>/controls/flight/spoiler-left-fbw-cmd</property> 
-					<entry><ind>-0.0</ind><dep>  0</dep></entry>
-					<entry><ind>-1.0</ind><dep>0.5</dep></entry>
-				</table>
+				<sum>
+					<table>
+						<property>/controls/flight/spoiler-left-fbw-cmd</property> 
+						<entry><ind>-0.0</ind><dep>  0</dep></entry>
+						<entry><ind>-1.0</ind><dep>0.5</dep></entry>
+					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
+				</sum>
 			</expression>
 		</input>
 		<output>/controls/flight/spoiler-l4-cmd</output>
@@ -557,6 +562,7 @@
 						<entry><ind>0.0</ind><dep>   0</dep></entry>
 						<entry><ind>1.0</ind><dep>-0.4</dep></entry>
 					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
 				</sum>
 			</expression>
 		</input>
@@ -595,6 +601,7 @@
 						<entry><ind>0.0</ind><dep>   0</dep></entry>
 						<entry><ind>1.0</ind><dep>-0.5</dep></entry>
 					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
 				</sum>
 			</expression>
 		</input>
@@ -627,11 +634,14 @@
 				</and>
 			</condition>
 			<expression>
-				<table>
-					<property>/controls/flight/spoiler-left-fbw-cmd</property> 
-					<entry><ind>-0.0</ind><dep>  0</dep></entry>
-					<entry><ind>-1.0</ind><dep>0.5</dep></entry>
-				</table>
+				<sum>
+					<table>
+						<property>/controls/flight/spoiler-left-fbw-cmd</property> 
+						<entry><ind>-0.0</ind><dep>  0</dep></entry>
+						<entry><ind>-1.0</ind><dep>0.5</dep></entry>
+					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
+				</sum>
 			</expression>
 		</input>
 		<output>/controls/flight/spoiler-l5-cmd</output>
@@ -691,6 +701,7 @@
 						<entry><ind>0.0</ind><dep>   0</dep></entry>
 						<entry><ind>1.0</ind><dep>-0.4</dep></entry>
 					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
 				</sum>
 			</expression>
 		</input>
@@ -729,6 +740,7 @@
 						<entry><ind>0.0</ind><dep>   0</dep></entry>
 						<entry><ind>1.0</ind><dep>-0.5</dep></entry>
 					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
 				</sum>
 			</expression>
 		</input>
@@ -761,11 +773,14 @@
 				</and>
 			</condition>
 			<expression>
-				<table>
-					<property>/controls/flight/spoiler-left-fbw-cmd</property> 
-					<entry><ind>-0.0</ind><dep>  0</dep></entry>
-					<entry><ind>-1.0</ind><dep>0.5</dep></entry>
-				</table>
+				<sum>
+					<table>
+						<property>/controls/flight/spoiler-left-fbw-cmd</property> 
+						<entry><ind>-0.0</ind><dep>  0</dep></entry>
+						<entry><ind>-1.0</ind><dep>0.5</dep></entry>
+					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
+				</sum>
 			</expression>
 		</input>
 		<output>/controls/flight/spoiler-l6-cmd</output>
@@ -1211,6 +1226,7 @@
 						<entry><ind>-0.1</ind><dep>   0</dep></entry>
 						<entry><ind>-1.0</ind><dep>-0.4</dep></entry>
 					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
 				</sum>
 			</expression>
 		</input>
@@ -1249,6 +1265,7 @@
 						<entry><ind> 0.0</ind><dep>   0</dep></entry>
 						<entry><ind>-1.0</ind><dep>-0.5</dep></entry>
 					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
 				</sum>
 			</expression>
 		</input>
@@ -1281,11 +1298,14 @@
 				</and>
 			</condition>
 			<expression>
-				<table>
-					<property>/controls/flight/spoiler-right-fbw-cmd</property> 
-					<entry><ind>0.1</ind><dep>  0</dep></entry>
-					<entry><ind>1.0</ind><dep>0.5</dep></entry>
-				</table>
+				<sum>
+					<table>
+						<property>/controls/flight/spoiler-right-fbw-cmd</property> 
+						<entry><ind>0.1</ind><dep>  0</dep></entry>
+						<entry><ind>1.0</ind><dep>0.5</dep></entry>
+					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
+				</sum>
 			</expression>
 		</input>
 		<output>/controls/flight/spoiler-r4-cmd</output>
@@ -1345,6 +1365,7 @@
 						<entry><ind>-0.1</ind><dep>   0</dep></entry>
 						<entry><ind>-1.0</ind><dep>-0.4</dep></entry>
 					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
 				</sum>
 			</expression>
 		</input>
@@ -1383,6 +1404,7 @@
 						<entry><ind> 0.0</ind><dep>   0</dep></entry>
 						<entry><ind>-1.0</ind><dep>-0.5</dep></entry>
 					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
 				</sum>
 			</expression>
 		</input>
@@ -1415,11 +1437,14 @@
 				</and>
 			</condition>
 			<expression>
-				<table>
-					<property>/controls/flight/spoiler-right-fbw-cmd</property> 
-					<entry><ind>0.0</ind><dep>  0</dep></entry>
-					<entry><ind>1.0</ind><dep>0.5</dep></entry>
-				</table>
+				<sum>
+					<table>
+						<property>/controls/flight/spoiler-right-fbw-cmd</property> 
+						<entry><ind>0.0</ind><dep>  0</dep></entry>
+						<entry><ind>1.0</ind><dep>0.5</dep></entry>
+					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
+				</sum>
 			</expression>
 		</input>
 		<output>/controls/flight/spoiler-r5-cmd</output>
@@ -1479,6 +1504,7 @@
 						<entry><ind>-0.1</ind><dep>   0</dep></entry>
 						<entry><ind>-1.0</ind><dep>-0.4</dep></entry>
 					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
 				</sum>
 			</expression>
 		</input>
@@ -1517,6 +1543,7 @@
 						<entry><ind> 0.0</ind><dep>   0</dep></entry>
 						<entry><ind>-1.0</ind><dep>-0.5</dep></entry>
 					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
 				</sum>
 			</expression>
 		</input>
@@ -1549,11 +1576,14 @@
 				</and>
 			</condition>
 			<expression>
-				<table>
-					<property>/controls/flight/spoiler-right-fbw-cmd</property> 
-					<entry><ind>0.0</ind><dep>  0</dep></entry>
-					<entry><ind>1.0</ind><dep>0.5</dep></entry>
-				</table>
+				<sum>
+					<table>
+						<property>/controls/flight/spoiler-right-fbw-cmd</property> 
+						<entry><ind>0.0</ind><dep>  0</dep></entry>
+						<entry><ind>1.0</ind><dep>0.5</dep></entry>
+					</table>
+					<property>/fdm/jsbsim/fcs/mla/switch-speedbrake</property>
+				</sum>
 			</expression>
 		</input>
 		<output>/controls/flight/spoiler-r6-cmd</output>
