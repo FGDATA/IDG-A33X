@@ -332,7 +332,7 @@
 		<flight-recorder include="Systems/flight-recorder.xml"/>
 		
 		<gui n="0" include="Systems/it-gui.xml"/>
-
+		
 		<current-view>
 			<z-offset-dec-step type="double">0.0</z-offset-dec-step>
 			<z-offset-inc-step type="double">0.0</z-offset-inc-step>
