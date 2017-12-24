@@ -525,6 +525,7 @@
 			</engine>
 		</engines>
 		<flight>
+			<aileron-drives-tiller type="bool">0</aileron-drives-tiller>
 			<aileron-input>0</aileron-input>
 			<aileron-in-left>0.5</aileron-in-left>
 			<aileron-in-right>-0.5</aileron-in-right>
