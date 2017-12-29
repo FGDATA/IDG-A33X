@@ -211,6 +211,12 @@ var systemsLoop = maketimer(0.1, func {
 		setprop("/it-autoflight/input/hdg", math.round(getprop("/orientation/heading-magnetic-deg")));
 	}
 	
+	if (getprop("/instrumentation/mk-viii/inputs/discretes/momentary-flap-all-override") == 1 or (getprop("/instrumentation/mk-viii/inputs/discretes/momentary-flap-3-override") == 1 and getprop("/controls/flight/flap-pos") >= 4)) {
+		setprop("/instrumentation/mk-viii/inputs/discretes/momentary-flap-override", 1);
+	} else {
+		setprop("/instrumentation/mk-viii/inputs/discretes/momentary-flap-override", 0);
+	}
+	
 	if (getprop("/gear/gear[1]/gear-tilt-deg") < 40) {
 		setprop("/gear/gear[3]/wowa", 1);
 	} else {
@@ -230,23 +236,23 @@ var systemsLoop = maketimer(0.1, func {
 });
 
 canvas.Text._lastText = canvas.Text["_lastText"];
-canvas.Text.setText = func (text) {
+canvas.Text.setText = func(text) {
 	if (text == me._lastText) {return me;}
 	me._lastText = text;
 	me.set("text", typeof(text) == 'scalar' ? text : "");
 };
 canvas.Element._lastVisible = nil;
-canvas.Element.show = func () {
+canvas.Element.show = func {
 	if (1 == me._lastVisible) {return me;}
 	me._lastVisible = 1;
 	me.setBool("visible", 1);
 };
-canvas.Element.hide = func () {
+canvas.Element.hide = func {
 	if (0 == me._lastVisible) {return me;}
 	me._lastVisible = 0;
 	me.setBool("visible", 0);
 };
-canvas.Element.setVisible = func (vis) {
+canvas.Element.setVisible = func(vis) {
 	if (vis == me._lastVisible) {return me;}
 	me._lastVisible = vis;
 	me.setBool("visible", vis);

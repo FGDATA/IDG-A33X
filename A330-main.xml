@@ -1401,7 +1401,6 @@
 		<libraries>
 			<file>Aircraft/IDG-A33X/Nasal/libraries.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/buttons.nas</file>
-			<file>Aircraft/IDG-A33X/Nasal/gpws.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/efis.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/ECAM.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/shake.nas</file>
