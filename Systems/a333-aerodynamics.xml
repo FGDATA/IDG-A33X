@@ -194,11 +194,11 @@
 				<table>
 					<independentVar lookup="row">aero/alpha-rad</independentVar>
 					<tableData>
-						-1.57  1.2080
-						-0.38  0.0550
+						-1.57  1.3083
+						-0.20  0.0331
 						 0.00  0.0000
-						 0.38  0.0550
-						 1.57  1.2080
+						 0.20  0.0331
+						 1.57  1.3083
 					</tableData>
 				</table>
 			</product>
@@ -223,7 +223,8 @@
 					<independentVar lookup="row">velocities/mach</independentVar>
 					<tableData>
 						0.00  0.000
-						0.79  0.000
+						0.20  0.000
+						0.79  0.002
 						1.10  0.023
 						1.80  0.015
 					</tableData>
@@ -305,7 +306,7 @@
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>fcs/speedbrake-pos-norm</property>
-				<value>0.0285</value>
+				<value>0.0225</value>
 			</product>
 		</function>
 	

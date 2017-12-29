@@ -3772,7 +3772,7 @@
 				<property>it-autoflight/input/spd-kts</property>
 				<step>1</step>
 				<min>100</min>
-				<max>350</max>
+				<max>330</max>
 			</binding>
 			<binding>
 				<condition>
@@ -3791,7 +3791,7 @@
 				<property>it-autoflight/input/spd-mach</property>
 				<step>0.001</step>
 				<min>0.50</min>
-				<max>0.82</max>
+				<max>0.86</max>
 			</binding>
 			<binding>
 				<command>property-adjust</command>
@@ -3822,7 +3822,7 @@
 				<property>it-autoflight/input/spd-kts</property>
 				<step>-1</step>
 				<min>100</min>
-				<max>350</max>
+				<max>330</max>
 			</binding>
 			<binding>
 				<condition>
@@ -3841,7 +3841,7 @@
 				<property>it-autoflight/input/spd-mach</property>
 				<step>-0.001</step>
 				<min>0.50</min>
-				<max>0.82</max>
+				<max>0.86</max>
 			</binding>
 			<binding>
 				<command>property-adjust</command>
@@ -5155,7 +5155,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>SpdBrk</object-name>
-		<property>controls/flight/speedbrake</property>
+		<property>controls/flight/speedbrake-lever</property>
 		<factor>0.052</factor>
 		<axis>
 			<x>1</x>
