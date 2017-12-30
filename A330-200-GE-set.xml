@@ -180,9 +180,6 @@
 		<specific>
 			<file>Aircraft/IDG-A33X/Nasal/a332livery-ge.nas</file>
 		</specific>
-		<fadec>
-			<file>Aircraft/IDG-A33X/Nasal/fadec-ge.nas</file>
-		</fadec>
 	</nasal>
 
 </PropertyList>

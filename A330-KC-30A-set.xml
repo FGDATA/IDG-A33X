@@ -208,9 +208,6 @@
 		<specific>
 			<file>Aircraft/IDG-A33X/Nasal/a332livery-kcge.nas</file>
 		</specific>
-		<fadec>
-			<file>Aircraft/IDG-A33X/Nasal/fadec-ge.nas</file>
-		</fadec>
 		<damage>
 			<file>Aircraft/IDG-A33X/Nasal/damage.nas</file>
 		</damage>

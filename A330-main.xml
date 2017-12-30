@@ -1418,9 +1418,9 @@
 			<file>Aircraft/IDG-A33X/Nasal/fire.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/brakes.nas</file>
 		</systems>
-		<thrust>
+		<fadec>
 			<file>Aircraft/IDG-A33X/Nasal/fadec-common.nas</file>
-		</thrust>
+		</fadec>
 		<fbw>
 			<file>Aircraft/IDG-A33X/Nasal/it-fbw.nas</file>
 		</fbw>
