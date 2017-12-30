@@ -236,8 +236,8 @@
 					<table>
 						<property>/fdm/jsbsim/aero/alpha-deg-norm</property>
 						<entry><ind>  0.0</ind><dep> 0.00</dep></entry>
-						<entry><ind>  2.0</ind><dep> 0.00</dep></entry>
-						<entry><ind> 17.0</ind><dep> 0.06</dep></entry>
+						<entry><ind>  7.5</ind><dep> 0.01</dep></entry>
+						<entry><ind> 17.0</ind><dep> 0.03</dep></entry>
 					</table>
 				</difference>
 			</expression>
@@ -1341,8 +1341,8 @@
             <expression>
                 <table>
                     <property>/engines/engine[0]/n1-actual</property> 
-                    <entry><ind> 22.7</ind><dep>434</dep></entry>
-                    <entry><ind>110.0</ind><dep>620</dep></entry>
+					<entry><ind> 22.7</ind><dep>384</dep></entry>
+					<entry><ind>110.0</ind><dep>820</dep></entry>
                 </table>
             </expression>
         </input>
@@ -1371,8 +1371,8 @@
             <expression>
                 <table>
                     <property>/engines/engine[1]/n1-actual</property> 
-                    <entry><ind> 22.7</ind><dep>434</dep></entry>
-                    <entry><ind>110.0</ind><dep>620</dep></entry>
+					<entry><ind> 22.7</ind><dep>384</dep></entry>
+					<entry><ind>110.0</ind><dep>820</dep></entry>
                 </table>
             </expression>
         </input>
