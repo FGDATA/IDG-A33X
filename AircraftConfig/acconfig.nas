@@ -152,26 +152,6 @@ var saveSettings = func {
 
 saveSettings();
 
-var systemsReset = func {
-	fbw.fctlInit();
-	systems.ELEC.init();
-	systems.PNEU.init();
-	systems.HYD.init();
-	systems.FUEL.init();
-	systems.ADIRS.init();
-	systems.eng_init();
-	systems.autobrake_init();
-	fmgc.FMGCinit();
-	mcdu1.MCDU_reset();
-	mcdu2.MCDU_reset();
-	icing.icingInit();
-	fmgc.APinit();
-	setprop("/it-autoflight/input/fd1", 1);
-	setprop("/it-autoflight/input/fd2", 1);
-	libraries.ECAMinit();
-	libraries.variousReset();
-}
-
 ################
 # Panel States #
 ################
@@ -196,7 +176,7 @@ var colddark = func {
 	setprop("/controls/flight/speedbrake-arm", 0);
 	setprop("/controls/gear/gear-down", 1);
 	setprop("/controls/flight/elevator-trim", 0);
-	systemsReset();
+	libraries.systemsInit();
 	failReset();
 	if (getprop("/engines/engine[1]/n2-actual") < 2) {
 		colddark_b();
@@ -244,7 +224,7 @@ var beforestart = func {
 	setprop("/controls/flight/speedbrake-arm", 0);
 	setprop("/controls/gear/gear-down", 1);
 	setprop("/controls/flight/elevator-trim", 0);
-	systemsReset();
+	libraries.systemsInit();
 	failReset();
 	setprop("/controls/APU/master", 0);
 	setprop("/controls/APU/start", 0);
@@ -321,7 +301,7 @@ var taxi = func {
 	setprop("/controls/flight/speedbrake-arm", 0);
 	setprop("/controls/gear/gear-down", 1);
 	setprop("/controls/flight/elevator-trim", 0);
-	systemsReset();
+	libraries.systemsInit();
 	failReset();
 	setprop("/controls/APU/master", 0);
 	setprop("/controls/APU/start", 0);

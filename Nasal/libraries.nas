@@ -164,7 +164,7 @@ var triggerDoor = func(door, doorName, doorDesc) {
 # Various Other Stuff #
 #######################
  
-setlistener("/sim/signals/fdm-initialized", func {
+var systemsInit = func {
 	fbw.fctlInit();
 	systems.ELEC.init();
 	systems.PNEU.init();
@@ -185,8 +185,12 @@ setlistener("/sim/signals/fdm-initialized", func {
 	var autopilot = gui.Dialog.new("sim/gui/dialogs/autopilot/dialog", "Aircraft/IDG-A33X/Systems/autopilot-dlg.xml");
 	setprop("/it-autoflight/input/fd1", 1);
 	setprop("/it-autoflight/input/fd2", 1);
-	libraries.ECAMinit();
+	libraries.ECAM.init();
 	libraries.variousReset();
+}
+
+setlistener("/sim/signals/fdm-initialized", func {
+	systemsInit();
 });
 
 var systemsLoop = maketimer(0.1, func {
@@ -195,6 +199,7 @@ var systemsLoop = maketimer(0.1, func {
 	systems.HYD.loop();
 	systems.FUEL.loop();
 	systems.ADIRS.loop();
+	libraries.ECAM.loop();
 
 	if ((getprop("/controls/pneumatic/switches/groundair") or getprop("/controls/switches/cart")) and ((getprop("/velocities/groundspeed-kt") > 2) or getprop("/controls/gear/brake-parking") == 0)) {
 		setprop("/controls/switches/cart", 0);
