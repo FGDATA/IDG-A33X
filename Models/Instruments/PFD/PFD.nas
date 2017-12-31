@@ -59,8 +59,10 @@ setprop("/instrumentation/pfd/track-hdg-diff", 0);
 setprop("/instrumentation/pfd/speed-lookahead", 0);
 setprop("/instrumentation/du/du1-test", 0);
 setprop("/instrumentation/du/du1-test-time", 0);
+setprop("/instrumentation/du/du1-test-amount", 0);
 setprop("/instrumentation/du/du6-test", 0);
 setprop("/instrumentation/du/du6-test-time", 0);
+setprop("/instrumentation/du/du6-test-amount", 0);
 setprop("/it-autoflight/internal/vert-speed-fpm-pfd", 0);
 setprop("/position/gear-agl-ft", 0);
 setprop("/controls/flight/aileron-input-fast", 0);
@@ -73,7 +75,6 @@ setprop("/instrumentation/adirs/ir[1]/aligned", 0);
 setprop("/instrumentation/adirs/ir[2]/aligned", 0);
 setprop("/controls/switching/ATTHDG", 0);
 setprop("/controls/switching/AIRDATA", 0);
-setprop("/testing", 0);
 
 var canvas_PFD_base = {
 	init: func(canvas_group, file) {
@@ -86,25 +87,20 @@ var canvas_PFD_base = {
 		var svg_keys = me.getKeys();
 		foreach(var key; svg_keys) {
 			me[key] = canvas_group.getElementById(key);
-			var svg_keys = me.getKeys();
 
-			foreach (var key; svg_keys) {
-				me[key] = canvas_group.getElementById(key);
+			var clip_el = canvas_group.getElementById(key ~ "_clip");
+			if (clip_el != nil) {
+				clip_el.setVisible(0);
+				var tran_rect = clip_el.getTransformedBounds();
 
-				var clip_el = canvas_group.getElementById(key ~ "_clip");
-				if (clip_el != nil) {
-					clip_el.setVisible(0);
-					var tran_rect = clip_el.getTransformedBounds();
-
-					var clip_rect = sprintf("rect(%d,%d, %d,%d)", 
-					tran_rect[1], # 0 ys
-					tran_rect[2], # 1 xe
-					tran_rect[3], # 2 ye
-					tran_rect[0]); #3 xs
-					#   coordinates are top,right,bottom,left (ys, xe, ye, xs) ref: l621 of simgear/canvas/CanvasElement.cxx
-					me[key].set("clip", clip_rect);
-					me[key].set("clip-frame", canvas.Element.PARENT);
-				}
+				var clip_rect = sprintf("rect(%d,%d, %d,%d)", 
+				tran_rect[1], # 0 ys
+				tran_rect[2], # 1 xe
+				tran_rect[3], # 2 ye
+				tran_rect[0]); #3 xs
+				#   coordinates are top,right,bottom,left (ys, xe, ye, xs) ref: l621 of simgear/canvas/CanvasElement.cxx
+				me[key].set("clip", clip_rect);
+				me[key].set("clip-frame", canvas.Element.PARENT);
 			}
 		}
 		
@@ -136,10 +132,12 @@ var canvas_PFD_base = {
 		if (getprop("/systems/electrical/bus/ac-ess") >= 110) {
 			if (getprop("/systems/acconfig/autoconfig-running") != 1 and getprop("/instrumentation/du/du1-test") != 1) {
 				setprop("/instrumentation/du/du1-test", 1);
+				setprop("/instrumentation/du/du1-test-amount", math.round((rand() * 5 ) + 35, 0.1));
 				setprop("/instrumentation/du/du1-test-time", getprop("/sim/time/elapsed-sec"));
 			} else if (getprop("/systems/acconfig/autoconfig-running") == 1 and getprop("/instrumentation/du/du1-test") != 1) {
 				setprop("/instrumentation/du/du1-test", 1);
-				setprop("/instrumentation/du/du1-test-time", getprop("/sim/time/elapsed-sec") - 35);
+				setprop("/instrumentation/du/du1-test-amount", math.round((rand() * 5 ) + 35, 0.1));
+				setprop("/instrumentation/du/du1-test-time", getprop("/sim/time/elapsed-sec") - 30);
 			}
 		} else {
 			setprop("/instrumentation/du/du1-test", 0);
@@ -147,22 +145,26 @@ var canvas_PFD_base = {
 		if (getprop("/systems/electrical/bus/ac2") >= 110) {
 			if (getprop("/systems/acconfig/autoconfig-running") != 1 and getprop("/instrumentation/du/du6-test") != 1) {
 				setprop("/instrumentation/du/du6-test", 1);
+				setprop("/instrumentation/du/du6-test-amount", math.round((rand() * 5 ) + 35, 0.1));
 				setprop("/instrumentation/du/du6-test-time", getprop("/sim/time/elapsed-sec"));
 			} else if (getprop("/systems/acconfig/autoconfig-running") == 1 and getprop("/instrumentation/du/du6-test") != 1) {
 				setprop("/instrumentation/du/du6-test", 1);
-				setprop("/instrumentation/du/du6-test-time", getprop("/sim/time/elapsed-sec") - 35);
+				setprop("/instrumentation/du/du6-test-amount", math.round((rand() * 5 ) + 35, 0.1));
+				setprop("/instrumentation/du/du6-test-time", getprop("/sim/time/elapsed-sec") - 30);
 			}
 		} else {
 			setprop("/instrumentation/du/du6-test", 0);
 		}
 		
 		if (getprop("/systems/electrical/bus/ac-ess") >= 110 and getprop("/controls/lighting/DU/du1") > 0) {
-			if (getprop("/instrumentation/du/du1-test-time") + 39.5 >= elapsedtime and getprop("/modes/cpt-du-xfr") != 1) {
+			if (getprop("/instrumentation/du/du1-test-time") + getprop("/instrumentation/du/du1-test-amount") >= elapsedtime and getprop("/modes/cpt-du-xfr") != 1) {
 				PFD_1.page.hide();
 				PFD_1_test.page.show();
-			} else if (getprop("/instrumentation/du/du2-test-time") + 38.5 >= elapsedtime and getprop("/modes/cpt-du-xfr") == 1) {
+				PFD_1_test.update();
+			} else if (getprop("/instrumentation/du/du2-test-time") + getprop("/instrumentation/du/du2-test-amount") >= elapsedtime and getprop("/modes/cpt-du-xfr") == 1) {
 				PFD_1.page.hide();
 				PFD_1_test.page.show();
+				PFD_1_test.update();
 			} else {
 				PFD_1_test.page.hide();
 				PFD_1.page.show();
@@ -173,12 +175,14 @@ var canvas_PFD_base = {
 			PFD_1.page.hide();
 		}
 		if (getprop("/systems/electrical/bus/ac2") >= 110 and getprop("/controls/lighting/DU/du6") > 0) {
-			if (getprop("/instrumentation/du/du6-test-time") + 39.5 >= elapsedtime and getprop("/modes/fo-du-xfr") != 1) {
+			if (getprop("/instrumentation/du/du6-test-time") + getprop("/instrumentation/du/du6-test-amount") >= elapsedtime and getprop("/modes/fo-du-xfr") != 1) {
 				PFD_2.page.hide();
 				PFD_2_test.page.show();
-			} else if (getprop("/instrumentation/du/du5-test-time") + 38.5 >= elapsedtime and getprop("/modes/fo-du-xfr") == 1) {
+				PFD_2_test.update();
+			} else if (getprop("/instrumentation/du/du5-test-time") + getprop("/instrumentation/du/du5-test-amount") >= elapsedtime and getprop("/modes/fo-du-xfr") == 1) {
 				PFD_2.page.hide();
 				PFD_2_test.page.show();
+				PFD_2_test.update();
 			} else {
 				PFD_2_test.page.hide();
 				PFD_2.page.show();
@@ -996,6 +1000,11 @@ var canvas_PFD_1_test = {
 		};
 
 		canvas.parsesvg(canvas_group, file, {"font-mapper": font_mapper});
+		
+		var svg_keys = me.getKeys();
+		foreach(var key; svg_keys) {
+			me[key] = canvas_group.getElementById(key);
+		}
 
 		me.page = canvas_group;
 
@@ -1007,6 +1016,21 @@ var canvas_PFD_1_test = {
 
 		return m;
 	},
+	getKeys: func() {
+		return ["Test_white","Test_text"];
+	},
+	update: func() {
+		if (getprop("/instrumentation/du/du1-test-time") + 1 >= elapsedtime and getprop("/modes/cpt-du-xfr") != 1) {
+			me["Test_white"].show();
+			me["Test_text"].hide();
+		} else if (getprop("/instrumentation/du/du2-test-time") + 1 >= elapsedtime and getprop("/modes/cpt-du-xfr") == 1) {
+			me["Test_white"].show();
+			me["Test_text"].hide();
+		} else {
+			me["Test_white"].hide();
+			me["Test_text"].show();
+		}
+	},
 };
 
 var canvas_PFD_2_test = {
@@ -1016,6 +1040,11 @@ var canvas_PFD_2_test = {
 		};
 
 		canvas.parsesvg(canvas_group, file, {"font-mapper": font_mapper});
+		
+		var svg_keys = me.getKeys();
+		foreach(var key; svg_keys) {
+			me[key] = canvas_group.getElementById(key);
+		}
 
 		me.page = canvas_group;
 
@@ -1026,6 +1055,21 @@ var canvas_PFD_2_test = {
 		m.init(canvas_group, file);
 
 		return m;
+	},
+	getKeys: func() {
+		return ["Test_white","Test_text"];
+	},
+	update: func() {
+		if (getprop("/instrumentation/du/du6-test-time") + 1 >= elapsedtime and getprop("/modes/fo-du-xfr") != 1) {
+			me["Test_white"].show();
+			me["Test_text"].hide();
+		} else if (getprop("/instrumentation/du/du5-test-time") + 1 >= elapsedtime and getprop("/modes/fo-du-xfr") == 1) {
+			me["Test_white"].show();
+			me["Test_text"].hide();
+		} else {
+			me["Test_white"].hide();
+			me["Test_text"].show();
+		}
 	},
 };
 

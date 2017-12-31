@@ -28,6 +28,7 @@ setprop("/ECAM/Upper/N1thr[1]", 0);
 setprop("/ECAM/Upper/N1ylim", 0);
 setprop("/instrumentation/du/du3-test", 0);
 setprop("/instrumentation/du/du3-test-time", 0);
+setprop("/instrumentation/du/du3-test-amount", 0);
 
 var canvas_upperECAM_base = {
 	init: func(canvas_group, file) {
@@ -54,20 +55,23 @@ var canvas_upperECAM_base = {
 		if (getprop("/systems/electrical/bus/ac-ess") >= 110) {
 			if (getprop("/systems/acconfig/autoconfig-running") != 1 and getprop("/instrumentation/du/du3-test") != 1) {
 				setprop("/instrumentation/du/du3-test", 1);
+				setprop("/instrumentation/du/du3-test-amount", math.round((rand() * 5 ) + 35, 0.1));
 				setprop("/instrumentation/du/du3-test-time", getprop("/sim/time/elapsed-sec"));
 			} else if (getprop("/systems/acconfig/autoconfig-running") == 1 and getprop("/instrumentation/du/du3-test") != 1) {
 				setprop("/instrumentation/du/du3-test", 1);
-				setprop("/instrumentation/du/du3-test-time", getprop("/sim/time/elapsed-sec") - 35);
+				setprop("/instrumentation/du/du3-test-amount", math.round((rand() * 5 ) + 35, 0.1));
+				setprop("/instrumentation/du/du3-test-time", getprop("/sim/time/elapsed-sec") - 30);
 			}
 		} else {
 			setprop("/instrumentation/du/du3-test", 0);
 		}
 		
 		if (getprop("/systems/electrical/bus/ac-ess") >= 110 and getprop("/controls/lighting/DU/du3") > 0) {
-			if (getprop("/instrumentation/du/du3-test-time") + 39 >= elapsedtime) {
+			if (getprop("/instrumentation/du/du3-test-time") + getprop("/instrumentation/du/du3-test-amount") >= elapsedtime) {
 				upperECAM_ge.page.hide();
 				upperECAM_pwrr.page.hide();
 				upperECAM_test.page.show();
+				upperECAM_test.update();
 			} else {
 				upperECAM_test.page.hide();
 				if (getprop("/options/eng") == "GE") {
@@ -776,6 +780,11 @@ var canvas_upperECAM_test = {
 		};
 
 		canvas.parsesvg(canvas_group, file, {"font-mapper": font_mapper});
+		
+		var svg_keys = me.getKeys();
+		foreach(var key; svg_keys) {
+			me[key] = canvas_group.getElementById(key);
+		}
 
 		me.page = canvas_group;
 
@@ -786,6 +795,18 @@ var canvas_upperECAM_test = {
 		m.init(canvas_group, file);
 
 		return m;
+	},
+	getKeys: func() {
+		return ["Test_white","Test_text"];
+	},
+	update: func() {
+		if (getprop("/instrumentation/du/du3-test-time") + 1 >= elapsedtime) {
+			me["Test_white"].show();
+			me["Test_text"].hide();
+		} else {
+			me["Test_white"].hide();
+			me["Test_text"].show();
+		}
 	},
 };
 
