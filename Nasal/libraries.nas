@@ -223,6 +223,12 @@ var systemsLoop = maketimer(0.1, func {
 		setprop("/instrumentation/mk-viii/inputs/discretes/momentary-flap-override", 0);
 	}
 	
+	if (getprop("/instrumentation/mk-viii/inputs/discretes/gpws-inhibit") == 1) {
+		setprop("/instrumentation/mk-viii/speaker/volume", 0);
+	} else {
+		setprop("/instrumentation/mk-viii/speaker/volume", 2);
+	}
+	
 	if (getprop("/gear/gear[1]/gear-tilt-deg") < 40) {
 		setprop("/gear/gear[3]/wowa", 1);
 	} else {
