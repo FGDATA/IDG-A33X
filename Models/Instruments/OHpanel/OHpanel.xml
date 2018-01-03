@@ -9,6 +9,19 @@
 <PropertyList>
 
 	<path>res/ohpanel.ac</path>
+	
+    <animation>
+        <type>translate</type>
+		<property>systems/unused/unused-oh</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>0.006</dep></entry>
+		</interpolation>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+    </animation>
 
 	<!-- ANIMATIONS -->
 	
