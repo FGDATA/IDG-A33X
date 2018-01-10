@@ -846,8 +846,8 @@
 			<table>
 				<independentVar lookup="row">velocities/ve-kts</independentVar>
 				<tableData>
-					30		0.00
-					60		2.00
+					30  0.00
+					60  2.00
 				</tableData>
 			</table>
 			<clipto>
@@ -861,8 +861,8 @@
 			<table>
 				<independentVar lookup="row">velocities/ve-kts</independentVar>
 				<tableData>
-					30		0.0
-					31		1.0
+					30  0.0
+					31  1.0
 				</tableData>
 			</table>
 		</scheduled_gain>
