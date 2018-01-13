@@ -1468,6 +1468,9 @@
 		<canvas_iesi>
 			<file>Aircraft/IDG-A33X/Models/Instruments/IESI/IESI.nas</file>
 		</canvas_iesi>
+		<canvas_mcdu>
+			<file>Aircraft/IDG-A33X/Models/Instruments/MCDU/MCDU.nas</file>
+		</canvas_mcdu>
 		<icing>
 			<file>Aircraft/IDG-A33X/Nasal/icing.nas</file>
 		</icing>
