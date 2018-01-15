@@ -46,7 +46,7 @@
 				<property>metrics/Sw-sqft</property>
 				<property>velocities/q-aero-rad_sec</property>
 				<property>aero/ci2vel</property>
-				<value>2.3600</value>
+				<value>1.3600</value>
 			</product>
 		</function>
 		
@@ -57,7 +57,7 @@
 				<property>metrics/Sw-sqft</property>
 				<property>aero/alphadot-rad_sec</property>
 				<property>aero/ci2vel</property>
-				<value>0.8384</value>
+				<value>0.6384</value>
 			</product>
 		</function>
 		
@@ -77,7 +77,7 @@
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>fcs/pitch-trim-pos-geared</property>
-				<value>0.0865</value>
+				<value>0.0127</value>
 			</product>
 		</function>
 		
@@ -475,7 +475,7 @@
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/cbarw-ft</property>
 				<property>fcs/pitch-trim-pos-geared</property>
-				<value>-2.361</value>
+				<value>-2.161</value>
 			</product>
 		</function>
 		

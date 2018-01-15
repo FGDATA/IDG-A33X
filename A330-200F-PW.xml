@@ -28,7 +28,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<vtailarm  unit="FT" >  107.19 </vtailarm>
 
 		<location name="AERORP" unit="M">
-			<x> 1.88086 </x>
+			<x> 1.48086 </x>
 			<y> 0 </y>
 			<z> 0.25204 </z>
 		</location>
@@ -57,7 +57,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<emptywt unit="LBS" >  214000 </emptywt>
 		
 		<location name="CG" unit="M">
-			<x> 0.88086 </x>
+			<x> 0.48086 </x>
 			<y> 0 </y>
 			<z> 0.25204 </z>
 		</location>
@@ -74,7 +74,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<pointmass name="PAX">
 			<weight unit="LBS">39000</weight>
 			<location name="POINTMASS" unit="M">
-				<x> 0.88086 </x>
+				<x> 0.48086 </x>
 				<y> 0 </y>
 				<z> 0.25204 </z>
 			</location>
@@ -436,7 +436,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		</tank>
 		<tank type="FUEL">    <!-- Engine 1 Pipes -->
 			<location unit="M">
-				<x> 0.88086 </x>
+				<x> 0.48086 </x>
 				<y> 0 </y>
 				<z> 0.25204 </z>
 			</location>
@@ -447,7 +447,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		</tank>
 		<tank type="FUEL">    <!-- Engine 2 Pipes -->
 			<location unit="M">
-				<x> 0.88086 </x>
+				<x> 0.48086 </x>
 				<y> 0 </y>
 				<z> 0.25204 </z>
 			</location>
