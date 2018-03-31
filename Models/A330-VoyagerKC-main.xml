@@ -209,11 +209,11 @@
 
 	<model>
 		<name>Pushback</name>
-		<path>Models/Airport/Pushback/Goldhofert.xml</path>
+		<path>Models/Goldhofert-autopush.xml</path>
 		<offsets>
-			<x-m>-21.5</x-m>
+			<x-m>-15.9664</x-m>
 			<y-m>0</y-m>
-			<z-m>-5.45</z-m>
+			<z-m>-5.43654</z-m>
 		</offsets>
 	</model>
 	

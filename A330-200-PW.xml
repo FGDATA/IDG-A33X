@@ -458,7 +458,6 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		</tank>
 	</propulsion>
 
-	<system file="pushback" />
 	<system file="fuel" />
 	<system file="glass-effect1" />
 	<system file="fmgc" />
@@ -471,9 +470,9 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	<external_reactions>
 		<force name="pushback" frame="BODY">
 			<location unit="M">
-				<x> -19.334 </x>
+				<x> -15.9664 </x>
 				<y> 0 </y>
-				<z> -2.50727 </z>
+				<z> -5.43654 </z> 
 			</location>
 			<direction>
 				<x> 1 </x>
