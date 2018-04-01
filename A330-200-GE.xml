@@ -471,7 +471,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	<external_reactions>
 		<force name="pushback" frame="BODY">
 			<location unit="M">
-				<x> -19.334 </x>
+				<x> -16.592 </x>
 				<y> 0 </y>
 				<z> -2.50727 </z>
 			</location>
