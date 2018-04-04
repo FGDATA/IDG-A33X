@@ -21,6 +21,7 @@ var vor2 = "";
 var ils = "";
 var adf1 = "";
 var adf2 = "";
+var engrdy = "";
 setprop("/MCDUC/colors/wht/r", 1);
 setprop("/MCDUC/colors/wht/g", 1);
 setprop("/MCDUC/colors/wht/b", 1);
@@ -85,8 +86,8 @@ var canvas_MCDU_base = {
 		return ["Simple","Simple_Center","Scratchpad","Simple_Title","Simple_PageNum","ArrowLeft","ArrowRight","Simple_L1","Simple_L2","Simple_L3","Simple_L4","Simple_L5","Simple_L6","Simple_L1S","Simple_L2S","Simple_L3S","Simple_L4S","Simple_L5S","Simple_L6S",
 		"Simple_L1_Arrow","Simple_L2_Arrow","Simple_L3_Arrow","Simple_L4_Arrow","Simple_L5_Arrow","Simple_L6_Arrow","Simple_R1","Simple_R2","Simple_R3","Simple_R4","Simple_R5","Simple_R6","Simple_R1S","Simple_R2S","Simple_R3S","Simple_R4S","Simple_R5S",
 		"Simple_R6S","Simple_R1_Arrow","Simple_R2_Arrow","Simple_R3_Arrow","Simple_R4_Arrow","Simple_R5_Arrow","Simple_R6_Arrow","Simple_C1","Simple_C2","Simple_C3","Simple_C4","Simple_C5","Simple_C6","Simple_C1S","Simple_C2S","Simple_C3S","Simple_C4S",
-		"Simple_C5S","Simple_C6S","INITA","INITA_CoRoute","INITA_FltNbr","INITA_CostIndex","INITA_CruiseFLTemp","INITA_FromTo","INITA_InitRequest","INITA_AlignIRS","INITB","INITB_ZFWCGZFW","INITB_Block","PERFTO","PERFTO_V1","PERFTO_VR","PERFTO_V2","PERFTO_FE",
-		"PERFTO_SE","PERFTO_OE"];
+		"Simple_C5S","Simple_C6S","INITA","INITA_CoRoute","INITA_FltNbr","INITA_CostIndex","INITA_CruiseFLTemp","INITA_FromTo","INITA_InitRequest","INITA_AlignIRS","INITB","INITB_ZFWCG","INITB_ZFW","INITB_ZFW_S","INITB_Block","PERFTO","PERFTO_V1","PERFTO_VR",
+		"PERFTO_V2","PERFTO_FE","PERFTO_SE","PERFTO_OE"];
 	},
 	update: func() {
 		if (getprop("/systems/electrical/bus/ac1") >= 110) {
@@ -413,6 +414,98 @@ var canvas_MCDU_base = {
 			me["Simple_R2S"].setText("PILOTS ");
 			me["Simple_R3S"].setText("PILOTS ");
 			me["Simple_R4S"].setText("PILOTS ");
+		} else if (page == "POSMON") {
+			me["Simple"].show();
+			me["Simple_Center"].show();
+			me["INITA"].hide();
+			me["INITB"].hide();
+			me["PERFTO"].hide();
+			me["Simple_Title"].setText("POSITION MONITOR");
+			me["Simple_PageNum"].setText("X/X");
+			me["Simple_PageNum"].hide();
+			me["ArrowLeft"].hide();
+			me["ArrowRight"].hide();
+			
+			me["Simple_L1"].show();
+			me["Simple_L2"].show();
+			me["Simple_L3"].show();
+			me["Simple_L4"].show();
+			me["Simple_L5"].show();
+			me["Simple_L6"].show();
+			me["Simple_L1S"].hide();
+			me["Simple_L2S"].hide();
+			me["Simple_L3S"].hide();
+			me["Simple_L4S"].hide();
+			me["Simple_L5S"].show();
+			me["Simple_L6S"].hide();
+			me["Simple_L1_Arrow"].hide();
+			me["Simple_L2_Arrow"].hide();
+			me["Simple_L3_Arrow"].hide();
+			me["Simple_L4_Arrow"].hide();
+			me["Simple_L5_Arrow"].hide();
+			me["Simple_L6_Arrow"].show();
+			me["Simple_C1"].hide();
+			me["Simple_C2"].hide();
+			me["Simple_C3"].hide();
+			me["Simple_C4"].hide();
+			me["Simple_C5"].show();
+			me["Simple_C6"].hide();
+			me["Simple_C1S"].hide();
+			me["Simple_C2S"].hide();
+			me["Simple_C3S"].hide();
+			me["Simple_C4S"].hide();
+			me["Simple_C5S"].show();
+			me["Simple_C6S"].hide();
+			me["Simple_R1"].show();
+			me["Simple_R2"].show();
+			me["Simple_R3"].show();
+			me["Simple_R4"].show();
+			me["Simple_R5"].show();
+			me["Simple_R6"].show();
+			me["Simple_R1S"].hide();
+			me["Simple_R2S"].hide();
+			me["Simple_R3S"].hide();
+			me["Simple_R4S"].hide();
+			me["Simple_R5S"].show();
+			me["Simple_R6S"].show();
+			me["Simple_R1_Arrow"].hide();
+			me["Simple_R2_Arrow"].hide();
+			me["Simple_R3_Arrow"].hide();
+			me["Simple_R4_Arrow"].hide();
+			me["Simple_R5_Arrow"].hide();
+			me["Simple_R6_Arrow"].show();
+			
+			me.fontLeft(default, default, default, default, default, default);
+			me.fontLeftS(default, default, default, default, default, default);
+			me.fontRight(default, default, default, default, default, default);
+			me.fontRightS(default, default, default, default, default, default);
+			
+			me.fontSizeLeft(normal, normal, normal, normal, normal, normal);
+			me.fontSizeRight(normal, normal, normal, normal, normal, normal);
+			
+			me.colorLeft("wht", "wht", "wht", "wht", "grn", "blu");
+			me.colorLeftS("wht", "wht", "wht", "wht", "wht", "wht");
+			me.colorLeftArrow("wht", "wht", "wht", "wht", "wht", "blu");
+			me.colorRight("grn", "grn", "grn", "grn", "grn", "wht");
+			me.colorRightS("wht", "wht", "wht", "wht", "wht", "wht");
+			me.colorRightArrow("wht", "wht", "wht", "wht", "wht", "wht");
+			
+			me["Simple_L1"].setText("FMGC1");
+			me["Simple_L2"].setText("FMGC2");
+			me["Simple_L3"].setText("GPIRS");
+			me["Simple_L4"].setText("MIX IRS");
+			me["Simple_L5"].setText("NAV -.-");
+			me["Simple_L6"].setText(" FREEZE");
+			me["Simple_L5S"].setText("   IRS1");
+			me["Simple_R1"].setText("----.-X/-----.-X");
+			me["Simple_R2"].setText("----.-X/-----.-X");
+			me["Simple_R3"].setText("----.-X/-----.-X");
+			me["Simple_R4"].setText("----.-X/-----.-X");
+			me["Simple_R5"].setText("NAV -.-");
+			me["Simple_R5S"].setText("IRS3   ");
+			me["Simple_R6S"].setText("SEL ");
+			me["Simple_C5"].setText("NAV -.-");
+			me["Simple_C5S"].setText("IRS2");
 		} else if (page == "RADNAV") {
 			me["Simple"].show();
 			me["Simple_Center"].hide();
@@ -473,6 +566,8 @@ var canvas_MCDU_base = {
 			me.colorLeft("blu", "blu", "blu", "blu", "blu", "blu");
 			me.colorLeftS("wht", "wht", "wht", "wht", "wht", "wht");
 			me.colorLeftArrow("wht", "wht", "wht", "wht", "wht", "wht");
+			me.colorCenter("wht", "wht", "wht", "wht", "wht", "grn");
+			me.colorCenterS("wht", "wht", "wht", "wht", "wht", "wht");
 			me.colorRight("blu", "blu", "blu", "blu", "blu", "blu");
 			me.colorRightS("wht", "wht", "wht", "wht", "wht", "wht");
 			me.colorRightArrow("wht", "wht", "wht", "wht", "wht", "wht");
@@ -697,7 +792,7 @@ var canvas_MCDU_base = {
 			me["Simple_R6"].setText(sprintf("%5.0f", getprop("/FMGC/internal/tropo")));
 		} else if (page == "INITB") {
 			me["Simple"].show();
-			me["Simple_Center"].hide();
+			me["Simple_Center"].show();
 			me["INITA"].hide();
 			me["INITB"].show();
 			me["PERFTO"].hide();
@@ -725,6 +820,18 @@ var canvas_MCDU_base = {
 			me["Simple_L4_Arrow"].hide();
 			me["Simple_L5_Arrow"].hide();
 			me["Simple_L6_Arrow"].hide();
+			me["Simple_C1"].show();
+			me["Simple_C2"].hide();
+			me["Simple_C3"].hide();
+			me["Simple_C4"].hide();
+			me["Simple_C5"].hide();
+			me["Simple_C6"].hide();
+			me["Simple_C1S"].hide();
+			me["Simple_C2S"].hide();
+			me["Simple_C3S"].hide();
+			me["Simple_C4S"].hide();
+			me["Simple_C5S"].hide();
+			me["Simple_C6S"].hide();
 			me["Simple_R1"].hide();
 			me["Simple_R2"].show();
 			me["Simple_R3"].hide();
@@ -755,9 +862,30 @@ var canvas_MCDU_base = {
 			me.colorLeft("blu", "wht", "wht", "wht", "wht", "wht");
 			me.colorLeftS("wht", "wht", "wht", "wht", "wht", "wht");
 			me.colorLeftArrow("wht", "wht", "wht", "wht", "wht", "wht");
+			me.colorCenter("blu", "wht", "wht", "wht", "wht", "wht");
 			me.colorRight("blu", "blu", "wht", "wht", "wht", "wht");
 			me.colorRightS("wht", "wht", "wht", "wht", "wht", "wht");
 			me.colorRightArrow("wht", "wht", "wht", "wht", "wht", "wht");
+			
+			if (getprop("/FMGC/internal/zfwcg-set") == 1) {
+				me["Simple_C1"].setFontSize(normal); 
+				me["Simple_C1"].setText("        " ~ sprintf("%3.1f", getprop("/FMGC/internal/zfwcg")));
+				me["INITB_ZFWCG"].hide();
+			} else {
+				me["Simple_C1"].setFontSize(small);
+				me["Simple_C1"].setText("           " ~ sprintf("%3.1f", getprop("/FMGC/internal/zfwcg")));
+				me["INITB_ZFWCG"].hide();
+			}
+			
+			if (getprop("/FMGC/internal/zfw-set") == 1) {
+				me["INITB_ZFW"].hide();
+				me["INITB_ZFW_S"].show();
+				me["Simple_R1"].show(); 
+			} else {
+				me["INITB_ZFW"].show();
+				me["INITB_ZFW_S"].hide();
+				me["Simple_R1"].hide(); 
+			}
 			
 			if (getprop("/FMGC/internal/block-set") == 1) {
 				me["INITB_Block"].hide();
@@ -779,13 +907,124 @@ var canvas_MCDU_base = {
 			me["Simple_L4S"].setText("ALTN/TIME");
 			me["Simple_L5S"].setText("FINAL/TIME");
 			me["Simple_L6S"].setText("EXTRA/TIME");
+			me["Simple_R1"].setText(sprintf("%3.1f", getprop("/FMGC/internal/zfw")));
 			me["Simple_R2"].setText(sprintf("%3.1f", getprop("/FMGC/internal/block")));
 			me["Simple_R4"].setText("---.-");
 			me["Simple_R5"].setText("---.-");
-			me["Simple_R1S"].setText("ZFWCG/  ZFW");
+			me["Simple_R1S"].setText("ZFWCG/   ZFW");
 			me["Simple_R2S"].setText("BLOCK");
 			me["Simple_R4S"].setText("TOW");
 			me["Simple_R5S"].setText("LW");
+		} else if (page == "FUELPRED") {
+			me["Simple"].show();
+			me["Simple_Center"].show();
+			me["INITA"].hide();
+			me["INITB"].hide();
+			me["PERFTO"].hide();
+			me["Simple_Title"].setText("FUEL PRED");
+			me["Simple_PageNum"].setText("X/X");
+			me["Simple_PageNum"].hide();
+			me["ArrowLeft"].hide();
+			me["ArrowRight"].hide();
+			
+			me["Simple_L1"].show();
+			me["Simple_L2"].show();
+			me["Simple_L3"].show();
+			me["Simple_L4"].show();
+			me["Simple_L5"].show();
+			me["Simple_L6"].show();
+			me["Simple_L1S"].show();
+			me["Simple_L2S"].hide();
+			me["Simple_L3S"].show();
+			me["Simple_L4S"].show();
+			me["Simple_L5S"].show();
+			me["Simple_L6S"].show();
+			me["Simple_L1_Arrow"].hide();
+			me["Simple_L2_Arrow"].hide();
+			me["Simple_L3_Arrow"].hide();
+			me["Simple_L4_Arrow"].hide();
+			me["Simple_L5_Arrow"].hide();
+			me["Simple_L6_Arrow"].hide();
+			me["Simple_C1"].show();
+			me["Simple_C2"].show();
+			me["Simple_C3"].hide();
+			me["Simple_C4"].hide();
+			me["Simple_C5"].hide();
+			me["Simple_C6"].hide();
+			me["Simple_C1S"].show();
+			me["Simple_C2S"].hide();
+			me["Simple_C3S"].hide();
+			me["Simple_C4S"].hide();
+			me["Simple_C5S"].hide();
+			me["Simple_C6S"].hide();
+			me["Simple_R1"].show();
+			me["Simple_R2"].show();
+			me["Simple_R3"].show();
+			me["Simple_R4"].show();
+			me["Simple_R5"].hide();
+			me["Simple_R6"].hide();
+			me["Simple_R1S"].show();
+			me["Simple_R2S"].hide();
+			me["Simple_R3S"].show();
+			me["Simple_R4S"].show();
+			me["Simple_R5S"].hide();
+			me["Simple_R6S"].hide();
+			me["Simple_R1_Arrow"].hide();
+			me["Simple_R2_Arrow"].hide();
+			me["Simple_R3_Arrow"].hide();
+			me["Simple_R4_Arrow"].hide();
+			me["Simple_R5_Arrow"].hide();
+			me["Simple_R6_Arrow"].hide();
+			
+			me.fontLeft(default, default, default, default, default, default);
+			me.fontLeftS(default, default, default, default, default, default);
+			me.fontRight(default, default, default, default, default, default);
+			me.fontRightS(default, default, default, default, default, default);
+			
+			me.fontSizeLeft(normal, normal, normal, normal, normal, normal);
+			me.fontSizeRight(normal, normal, normal, normal, normal, normal);
+			
+			me.colorLeft("grn", "grn", "blu", "blu", "blu", "grn");
+			me.colorLeftS("wht", "wht", "wht", "wht", "wht", "wht");
+			me.colorLeftArrow("wht", "wht", "wht", "wht", "wht", "wht");
+			me.colorCenter("grn", "grn", "wht", "wht", "wht", "wht");
+			me.colorCenterS("wht", "wht", "wht", "wht", "wht", "wht");
+			me.colorRight("grn", "grn", "blu", "blu", "wht", "wht");
+			me.colorRightS("wht", "wht", "wht", "wht", "wht", "wht");
+			me.colorRightArrow("wht", "wht", "wht", "wht", "wht", "wht");
+			
+			engrdy = getprop("/engines/ready");
+			
+			if (!engrdy or getprop("/FMGC/internal/arr-arpt") == "") {
+				me["Simple_L1"].setText("----");
+			} else {
+				me["Simple_L1"].setText(getprop("/FMGC/internal/arr-arpt"));
+			}
+			
+			me["Simple_L2"].setText("----");
+			me["Simple_L3"].setText("--.-/--.-");
+			me["Simple_L4"].setText("-.-/-.-");
+			me["Simple_L5"].setText("--.-/----");
+			me["Simple_L6"].setText("--.-/----");
+			me["Simple_L1S"].setText("AT");
+			me["Simple_L2S"].setText("X");
+			me["Simple_L3S"].setText("GW/CG");
+			me["Simple_L4S"].setText("RTE RSV/");
+			me["Simple_L5S"].setText("FINAL/TIME");
+			me["Simple_L6S"].setText("EXTRA/TIME");
+			
+			me["Simple_C1S"].setText("UTC");
+			me["Simple_C1"].setText("----");
+			me["Simple_C2"].setText("----");
+			
+			me["Simple_R1"].setText("-.-");
+			me["Simple_R2"].setText("-.-");
+			me["Simple_R3"].setText("-.-/--+--");
+			me["Simple_R4"].setText("----*/36090");
+			me["Simple_R1S"].setText("EFOB");
+			me["Simple_R3S"].setText("FOB");
+			me["Simple_R4S"].setText("CRZTEMP/TROPO");
+			
 		} else if (page == "TO") {
 			me["Simple"].show();
 			me["Simple_Center"].show();
