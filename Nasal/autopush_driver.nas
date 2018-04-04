@@ -26,35 +26,32 @@ var _psi_parking = nil;
 var _psi_turn = nil;
 
 var loop = func() {
-	if(!getprop("/sim/model/pushback/connected")){
+	if	(!getprop("/sim/model/pushback/connected")) {
 		stop();
 		return;
 	}
 	var V = 0.0;
 	var steering = 0.0;
 	var deltapsi = 0.0;
-	var psi = getprop("/orientation/heading-deg");
-	if(!_turning){
+	var psi = getprop("/orientation/heading-magnetic-deg");
+	if (!_turning) {
 		# Initially follow a straight line parallel to our initial heading.
 		var (A, S) = courseAndDistance(_target);
 		S *= NM2M;
 		# Stop when the bearing flips, guarante against infinite pushing.
-		if(
-			(abs(S) < _S_min) +
-			(abs(saw180(_psi_parking - A - math.min(_sign, 0.0) * 180.0) > 90.0))
-		){
+		if ((abs(S) < _S_min) + (abs(saw180(_psi_parking - A - math.min(_sign, 0.0) * 180.0) > 90.0))) {
 			_turning = 1;
 			screen.log.write("(pushback): Turning to face heading " ~ int(_psi_turn) ~ ".");
 		}
 		deltapsi = saw180(_psi_parking - psi);
 		V = math.min(math.max(_K_V_push * _sign * (S / _S_min), -_F_V_push), _F_V_push);
 		steering = math.min(math.max(_K_psi_push * _sign * deltapsi, -1.0), 1.0);
-	}else{
+	} else {
 		# Turn (almost) in place.
 		deltapsi = saw180(_psi_turn - psi);
 		V = math.min(math.max(_K_V_turn * _sign * abs(deltapsi), -_F_V_turn), _F_V_turn);
 		# We are done when the heading error is small.
-		if(abs(V) < _V_min){
+		if (abs(V) < _V_min) {
 			stop();
 			return;
 		}
@@ -75,7 +72,7 @@ var start = func() {
 	_F_V_turn = getprop("/sim/model/pushback/driver/F_V_turn");
 	_K_psi_turn = getprop("/sim/model/pushback/driver/K_psi_turn");
 	_V_min = getprop("/sim/model/pushback/driver/V_min");
-	if(!getprop("/sim/model/pushback/connected")){
+	if (!getprop("/sim/model/pushback/connected")) {
 		return;
 	}
 	towdist = getprop("/sim/model/pushback/driver/tow-distance-m");
@@ -86,16 +83,17 @@ var start = func() {
 	_sign = 1.0 - 2.0 * (towdist < 0.0);
 	_turning = 0;
 	timer.start();
-	if(_sign < 0.0){
+	if (_sign < 0.0) {
 		screen.log.write("(pushback): Pushing back.");
-	}else{
+	} else {
 		screen.log.write("(pushback): Towing.");
 	}
 }
 
 var stop = func() {
-	if(timer.isRunning){
+	if (timer.isRunning) {
 		screen.log.write("(pushback): Done.");
+		setprop("/controls/flight/rudder", 0);
 	}
 	timer.stop();
 	setprop("/sim/model/pushback/target-speed-km_h", 0.0);
@@ -103,10 +101,10 @@ var stop = func() {
 
 # Sawtooth: -180..+180 deg.
 var saw180 = func(p) {
-	while (p <= -180.0){
+	while (p <= -180.0) {
 		p += 360.0;
 	}
-	while (p > 180.0){
+	while (p > 180.0) {
 		p -= 360.0;
 	}
 	return p;

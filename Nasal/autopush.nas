@@ -4,6 +4,7 @@
 # Copyright (c) 2018 Michael Danilov <mike.d.ft402 -eh- gmail.com>
 # Distribute under the terms of GPLv2.
 
+var push_dlg = gui.Dialog.new("sim/gui/dialogs/autopush/push/dialog", "Aircraft/IDG-A33X/Systems/autopush.xml");
 
 var _K_p = nil;
 var _K_i = nil;
@@ -14,16 +15,16 @@ var _deltaV_old = nil;
 var _t_old = nil;
 
 var loop = func() {
-	if(!getprop("/sim/model/pushback/available")){
+	if (!getprop("/sim/model/pushback/available")) {
 		stop();
 		return;
 	}
 	var force = 0.0;
 	# Rollspeed is only adequate if the wheel is touching the ground.
-	if(getprop("/gear/gear[0]/wow")){
+	if (getprop("/gear/gear[0]/wow")) {
 		var deltaV =
-			getprop("/sim/model/pushback/target-speed-km_h") -
-			getprop("/gear/gear[0]/rollspeed-ms") * 3.6;
+		getprop("/sim/model/pushback/target-speed-km_h") -
+		getprop("/gear/gear[0]/rollspeed-ms") * 3.6;
 		var dV = deltaV - _deltaV_old;
 		var t = getprop("/sim/time/elapsed-sec");
 		var dt = math.max(t - _t_old, 0.0001);
@@ -49,14 +50,14 @@ var start = func() {
 	_deltaV_old = 0.0;
 	_t_old = getprop("/sim/time/elapsed-sec");
 	setprop("/sim/model/pushback/connected", 1);
-	if(!timer.isRunning){
+	if (!timer.isRunning) {
 		screen.log.write("(pushback): Release brakes.");
 	}
 	timer.start();
 }
 
 var stop = func() {
-	if(timer.isRunning){
+	if (timer.isRunning) {
 		screen.log.write("(pushback): Pushback disconnected, bypass pin removed.");
 	}
 	timer.stop();
@@ -65,12 +66,9 @@ var stop = func() {
 }
 
 var toggle = func(){
-	if(
-		getprop("/sim/model/pushback/enabled") *
-		getprop("/sim/model/pushback/available")
-	){
+	if (getprop("/sim/model/pushback/enabled") * getprop("/sim/model/pushback/available")) {
 		start();
-	}else{
+	} else {
 		stop();
 	}
 }
