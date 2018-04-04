@@ -16,7 +16,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<version>Pre V1.0</version>
 		<description>A33X FDE</description>
 	</fileheader>
-
+	
 	<metrics>
 		<wingarea  unit="FT2"> 3892.00 </wingarea>
 		<wingspan  unit="FT" >  197.83 </wingspan>
@@ -26,26 +26,26 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<htailarm  unit="FT" >  107.29 </htailarm>
 		<vtailarea unit="FT2">  496.25 </vtailarea>
 		<vtailarm  unit="FT" >  107.19 </vtailarm>
-
+		
 		<location name="AERORP" unit="M">
 			<x> 1.48086 </x>
 			<y> 0 </y>
 			<z> 0.25204 </z>
 		</location>
-
+		
 		<location name="EYEPOINT" unit="M">
 			<x> 0 </x>
 			<y> 0 </y>
 			<z> 0 </z>
 		</location>
-
+		
 		<location name="VRP" unit="M">
 			<x> 0 </x>
 			<y> 0 </y>
 			<z> 0 </z>
 		</location>
 	</metrics>
-
+	
 	<mass_balance>
 		<ixx unit="SLUG*FT2"> 5175399 </ixx>
 		<iyy unit="SLUG*FT2"> 7004014 </iyy>
@@ -61,7 +61,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			<y> 0 </y>
 			<z> 0.25204 </z>
 		</location>
-
+		
 		<pointmass name="Crew">
 			<weight unit="LBS">380</weight>
 			<location name="POINTMASS" unit="M">
@@ -79,7 +79,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 				<z> 0.25204 </z>
 			</location>
 		</pointmass>
-
+		
 		<pointmass name="Fwd Cargo">
 			<weight unit="LBS">3000</weight>
 			<location name="POINTMASS" unit="M"> 
@@ -88,7 +88,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 				<z> -1.02745 </z>
 			</location>
 		</pointmass>
-
+		
 		<pointmass name="Aft Cargo">
 			<weight unit="LBS">3000</weight>
 			<location name="POINTMASS" unit="M">
@@ -107,7 +107,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			</location>
 		</pointmass>
 	</mass_balance>
-
+	
 	<ground_reactions>
 		<contact type="BOGEY" name="NOSE_LG">
 			<location unit="M">
@@ -154,7 +154,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			<brake_group> RIGHT </brake_group>
 			<retractable>1</retractable>
 		</contact>
-
+		
 		<contact type="STRUCTURE" name="NOSE_1">
 			<location unit="M">
 				<x> -22.4361 </x>
@@ -247,7 +247,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			<brake_group> NONE </brake_group>
 			<retractable>0</retractable>
 		</contact>
-
+		
 		<contact type="STRUCTURE" name="ENG_1">
 			<location unit="M">
 				<x> -2.19181 </x>
@@ -278,7 +278,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			<brake_group> NONE </brake_group>
 			<retractable>0</retractable>
 		</contact>
-
+		
 		<contact type="STRUCTURE" name="TAIL_1">
 			<location unit="M">
 				<x> 34.2725 </x>
@@ -341,7 +341,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			<retractable>0</retractable>
 		</contact>
 	</ground_reactions>
-
+	
 	<propulsion>
 		<engine file="cf6-80e1a3">
 			<location unit="M">
@@ -368,7 +368,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 				</orient>
 			</thruster>
 		</engine>
-
+		
 		<engine file="cf6-80e1a3">
 			<location unit="M">
 				<x> -2.7034 </x>	
@@ -394,7 +394,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 				</orient>
 			</thruster>
 		</engine>
-
+		
 		<tank type="FUEL">    <!-- Left Wing Tank -->
 			<location unit="M">
 				<x> 0.80086 </x>
@@ -457,16 +457,17 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			<type>JET-A1</type>
 		</tank>
 	</propulsion>
-
+	
+	<system file="pushback" />
 	<system file="fuel" />
 	<system file="glass-effect1" />
 	<system file="fmgc" />
 	<system file="a332-fcs" />
-
+	
 	<flight_control name="none"/>
-		
+	
 	<aerodynamics file="Systems/a332-aerodynamics.xml" />
-
+	
 	<external_reactions>
 		<force name="pushback" frame="BODY">
 			<location unit="M">
