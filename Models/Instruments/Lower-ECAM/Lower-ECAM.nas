@@ -127,9 +127,11 @@ var canvas_lowerECAM_base = {
 		}
 	},
 	updateBottomStatus: func() {
-		me["TAT"].setText(sprintf("%s", math.round(getprop("/environment/temperature-degc"))));
-		me["SAT"].setText(sprintf("%s", math.round(getprop("/environment/temperature-degc"))));
+		me["TAT"].setText(sprintf("%2.0f", getprop("/environment/temperature-degc")));
+		me["SAT"].setText(sprintf("%2.0f", getprop("/environment/temperature-degc")));
 		me["GW"].setText(sprintf("%s", math.round(getprop("/FMGC/internal/gw"))));
+		me["UTCh"].setText(sprintf("%02d", getprop("/sim/time/utc/hour")));
+		me["UTCm"].setText(sprintf("%02d", getprop("/sim/time/utc/minute")));
 	},
 };
 
@@ -141,8 +143,8 @@ var canvas_lowerECAM_apu = {
 		return m;
 	},
 	getKeys: func() {
-		return ["TAT","SAT","GW","APUN-needle","APUEGT-needle","APUN","APUEGT","APUAvail","APUFlapOpen","APUBleedValve","APUBleedOnline","APUGenOnline","APUGentext","APUGenLoad","APUGenbox","APUGenVolt","APUGenHz","APUBleedPSI","APUfuelLO","text3724","text3728",
-		"text3732"];
+		return ["TAT","SAT","GW","UTCh","UTCm","APUN-needle","APUEGT-needle","APUN","APUEGT","APUAvail","APUFlapOpen","APUBleedValve","APUBleedOnline","APUGenOnline","APUGentext","APUGenLoad","APUGenbox","APUGenVolt","APUGenHz","APUBleedPSI","APUfuelLO",
+		"text3724","text3728","text3732"];
 	},
 	update: func() {
 		oat = getprop("/environment/temperature-degc");
@@ -262,7 +264,7 @@ var canvas_lowerECAM_eng = {
 		return m;
 	},
 	getKeys: func() {
-		return ["TAT","SAT","GW","OilQT1-needle","OilQT2-needle","OilQT1","OilQT2","OilQT1-decimal","OilQT2-decimal","OilPSI1-needle","OilPSI2-needle","OilPSI1","OilPSI2"];
+		return ["TAT","SAT","GW","UTCh","UTCm","OilQT1-needle","OilQT2-needle","OilQT1","OilQT2","OilQT1-decimal","OilQT2-decimal","OilPSI1-needle","OilPSI2-needle","OilPSI1","OilPSI2"];
 	},
 	update: func() {
 		# Oil Quantity
@@ -310,10 +312,10 @@ var canvas_lowerECAM_fctl = {
 		return m;
 	},
 	getKeys: func() {
-		return["TAT","SAT","GW","ailL","ailR","ailL_out","ailR_out","elevL","elevR","PTcc","PT","PTupdn","prim1","prim2","prim3","sec1","sec2","ailLblue","ailRblue","elevLblue","elevRblue","rudderblue","ailLgreen","ailRgreen","ailLgreen2","ailRgreen2",
-		"elevLgreen","ruddergreen","PTgreen","elevRyellow","rudderyellow","ailLyellow","ailRyellow","PTyellow","rudder","spdbrkblue","spdbrkgreen","spdbrkyellow","spoiler1Rex","spoiler1Rrt","spoiler2Rex","spoiler2Rrt","spoiler3Rex","spoiler3Rrt","spoiler4Rex",
-		"spoiler4Rrt","spoiler5Rex","spoiler5Rrt","spoiler1Lex","spoiler1Lrt","spoiler2Lex","spoiler2Lrt","spoiler3Lex","spoiler3Lrt","spoiler4Lex","spoiler4Lrt","spoiler5Lex","spoiler5Lrt","spoiler1Rf","spoiler2Rf","spoiler3Rf","spoiler4Rf","spoiler5Rf",
-		"spoiler1Lf","spoiler2Lf","spoiler3Lf","spoiler4Lf","spoiler5Lf","ailLscale","ailRscale","path4249","path4249-3","path4338","path4249-3-6-7","path4249-3-6-7-5"];
+		return["TAT","SAT","GW","UTCh","UTCm","ailL","ailR","ailL_out","ailR_out","elevL","elevR","PTcc","PT","PTupdn","prim1","prim2","prim3","sec1","sec2","ailLblue","ailRblue","elevLblue","elevRblue","rudderblue","ailLgreen","ailRgreen","ailLgreen2",
+		"ailRgreen2","elevLgreen","ruddergreen","PTgreen","elevRyellow","rudderyellow","ailLyellow","ailRyellow","PTyellow","rudder","spdbrkblue","spdbrkgreen","spdbrkyellow","spoiler1Rex","spoiler1Rrt","spoiler2Rex","spoiler2Rrt","spoiler3Rex","spoiler3Rrt",
+		"spoiler4Rex","spoiler4Rrt","spoiler5Rex","spoiler5Rrt","spoiler1Lex","spoiler1Lrt","spoiler2Lex","spoiler2Lrt","spoiler3Lex","spoiler3Lrt","spoiler4Lex","spoiler4Lrt","spoiler5Lex","spoiler5Lrt","spoiler1Rf","spoiler2Rf","spoiler3Rf","spoiler4Rf",
+		"spoiler5Rf","spoiler1Lf","spoiler2Lf","spoiler3Lf","spoiler4Lf","spoiler5Lf","ailLscale","ailRscale","path4249","path4249-3","path4338","path4249-3-6-7","path4249-3-6-7-5"];
 	},
 	update: func() { 
 		blue_psi = getprop("/systems/hydraulic/blue-psi");
