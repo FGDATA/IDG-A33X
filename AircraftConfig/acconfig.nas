@@ -92,6 +92,11 @@ setprop("/systems/acconfig/mismatch-reason", "XX");
 setprop("/systems/acconfig/options/keyboard-mode", 0);
 setprop("/systems/acconfig/options/adirs-skip", 0);
 setprop("/systems/acconfig/options/welcome-skip", 0);
+setprop("/systems/acconfig/options/pfd-rate", 1);
+setprop("/systems/acconfig/options/nd-rate", 1);
+setprop("/systems/acconfig/options/uecam-rate", 1);
+setprop("/systems/acconfig/options/lecam-rate", 1);
+setprop("/systems/acconfig/options/iesi-rate", 1);
 var main_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/main/dialog", "Aircraft/IDG-A33X/AircraftConfig/main.xml");
 var welcome_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/welcome/dialog", "Aircraft/IDG-A33X/AircraftConfig/welcome.xml");
 var ps_load_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/psload/dialog", "Aircraft/IDG-A33X/AircraftConfig/psload.xml");
@@ -104,6 +109,7 @@ var about_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/about/dialog", "Aircraf
 var update_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/update/dialog", "Aircraft/IDG-A33X/AircraftConfig/update.xml");
 var updated_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/updated/dialog", "Aircraft/IDG-A33X/AircraftConfig/updated.xml");
 var error_mismatch = gui.Dialog.new("sim/gui/dialogs/acconfig/error/mismatch/dialog", "Aircraft/IDG-A33X/AircraftConfig/error-mismatch.xml");
+var du_framerate = gui.Dialog.new("sim/gui/dialogs/acconfig/du-framerate/dialog", "Aircraft/IDG-A33X/AircraftConfig/du-framerate.xml");
 spinning.start();
 init_dlg.open();
 
