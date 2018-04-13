@@ -1304,7 +1304,7 @@
 		<relay>
 			<name>RelayEXT</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay4.wav</path>
+			<path>Aircraft/IDG-A33X/Sounds/Cockpit/relay-external.wav</path>
 			<condition>
 				<and>
 					<equals>
