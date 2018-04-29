@@ -47,6 +47,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 	var ac2 = getprop("/systems/electrical/bus/ac2");
 	var ac_ess = getprop("/systems/electrical/bus/ac-ess");
 	var ac_ess_shed = getprop("/systems/electrical/bus/ac-ess-shed");
+	var dc_ess_shed = getprop("/systems/electrical/bus/dc-ess-shed");
 	var dc1 = getprop("/systems/electrical/bus/dc1");
 	var dc2 = getprop("/systems/electrical/bus/dc2");
 	var dcbat = getprop("/systems/electrical/bus/dcbat");
@@ -70,6 +71,10 @@ setlistener("/sim/signals/fdm-initialized", func {
 	var bat3_volts = getprop("/systems/electrical/battery3-volts");
 	var replay = getprop("/sim/replay/replay-state");
 	var wow = getprop("/gear/gear[1]/wow");
+	var prim1test = getprop("/systems/electrical/prim-1-test");
+	var prim23test = getprop("/systems/electrical/prim-2-3-test");
+	var sec1test = getprop("/systems/electrical/sec1-test");
+	var sec2test = getprop("/systems/electrical/sec2-test");
 });
 
 # Power Consumption, cockpit screens
@@ -134,6 +139,45 @@ var light = {
 	}
 };
 
+var fctlpoweruptest = func {
+	if (getprop("/systems/electrical/battery-available") == 0 and (getprop("/controls/electrical/switches/battery1") == 1 or getprop("/controls/electrical/switches/battery2") == 1)) {
+		setprop("/systems/failures/prim1-fault", 1);
+		setprop("/systems/failures/sec1-fault", 1);
+		setprop("/systems/electrical/battery-available", 1);
+		setprop("/systems/electrical/prim-1-test", 1);
+		setprop("/systems/electrical/sec1-test", 1);
+		settimer(func(){
+			setprop("/systems/failures/prim1-fault", 0);
+			setprop("/systems/electrical/prim-1-test", 0);
+		},8);
+		settimer(func(){
+			setprop("/systems/failures/sec1-fault", 0);
+			setprop("/systems/electrical/sec1-test", 0);
+		},8.5);
+	}
+	
+	gen1_sw = getprop("/controls/electrical/switches/gen1");
+	gen2_sw = getprop("/controls/electrical/switches/gen2");
+	gen_apu_sw = getprop("/controls/electrical/switches/gen-apu");
+	gen_ext_sw = getprop("/controls/electrical/switches/gen-ext");
+	
+	if (getprop("/systems/electrical/dc2-available") == 0 and getprop("/systems/electrical/bus/dc2") > 25) {
+			setprop("/systems/failures/sec2-fault", 1);
+			setprop("/systems/failures/prim2-fault", 1);
+			setprop("/systems/failures/prim3-fault", 1);
+			setprop("/systems/electrical/prim-2-3-test", 1);
+			setprop("/systems/electrical/sec2-test", 1);
+		settimer(func(){
+			setprop("/systems/failures/sec2-fault", 1);
+			setprop("/systems/failures/prim2-fault", 1);
+			setprop("/systems/failures/prim3-fault", 1);
+			setprop("/systems/electrical/prim-2-3-test", 1);
+			setprop("/systems/electrical/sec2-test", 1);
+		},8);
+	}
+}
+
+
 # Main Elec System
 
 var ELEC = {
@@ -167,6 +211,7 @@ var ELEC = {
 		setprop("/systems/electrical/bus/dc1-amps", 0);
 		setprop("/systems/electrical/bus/dc2-amps", 0);
 		setprop("/systems/electrical/bus/dc-ess", 0);
+		setprop("/systems/electrical/bus/dc-ess-shed", 0);
 		setprop("/systems/electrical/bus/ac1", 0);
 		setprop("/systems/electrical/bus/ac2", 0);
 		setprop("/systems/electrical/bus/gen1-hz", 0);
@@ -197,6 +242,12 @@ var ELEC = {
 		setprop("/systems/electrical/idg2-fault", 0);
 		setprop("/controls/electrical/xtie/xtieL", 0);
 		setprop("/controls/electrical/xtie/xtieR", 0);
+		setprop("/systems/electrical/battery-available", 0);
+		setprop("/systems/electrical/dc2-available", 0);
+		setprop("/systems/electrical/prim-1-test", 0);
+		setprop("/systems/electrical/prim-2-3-test", 0);
+		setprop("/systems/electrical/sec1-test", 0);
+		setprop("/systems/electrical/sec2-test", 0);
 		# Below are standard FG Electrical stuff to keep things working when the plane is powered
 		setprop("/systems/electrical/outputs/adf", 0);
 		setprop("/systems/electrical/outputs/audio-panel", 0);
@@ -282,6 +333,7 @@ var ELEC = {
 		ac2 = getprop("/systems/electrical/bus/ac2");
 		ac_ess = getprop("/systems/electrical/bus/ac-ess");
 		ac_ess_shed = getprop("/systems/electrical/bus/ac-ess-shed");
+		dc_ess_shed = getprop("/systems/electrical/bus/dc-ess-shed");
 		dc1 = getprop("/systems/electrical/bus/dc1");
 		dc2 = getprop("/systems/electrical/bus/dc2");
 		dcbat = getprop("/systems/electrical/bus/dcbat");
@@ -301,29 +353,25 @@ var ELEC = {
 		gen1_fail = getprop("/systems/failures/elec-gen1");
 		gen2_fail = getprop("/systems/failures/elec-gen2");
 		replay = getprop("/sim/replay/replay-state");
-		
-		if (battery1_sw and !batt1_fail) {
-			setprop("/systems/electrical/battery1-amps", dc_amps_std);
-		} else {
-			setprop("/systems/electrical/battery1-amps", 0);
-		}
-		
-		if (battery2_sw and !batt2_fail) {
-			setprop("/systems/electrical/battery2-amps", dc_amps_std);
-		} else {
-			setprop("/systems/electrical/battery2-amps", 0);
-		}
-		
-		if (battery3_sw) {
-			setprop("/systems/electrical/battery3-amps", dc_amps_std);
-		} else {
-			setprop("/systems/electrical/battery3-amps", 0);
-		}
+		prim1test = getprop("/systems/electrical/prim-1-test");
+		prim23test = getprop("/systems/electrical/prim-2-3-test");
+		sec1test = getprop("/systems/electrical/sec1-test");
+		sec2test = getprop("/systems/electrical/sec2-test");
 		
 		if (getprop("/systems/electrical/battery1-amps") > 120 or getprop("/systems/electrical/battery2-amps") > 120) {
 			setprop("/systems/electrical/bus/dcbat", dc_volt_std);
 		} else {
 			setprop("/systems/electrical/bus/dcbat", 0);
+		}
+		
+		if (battery1_sw == 0 and battery2_sw == 0) {
+			setprop("/systems/electrical/battery-available", 0);
+		}
+		
+		if (dc2 >= 25) {
+			fctlpoweruptest();
+		} else {
+			setprop("/systems/electrical/dc2-available", 0);
 		}
 		
 		dcbat = getprop("/systems/electrical/bus/dcbat");
@@ -567,6 +615,12 @@ var ELEC = {
 			setprop("/controls/electrical/switches/emer-gen", 0);
 		}
 		
+		if (emergen == 1 or (ac1 == 0 and ac2 == 0)) { # as far as I know dc ess is only shed when batteries only or rat out
+			setprop("/systems/electrical/bus/dc-ess-shed", 0);
+		} else {
+			setprop("/systems/electrical/bus/dc-ess-shed", ac_volt_std);
+		}
+		
 		dc1 = getprop("/systems/electrical/bus/dc1");
 		dc2 = getprop("/systems/electrical/bus/dc2");
 		
@@ -749,7 +803,7 @@ var ELEC = {
 		
 		foreach(var lighta; lights) { 
 			power_consumption = lighta.power_consumption();
-			if (getprop(screena.elec_prop) != 0 and getprop(lighta.control_prop) != 0) {
+			if (getprop(lighta.elec_prop) != 0 and getprop(lighta.control_prop) != 0) {
 				setprop("/systems/electrical/light/" ~ lighta.name ~ "/watts", power_consumption);
 			} else {
 				setprop("/systems/electrical/light/" ~ lighta.name ~ "/watts", 0);
