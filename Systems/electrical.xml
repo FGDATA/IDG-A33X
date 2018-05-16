@@ -7,6 +7,7 @@
 -->
 
 <system name="A320: Electrical">
+	
 	<property>/controls/electrical/switches/battery1</property>
 	<property>/systems/failures/elec-batt1</property>
 	<property>/controls/electrical/switches/battery2</property>
@@ -14,7 +15,9 @@
 	<property>/controls/electrical/switches/battery3</property>
 	
 	<channel name="Battery">
+		
 		<switch name="electrical/battery-1">
+			<default value="0"/>
 			<test logic="AND" value="150">
 				/controls/electrical/switches/battery1 eq 1
 				/systems/failures/elec-batt1 eq 0
@@ -24,6 +27,7 @@
 		</switch>
 		
 		<switch name="electrical/battery-2">
+			<default value="0"/>
 			<test logic="AND" value="150">
 				/controls/electrical/switches/battery2 eq 1
 				/systems/failures/elec-batt2 eq 0
@@ -33,12 +37,14 @@
 		</switch>
 		
 		<switch name="electrical/battery-3">
+			<default value="0"/>
 			<test logic="AND" value="150">
 				/controls/electrical/switches/battery3 eq 1
 			</test>
 			<delay type="time">0.85</delay>
 			<output>/systems/electrical/battery3-amps</output>
 		</switch>
+	
 	</channel>
 
 </system>
