@@ -696,8 +696,8 @@ var ELEC = {
 		}
 		
 		if (battery3_percent < 100 and (dc1 > 25 or dc2 > 25) and battery3_sw) {
-			if (getprop("/systems/electrical/battery3-time") + 30 < getprop("/sim/time/elapsed-sec")) {
-				battery3_percent_calc = battery3_percent + 4.5; # Roughly 90 percent every 10 mins
+			if (getprop("/systems/electrical/battery3-time") + 5 < getprop("/sim/time/elapsed-sec")) {
+				battery3_percent_calc = battery3_percent + 0.75; # Roughly 90 percent every 10 mins
 				if (battery3_percent_calc > 100) {
 					battery3_percent_calc = 100;
 				}
@@ -705,8 +705,8 @@ var ELEC = {
 				setprop("/systems/electrical/battery3-time", getprop("/sim/time/elapsed-sec"));
 			}
 		} else if (battery3_sw) {
-			if (getprop("/systems/electrical/battery3-time") + 30 < getprop("/sim/time/elapsed-sec")) {
-				battery3_percent_calc = battery3_percent - 1.5; # Roughly 90 percent every 30 mins
+			if (getprop("/systems/electrical/battery3-time") + 5 < getprop("/sim/time/elapsed-sec")) {
+				battery3_percent_calc = battery3_percent - 0.25; # Roughly 90 percent every 30 mins
 				if (battery3_percent_calc < 0) {
 					battery3_percent_calc = 0;
 				}
