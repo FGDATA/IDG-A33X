@@ -10,6 +10,7 @@ var ac_volt_min = 110;
 var dc_volt_std = 28;
 var dc_volt_min = 25;
 var dc_amps_std = 150;
+var tr_amps_std = 55;
 var ac_hz_std = 400;
 var ac1_src = "XX";
 var ac2_src = "XX";
@@ -139,45 +140,6 @@ var light = {
 	}
 };
 
-var fctlpoweruptest = func {
-	if (getprop("/systems/electrical/battery-available") == 0 and (getprop("/controls/electrical/switches/battery1") == 1 or getprop("/controls/electrical/switches/battery2") == 1)) {
-		setprop("/systems/failures/prim1-fault", 1);
-		setprop("/systems/failures/sec1-fault", 1);
-		setprop("/systems/electrical/battery-available", 1);
-		setprop("/systems/electrical/prim-1-test", 1);
-		setprop("/systems/electrical/sec1-test", 1);
-		settimer(func(){
-			setprop("/systems/failures/prim1-fault", 0);
-			setprop("/systems/electrical/prim-1-test", 0);
-		},8);
-		settimer(func(){
-			setprop("/systems/failures/sec1-fault", 0);
-			setprop("/systems/electrical/sec1-test", 0);
-		},8.5);
-	}
-	
-	gen1_sw = getprop("/controls/electrical/switches/gen1");
-	gen2_sw = getprop("/controls/electrical/switches/gen2");
-	gen_apu_sw = getprop("/controls/electrical/switches/gen-apu");
-	gen_ext_sw = getprop("/controls/electrical/switches/gen-ext");
-	
-	if (getprop("/systems/electrical/dc2-available") == 0 and getprop("/systems/electrical/bus/dc2") > 25) {
-			setprop("/systems/failures/sec2-fault", 1);
-			setprop("/systems/failures/prim2-fault", 1);
-			setprop("/systems/failures/prim3-fault", 1);
-			setprop("/systems/electrical/prim-2-3-test", 1);
-			setprop("/systems/electrical/sec2-test", 1);
-		settimer(func(){
-			setprop("/systems/failures/sec2-fault", 1);
-			setprop("/systems/failures/prim2-fault", 1);
-			setprop("/systems/failures/prim3-fault", 1);
-			setprop("/systems/electrical/prim-2-3-test", 1);
-			setprop("/systems/electrical/sec2-test", 1);
-		},8);
-	}
-}
-
-
 # Main Elec System
 
 var ELEC = {
@@ -199,9 +161,9 @@ var ELEC = {
 		setprop("/controls/electrical/switches/battery1", 0);
 		setprop("/controls/electrical/switches/battery2", 0);
 		setprop("/controls/electrical/switches/battery3", 0);
-		setprop("/systems/electrical/battery1-volts", 25.9);
-		setprop("/systems/electrical/battery2-volts", 25.9);
-		setprop("/systems/electrical/battery3-volts", 26.7);
+		setprop("/systems/electrical/battery1-volts", 26.5);
+		setprop("/systems/electrical/battery2-volts", 26.5);
+		setprop("/systems/electrical/battery3-volts", 27.1);
 		setprop("/systems/electrical/battery1-amps", 0);
 		setprop("/systems/electrical/battery2-amps", 0);
 		setprop("/systems/electrical/battery3-amps", 0);
@@ -222,6 +184,12 @@ var ELEC = {
 		setprop("/systems/electrical/extra/apu-volts", 0);
 		setprop("/systems/electrical/extra/gen1-volts", 0);
 		setprop("/systems/electrical/extra/gen2-volts", 0);
+		setprop("/systems/electrical/extra/gen1-load", 0);
+		setprop("/systems/electrical/extra/gen2-load", 0);
+		setprop("/systems/electrical/extra/tr1-volts", 0);
+		setprop("/systems/electrical/extra/tr2-volts", 0);
+		setprop("/systems/electrical/extra/tr1-amps", 0);
+		setprop("/systems/electrical/extra/tr2-amps", 0);
 		setprop("/systems/electrical/extra/ext-hz", 0);
 		setprop("/systems/electrical/extra/apu-hz", 0);
 		setprop("/systems/electrical/extra/galleyshed", 0);
@@ -304,7 +272,7 @@ var ELEC = {
 			light.new(name: "left-taxi", max_watts:31, control_prop:"/sim/model/lights/nose-lights", elec_prop:"/systems/electrical/bus/ac1"),
 			light.new(name: "right-taxi", max_watts:31, control_prop:"/sim/model/lights/nose-lights", elec_prop:"/systems/electrical/bus/ac2"),
 			light.new(name: "left-turnoff", max_watts:21, control_prop:"/controls/lighting/leftturnoff", elec_prop:"/systems/electrical/bus/ac1"),
-			light.new(name: "right-turnoff", max_watts:21, control_prop:"/controls/lighting/rightturnoff", elec_prop:"/systems/electrical/bus/ac2")]; # Remember to remove ]; and replace with , when uncommenting the lines below
+			light.new(name: "right-turnoff", max_watts:21, control_prop:"/controls/lighting/rightturnoff", elec_prop:"/systems/electrical/bus/ac2")];# Remember to remove ];and replace with , when uncommenting the lines below
 			# light.new(name: "left-wing", max_watts:24, control_prop:"/controls/lighting/wing-lights", elec_prop:"/systems/electrical/bus/ac1"),
 			# light.new(name: "right-wing", max_watts:24, control_prop:"/controls/lighting/wing-lights", elec_prop:"/systems/electrical/bus/ac2")];
 	},
@@ -353,10 +321,23 @@ var ELEC = {
 		gen1_fail = getprop("/systems/failures/elec-gen1");
 		gen2_fail = getprop("/systems/failures/elec-gen2");
 		replay = getprop("/sim/replay/replay-state");
+		wow = getprop("/gear/gear[1]/wow");
 		prim1test = getprop("/systems/electrical/prim-1-test");
 		prim23test = getprop("/systems/electrical/prim-2-3-test");
 		sec1test = getprop("/systems/electrical/sec1-test");
 		sec2test = getprop("/systems/electrical/sec2-test");
+		
+		if (battery1_sw and !batt1_fail) {
+			setprop("/systems/electrical/battery1-amps", dc_amps_std);
+		} else {
+			setprop("/systems/electrical/battery1-amps", 0);
+		}
+		
+		if (battery2_sw and !batt2_fail) {
+			setprop("/systems/electrical/battery2-amps", dc_amps_std);
+		} else {
+			setprop("/systems/electrical/battery2-amps", 0);
+		}
 		
 		if (getprop("/systems/electrical/battery1-amps") > 120 or getprop("/systems/electrical/battery2-amps") > 120) {
 			setprop("/systems/electrical/bus/dcbat", dc_volt_std);
@@ -369,7 +350,7 @@ var ELEC = {
 		}
 		
 		if (dc2 >= 25) {
-			fctlpoweruptest();
+			setprop("/systems/electrical/dc2-available", 1);
 		} else {
 			setprop("/systems/electrical/dc2-available", 0);
 		}
@@ -420,30 +401,44 @@ var ELEC = {
 		if (stateL == 3 and gen1_sw and !gen1_fail) {
 			setprop("/systems/electrical/bus/dc1", dc_volt_std);
 			setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
-			setprop("/systems/electrical/bus/dc1-amps", dc_amps_std); 
+			setprop("/systems/electrical/extra/tr1-volts", dc_volt_std);
+			setprop("/systems/electrical/bus/dc1-amps", dc_amps_std);
+			setprop("/systems/electrical/extra/tr1-amps", tr_amps_std);
 		} else if (extpwr_on and ((gen_ext_sw and apu_ext_crosstie_sw) or gen_extb_sw)) {
 			setprop("/systems/electrical/bus/dc1", dc_volt_std);
 			setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
-			setprop("/systems/electrical/bus/dc1-amps", dc_amps_std); 
+			setprop("/systems/electrical/extra/tr1-volts", dc_volt_std);
+			setprop("/systems/electrical/bus/dc1-amps", dc_amps_std);
+			setprop("/systems/electrical/extra/tr1-amps", tr_amps_std);
 		} else if (gen_apu and !genapu_fail) {
 			setprop("/systems/electrical/bus/dc1", dc_volt_std);
 			setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
-			setprop("/systems/electrical/bus/dc1-amps", dc_amps_std); 
+			setprop("/systems/electrical/extra/tr1-volts", dc_volt_std);
+			setprop("/systems/electrical/bus/dc1-amps", dc_amps_std);
+			setprop("/systems/electrical/extra/tr1-amps", tr_amps_std);
 		} else if (apu_ext_crosstie_sw == 1 and xtieL) {
 			setprop("/systems/electrical/bus/dc1", dc_volt_std);
 			setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
-			setprop("/systems/electrical/bus/dc1-amps", dc_amps_std); 
+			setprop("/systems/electrical/extra/tr1-volts", dc_volt_std);
+			setprop("/systems/electrical/bus/dc1-amps", dc_amps_std);
+			setprop("/systems/electrical/extra/tr1-amps", tr_amps_std);
 		} else if (emergen) {
 			setprop("/systems/electrical/bus/dc1", 0);
 			setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
-			setprop("/systems/electrical/bus/dc1-amps", 0); 
+			setprop("/systems/electrical/extra/tr1-volts", 0);
+			setprop("/systems/electrical/bus/dc1-amps", 0);
+			setprop("/systems/electrical/extra/tr1-amps", 0);
 		} else if (dcbat and ias >= 50) {
 			setprop("/systems/electrical/bus/dc1", 0);
 			setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
-			setprop("/systems/electrical/bus/dc1-amps", 0); 
+			setprop("/systems/electrical/extra/tr1-volts", 0);
+			setprop("/systems/electrical/bus/dc1-amps", 0);
+			setprop("/systems/electrical/extra/tr1-amps", 0);
 		} else {
 			setprop("/systems/electrical/bus/dc1", 0);
-			setprop("/systems/electrical/bus/dc1-amps", 0); 
+			setprop("/systems/electrical/extra/tr1-volts", 0);
+			setprop("/systems/electrical/bus/dc1-amps", 0);
+			setprop("/systems/electrical/extra/tr1-amps", 0);
 			if (getprop("/systems/electrical/bus/dc2") == 0) {
 				setprop("/systems/electrical/bus/dc-ess", 0);
 			}
@@ -453,30 +448,44 @@ var ELEC = {
 		if (stateR == 3 and gen2_sw and !gen2_fail) {
 			setprop("/systems/electrical/bus/dc2", dc_volt_std);
 			setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
-			setprop("/systems/electrical/bus/dc2-amps", dc_amps_std); 
+			setprop("/systems/electrical/extra/tr2-volts", dc_volt_std);
+			setprop("/systems/electrical/bus/dc2-amps", dc_amps_std);
+			setprop("/systems/electrical/extra/tr2-amps", tr_amps_std);
 		} else if (extpwr_on and (gen_ext_sw or (gen_extb_sw and apu_ext_crosstie_sw))) {
 			setprop("/systems/electrical/bus/dc2", dc_volt_std);
 			setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
-			setprop("/systems/electrical/bus/dc2-amps", dc_amps_std); 
+			setprop("/systems/electrical/extra/tr2-volts", dc_volt_std);
+			setprop("/systems/electrical/bus/dc2-amps", dc_amps_std);
+			setprop("/systems/electrical/extra/tr2-amps", tr_amps_std);
 		} else if (gen_apu and !genapu_fail and apu_ext_crosstie_sw) {
 			setprop("/systems/electrical/bus/dc2", dc_volt_std);
 			setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
-			setprop("/systems/electrical/bus/dc2-amps", dc_amps_std); 
+			setprop("/systems/electrical/extra/tr2-volts", dc_volt_std);
+			setprop("/systems/electrical/bus/dc2-amps", dc_amps_std);
+			setprop("/systems/electrical/extra/tr2-amps", tr_amps_std);
 		} else if (apu_ext_crosstie_sw == 1  and xtieR) {
 			setprop("/systems/electrical/bus/dc2", dc_volt_std);
 			setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
-			setprop("/systems/electrical/bus/dc2-amps", dc_amps_std); 
+			setprop("/systems/electrical/extra/tr2-volts", dc_volt_std);
+			setprop("/systems/electrical/bus/dc2-amps", dc_amps_std);
+			setprop("/systems/electrical/extra/tr2-amps", tr_amps_std);
 		} else if (emergen) {
 			setprop("/systems/electrical/bus/dc2", 0);
 			setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
-			setprop("/systems/electrical/bus/dc2-amps", 0); 
+			setprop("/systems/electrical/extra/tr2-volts", 0);
+			setprop("/systems/electrical/bus/dc2-amps", 0);
+			setprop("/systems/electrical/extra/tr2-amps", 0);
 		} else if (dcbat and ias >= 50) {
 			setprop("/systems/electrical/bus/dc2", 0);
 			setprop("/systems/electrical/bus/dc-ess", dc_volt_std);
-			setprop("/systems/electrical/bus/dc2-amps", 0); 
+			setprop("/systems/electrical/extra/tr2-volts", 0);
+			setprop("/systems/electrical/bus/dc2-amps", 0);
+			setprop("/systems/electrical/extra/tr2-amps", 0);
 		} else {
 			setprop("/systems/electrical/bus/dc2", 0);
-			setprop("/systems/electrical/bus/dc2-amps", 0); 
+			setprop("/systems/electrical/extra/tr2-volts", 0);
+			setprop("/systems/electrical/bus/dc2-amps", 0);
+			setprop("/systems/electrical/extra/tr2-amps", 0);
 			if (getprop("/systems/electrical/bus/dc1") == 0) {
 				setprop("/systems/electrical/bus/dc-ess", 0);
 			}
@@ -600,9 +609,9 @@ var ELEC = {
 		}
 		
 		if (!gen_apu and !gen_ext_sw and !gen_extb_sw and (!gen1_sw or !gen2_sw)) {
-			setprop("/systems/electrical/extra/galleyshed", 1); 
+			setprop("/systems/electrical/extra/galleyshed", 1);
 		} else {
-			setprop("/systems/electrical/extra/galleyshed", 0); 
+			setprop("/systems/electrical/extra/galleyshed", 0);
 		}
 		
 		if (((ac1 == 0 and ac2 == 0 and ias >= 100) or manrat) and replay == 0) {
@@ -625,45 +634,45 @@ var ELEC = {
 		dc2 = getprop("/systems/electrical/bus/dc2");
 		
 		if (battery1_volts < 27.9 and (dc1 > 25 or dc2 > 25) and battery1_sw and !batt1_fail) {
-			decharge1.stop();
-			charge1.start();
-		} else if (battery1_volts == 27.9 and (dc1 > 25 or dc2 > 25) and battery1_sw and !batt1_fail) {
-			charge1.stop();
-			decharge1.stop();
+			if (getprop("/systems/electrical/battery1-time") + 60 < getprop("/sim/time/elapsed-sec")) {
+				setprop("/systems/electrical/battery1-volts", battery1_volts + 0.02877666);# Roughly 15mins to 25.9
+				setprop("/systems/electrical/battery1-time", getprop("/sim/time/elapsed-sec"));
+			}
 		} else if (battery1_sw and !batt1_fail) {
-			charge1.stop();
-			decharge1.start();
+			if (getprop("/systems/electrical/battery1-time") + 60 < getprop("/sim/time/elapsed-sec")) {
+				setprop("/systems/electrical/battery1-volts", battery1_volts - 0.01438833);# Roughly 30mins from 25.9
+				setprop("/systems/electrical/battery1-time", getprop("/sim/time/elapsed-sec"));
+			}
 		} else {
-			decharge1.stop();
-			charge1.stop();
+			setprop("/systems/electrical/battery1-time", getprop("/sim/time/elapsed-sec"));
 		}
 		
 		if (battery2_volts < 27.9 and (dc1 > 25 or dc2 > 25) and battery2_sw and !batt2_fail) {
-			decharge2.stop();
-			charge2.start();
-		} else if (battery2_volts == 27.9 and (dc1 > 25 or dc2 > 25) and battery2_sw and !batt2_fail) {
-			charge2.stop();
-			decharge2.stop();
+			if (getprop("/systems/electrical/battery2-time") + 60 < getprop("/sim/time/elapsed-sec")) {
+				setprop("/systems/electrical/battery2-volts", battery2_volts + 0.02877666);# Roughly 15mins to 25.9
+				setprop("/systems/electrical/battery2-time", getprop("/sim/time/elapsed-sec"));
+			}
 		} else if (battery2_sw and !batt2_fail) {
-			charge2.stop();
-			decharge2.start();
+			if (getprop("/systems/electrical/battery2-time") + 60 < getprop("/sim/time/elapsed-sec")) {
+				setprop("/systems/electrical/battery2-volts", battery2_volts - 0.01438833);# Roughly 30mins from 25.9
+				setprop("/systems/electrical/battery2-time", getprop("/sim/time/elapsed-sec"));
+			}
 		} else {
-			decharge2.stop();
-			charge2.stop();
+			setprop("/systems/electrical/battery2-time", getprop("/sim/time/elapsed-sec"));
 		}
 		
 		if (battery3_volts < 27.9 and (dc1 > 25 or dc2 > 25) and battery3_sw) {
-			decharge3.stop();
-			charge3.start();
-		} else if (battery3_volts == 27.9 and (dc1 > 25 or dc2 > 25) and battery3_sw) {
-			charge3.stop();
-			decharge3.stop();
+			if (getprop("/systems/electrical/battery3-time") + 60 < getprop("/sim/time/elapsed-sec")) {
+				setprop("/systems/electrical/battery3-volts", battery3_volts + 0.02877666);# Roughly 15mins to 25.9
+				setprop("/systems/electrical/battery3-time", getprop("/sim/time/elapsed-sec"));
+			}
 		} else if (battery3_sw) {
-			charge3.stop();
-			decharge3.start();
+			if (getprop("/systems/electrical/battery3-time") + 60 < getprop("/sim/time/elapsed-sec")) {
+				setprop("/systems/electrical/battery3-volts", battery3_volts - 0.01438833);# Roughly 30mins from 25.9
+				setprop("/systems/electrical/battery3-time", getprop("/sim/time/elapsed-sec"));
+			}
 		} else {
-			decharge3.stop();
-			charge3.stop();
+			setprop("/systems/electrical/battery3-time", getprop("/sim/time/elapsed-sec"));
 		}
 			
 		if (getprop("/systems/electrical/bus/ac-ess") < 110) {
@@ -792,7 +801,7 @@ var ELEC = {
 			setprop("/systems/electrical/gen2-fault", 0);
 		}
 		
-		foreach(var screena; screens) { 
+		foreach(var screena;screens) { 
 			power_consumption = screena.power_consumption();
 			if (getprop(screena.elec_prop) != 0) {
 				setprop("/systems/electrical/DU/" ~ screena.name ~ "/watts", power_consumption);
@@ -801,7 +810,7 @@ var ELEC = {
 			}
 		}
 		
-		foreach(var lighta; lights) { 
+		foreach(var lighta;lights) { 
 			power_consumption = lighta.power_consumption();
 			if (getprop(lighta.elec_prop) != 0 and getprop(lighta.control_prop) != 0) {
 				setprop("/systems/electrical/light/" ~ lighta.name ~ "/watts", power_consumption);
@@ -811,28 +820,3 @@ var ELEC = {
 		}
 	},
 };
-
-var charge1 = maketimer(6, func {
-	bat1_volts = getprop("/systems/electrical/battery1-volts");
-	setprop("/systems/electrical/battery1-volts", bat1_volts + 0.1);
-});
-var charge2 = maketimer(6, func {
-	bat2_volts = getprop("/systems/electrical/battery2-volts");
-	setprop("/systems/electrical/battery2-volts", bat2_volts + 0.1);
-});
-var charge3 = maketimer(6, func {
-	bat3_volts = getprop("/systems/electrical/battery3-volts");
-	setprop("/systems/electrical/battery3-volts", bat3_volts + 0.1);
-});
-var decharge1 = maketimer(69, func { # interval is at 69 seconds, to allow about 30 min from 25.9
-	bat1_volts = getprop("/systems/electrical/battery1-volts");
-	setprop("/systems/electrical/battery1-volts", bat1_volts - 0.1);
-});
-var decharge2 = maketimer(69, func {
-	bat2_volts = getprop("/systems/electrical/battery2-volts");
-	setprop("/systems/electrical/battery2-volts", bat2_volts - 0.1);
-});
-var decharge3 = maketimer(69, func {
-	bat3_volts = getprop("/systems/electrical/battery3-volts");
-	setprop("/systems/electrical/battery3-volts", bat3_volts - 0.1);
-});

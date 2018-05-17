@@ -3789,10 +3789,6 @@
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>systems.fctlpoweruptest();</script>
-			</binding>
 		</action>
 	</animation>
 	
@@ -3853,10 +3849,6 @@
 			<binding>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
-			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>systems.fctlpoweruptest();</script>
 			</binding>
 		</action>
 	</animation>
@@ -3934,10 +3926,6 @@
 			<binding>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
-			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>systems.fctlpoweruptest();</script>
 			</binding>
 		</action>
 	</animation>

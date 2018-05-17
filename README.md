@@ -17,7 +17,3 @@ Present pack includes the following Airbus A330 Family variants:
 - A330-343
 - Voyager KC2/KC3 (A330 MRTT)
 - KC-30A (A330 MRTT)
-
-Thank you to:
-Amanda Santos for the sound "botaodepressao", used for the overhead panel under the CC0 license:
-https://freesound.org/people/amandasantos/sounds/392148/
