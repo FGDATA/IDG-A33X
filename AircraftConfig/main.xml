@@ -416,7 +416,7 @@
 			</checkbox>
 			
 			<checkbox>
-				<label>Skip ADIRS Alignment</label>
+				<label>ADIRS Aligns Instantly</label>
 				<halign>left</halign>
 				<property>/controls/adirs/skip</property>
 				<binding>
@@ -436,7 +436,7 @@
 			</checkbox>
 			
 			<checkbox>
-				<label>Allow Damage</label>
+				<label>Allow Damage (MRTT Only)</label>
 				<halign>left</halign>
 				<enable>
 					<and>
