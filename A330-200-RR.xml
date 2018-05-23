@@ -343,7 +343,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	</ground_reactions>
 	
 	<propulsion>
-		<engine file="trent772b-60">
+		<engine file="trent772b-60_1">
 			<location unit="M">
 				<x> -2.7034 </x>	
 				<y> -9.40138 </y>
@@ -369,7 +369,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			</thruster>
 		</engine>
 		
-		<engine file="trent772b-60">
+		<engine file="trent772b-60_2">
 			<location unit="M">
 				<x> -2.7034 </x>	
 				<y> 9.40138 </y>
