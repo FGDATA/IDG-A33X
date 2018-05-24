@@ -9,12 +9,12 @@ Distribute under the terms of GPLv2.
 
 -->
 <PropertyList>
-  <path>Models/Airport/Pushback/Goldhofert.ac</path>
+  <path>Services/Pushback/Douglas.xml</path>
 
   <!-- Trucks models and artworks courtesy of XPGoodWay Team
 (http://www.xpgoodwayteam.org/site_xpushback/) -->
 
-  <model>
+  <!--model>
     <path>Models/Airport/Pushback/Goldhofert-warning-light.xml</path>
     <offsets>
       <x-m>-2.908</x-m>
@@ -38,7 +38,7 @@ Distribute under the terms of GPLv2.
    <type>spin</type>
    <object-name>wheelfl</object-name>
    <object-name>wheelfr</object-name>
-   <!-- SETTING The aircraft's front wheel rollspeed in m/s. -->
+   <!- SETTING The aircraft's front wheel rollspeed in m/s. ->
    <property>gear/gear[0]/rollspeed-ms</property>
    <factor>-16.3</factor>
    <center>
@@ -57,7 +57,7 @@ Distribute under the terms of GPLv2.
    <type>spin</type>
    <object-name>wheelrl</object-name>
    <object-name>wheelrr</object-name>
-   <!-- SETTING The aircraft's front wheel rollspeed in m/s. -->
+   <!- SETTING The aircraft's front wheel rollspeed in m/s. ->
    <property>gear/gear[0]/rollspeed-ms</property>
    <factor>-16.3</factor>
    <center>
@@ -70,7 +70,7 @@ Distribute under the terms of GPLv2.
      <y>1</y>
      <z>0</z>
    </axis>
- </animation>
+ </animation-->
 
  <animation>
    <type>select</type>
