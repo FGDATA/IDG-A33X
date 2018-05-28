@@ -209,7 +209,7 @@
 
 	<model>
 		<name>Pushback</name>
-		<path>Models/Goldhofert-autopush.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Goldhofert-autopush.xml</path>
 		<offsets>
 			<x-m>-15.9664</x-m>
 			<y-m>0</y-m>
