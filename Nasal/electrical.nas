@@ -660,6 +660,8 @@ var ELEC = {
 				setprop("/systems/electrical/battery1-percent", battery1_percent_calc);
 				setprop("/systems/electrical/battery1-time", getprop("/sim/time/elapsed-sec"));
 			}
+		} else if (battery1_percent == 100 and (dc1 > 25 or dc2 > 25) and battery1_sw and !batt1_fail) {
+			setprop("/systems/electrical/battery1-time", getprop("/sim/time/elapsed-sec"));
 		} else if (battery1_amps >= 120 and battery1_sw and !batt1_fail) {
 			if (getprop("/systems/electrical/battery1-time") + 5 < getprop("/sim/time/elapsed-sec")) {
 				battery1_percent_calc = battery1_percent - 0.25; # Roughly 90 percent every 30 mins
@@ -682,6 +684,8 @@ var ELEC = {
 				setprop("/systems/electrical/battery2-percent", battery2_percent_calc);
 				setprop("/systems/electrical/battery2-time", getprop("/sim/time/elapsed-sec"));
 			}
+		} else if (battery2_percent == 100 and (dc1 > 25 or dc2 > 25) and battery2_sw and !batt2_fail) {
+			setprop("/systems/electrical/battery2-time", getprop("/sim/time/elapsed-sec"));
 		} else if (battery2_amps >= 120 and battery2_sw and !batt2_fail) {
 			if (getprop("/systems/electrical/battery2-time") + 5 < getprop("/sim/time/elapsed-sec")) {
 				battery2_percent_calc = battery2_percent - 0.25; # Roughly 90 percent every 30 mins
@@ -704,6 +708,8 @@ var ELEC = {
 				setprop("/systems/electrical/battery3-percent", battery3_percent_calc);
 				setprop("/systems/electrical/battery3-time", getprop("/sim/time/elapsed-sec"));
 			}
+		} else if (battery3_percent == 100 and (dc1 > 25 or dc2 > 25) and battery3_sw) {
+			setprop("/systems/electrical/battery3-time", getprop("/sim/time/elapsed-sec"));
 		} else if (battery3_sw) {
 			if (getprop("/systems/electrical/battery3-time") + 5 < getprop("/sim/time/elapsed-sec")) {
 				battery3_percent_calc = battery3_percent - 0.25; # Roughly 90 percent every 30 mins
