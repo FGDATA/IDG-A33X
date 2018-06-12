@@ -309,6 +309,24 @@
 				<value>0.0225</value>
 			</product>
 		</function>
+		
+		<function name="aero/force/Drag_wingice">
+			<description>Drag_due_to_ice_on_wing</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<table>
+					<independentVar>ice/wing</independentVar>
+					<tableData>
+						0.0  0.000
+						0.5  0.004
+						1.0  0.010
+						2.0  0.100
+					</tableData>
+				</table>
+			</product>
+		</function>
+	
 	
 	</axis>
 	
@@ -363,24 +381,6 @@
 				<value>0.1793</value>
 			</product>
 		</function>
-		
-		<function name="aero/force/Drag_wingice">
-			<description>Drag_due_to_ice_on_wing</description>
-			<product>
-				<property>aero/qbar-psf</property>
-				<property>metrics/Sw-sqft</property>
-				<table>
-					<independentVar>ice/wing</independentVar>
-					<tableData>
-						0.0  0.000
-						0.5  0.004
-						1.0  0.010
-						2.0  0.100
-					</tableData>
-				</table>
-			</product>
-		</function>
-	
 	</axis>
 	
 	<axis name="ROLL">
