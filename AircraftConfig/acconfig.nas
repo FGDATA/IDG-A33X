@@ -209,6 +209,7 @@ var colddark = func {
 	setprop("/controls/flight/flap-txt", " ");
 	libraries.flaptimer.stop();
 	setprop("/controls/flight/speedbrake-arm", 0);
+	setprop("/controls/flight/speedbrake", 0);
 	setprop("/controls/gear/gear-down", 1);
 	setprop("/controls/flight/elevator-trim", 0);
 	libraries.systemsInit();
@@ -257,6 +258,7 @@ var beforestart = func {
 	setprop("/controls/flight/flap-txt", " ");
 	libraries.flaptimer.stop();
 	setprop("/controls/flight/speedbrake-arm", 0);
+	setprop("/controls/flight/speedbrake", 0);
 	setprop("/controls/gear/gear-down", 1);
 	setprop("/controls/flight/elevator-trim", 0);
 	libraries.systemsInit();
@@ -334,6 +336,7 @@ var taxi = func {
 	setprop("/controls/flight/flap-txt", " ");
 	libraries.flaptimer.stop();
 	setprop("/controls/flight/speedbrake-arm", 0);
+	setprop("/controls/flight/speedbrake", 0);
 	setprop("/controls/gear/gear-down", 1);
 	setprop("/controls/flight/elevator-trim", 0);
 	libraries.systemsInit();

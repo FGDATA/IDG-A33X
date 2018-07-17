@@ -496,7 +496,7 @@
 					<entry><ind>24000</ind><dep> 5.70000</dep></entry>
 					<entry><ind>26000</ind><dep> 5.20000</dep></entry>
 					<entry><ind>28000</ind><dep> 4.70000</dep></entry>
-                    <entry><ind>30000</ind><dep> 4.40000</dep></entry>
+					<entry><ind>30000</ind><dep> 4.40000</dep></entry>
 					<entry><ind>32000</ind><dep> 4.00000</dep></entry>
 					<entry><ind>34000</ind><dep> 3.60000</dep></entry>
 					<entry><ind>36000</ind><dep> 3.30000</dep></entry>
@@ -757,7 +757,7 @@
 					<entry><ind>24000</ind><dep> -52.5</dep></entry>
 					<entry><ind>26000</ind><dep> -50.5</dep></entry>
 					<entry><ind>28000</ind><dep> -48.5</dep></entry>
-                    <entry><ind>30000</ind><dep> -46.5</dep></entry>
+					<entry><ind>30000</ind><dep> -46.5</dep></entry>
 					<entry><ind>32000</ind><dep> -44.5</dep></entry>
 					<entry><ind>34000</ind><dep> -38.9</dep></entry>
 					<entry><ind>36000</ind><dep> -33.3</dep></entry>
@@ -799,5 +799,97 @@
 		<input>0</input>
 		<output>/controls/flight/auto-coordination</output>
 	</filter>
+	
+	<filter>
+		<debug>false</debug>
+		<type>noise-spike</type>
+		<enable>
+			<condition>
+				<or>
+					<greater-than-equals>
+						<property>/systems/hydraulic/blue-psi</property>
+						<value>1500</value>
+					</greater-than-equals>
+					<greater-than-equals>
+						<property>/systems/hydraulic/yellow-psi</property>
+						<value>1500</value>
+					</greater-than-equals>
+				</or>
+			</condition>
+		</enable>
+		<input>/controls/flight/elevator-trim</input>
+		<output>/controls/flight/elevator-trim-fdm</output>
+		<max-rate-of-change>0.1</max-rate-of-change>
+	</filter>
+	
+	<filter>
+		<debug>false</debug>
+		<type>noise-spike</type>
+		<enable>
+			<condition>
+				<or>
+					<greater-than-equals>
+						<property>/systems/hydraulic/green-psi</property>
+						<value>1500</value>
+					</greater-than-equals>
+					<greater-than-equals>
+						<property>/systems/hydraulic/blue-psi</property>
+						<value>1500</value>
+					</greater-than-equals>
+					<greater-than-equals>
+						<property>/systems/hydraulic/yellow-psi</property>
+						<value>1500</value>
+					</greater-than-equals>
+				</or>
+			</condition>
+		</enable>
+		<input>/controls/flight/rudder-trim</input>
+		<output>/controls/flight/rudder-trim-fdm</output>
+		<max-rate-of-change>0.5</max-rate-of-change>
+	</filter>
+	
+	<filter>
+		<name>Autobrake Decel Error</name>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>
+			<expression>
+				<dif>
+					<property>/velocities/groundspeed-mps</property>
+					<property>/velocities/groundspeed-mps-ahead</property>
+				</dif>
+			</expression>
+		</input>
+		<output>/controls/autobrake/decel-error</output>
+	</filter>
+	
+	<pi-simple-controller>
+		<name>IT-CONTROLLER: AUTOBRAKE DECEL</name>
+		<debug>false</debug>
+		<enable>
+			<condition>
+				<equals>
+					<property>/controls/autobrake/active</property>
+					<value>1</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<property>/controls/autobrake/decel-error</property>
+		</input>
+		<reference>
+			<property>/controls/autobrake/decel-rate</property>
+		</reference>
+		<output>
+			<property>/controls/autobrake/brake-left</property>
+			<property>/controls/autobrake/brake-right</property>
+		</output>
+		<config>
+			<Kp>0.45</Kp>
+			<Ki>0.25</Ki>
+			<min>0.0</min>
+			<max>1.0</max>
+		</config>
+	</pi-simple-controller>
 
 </PropertyList>

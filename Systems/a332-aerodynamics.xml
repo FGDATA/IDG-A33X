@@ -61,22 +61,32 @@
 			</product>
 		</function>
 		
-		<function name="aero/force/Lift_pitch_control">
-			<description>Lift due to pitch control deflection</description>
+		<function name="aero/force/Lift_left_elevator">
+			<description>Lift due to left elevator deflection</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<property>fcs/pitch-pos-geared</property>
-				<value>0.0865</value>
+				<toradians><property>hydraulics/elevator-l/final-deg-aero</property></toradians>
+				<value>0.04325</value>
 			</product>
 		</function>
 		
-		<function name="aero/force/Lift_pitch_trim_control">
-			<description>Lift due to pitch trim control deflection</description>
+		<function name="aero/force/Lift_right_elevator">
+			<description>Lift due to right elevator deflection</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<property>fcs/pitch-trim-pos-geared</property>
+				<toradians><property>hydraulics/elevator-r/final-deg-aero</property></toradians>
+				<value>0.04325</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Lift_elevator_trim_control">
+			<description>Lift due to elevator trim control deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<toradians><property>hydraulics/elevator-trim/final-deg-aero</property></toradians>
 				<value>0.0127</value>
 			</product>
 		</function>
@@ -116,13 +126,23 @@
 			</product>
 		</function>
 		
-		<function name="aero/force/Lift_speedbrake">
-			<description>Delta Lift due to speedbrake</description>
+		<function name="aero/force/Lift_left_spoiler">
+			<description>Delta Lift due to left spoiler</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<property>fcs/speedbrake-pos-norm</property>
-				<value>-0.1</value>
+				<toradians><property>fcs/spoiler-left-deg</property></toradians>
+				<value>-0.0349066</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Lift_right_spoiler">
+			<description>Delta Lift due to right spoiler</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<toradians><property>fcs/spoiler-right-deg</property></toradians>
+				<value>-0.0349066</value>
 			</product>
 		</function>
 		
@@ -182,7 +202,7 @@
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<value>0.0175</value>
+				<value>0.0165</value>
 			</product>
 		</function>
 		
@@ -194,11 +214,11 @@
 				<table>
 					<independentVar lookup="row">aero/alpha-rad</independentVar>
 					<tableData>
-						-1.57  1.3083
-						-0.20  0.0331
+						-1.57  1.2983
+						-0.20  0.0281
 						 0.00  0.0000
-						 0.20  0.0331
-						 1.57  1.3083
+						 0.20  0.0281
+						 1.57  1.2983
 					</tableData>
 				</table>
 			</product>
@@ -210,7 +230,7 @@
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>aero/cl-squared</property>
-				<value>0.0384</value>
+				<value>0.0334</value>
 			</product>
 		</function>
 		
@@ -250,22 +270,32 @@
 			</product>
 		</function>
 		
-		<function name="aero/force/Drag_pitch_control">
-			<description>Drag due to pitch control deflection</description>
+		<function name="aero/force/Drag_left_elevator">
+			<description>Drag due to left elevator deflection</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<abs><property>fcs/pitch-pos-geared</property></abs>
-				<value>0.02</value>
+				<abs><toradians><property>hydraulics/elevator-l/final-deg-aero</property></toradians></abs>
+				<value>0.01</value>
 			</product>
 		</function>
 		
-		<function name="aero/force/Drag_pitch_trim_control">
-			<description>Drag due to pitch trim control deflection</description>
+		<function name="aero/force/Drag_right_elevator">
+			<description>Drag due to right elevator deflection</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<abs><property>fcs/pitch-trim-pos-geared</property></abs>
+				<abs><toradians><property>hydraulics/elevator-r/final-deg-aero</property></toradians></abs>
+				<value>0.01</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_elevator_trim_control">
+			<description>Drag due to elevator trim control deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<abs><toradians><property>hydraulics/elevator-trim/final-deg-aero</property></toradians></abs>
 				<value>0.02</value>
 			</product>
 		</function>
@@ -300,13 +330,63 @@
 			</product>
 		</function>
 		
-		<function name="aero/force/Drag_speedbrake">
-			<description>Drag due to speedbrake</description>
+		<function name="aero/force/Drag_left_outer_aileron">
+			<description>Drag due to left outer aileron</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<property>fcs/speedbrake-pos-norm</property>
-				<value>0.0225</value>
+				<abs><toradians><property>hydraulics/aileron-out-l/final-deg</property></toradians></abs>
+				<value>0.0021505287883876</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_left_inner_aileron">
+			<description>Drag due to left inner aileron</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<abs><toradians><property>hydraulics/aileron-in-l/final-deg</property></toradians></abs>
+				<value>0.0021505287883876</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_left_spoiler">
+			<description>Drag due to left spoiler</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<toradians><property>fcs/spoiler-left-deg</property></toradians>
+				<value>0.0184331039004655</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_right_spoiler">
+			<description>Drag due to right spoiler</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<toradians><property>fcs/spoiler-right-deg</property></toradians>
+				<value>0.0184331039004655</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_right_inner_aileron">
+			<description>Drag due to right inner aileron</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<abs><toradians><property>hydraulics/aileron-in-r/final-deg</property></toradians></abs>
+				<value>0.0021505287883876</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_right_outer_aileron">
+			<description>Drag due to right outer aileron</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<abs><toradians><property>hydraulics/aileron-out-r/final-deg</property></toradians></abs>
+				<value>0.0021505287883876</value>
 			</product>
 		</function>
 		
@@ -326,7 +406,6 @@
 				</table>
 			</product>
 		</function>
-	
 	
 	</axis>
 	
@@ -381,6 +460,7 @@
 				<value>0.1793</value>
 			</product>
 		</function>
+	
 	</axis>
 	
 	<axis name="ROLL">
@@ -420,14 +500,69 @@
 			</product>
 		</function>
 		
-		<function name="aero/moment/Roll_control">
-			<description>Roll moment due to roll control</description>
+		<function name="aero/moment/Roll_left_outer_aileron">
+			<description>Roll moment due to left outer aileron</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/bw-ft</property>
-				<property>fcs/roll-pos-rad</property>
-				<value>0.19</value>
+				<toradians><property>hydraulics/aileron-out-l/final-deg</property></toradians>
+				<value>0.0356</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Roll_left_inner_aileron">
+			<description>Roll moment due to left inner aileron</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/bw-ft</property>
+				<toradians><property>hydraulics/aileron-in-l/final-deg</property></toradians>
+				<value>0.0349</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Roll_right_inner_aileron">
+			<description>Roll moment due to right inner aileron</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/bw-ft</property>
+				<toradians><property>hydraulics/aileron-in-r/final-deg</property></toradians>
+				<value>-0.0349</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Roll_right_outer_aileron">
+			<description>Roll moment due to right outer aileron</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/bw-ft</property>
+				<toradians><property>hydraulics/aileron-out-r/final-deg</property></toradians>
+				<value>-0.0356</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Roll_left_spoiler">
+			<description>Roll moment due to left spoiler</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/bw-ft</property>
+				<toradians><property>fcs/spoiler-left-deg</property></toradians>
+				<value>-0.037</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Roll_right_spoiler">
+			<description>Roll moment due to right spoiler</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/bw-ft</property>
+				<toradians><property>fcs/spoiler-right-deg</property></toradians>
+				<value>0.037</value>
 			</product>
 		</function>
 		
@@ -457,24 +592,35 @@
 			</product>
 		</function>
 		
-		<function name="aero/moment/Pitch_control">
-			<description>Pitch moment due to pitch control</description>
+		<function name="aero/moment/Pitch_left_elevator">
+			<description>Pitch moment due to left elevator</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/cbarw-ft</property>
-				<property>fcs/pitch-pos-geared</property>
-				<value>-1.314</value>
+				<toradians><property>hydraulics/elevator-l/final-deg-aero</property></toradians>
+				<value>-0.657</value>
 			</product>
 		</function>
 		
-		<function name="aero/moment/Pitch_trim_control">
-			<description>Pitch moment due to pitch trim control</description>
+		<function name="aero/moment/Pitch_right_elevator">
+			<description>Pitch moment due to right elevator</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/cbarw-ft</property>
-				<property>fcs/pitch-trim-pos-geared</property>
+				<toradians><property>hydraulics/elevator-r/final-deg-aero</property></toradians>
+				<value>-0.657</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Pitch_elevator_trim">
+			<description>Pitch moment due to elevator trim control</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/cbarw-ft</property>
+				<toradians><property>hydraulics/elevator-trim/final-deg-aero</property></toradians>
 				<value>-2.161</value>
 			</product>
 		</function>
@@ -548,19 +694,8 @@
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/bw-ft</property>
-				<property>fcs/rudder-pos-rad</property>
+				<toradians><property>hydraulics/rudder/final-deg</property></toradians>
 				<value>0.075</value>
-			</product>
-		</function>
-		
-		<function name="aero/moment/Yaw_aileron">
-			<description>Adverse yaw</description>
-			<product>
-				<property>aero/qbar-psf</property>
-				<property>metrics/Sw-sqft</property>
-				<property>metrics/bw-ft</property>
-				<property>fcs/roll-pos-rad</property>
-				<value>0</value>
 			</product>
 		</function>
 	

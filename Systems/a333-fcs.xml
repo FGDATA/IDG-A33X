@@ -209,8 +209,8 @@
 				<table>
 					<independentVar lookup="row">/accelerations/pilot-gdamped</independentVar>
 					<tableData>
-						2.0  0.05
-						2.5  0.44
+						2.0 -0.05
+						2.5 -0.44
 					</tableData>
 				</table>
 			</function>
@@ -578,10 +578,9 @@
 			</test>
 		</switch>
 		
-		<lag_filter name="fcs/inner-aileron">
+		<lag_filter name="fbw/aileron-output-inner">
 			<input>fbw/aileron-output</input>
 			<c1>fbw/inner-aileron-c1</c1>
-			<output>fbw/aileron-output-inner</output>
 		</lag_filter>
 		
 		<fcs_function name="fbw/roll/s-i-f">
@@ -626,7 +625,6 @@
 				/it-fbw/law ne 3
 				/systems/failures/aileron-left eq 1
 			</test>
-			<output>/controls/flight/spoiler-left-fbw-cmd</output>
 		</switch>
 		
 		<switch name="fbw/roll/s-r">
@@ -639,7 +637,6 @@
 				/it-fbw/law ne 3
 				/systems/failures/aileron-right eq 1
 			</test>
-			<output>/controls/flight/spoiler-right-fbw-cmd</output>
 		</switch>
 	
 	</channel>
@@ -1252,24 +1249,19 @@
 				<table>
 					<independentVar lookup="row">/velocities/airspeed-kt</independentVar>
 					<tableData>
-						 62  0.5
+						 62  1.0
 						116  0.0
 					</tableData>
 				</table>
 			</function>
 		</fcs_function>
 		
-		<pure_gain name="hydraulics/aileron-droop-neg">
-			<input>hydraulics/aileron-droop</input>
-			<gain>-1.0</gain>
-		</pure_gain>
-		
 		<fcs_function name="hydraulics/elevator-droop">
 			<function>
 				<table>
 					<independentVar lookup="row">/velocities/airspeed-kt</independentVar>
 					<tableData>
-						 72  0.5
+						 72  1.0
 						121  0.0
 					</tableData>
 				</table>
@@ -1278,53 +1270,25 @@
 	
 	</channel>
 	
-	<channel name="Aileron Common">
-		
-		<summer name="hydraulics/roll-fbw-summer">
-			<input>fbw/aileron-output</input>
-			<input>/controls/flight/aileron-trim</input>
-			<clipto>
-				<min>-1</min>
-				<max>1</max>
-			</clipto>
-		</summer>
-		
-		<summer name="hydraulics/roll-fbw-inner-summer">
-			<input>fbw/aileron-output-inner</input>
-			<input>/controls/flight/aileron-trim</input>
-			<clipto>
-				<min>-1</min>
-				<max>1</max>
-			</clipto>
-		</summer>
-	
-	</channel>
-	
 	<channel name="Aileron L Outer">
 		
-		<fcs_function name="hydraulics/aileron-l-out/function">
+		<fcs_function name="hydraulics/aileron-out-l/function">
 			<function>
 				<sum>
-					<product>
-						<property>hydraulics/roll-fbw-summer</property>
-						<value>0.5</value>
-					</product>
+					<property>fbw/aileron-output</property>
 					<table>
 						<independentVar lookup="row">/fdm/jsbsim/fcs/flap-pos-deg</independentVar>
 						<tableData>
 							1  0.00
-							5  0.13
+							5  0.26
 						</tableData>
 					</table>
-					<product>
-						<property>fbw/mla/switch-aileron</property>
-						<value>-0.5</value>
-					</product>
+					<property>fbw/mla/switch-aileron</property>
 				</sum>
 			</function>
 		</fcs_function>
 		
-		<switch name="hydraulics/aileron-l-out/pressure-switch-or">
+		<switch name="hydraulics/aileron-out-l/pressure-switch-or">
 			<default value="0"/>
 			<test logic="OR" value="1">
 				/systems/hydraulic/green-psi ge 1500
@@ -1332,51 +1296,52 @@
 			</test>
 		</switch>
 		
-		<switch name="hydraulics/aileron-l-out/switch">
+		<switch name="hydraulics/aileron-out-l/switch">
 			<default value="hydraulics/aileron-droop"/>
-			<test logic="AND" value="hydraulics/aileron-l-out/function">
-				hydraulics/aileron-l-out/pressure-switch-or eq 1
+			<test logic="AND" value="hydraulics/aileron-out-l/function">
+				hydraulics/aileron-out-l/pressure-switch-or eq 1
 				/systems/failures/aileron-left eq 0
 			</test>
 			<clipto>
-				<min>-0.5</min>
-				<max>0.5</max>
+				<min>-1.0</min>
+				<max>1.0</max>
 			</clipto>
 		</switch>
 		
-		<lag_filter name="hydraulics/aileron-l-out/final">
-			<input>hydraulics/aileron-l-out/switch</input>
+		<lag_filter name="hydraulics/aileron-out-l/final">
+			<input>hydraulics/aileron-out-l/switch</input>
 			<c1>14.5</c1>
-			<output>/controls/flight/aileron-out-left</output>
 		</lag_filter>
+		
+		<aerosurface_scale name="hydraulics/aileron-out-l/final-deg">
+			<input>hydraulics/aileron-out-l/final</input>
+			<range>
+				<min>-25</min>
+				<max>25</max>
+			</range>
+		</aerosurface_scale>
 	
 	</channel>
 	
 	<channel name="Aileron L Inner">
 		
-		<fcs_function name="hydraulics/aileron-l-in/function">
+		<fcs_function name="hydraulics/aileron-in-l/function">
 			<function>
 				<sum>
-					<product>
-						<property>hydraulics/roll-fbw-inner-summer</property>
-						<value>0.5</value>
-					</product>
+					<property>fbw/aileron-output-inner</property>
 					<table>
 						<independentVar lookup="row">/fdm/jsbsim/fcs/flap-pos-deg</independentVar>
 						<tableData>
 							1  0.00
-							5  0.13
+							5  0.26
 						</tableData>
 					</table>
-					<product>
-						<property>fbw/mla/switch-aileron</property>
-						<value>-0.5</value>
-					</product>
+					<property>fbw/mla/switch-aileron</property>
 				</sum>
 			</function>
 		</fcs_function>
 		
-		<switch name="hydraulics/aileron-l-in/pressure-switch-or">
+		<switch name="hydraulics/aileron-in-l/pressure-switch-or">
 			<default value="0"/>
 			<test logic="OR" value="1">
 				/systems/hydraulic/green-psi ge 1500
@@ -1384,51 +1349,55 @@
 			</test>
 		</switch>
 		
-		<switch name="hydraulics/aileron-l-in/switch">
+		<switch name="hydraulics/aileron-in-l/switch">
 			<default value="hydraulics/aileron-droop"/>
-			<test logic="AND" value="hydraulics/aileron-l-in/function">
-				hydraulics/aileron-l-in/pressure-switch-or eq 1
+			<test logic="AND" value="hydraulics/aileron-in-l/function">
+				hydraulics/aileron-in-l/pressure-switch-or eq 1
 				/systems/failures/aileron-left eq 0
 			</test>
 			<clipto>
-				<min>-0.5</min>
-				<max>0.5</max>
+				<min>-1.0</min>
+				<max>1.0</max>
 			</clipto>
 		</switch>
 		
-		<lag_filter name="hydraulics/aileron-l-in/final">
-			<input>hydraulics/aileron-l-in/switch</input>
+		<lag_filter name="hydraulics/aileron-in-l/final">
+			<input>hydraulics/aileron-in-l/switch</input>
 			<c1>14.5</c1>
-			<output>/controls/flight/aileron-in-left</output>
 		</lag_filter>
+		
+		<aerosurface_scale name="hydraulics/aileron-in-l/final-deg">
+			<input>hydraulics/aileron-in-l/final</input>
+			<range>
+				<min>-25</min>
+				<max>25</max>
+			</range>
+		</aerosurface_scale>
 	
 	</channel>
 	
 	<channel name="Aileron R Inner">
 		
-		<fcs_function name="hydraulics/aileron-r-in/function">
+		<fcs_function name="hydraulics/aileron-in-r/function">
 			<function>
 				<sum>
 					<product>
-						<property>hydraulics/roll-fbw-inner-summer</property>
-						<value>0.5</value>
+						<property>fbw/aileron-output-inner</property>
+						<value>-1.0</value>
 					</product>
 					<table>
 						<independentVar lookup="row">/fdm/jsbsim/fcs/flap-pos-deg</independentVar>
 						<tableData>
 							1  0.00
-							5 -0.13
+							5  0.26
 						</tableData>
 					</table>
-					<product>
-						<property>fbw/mla/switch-aileron</property>
-						<value>0.5</value>
-					</product>
+					<property>fbw/mla/switch-aileron</property>
 				</sum>
 			</function>
 		</fcs_function>
 		
-		<switch name="hydraulics/aileron-r-in/pressure-switch-or">
+		<switch name="hydraulics/aileron-in-r/pressure-switch-or">
 			<default value="0"/>
 			<test logic="OR" value="1">
 				/systems/hydraulic/green-psi ge 1500
@@ -1436,51 +1405,55 @@
 			</test>
 		</switch>
 		
-		<switch name="hydraulics/aileron-r-in/switch">
-			<default value="hydraulics/aileron-droop-neg"/>
-			<test logic="AND" value="hydraulics/aileron-r-in/function">
-				hydraulics/aileron-r-in/pressure-switch-or eq 1
+		<switch name="hydraulics/aileron-in-r/switch">
+			<default value="hydraulics/aileron-droop"/>
+			<test logic="AND" value="hydraulics/aileron-in-r/function">
+				hydraulics/aileron-in-r/pressure-switch-or eq 1
 				/systems/failures/aileron-right eq 0
 			</test>
 			<clipto>
-				<min>-0.5</min>
-				<max>0.5</max>
+				<min>-1.0</min>
+				<max>1.0</max>
 			</clipto>
 		</switch>
 		
-		<lag_filter name="hydraulics/aileron-r-in/final">
-			<input>hydraulics/aileron-r-in/switch</input>
+		<lag_filter name="hydraulics/aileron-in-r/final">
+			<input>hydraulics/aileron-in-r/switch</input>
 			<c1>14.5</c1>
-			<output>/controls/flight/aileron-in-right</output>
 		</lag_filter>
+		
+		<aerosurface_scale name="hydraulics/aileron-in-r/final-deg">
+			<input>hydraulics/aileron-in-r/final</input>
+			<range>
+				<min>-25</min>
+				<max>25</max>
+			</range>
+		</aerosurface_scale>
 	
 	</channel>
 	
 	<channel name="Aileron R Outer">
 		
-		<fcs_function name="hydraulics/aileron-r-out/function">
+		<fcs_function name="hydraulics/aileron-out-r/function">
 			<function>
 				<sum>
 					<product>
-						<property>hydraulics/roll-fbw-summer</property>
-						<value>0.5</value>
+						<property>fbw/aileron-output</property>
+						<value>-1.0</value>
 					</product>
 					<table>
 						<independentVar lookup="row">/fdm/jsbsim/fcs/flap-pos-deg</independentVar>
 						<tableData>
 							1  0.00
-							5 -0.13
+							5  0.26
 						</tableData>
 					</table>
-					<product>
-						<property>fbw/mla/switch-aileron</property>
-						<value>0.5</value>
-					</product>
+					<property>fbw/mla/switch-aileron</property>
 				</sum>
 			</function>
 		</fcs_function>
 		
-		<switch name="hydraulics/aileron-r-out/pressure-switch-or">
+		<switch name="hydraulics/aileron-out-r/pressure-switch-or">
 			<default value="0"/>
 			<test logic="OR" value="1">
 				/systems/hydraulic/green-psi ge 1500
@@ -1488,88 +1461,28 @@
 			</test>
 		</switch>
 		
-		<switch name="hydraulics/aileron-r-out/switch">
-			<default value="hydraulics/aileron-droop-neg"/>
-			<test logic="AND" value="hydraulics/aileron-r-out/function">
-				hydraulics/aileron-r-out/pressure-switch-or eq 1
+		<switch name="hydraulics/aileron-out-r/switch">
+			<default value="hydraulics/aileron-droop"/>
+			<test logic="AND" value="hydraulics/aileron-out-r/function">
+				hydraulics/aileron-out-r/pressure-switch-or eq 1
 				/systems/failures/aileron-right eq 0
 			</test>
-			<clipto>
-				<min>-0.5</min>
-				<max>0.5</max>
-			</clipto>
-		</switch>
-		
-		<lag_filter name="hydraulics/aileron-r-out/final">
-			<input>hydraulics/aileron-r-out/switch</input>
-			<c1>14.5</c1>
-			<output>/controls/flight/aileron-out-right</output>
-		</lag_filter>
-	
-	</channel>
-	
-	<channel name="Roll">
-		
-		<fcs_function name="hydraulics/aileron-l/final">
-			<function>
-				<product>
-					<sum>
-						<property>hydraulics/aileron-l-out/final</property>
-						<property>hydraulics/aileron-l-in/final</property>
-					</sum>
-					<value>0.5</value>
-				</product>
-			</function>
-		</fcs_function>
-		
-		<fcs_function name="hydraulics/aileron-r/final">
-			<function>
-				<product>
-					<sum>
-						<property>hydraulics/aileron-r-in/final</property>
-						<property>hydraulics/aileron-r-out/final</property>
-					</sum>
-					<value>0.5</value>
-				</product>
-			</function>
-		</fcs_function>
-		
-		<fcs_function name="hydraulics/roll-control">
-			<function>
-				<product>
-					<sum>
-						<product>
-							<sum>
-								<property>hydraulics/aileron-l/final</property>
-								<property>hydraulics/aileron-r/final</property>
-							</sum>
-							<value>1.75</value>
-						</product>
-						<product>
-							<sum>
-								<product>
-									<property>/controls/flight/spoiler-l-sum</property>
-									<value>-1.0</value>
-								</product>
-								<property>/controls/flight/spoiler-r-sum</property>
-							</sum>
-							<value>0.25</value>
-						</product>
-					</sum>
-					<value>0.444444</value>
-				</product>
-			</function>
 			<clipto>
 				<min>-1.0</min>
 				<max>1.0</max>
 			</clipto>
-		</fcs_function>
+		</switch>
 		
-		<aerosurface_scale name="fcs/roll-pos-rad">
-			<input>hydraulics/roll-control</input>
+		<lag_filter name="hydraulics/aileron-out-r/final">
+			<input>hydraulics/aileron-out-r/switch</input>
+			<c1>14.5</c1>
+		</lag_filter>
+		
+		<aerosurface_scale name="hydraulics/aileron-out-r/final-deg">
+			<input>hydraulics/aileron-out-r/final</input>
 			<range>
-				<min>-0.436332</min>
-				<max>0.436332</max>
+				<min>-25</min>
+				<max>25</max>
 			</range>
 		</aerosurface_scale>
 	
@@ -1592,11 +1505,6 @@
 				fbw/internal-fbw-law eq 1
 			</test>
 		</switch>
-		
-		<pure_gain name="hydraulics/elevator-fbw-gain">
-			<input>hydraulics/elevator-fbw-switch</input>
-			<gain>0.5</gain>
-		</pure_gain>
 	
 	</channel>
 	
@@ -1612,21 +1520,28 @@
 		
 		<switch name="hydraulics/elevator-l/switch">
 			<default value="hydraulics/elevator-droop"/>
-			<test logic="AND" value="hydraulics/elevator-fbw-gain">
+			<test logic="AND" value="hydraulics/elevator-fbw-switch">
 				hydraulics/elevator-l/pressure-switch-or eq 1
 				/systems/failures/elevator-left eq 0
 			</test>
 			<clipto>
-				<min>-0.5</min>
-				<max>0.5</max>
+				<min>-1.0</min>
+				<max>1.0</max>
 			</clipto>
 		</switch>
 		
 		<lag_filter name="hydraulics/elevator-l/final">
 			<input>hydraulics/elevator-l/switch</input>
 			<c1>14.5</c1>
-			<output>/controls/flight/elevator-left</output>
 		</lag_filter>
+		
+		<aerosurface_scale name="hydraulics/elevator-l/final-deg">
+			<input>hydraulics/elevator-l/final</input>
+			<range>
+				<min>-30</min>
+				<max>15</max>
+			</range>
+		</aerosurface_scale>
 	
 	</channel>
 	
@@ -1642,65 +1557,34 @@
 		
 		<switch name="hydraulics/elevator-r/switch">
 			<default value="hydraulics/elevator-droop"/>
-			<test logic="AND" value="hydraulics/elevator-fbw-gain">
+			<test logic="AND" value="hydraulics/elevator-fbw-switch">
 				hydraulics/elevator-r/pressure-switch-or eq 1
 				/systems/failures/elevator-right eq 0
 			</test>
 			<clipto>
-				<min>-0.5</min>
-				<max>0.5</max>
+				<min>-1.0</min>
+				<max>1.0</max>
 			</clipto>
 		</switch>
 		
 		<lag_filter name="hydraulics/elevator-r/final">
 			<input>hydraulics/elevator-r/switch</input>
 			<c1>14.5</c1>
-			<output>/controls/flight/elevator-right</output>
 		</lag_filter>
-	
-	</channel>
-	
-	<channel name="Pitch">
 		
-		<fcs_function name="hydraulics/pitch-control">
-			<function>
-				<sum>
-					<property>hydraulics/elevator-l/final</property>
-					<property>hydraulics/elevator-r/final</property>
-				</sum>
-			</function>
-			<clipto>
-				<min>-1.0</min>
-				<max>1.0</max>
-			</clipto>
-		</fcs_function>
-		
-		<aerosurface_scale name="fcs/pitch-pos-rad">
-			<input>hydraulics/pitch-control</input>
+		<aerosurface_scale name="hydraulics/elevator-r/final-deg">
+			<input>hydraulics/elevator-r/final</input>
 			<range>
-				<min>-0.523599</min>
-				<max>0.261799</max>
+				<min>-30</min>
+				<max>15</max>
 			</range>
 		</aerosurface_scale>
-		
-		<scheduled_gain name="fcs/pitch-pos-geared">
-			<input>fcs/pitch-pos-rad</input>
-			<table>
-				<independentVar lookup="row">velocities/mach</independentVar>
-				<independentVar lookup="column">atmosphere/density-altitude</independentVar>
-				<tableData>
-					     0      43000
-					0.0  1.000  0.850
-					0.9  0.001  0.750
-				</tableData>
-			</table>
-		</scheduled_gain>
 	
 	</channel>
 	
 	<channel name="Pitch Trim">
 		
-		<aerosurface_scale name="fcs/pitch-trim-cmd-deg">
+		<aerosurface_scale name="hydraulics/elevator-trim/cmd-deg">
 			<input>/controls/flight/elevator-trim</input>
 			<domain>
 				<min>-1.00</min>
@@ -1712,20 +1596,13 @@
 			</range>
 		</aerosurface_scale>
 		
-		<aerosurface_scale name="fcs/pitch-trim-pos-rad">
+		<lag_filter name="hydraulics/elevator-trim/lag">
 			<input>/controls/flight/elevator-trim-fdm</input>
-			<domain>
-				<min>-1.00</min>
-				<max>0.14</max>
-			</domain>
-			<range>
-				<min>-0.2181662</min>
-				<max>0.0349066</max>
-			</range>
-		</aerosurface_scale>
+			<c1>0.5</c1>
+		</lag_filter>
 		
-		<aerosurface_scale name="fcs/pitch-trim-pos-deg">
-			<input>/controls/flight/elevator-trim-fdm</input>
+		<aerosurface_scale name="hydraulics/elevator-trim/final-deg">
+			<input>hydraulics/elevator-trim/lag</input>
 			<domain>
 				<min>-1.00</min>
 				<max>0.14</max>
@@ -1735,9 +1612,13 @@
 				<max>2.0</max>
 			</range>
 		</aerosurface_scale>
+	
+	</channel>
+	
+	<channel name="Pitch Aero">
 		
-		<scheduled_gain name="fcs/pitch-trim-pos-geared">
-			<input>fcs/pitch-trim-pos-rad</input>
+		<scheduled_gain name="hydraulics/elevator-l/final-deg-aero">
+			<input>hydraulics/elevator-l/final-deg</input>
 			<table>
 				<independentVar lookup="row">velocities/mach</independentVar>
 				<independentVar lookup="column">atmosphere/density-altitude</independentVar>
@@ -1748,52 +1629,32 @@
 				</tableData>
 			</table>
 		</scheduled_gain>
-	
-	</channel>
-	
-	<channel name="FADEC">
 		
-		<lag_filter name="fcs/throttle1">
-			<input>/controls/engines/engine[0]/throttle-output</input>
-			<c1>0.95</c1>
-			<output>fcs/throttle-cmd-norm</output>
-			<output>fcs/throttle-pos-norm</output>
-		</lag_filter>
+		<scheduled_gain name="hydraulics/elevator-r/final-deg-aero">
+			<input>hydraulics/elevator-r/final-deg</input>
+			<table>
+				<independentVar lookup="row">velocities/mach</independentVar>
+				<independentVar lookup="column">atmosphere/density-altitude</independentVar>
+				<tableData>
+					     0      43000
+					0.0  1.000  0.850
+					0.9  0.001  0.750
+				</tableData>
+			</table>
+		</scheduled_gain>
 		
-		<lag_filter name="fcs/throttle2">
-			<input>/controls/engines/engine[1]/throttle-output</input>
-			<c1>0.95</c1>
-			<output>fcs/throttle-cmd-norm[1]</output>
-			<output>fcs/throttle-pos-norm[1]</output>
-		</lag_filter>
-		
-		<lag_filter name="fcs/n1-actual1">
-			<input>/engines/engine[0]/n1</input>
-			<c1>2.25</c1>
-			<output>/engines/engine[0]/n1-actual</output>
-			<output>/engines/engine[3]/n1</output>
-		</lag_filter>
-		
-		<lag_filter name="fcs/n1-actual2">
-			<input>/engines/engine[1]/n1</input>
-			<c1>2.25</c1>
-			<output>/engines/engine[1]/n1-actual</output>
-			<output>/engines/engine[4]/n1</output>
-		</lag_filter>
-		
-		<lag_filter name="fcs/n2-actual1">
-			<input>/engines/engine[0]/n2</input>
-			<c1>2.25</c1>
-			<output>/engines/engine[0]/n2-actual</output>
-			<output>/engines/engine[3]/n2</output>
-		</lag_filter>
-		
-		<lag_filter name="fcs/n2-actual2">
-			<input>/engines/engine[1]/n2</input>
-			<c1>2.25</c1>
-			<output>/engines/engine[1]/n2-actual</output>
-			<output>/engines/engine[4]/n2</output>
-		</lag_filter>
+		<scheduled_gain name="hydraulics/elevator-trim/final-deg-aero">
+			<input>hydraulics/elevator-trim/final-deg</input>
+			<table>
+				<independentVar lookup="row">velocities/mach</independentVar>
+				<independentVar lookup="column">atmosphere/density-altitude</independentVar>
+				<tableData>
+					     0      43000
+					0.0  1.000  0.850
+					0.9  0.001  0.750
+				</tableData>
+			</table>
+		</scheduled_gain>
 	
 	</channel>
 	
@@ -1872,7 +1733,7 @@
 			</test>
 		</switch>
 		
-		<aerosurface_scale name="fcs/rudder-trim-cmd-deg">
+		<aerosurface_scale name="hydraulics/rudder/trim-cmd-deg">
 			<input>/controls/flight/rudder-trim</input>
 			<domain>
 				<min>-1.0</min>
@@ -1918,19 +1779,60 @@
 			<c1>13.5</c1>
 			<output>/controls/flight/rudder-fdm</output>
 		</lag_filter>
+		
+		<aerosurface_scale name="hydraulics/rudder/final-deg">
+			<input>hydraulics/rudder/final</input>
+			<range>
+				<min>-31.6</min>
+				<max>31.6</max>
+			</range>
+		</aerosurface_scale>
 	
 	</channel>
 	
-	<channel name="Yaw">
+	<channel name="FADEC">
 		
-		<aerosurface_scale name="rubbish/rudder-pos-rad">
-			<input>hydraulics/rudder/final</input>
-			<range>
-				<min>-0.551524</min>
-				<max>0.551524</max>
-			</range>
-			<output>fcs/rudder-pos-rad</output>
-		</aerosurface_scale>
+		<lag_filter name="fcs/throttle1">
+			<input>/controls/engines/engine[0]/throttle-output</input>
+			<c1>0.95</c1>
+			<output>fcs/throttle-cmd-norm</output>
+			<output>fcs/throttle-pos-norm</output>
+		</lag_filter>
+		
+		<lag_filter name="fcs/throttle2">
+			<input>/controls/engines/engine[1]/throttle-output</input>
+			<c1>0.95</c1>
+			<output>fcs/throttle-cmd-norm[1]</output>
+			<output>fcs/throttle-pos-norm[1]</output>
+		</lag_filter>
+		
+		<lag_filter name="fcs/n1-actual1">
+			<input>/engines/engine[0]/n1</input>
+			<c1>2.25</c1>
+			<output>/engines/engine[0]/n1-actual</output>
+			<output>/engines/engine[3]/n1</output>
+		</lag_filter>
+		
+		<lag_filter name="fcs/n1-actual2">
+			<input>/engines/engine[1]/n1</input>
+			<c1>2.25</c1>
+			<output>/engines/engine[1]/n1-actual</output>
+			<output>/engines/engine[4]/n1</output>
+		</lag_filter>
+		
+		<lag_filter name="fcs/n2-actual1">
+			<input>/engines/engine[0]/n2</input>
+			<c1>2.25</c1>
+			<output>/engines/engine[0]/n2-actual</output>
+			<output>/engines/engine[3]/n2</output>
+		</lag_filter>
+		
+		<lag_filter name="fcs/n2-actual2">
+			<input>/engines/engine[1]/n2</input>
+			<c1>2.25</c1>
+			<output>/engines/engine[1]/n2-actual</output>
+			<output>/engines/engine[4]/n2</output>
+		</lag_filter>
 	
 	</channel>
 	
@@ -2014,16 +1916,6 @@
 			</traverse>
 			<output>gear/gear-pos-norm</output>
 		</kinematic>
-	
-	</channel>
-	
-	<channel name="Speedbrake">
-		
-		<pure_gain name="rubbish/speedbrake-pos-norm">
-			<input>/controls/flight/speedbrake-output</input>
-			<gain>1.0</gain>
-			<output>fcs/speedbrake-pos-norm</output>
-		</pure_gain>
 	
 	</channel>
 	

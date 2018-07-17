@@ -462,6 +462,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	<system file="fuel"/>
 	<system file="glass-effect1"/>
 	<system file="a332-fcs"/>
+	<system file="a330-spoiler"/>
 	
 	<flight_control name="none"/>
 	
