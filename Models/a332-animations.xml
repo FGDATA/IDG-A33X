@@ -275,7 +275,7 @@
 		<type>rotate</type>
 		<object-name>elevator1</object-name>
 		<property>sim/multiplay/generic/float[5]</property>
-		<factor>1</factor>
+		<factor>-1</factor>
 		<axis>
 			<x1-m>33.9466</x1-m>
 			<y1-m>8.7984</y1-m>
