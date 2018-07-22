@@ -297,36 +297,36 @@
 		<!-- Multiplayer properties -->
 		<multiplay>
 			<generic>
-				<float n="0" alias="/controls/lighting/dome-norm" />
-				<float n="1" alias="/gear/gear[0]/steering-norm" />
-				<float n="2" alias="/engines/engine[0]/reverser-pos-norm" />
-				<float n="3" alias="/engines/engine[1]/reverser-pos-norm" />
-				<float n="4" alias="/fdm/jsbsim/hydraulics/elevator-l/final-deg" />
-				<float n="5" alias="/fdm/jsbsim/hydraulics/elevator-r/final-deg" />
-				<float n="6" alias="/fdm/jsbsim/hydraulics/aileron-in-l/final-deg" />
-				<float n="7" alias="/fdm/jsbsim/hydraulics/aileron-in-r/final-deg" />
-				<float n="8" alias="/fdm/jsbsim/hydraulics/rudder/final-deg" />
-				<float n="9" alias="/gear/gear[1]/gear-tilt-deg" />
-				<float n="10" alias="/gear/gear[2]/gear-tilt-deg" />
-				<float n="11" alias="/fdm/jsbsim/fcs/slat-pos-norm" />
-				<float n="12" alias="/options/drogue-pos-norm" />
-				<float n="13" alias="/fdm/jsbsim/hydraulics/aileron-out-l/final-deg" />
-				<float n="14" alias="/fdm/jsbsim/hydraulics/aileron-out-r/final-deg" />
-				<float n="15" alias="/aircraft/wingflex" />
-				<float n="16" alias="/options/boom-pos-norm" />
-				<float n="17" alias="/fdm/jsbsim/hydraulics/elevator-trim/final-deg" />
-				<int n="2" alias="/controls/lighting/landing-lights[0]" />
-				<int n="3" alias="/controls/lighting/landing-lights[1]" />
-				<int n="4" alias="/controls/lighting/landing-lights[2]" />
-				<int n="5" alias="/sim/model/lights/nav-lights" />
-				<int n="6" alias="/sim/model/lights/logo-lights" />
-				<int n="7" alias="/sim/model/lights/strobe/state" />
-				<int n="8" alias="/controls/lighting/wing-lights" />
-				<int n="9" alias="/sim/model/lights/beacon/state" />
-				<int n="10" alias="/engines/engine[0]/contrail" />
-				<int n="11" alias="/engines/engine[1]/contrail" />
-				<int n="12" alias="/sharklet" />
-				<int n="13" alias="/options/hasboom" />
+				<float n="0" alias="/controls/lighting/dome-norm"/>
+				<float n="1" alias="/gear/gear[0]/steering-norm"/>
+				<float n="2" alias="/engines/engine[0]/reverser-pos-norm"/>
+				<float n="3" alias="/engines/engine[1]/reverser-pos-norm"/>
+				<float n="4" alias="/fdm/jsbsim/hydraulics/elevator-l/final-deg"/>
+				<float n="5" alias="/fdm/jsbsim/hydraulics/elevator-r/final-deg"/>
+				<float n="6" alias="/fdm/jsbsim/hydraulics/aileron-in-l/final-deg"/>
+				<float n="7" alias="/fdm/jsbsim/hydraulics/aileron-in-r/final-deg"/>
+				<float n="8" alias="/fdm/jsbsim/hydraulics/rudder/final-deg"/>
+				<float n="9" alias="/gear/gear[1]/gear-tilt-deg"/>
+				<float n="10" alias="/gear/gear[2]/gear-tilt-deg"/>
+				<float n="11" alias="/fdm/jsbsim/fcs/slat-pos-norm"/>
+				<float n="12" alias="/options/drogue-pos-norm"/>
+				<float n="13" alias="/fdm/jsbsim/hydraulics/aileron-out-l/final-deg"/>
+				<float n="14" alias="/fdm/jsbsim/hydraulics/aileron-out-r/final-deg"/>
+				<float n="15" alias="/aircraft/wingflex"/>
+				<float n="16" alias="/options/boom-pos-norm"/>
+				<float n="17" alias="/fdm/jsbsim/hydraulics/elevator-trim/final-deg"/>
+				<int n="2" alias="/controls/lighting/landing-lights[0]"/>
+				<int n="3" alias="/controls/lighting/landing-lights[1]"/>
+				<int n="4" alias="/controls/lighting/landing-lights[2]"/>
+				<int n="5" alias="/sim/model/lights/nav-lights"/>
+				<int n="6" alias="/sim/model/lights/logo-lights"/>
+				<int n="7" alias="/sim/model/lights/strobe/state"/>
+				<int n="8" alias="/controls/lighting/wing-lights"/>
+				<int n="9" alias="/sim/model/lights/beacon/state"/>
+				<int n="10" alias="/engines/engine[0]/contrail"/>
+				<int n="11" alias="/engines/engine[1]/contrail"/>
+				<int n="12" alias="/sharklet"/>
+				<int n="13" alias="/options/hasboom"/>
 			</generic>
 		</multiplay>
 		
@@ -370,31 +370,31 @@
 	<payload>
 		<weight n="0">
 			<name>Cockpit Crew</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]" />
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
 			<min-lb type="double">200</min-lb>
 			<max-lb type="double">440</max-lb>
 		</weight>
 		<weight n="1">
 			<name>Passengers</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]" />
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
 			<min-lb type="double">2000</min-lb>
 			<max-lb type="double">41000</max-lb>
 		</weight>
 		<weight n="2">
 			<name>Forward Cargo</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]" />
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
 			<min-lb type="double">300</min-lb>
 			<max-lb type="double">13200</max-lb>
 		</weight>
 		<weight n="3">
 			<name>Aft Cargo</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]" />
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
 			<min-lb type="double">300</min-lb>
 			<max-lb type="double">13200</max-lb>
 		</weight>
 		<weight n="4">
 			<name>Rear Bulk Cargo</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]" />
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]"/>
 			<min-lb type="double">300</min-lb>
 			<max-lb type="double">11880</max-lb>
 		</weight>
@@ -537,7 +537,6 @@
 			<elevator-input>0</elevator-input>
 			<elevator-trim-fdm>0.0</elevator-trim-fdm>
 			<flap-pos type="int">0</flap-pos>
-			<ground-spoilers-armed type="bool">0</ground-spoilers-armed>
 			<rudder-trim-fdm>0.0</rudder-trim-fdm>
 			<speedbrake-arm>0</speedbrake-arm>
 			<slats>0</slats>
@@ -1388,7 +1387,7 @@
 						</and>
 					</condition>
 					<command>property-cycle</command>
-					<property>controls/flight/speedbrake</property>
+					<property>/controls/flight/speedbrake</property>
 					<value>0.0</value>
 					<value>1.0</value>
 				</binding>
@@ -1410,14 +1409,14 @@
 						</and>
 					</condition>
 					<command>property-cycle</command>
-					<property>controls/flight/speedbrake</property>
+					<property>/controls/flight/speedbrake</property>
 					<value>0.0</value>
 					<value>0.5</value>
 					<value>1.0</value>
 				</binding>
 				<binding>
 					<command>property-assign</command>
-					<property>controls/flight/speedbrake-arm</property>
+					<property>/controls/flight/speedbrake-arm</property>
 					<value>0</value>
 				</binding>
 			</key>
