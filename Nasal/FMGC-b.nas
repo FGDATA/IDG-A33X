@@ -659,20 +659,20 @@ setlistener("/it-autoflight/input/kts-mach", func {
 	var ias = getprop("/it-autoflight/input/spd-kts") or 0;
 	var mach = getprop("/it-autoflight/input/spd-mach") or 0;
 	if (getprop("/it-autoflight/input/kts-mach") == 0) {
-		if (ias >= 100 and ias <= 350) {
+		if (ias >= 100 and ias <= 330) {
 			setprop("/it-autoflight/input/spd-kts", math.round(ias, 1));
 		} else if (ias < 100) {
 			setprop("/it-autoflight/input/spd-kts", 100);
-		} else if (ias > 350) {
-			setprop("/it-autoflight/input/spd-kts", 350);
+		} else if (ias > 330) {
+			setprop("/it-autoflight/input/spd-kts", 330);
 		}
 	} else if (getprop("/it-autoflight/input/kts-mach") == 1) {
-		if (mach >= 0.50 and mach <= 0.82) {
+		if (mach >= 0.50 and mach <= 0.86) {
 			setprop("/it-autoflight/input/spd-mach", math.round(mach, 0.001));
 		} else if (mach < 0.50) {
 			setprop("/it-autoflight/input/spd-mach", 0.50);
-		} else if (mach > 0.82) {
-			setprop("/it-autoflight/input/spd-mach", 0.82);
+		} else if (mach > 0.86) {
+			setprop("/it-autoflight/input/spd-mach", 0.86);
 		}
 	}
 });
