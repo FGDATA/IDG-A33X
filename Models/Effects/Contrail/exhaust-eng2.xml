@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 
 <!--
 ##############################################
@@ -16,12 +16,22 @@
 	<texture>contrail.rgb</texture>
 	<emissive>true</emissive>
 	<lighting>false</lighting>
-	<offsets>
+	<!--<offsets>
 		<x-m>0.000</x-m>
 		<y-m>0.00</y-m>
 		<z-m>0.00</z-m>
 		<pitch-deg>90</pitch-deg>
-	</offsets>
+	</offsets>-->
+	
+	 <condition>
+     <and>
+       <greater-than>
+         <property>engines/engine[1]/n2</property>
+         <value>20</value>
+       </greater-than>
+       <property>engines/engine[1]/running</property>
+     </and>
+   </condition>
 	
 	<attach>world</attach>
 	
