@@ -24,7 +24,13 @@
 			<z-m>0.7129</z-m>
 		</offsets>
 	</model>
-		
+	
+	<!-- Ground Services -->    
+	<model>
+		<name>ground_services</name>
+		<path>Aircraft/IDG-A33X/Models/A332-groundservices.xml</path>
+	</model>
+	
 	<!-- New Lights -->
 	
 	<model>
