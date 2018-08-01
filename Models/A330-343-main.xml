@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <!--
 ##############################################
@@ -14,43 +14,6 @@
 		<name>Rolls Royce Engines</name>
 		<path>Aircraft/IDG-A33X/Models/trent772b-60.xml</path>
 	</model>
-	
-	
-	<!-- Contrails -->
-  <model>
-    <path>Aircraft/IDG-A33X/Models/Effects/Contrail/contrail-eng1.xml</path>
-    <offsets>
-      <x-m>4</x-m>
-			<y-m>-9.3101</y-m>
-			<z-m>-2.4685</z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/IDG-A33X/Models/Effects/Contrail/contrail-eng2.xml</path>
-    <offsets>
-    	<x-m>4</x-m>
-			<y-m>9.3101</y-m>
-			<z-m>-2.4685</z-m>
-    </offsets>
-  </model>
-  
-  <!-- Exhaust -->
-  <model>
-    <path>Aircraft/IDG-A33X/Models/Effects/Contrail/exhaust/exhaust-eng1.xml</path>
-    <offsets>
-      <x-m>4</x-m>
-			<y-m>-9.3101</y-m>
-			<z-m>-2.4685</z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/IDG-A33X/Models/Effects/Contrail/exhaust/exhaust-eng2.xml</path>
-    <offsets>
-     	<x-m>4</x-m>
-			<y-m>-9.3101</y-m>
-			<z-m>-2.4685</z-m>
-    </offsets>
-  </model>
 	
 	<model>
 		<name>Flightdeck</name>
