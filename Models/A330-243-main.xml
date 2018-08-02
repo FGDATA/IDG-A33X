@@ -51,7 +51,7 @@
 
 	<!-- Exhaust -->
 	<model>
-		<path>Aircraft/IDG-A33X/Models/Effects/Contrail/exhaust/exhaust-eng1.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Effects/Contrail/exhaust-eng1.xml</path>
 		<offsets>
 			<x-m>4</x-m>
 			<y-m>-9.4014</y-m>
@@ -59,7 +59,7 @@
 		</offsets>
 	</model>
 	<model>
-		<path>Aircraft/IDG-A33X/Models/Effects/Contrail/exhaust/exhaust-eng2.xml</path>
+		<path>Aircraft/IDG-A33X/Models/Effects/Contrail/exhaust-eng2.xml</path>
 		<offsets>
 			<x-m>4</x-m>
 			<y-m>-9.4014</y-m>
