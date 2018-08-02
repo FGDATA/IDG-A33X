@@ -308,7 +308,7 @@ var nd_update = maketimer(0.05, func {
 	canvas_nd_base.update();
 });
 
-for (i = 0; i < 2; i = i + 1 ) {
+for (i = 0; i < 2; i = i + 1) {
 	setlistener("/instrumentation/efis["~i~"]/nd/display-mode", func(node) {
 		var par = node.getParent().getParent();
 		var idx = par.getIndex();
@@ -319,18 +319,14 @@ for (i = 0; i < 2; i = i + 1 ) {
 		var centered = 1;
 		if (mode == "ILS") {
 			cvs_mode = "APP";
-		}
-		else if (mode == "VOR") {
+		} else if (mode == "VOR") {
 			cvs_mode = "VOR";
-		}
-		else if (mode == "NAV"){
+		} else if (mode == "NAV") {
 			cvs_mode = "MAP";
-		}
-		else if (mode == "ARC"){
+		} else if (mode == "ARC") {
 			cvs_mode = "MAP";
 			centered = 0;
-		}
-		else if (mode == "PLAN"){
+		} else if (mode == "PLAN") {
 			cvs_mode = "PLAN";
 		}
 		setprop(canvas_mode, cvs_mode);

@@ -49,24 +49,6 @@
 		</offsets>
 	</model>
 
-	<!-- Exhaust -->
-	<model>
-		<path>Aircraft/IDG-A33X/Models/Effects/Contrail/exhaust-eng1.xml</path>
-		<offsets>
-			<x-m>4</x-m>
-			<y-m>-9.4014</y-m>
-			<z-m>-2.6508</z-m>
-		</offsets>
-	</model>
-	<model>
-		<path>Aircraft/IDG-A33X/Models/Effects/Contrail/exhaust-eng2.xml</path>
-		<offsets>
-			<x-m>4</x-m>
-			<y-m>-9.4014</y-m>
-			<z-m>-2.6508</z-m>
-		</offsets>
-	</model>
-	
 	<!-- New Lights -->
 	<model>
 		<name>Left nav light</name>
