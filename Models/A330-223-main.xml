@@ -24,9 +24,32 @@
 			<z-m>0.7129</z-m>
 		</offsets>
 	</model>
-		
-	<!-- New Lights -->
 	
+	<!-- Ground Services -->    
+	<model>
+		<name>ground_services</name>
+		<path>Aircraft/IDG-A33X/Models/A332-groundservices.xml</path>
+	</model>
+	
+	<!-- Contrails -->
+	<model>
+		<path>Aircraft/IDG-A33X/Models/Effects/Contrail/contrail-eng1.xml</path>
+		<offsets>
+			<x-m>4</x-m>
+			<y-m>-9.4014</y-m>
+			<z-m>-2.6508</z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/IDG-A33X/Models/Effects/Contrail/contrail-eng2.xml</path>
+		<offsets>
+			<x-m>4</x-m>
+			<y-m>-9.4014</y-m>
+			<z-m>-2.6508</z-m>
+		</offsets>
+	</model>
+
+	<!-- New Lights -->
 	<model>
 		<name>Left nav light</name>
 		<path>Aircraft/IDG-A33X/Models/Lights/rednav.xml</path> 

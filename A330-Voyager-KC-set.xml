@@ -32,7 +32,7 @@
 			</preview>
 		</previews>
 		
-		<chase-distance-m type="double" archive="y">-100.0</chase-distance-m>
+		<chase-distance-m type="double" archive="y">-110.0</chase-distance-m>
 		<view>
 			<name>Pilot View</name>
 			<internal archive="y">true</internal>
@@ -182,7 +182,7 @@
 		
 	</sim>
         
-        <limits>
+	<limits>
 		<mass-and-balance> <!-- Data source: https://en.wikipedia.org/wiki/Airbus_A330_MRTT#Specifications -->
 			<maximum-takeoff-mass-lbs>514000</maximum-takeoff-mass-lbs>
 			<maximum-landing-mass-lbs>401241</maximum-landing-mass-lbs>

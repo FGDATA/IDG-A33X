@@ -110,6 +110,7 @@ var about_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/about/dialog", "Aircraf
 var update_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/update/dialog", "Aircraft/IDG-A33X/AircraftConfig/update.xml");
 var updated_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/updated/dialog", "Aircraft/IDG-A33X/AircraftConfig/updated.xml");
 var error_mismatch = gui.Dialog.new("sim/gui/dialogs/acconfig/error/mismatch/dialog", "Aircraft/IDG-A33X/AircraftConfig/error-mismatch.xml");
+var groundservices_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/groundsrvc/dialog", "Aircraft/IDG-A33X/AircraftConfig/groundservices.xml");
 var du_quality = gui.Dialog.new("sim/gui/dialogs/acconfig/du-quality/dialog", "Aircraft/IDG-A33X/AircraftConfig/du-quality.xml");
 spinning.start();
 init_dlg.open();
@@ -163,7 +164,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 	} 
 	mismatch_chk();
 	readSettings();
-	if (getprop("/systems/acconfig/options/revision") < current_revision) {
+	if (getprop("/systems/acconfig/options/revision") < current_revision and getprop("/systems/acconfig/mismatch-code") == "0x000") {
 		updated_dlg.open();
 	} else if (getprop("/systems/acconfig/out-of-date") != 1 and getprop("/systems/acconfig/mismatch-code") == "0x000" and getprop("/systems/acconfig/options/welcome-skip") != 1) {
 		welcome_dlg.open();
@@ -209,6 +210,7 @@ var colddark = func {
 	setprop("/controls/flight/flap-txt", " ");
 	libraries.flaptimer.stop();
 	setprop("/controls/flight/speedbrake-arm", 0);
+	setprop("/controls/flight/speedbrake", 0);
 	setprop("/controls/gear/gear-down", 1);
 	setprop("/controls/flight/elevator-trim", 0);
 	libraries.systemsInit();
@@ -257,6 +259,7 @@ var beforestart = func {
 	setprop("/controls/flight/flap-txt", " ");
 	libraries.flaptimer.stop();
 	setprop("/controls/flight/speedbrake-arm", 0);
+	setprop("/controls/flight/speedbrake", 0);
 	setprop("/controls/gear/gear-down", 1);
 	setprop("/controls/flight/elevator-trim", 0);
 	libraries.systemsInit();
@@ -334,6 +337,7 @@ var taxi = func {
 	setprop("/controls/flight/flap-txt", " ");
 	libraries.flaptimer.stop();
 	setprop("/controls/flight/speedbrake-arm", 0);
+	setprop("/controls/flight/speedbrake", 0);
 	setprop("/controls/gear/gear-down", 1);
 	setprop("/controls/flight/elevator-trim", 0);
 	libraries.systemsInit();

@@ -212,38 +212,29 @@
 		<group>
 			<layout>vbox</layout>
 
-			<checkbox>
-				<label>Enable De-icing Truck</label>
-				<halign>left</halign>
-				<property>/services/deicing_truck/enable</property>
-				<binding>
-					<command>dialog-apply</command>
-				</binding>
-				<live>true</live>
-			</checkbox>
-
 			<button>
-				<legend>De-ice Aircraft</legend>
+				<legend>Ground Services</legend>
 				<halign>center</halign>
 				<padding>5</padding>
-				<enable>
-					<property>/services/deicing_truck/enable</property>
-				</enable>
 				<binding>
 					<command>nasal</command>
 					<script>
-					gui.popupTip("The Aircraft was De-iced!");
+					acconfig.groundservices_dlg.open();
 					</script>
 				</binding>
 			</button>
 			
 			<checkbox>
-				<label>Enable Fuel Truck</label>
+				<label>Nose Gear Chock</label>
 				<halign>left</halign>
 				<enable>
-					<not><property>/services/fuel-truck/connect</property></not>
+					<and>
+						<property>/gear/gear[0]/wow</property>
+						<property>/gear/gear[1]/wow</property>
+						<property>/gear/gear[2]/wow</property>
+					</and>
 				</enable>
-				<property>/services/fuel-truck/enable</property>
+				<property>/services/chokes/nose</property>
 				<binding>
 					<command>dialog-apply</command>
 				</binding>
@@ -251,12 +242,16 @@
 			</checkbox>
 			
 			<checkbox>
-				<label>Connect Fuel Truck</label>
+				<label>Main Left Gear Chock</label>
 				<halign>left</halign>
 				<enable>
-					<property>/services/fuel-truck/enable</property>
+					<and>
+						<property>/gear/gear[0]/wow</property>
+						<property>/gear/gear[1]/wow</property>
+						<property>/gear/gear[2]/wow</property>
+					</and>
 				</enable>
-				<property>/services/fuel-truck/connect</property>
+				<property>/services/chokes/left</property>
 				<binding>
 					<command>dialog-apply</command>
 				</binding>
@@ -264,19 +259,16 @@
 			</checkbox>
 			
 			<checkbox>
-				<label>Enable Catering Truck</label>
+				<label>Main Right Gear Chock</label>
 				<halign>left</halign>
-				<property>/services/catering/enable</property>
-				<binding>
-					<command>dialog-apply</command>
-				</binding>
-				<live>true</live>
-			</checkbox>
-			
-			<checkbox>
-				<label>Enable Baggage Ramp</label>
-				<halign>left</halign>
-				<property>/services/baggage/enable</property>
+				<enable>
+					<and>
+						<property>/gear/gear[0]/wow</property>
+						<property>/gear/gear[1]/wow</property>
+						<property>/gear/gear[2]/wow</property>
+					</and>
+				</enable>
+				<property>/services/chokes/right</property>
 				<binding>
 					<command>dialog-apply</command>
 				</binding>
