@@ -1460,6 +1460,7 @@
 			<file>Aircraft/IDG-A33X/Nasal/efis.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/ECAM.nas</file>
 			<file>Aircraft/IDG-A33X/Nasal/shake.nas</file>
+			<file>Aircraft/IDG-A33X/Nasal/light-manager.nas</file>
 		</libraries>
 		<acconfig>
 			<file>Aircraft/IDG-A33X/AircraftConfig/acconfig.nas</file>
