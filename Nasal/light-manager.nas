@@ -78,29 +78,29 @@ var light_manager = {
 		# lights ########
 		# offsets to aircraft center
  
-		me.light1_xpos =  70.0;
+		me.light1_xpos =  75.0;
 		me.light1_ypos =  3.0;
 		me.light1_zpos =  2.0;
 		
-		me.light2_xpos =  70.0;
+		me.light2_xpos =  75.0;
 		me.light2_ypos =  -3.0;
 		me.light2_zpos =  2.0;
 		
-		me.light3_xpos =  35.0;
+		me.light3_xpos =  50.0;
 		me.light3_ypos =  0.5;
-		me.light3_zpos =  2.0;
+		me.light3_zpos =  2.5;
 		
-		me.light4_xpos =  35.0;
+		me.light4_xpos =  50.0;
 		me.light4_ypos =  -0.5;
-		me.light4_zpos =  2.0;
+		me.light4_zpos =  2.5;
  
 		# color values
-		me.light1_r = 0.5;
-		me.light1_g = 0.5;
-		me.light1_b = 0.5;
-		me.light2_r = 0.5;
-		me.light2_g = 0.5;
-		me.light2_b = 0.5;
+		me.light1_r = 0.7;
+		me.light1_g = 0.7;
+		me.light1_b = 0.7;
+		me.light2_r = 0.7;
+		me.light2_g = 0.7;
+		me.light2_b = 0.7;
 		me.light3_r = 0.5;
 		me.light3_g = 0.5;
 		me.light3_b = 0.5;
@@ -113,7 +113,7 @@ var light_manager = {
 		me.light1_stretch = 6;
 		me.light2_size = 12;
 		me.light2_stretch = 6;
-		me.light3_size = 6;
+		me.light3_size = 8;
 		me.light3_stretch = 8;
 		me.light4_size = 9;
 		me.light4_stretch = 8;
@@ -172,7 +172,7 @@ var light_manager = {
 			var sh = math.sin(heading);
 			var ch = math.cos(heading);
 			
-			if (ll1 == 1 and type_of_view == 0) {
+			if (ll1 == 1) {
 				me.light1_on();
 				me.light2_on();
 			} else {
