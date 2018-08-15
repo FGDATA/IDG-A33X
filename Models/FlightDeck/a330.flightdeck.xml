@@ -4770,7 +4770,7 @@
 		<type>translate</type>
 		<object-name>RRudderPedalL</object-name>
 		<object-name>RRudderPedalR</object-name>
-		<property>controls/flight/rudder</property>
+		<property>fdm/jsbsim/fbw/rudder-pedal</property>
 		<factor>0.07</factor>
 		<axis>
 			<x>-1</x>
@@ -4783,7 +4783,7 @@
 		<type>translate</type>
 		<object-name>LRudderPedalL</object-name>
 		<object-name>LRudderPedalR</object-name>
-		<property>controls/flight/rudder</property>
+		<property>fdm/jsbsim/fbw/rudder-pedal</property>
 		<factor>-0.07</factor>
 		<axis>
 			<x>-1</x>
@@ -4931,7 +4931,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>sidestick_1</object-name>
-		<property>controls/flight/elevator</property>
+		<property>fdm/jsbsim/fbw/elevator-sidestick</property>
 		<factor>-5</factor>
 		<axis>
 			<object-name>sidestick_1.y.axis</object-name>
@@ -4941,7 +4941,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>sidestick_1</object-name>
-		<property>controls/flight/aileron</property>
+		<property>fdm/jsbsim/fbw/aileron-sidestick</property>
 		<factor>5</factor>
 		<axis>
 			<object-name>sidestick_1.x.axis</object-name>
@@ -4952,7 +4952,7 @@
 		<type>rotate</type>
 		<object-name>sidestick_1</object-name>
 		<object-name>level3</object-name>
-		<property>controls/flight/elevator</property>
+		<property>fdm/jsbsim/fbw/elevator-sidestick</property>
 		<factor>-4</factor>
 		<axis>
 			<object-name>sidestick_1.y.axis</object-name>
@@ -4963,7 +4963,7 @@
 		<type>rotate</type>
 		<object-name>sidestick_1</object-name>
 		<object-name>level3</object-name>
-		<property>controls/flight/aileron</property>
+		<property>fdm/jsbsim/fbw/aileron-sidestick</property>
 		<factor>4</factor>
 		<axis>
 			<object-name>sidestick_1.x.axis</object-name>
@@ -4975,7 +4975,7 @@
 		<object-name>sidestick_1</object-name>
 		<object-name>level3</object-name>
 		<object-name>level2</object-name>
-		<property>controls/flight/elevator</property>
+		<property>fdm/jsbsim/fbw/elevator-sidestick</property>
 		<factor>-3</factor>
 		<axis>
 			<object-name>sidestick_1.y.axis</object-name>
@@ -4987,7 +4987,7 @@
 		<object-name>sidestick_1</object-name>
 		<object-name>level3</object-name>
 		<object-name>level2</object-name>
-		<property>controls/flight/aileron</property>
+		<property>fdm/jsbsim/fbw/aileron-sidestick</property>
 		<factor>3</factor>
 		<axis>
 			<object-name>sidestick_1.x.axis</object-name>
@@ -5000,7 +5000,7 @@
 		<object-name>level3</object-name>
 		<object-name>level2</object-name>
 		<object-name>level1</object-name>
-		<property>controls/flight/elevator</property>
+		<property>fdm/jsbsim/fbw/elevator-sidestick</property>
 		<factor>-2</factor>
 		<axis>
 			<object-name>sidestick_1.y.axis</object-name>
@@ -5013,7 +5013,7 @@
 		<object-name>level3</object-name>
 		<object-name>level2</object-name>
 		<object-name>level1</object-name>
-		<property>controls/flight/aileron</property>
+		<property>fdm/jsbsim/fbw/aileron-sidestick</property>
 		<factor>2</factor>
 		<axis>
 			<object-name>sidestick_1.x.axis</object-name>
@@ -5025,7 +5025,7 @@
 	<!--animation>
 		<type>rotate</type>
 		<object-name>sidestick_2</object-name>
-		<property>controls/flight/elevator</property>
+		<property>fdm/jsbsim/fbw/elevator-sidestick</property>
 		<factor>5</factor>
 		<axis>
 			<object-name>sidestick_2.y.axis</object-name>
@@ -5035,7 +5035,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>sidestick_2</object-name>
-		<property>controls/flight/aileron</property>
+		<property>fdm/jsbsim/fbw/aileron-sidestick</property>
 		<factor>5</factor>
 		<axis>
 			<object-name>sidestick_2.x.axis</object-name>
@@ -5046,7 +5046,7 @@
 		<type>rotate</type>
 		<object-name>sidestick_2</object-name>
 		<object-name>level3_2</object-name>
-		<property>controls/flight/elevator</property>
+		<property>fdm/jsbsim/fbw/elevator-sidestick</property>
 		<factor>4</factor>
 		<axis>
 			<object-name>sidestick_2.y.axis</object-name>
@@ -5057,7 +5057,7 @@
 		<type>rotate</type>
 		<object-name>sidestick_2</object-name>
 		<object-name>level3_2</object-name>
-		<property>controls/flight/aileron</property>
+		<property>fdm/jsbsim/fbw/aileron-sidestick</property>
 		<factor>4</factor>
 		<axis>
 			<object-name>sidestick_2.x.axis</object-name>
@@ -5069,7 +5069,7 @@
 		<object-name>sidestick_2</object-name>
 		<object-name>level3_2</object-name>
 		<object-name>level2_2</object-name>
-		<property>controls/flight/elevator</property>
+		<property>fdm/jsbsim/fbw/elevator-sidestick</property>
 		<factor>3</factor>
 		<axis>
 			<object-name>sidestick_2.y.axis</object-name>
@@ -5081,7 +5081,7 @@
 		<object-name>sidestick_2</object-name>
 		<object-name>level3_2</object-name>
 		<object-name>level2_2</object-name>
-		<property>controls/flight/aileron</property>
+		<property>fdm/jsbsim/fbw/aileron-sidestick</property>
 		<factor>3</factor>
 		<axis>
 			<object-name>sidestick_2.x.axis</object-name>
@@ -5094,7 +5094,7 @@
 		<object-name>level3_2</object-name>
 		<object-name>level2_2</object-name>
 		<object-name>level1_2</object-name>
-		<property>controls/flight/elevator</property>
+		<property>fdm/jsbsim/fbw/elevator-sidestick</property>
 		<factor>2</factor>
 		<axis>
 			<object-name>sidestick_2.y.axis</object-name>
@@ -5107,7 +5107,7 @@
 		<object-name>level3_2</object-name>
 		<object-name>level2_2</object-name>
 		<object-name>level1_2</object-name>
-		<property>controls/flight/aileron</property>
+		<property>fdm/jsbsim/fbw/aileron-sidestick</property>
 		<factor>2</factor>
 		<axis>
 			<object-name>sidestick_2.x.axis</object-name>
@@ -5159,7 +5159,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>tiller</object-name>
-		<property>controls/flight/rudder</property>
+		<property>fdm/jsbsim/fbw/rudder-pedal</property>
 		<factor>-70</factor>
 		<axis>
 			<object-name>tiller.axis</object-name>
@@ -5168,7 +5168,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>tillerFo</object-name>
-		<property>controls/flight/rudder</property>
+		<property>fdm/jsbsim/fbw/rudder-pedal</property>
 		<factor>-70</factor>
 		<axis>
 			<object-name>tillerFo.axis</object-name>
