@@ -8,7 +8,7 @@
 -->
 
 <external_reactions>
-	<force name="pushback" frame="BODY">
+	<force name="tractor" frame="BODY">
 		<location unit="M">
 			<x> -15.9664 </x>
 			<y> 0 </y>
