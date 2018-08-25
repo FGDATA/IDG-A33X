@@ -70,6 +70,14 @@
 			</test>
 		</switch>
 		
+		<switch name="fbw/internal-fbw-law">
+			<default value="/it-fbw/law"/>
+			<test logic="OR" value="2">
+				/gear/gear[1]/wow eq 1
+				/gear/gear[2]/wow eq 1
+			</test>
+		</switch>
+		
 		<switch name="fbw/fmgc/enabled">
 			<default value="0"/>
 			<test logic="OR" value="1">
@@ -507,8 +515,10 @@
 		
 		<switch name="fbw/roll/trigger">
 			<default value="0"/>
-			<test logic="OR" value="1">
+			<test value="-1">
 				fbw/roll/gain-switch gt 0
+			</test>
+			<test logic="OR" value="1">
 				fbw/roll/pid le -0.999
 				fbw/roll/pid ge 0.999
 			</test>
@@ -561,27 +571,45 @@
 			</test>
 		</switch>
 		
-		<switch name="fbw/internal-fbw-law">
-			<default value="/it-fbw/law"/>
-			<test logic="OR" value="2">
-				/gear/gear[1]/wow eq 1
-				/gear/gear[2]/wow eq 1
-			</test>
-		</switch>
+		<fcs_function name="fbw/aileron-output-inner-l">
+			<function>
+				<ifthen>
+					<eq>
+						<property>fbw/internal-fbw-law</property>
+						<value>0</value>
+					</eq>
+					<table>
+						<independentVar lookup="row">fbw/aileron-output</independentVar>
+						<tableData>
+							-1.0 -0.5
+							 0.0  0.0
+							 1.0  1.0
+						</tableData>
+					</table>
+					<property>fbw/aileron-output</property>
+				</ifthen>
+			</function>
+		</fcs_function>
 		
-		<switch name="fbw/inner-aileron-c1">
-			<default value="1000"/>
-			<test logic="AND" value="7.5">
-				/gear/gear[1]/wow eq 0
-				/gear/gear[2]/wow eq 0
-				fbw/internal-fbw-law eq 0
-			</test>
-		</switch>
-		
-		<lag_filter name="fbw/aileron-output-inner">
-			<input>fbw/aileron-output</input>
-			<c1>fbw/inner-aileron-c1</c1>
-		</lag_filter>
+		<fcs_function name="fbw/aileron-output-inner-r">
+			<function>
+				<ifthen>
+					<eq>
+						<property>fbw/internal-fbw-law</property>
+						<value>0</value>
+					</eq>
+					<table>
+						<independentVar lookup="row">fbw/aileron-output</independentVar>
+						<tableData>
+							-1.0 -1.0
+							 0.0  0.0
+							 1.0  0.5
+						</tableData>
+					</table>
+					<property>fbw/aileron-output</property>
+				</ifthen>
+			</function>
+		</fcs_function>
 		
 		<fcs_function name="fbw/roll/s-i-f">
 			<function>
@@ -638,6 +666,11 @@
 				/systems/failures/aileron-right eq 1
 			</test>
 		</switch>
+		
+		<lag_filter name="fbw/aileron-sidestick">
+			<input>/controls/flight/aileron</input>
+			<c1>20</c1>
+		</lag_filter>
 	
 	</channel>
 	
@@ -969,8 +1002,10 @@
 		
 		<switch name="fbw/pitch/trigger">
 			<default value="0"/>
-			<test logic="OR" value="1">
+			<test value="-1">
 				fbw/pitch/gain-switch gt 0
+			</test>
+			<test logic="OR" value="1">
 				fbw/pitch/pid le -0.999
 				fbw/pitch/pid ge 0.999
 			</test>
@@ -1037,6 +1072,11 @@
 				/it-fbw/law eq 3
 			</test>
 		</switch>
+		
+		<lag_filter name="fbw/elevator-sidestick">
+			<input>/controls/flight/elevator</input>
+			<c1>20</c1>
+		</lag_filter>
 		
 		<switch name="fbw/pitch/autotrim-height">
 			<default value="50"/>
@@ -1179,12 +1219,14 @@
 		
 		<switch name="fbw/yaw/trigger">
 			<default value="0"/>
-			<test logic="OR" value="1">
+			<test logic="OR" value="-1">
 				fbw/yaw/gain-switch gt 0
-				fbw/yaw/tc-pid le -0.199
-				fbw/yaw/tc-pid ge 0.199
 				/position/gear-agl-ft lt 50
 				fbw/yaw/autoland-switch eq 1
+			</test>
+			<test logic="OR" value="1">
+				fbw/yaw/tc-pid le -0.199
+				fbw/yaw/tc-pid ge 0.199
 			</test>
 		</switch>
 		
@@ -1239,6 +1281,11 @@
 			</test>
 			<output>/controls/flight/rudder-fbw</output>
 		</switch>
+		
+		<lag_filter name="fbw/rudder-pedal">
+			<input>/controls/flight/rudder</input>
+			<c1>20</c1>
+		</lag_filter>
 	
 	</channel>
 	
@@ -1279,8 +1326,10 @@
 					<table>
 						<independentVar lookup="row">/fdm/jsbsim/fcs/flap-pos-deg</independentVar>
 						<tableData>
-							1  0.00
-							5  0.26
+							 1  0.00
+							 5  0.26
+							11  0.26
+							17  0.44
 						</tableData>
 					</table>
 					<property>fbw/mla/switch-aileron</property>
@@ -1328,12 +1377,14 @@
 		<fcs_function name="hydraulics/aileron-in-l/function">
 			<function>
 				<sum>
-					<property>fbw/aileron-output-inner</property>
+					<property>fbw/aileron-output-inner-l</property>
 					<table>
 						<independentVar lookup="row">/fdm/jsbsim/fcs/flap-pos-deg</independentVar>
 						<tableData>
-							1  0.00
-							5  0.26
+							 1  0.00
+							 5  0.26
+							11  0.26
+							17  0.44
 						</tableData>
 					</table>
 					<property>fbw/mla/switch-aileron</property>
@@ -1382,14 +1433,16 @@
 			<function>
 				<sum>
 					<product>
-						<property>fbw/aileron-output-inner</property>
+						<property>fbw/aileron-output-inner-r</property>
 						<value>-1.0</value>
 					</product>
 					<table>
 						<independentVar lookup="row">/fdm/jsbsim/fcs/flap-pos-deg</independentVar>
 						<tableData>
-							1  0.00
-							5  0.26
+							 1  0.00
+							 5  0.26
+							11  0.26
+							17  0.44
 						</tableData>
 					</table>
 					<property>fbw/mla/switch-aileron</property>
@@ -1444,8 +1497,10 @@
 					<table>
 						<independentVar lookup="row">/fdm/jsbsim/fcs/flap-pos-deg</independentVar>
 						<tableData>
-							1  0.00
-							5  0.26
+							 1  0.00
+							 5  0.26
+							11  0.26
+							17  0.44
 						</tableData>
 					</table>
 					<property>fbw/mla/switch-aileron</property>

@@ -112,12 +112,14 @@ var updated_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/updated/dialog", "Air
 var error_mismatch = gui.Dialog.new("sim/gui/dialogs/acconfig/error/mismatch/dialog", "Aircraft/IDG-A33X/AircraftConfig/error-mismatch.xml");
 var groundservices_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/groundsrvc/dialog", "Aircraft/IDG-A33X/AircraftConfig/groundservices.xml");
 var du_quality = gui.Dialog.new("sim/gui/dialogs/acconfig/du-quality/dialog", "Aircraft/IDG-A33X/AircraftConfig/du-quality.xml");
+var autopush_dlg = gui.Dialog.new("sim/gui/dialogs/autopush/dialog", "Aircraft/IDG-A33X/AircraftConfig/autopush.xml");
 spinning.start();
 init_dlg.open();
 
 http.load("https://raw.githubusercontent.com/it0uchpods/IDG-A33X/master/revision.txt").done(func(r) setprop("/systems/acconfig/new-revision", r.response));
-var revisionFile = (getprop("/sim/aircraft-dir")~"/revision.txt");
+var revisionFile = (getprop("/sim/aircraft-dir") ~ "/revision.txt");
 var current_revision = io.readfile(revisionFile);
+print("IDG A33X Revision: " ~ current_revision);
 setprop("/systems/acconfig/revision", current_revision);
 
 setlistener("/systems/acconfig/new-revision", func {
@@ -164,7 +166,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 	} 
 	mismatch_chk();
 	readSettings();
-	if (getprop("/systems/acconfig/options/revision") < current_revision and getprop("/systems/acconfig/mismatch-code") == "0x000") {
+	if (getprop("/systems/acconfig/out-of-date") != 1 and getprop("/systems/acconfig/options/revision") < current_revision and getprop("/systems/acconfig/mismatch-code") == "0x000") {
 		updated_dlg.open();
 	} else if (getprop("/systems/acconfig/out-of-date") != 1 and getprop("/systems/acconfig/mismatch-code") == "0x000" and getprop("/systems/acconfig/options/welcome-skip") != 1) {
 		welcome_dlg.open();

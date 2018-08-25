@@ -284,6 +284,11 @@
 					<property>/controls/electrical/switches/gen-ext</property>
 					<value>0</value>
 				</binding>
+				<binding>
+					<command>property-assign</command>
+					<property>/controls/electrical/switches/gen-extb</property>
+					<value>0</value>
+				</binding>
 				<enable>
 					<and>
 					<equals>
