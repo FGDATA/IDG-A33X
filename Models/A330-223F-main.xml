@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <!--
 ##############################################
@@ -35,7 +35,7 @@
 	<model>
 		<path>Aircraft/IDG-A33X/Models/Effects/Contrail/contrail-eng1.xml</path>
 		<offsets>
-			<x-m>4</x-m>
+			<x-m>44</x-m>
 			<y-m>-9.4014</y-m>
 			<z-m>-2.6508</z-m>
 		</offsets>
@@ -43,7 +43,7 @@
 	<model>
 		<path>Aircraft/IDG-A33X/Models/Effects/Contrail/contrail-eng2.xml</path>
 		<offsets>
-			<x-m>4</x-m>
+			<x-m>44</x-m>
 			<y-m>9.4014</y-m>
 			<z-m>-2.6508</z-m>
 		</offsets>
